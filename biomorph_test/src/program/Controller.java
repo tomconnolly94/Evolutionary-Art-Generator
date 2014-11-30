@@ -5,13 +5,17 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+
+
 public class Controller
 {
 	private ArrayList<Biomorph> biomorphCollection;	
+	
 	public Controller()
 	{
 		biomorphCollection = new ArrayList<Biomorph>();
 	}
+	
 	public void createAndAdd()
 	{
 		BiomorphCreator bc = new BiomorphCreator();
