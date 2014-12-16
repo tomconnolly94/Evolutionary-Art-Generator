@@ -1,11 +1,13 @@
 package program;
 import java.util.Random;
+
 /**
  * Factory class to generate a random biomorph.
  * 
  * @author Tom Connolly
  * @version 22 Nov 2014
  */
+
 public class BiomorphCreator
 {
 	private Random rand;	

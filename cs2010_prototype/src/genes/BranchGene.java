@@ -6,7 +6,7 @@ package genes;
  * @author Tom Connolly
  * @version 22 Nov 2014
  */
- */
+ 
 public class BranchGene extends Gene
 {	
 	public BranchGene(int branchNum)
