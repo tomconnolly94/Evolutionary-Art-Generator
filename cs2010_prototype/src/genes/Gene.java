@@ -1,6 +1,9 @@
 package genes;
 /**
  * Abstract class to model a gene. Genes have an integer value and a type to determine what type of gene it is.
+ * 
+ * @author Tom Connolly
+ * @version 22 Nov 2014
  */
 public abstract class Gene
 {
