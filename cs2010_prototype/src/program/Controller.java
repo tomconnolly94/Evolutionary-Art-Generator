@@ -5,6 +5,13 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+/*
+ * A Class to hold and display biomorphs.
+ *
+ * @author Tom Connolly
+ * @version 22 Nov 2014
+ */
+
 public class Controller
 {
 	private ArrayList<Biomorph> biomorphCollection;	
