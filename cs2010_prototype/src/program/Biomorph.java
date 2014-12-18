@@ -1,14 +1,11 @@
 package program;
 import org.lwjgl.opengl.GL11;
 import genes.*;
-
 /**
  * Class to model and draw a single biomorph.
- * 
- * @author Tom Connolly & Jack Taylor
- * @version 22 Nov 2014
+ * @author Tom Connolly, Jack Taylor
+ * @version 18/12/2014
  */
-
 public class Biomorph
 {	
 	private Gene branch;
