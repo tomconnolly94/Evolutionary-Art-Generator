@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 /**
  * A Class to hold and display biomorphs.
  *
- * @author Tom Connolly
+ * @author Tom Connolly and Jack Taylor
  * @version 22 Nov 2014
  */
 
