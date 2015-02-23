@@ -73,32 +73,94 @@ public class Biomorph
 			}
 		}
 	}
-	/**
+	
+	/** 
 	 * @return The value of this biomorph's branch gene
 	 */
-	public int getBranchGeneValue()
+	public int getBranchValue()
 	{
 		return branch.getValue();
 	}
+	
+	/** 
+	 * @return The value of this biomorph's branchIncrement gene
+	 */
+	public int getBranchIncrementValue()
+	{
+		return branchIncrement.getValue();
+	}
+	
 	/**
 	 * @return The value of this biomorph's chain gene
 	 */
-	public int getChainGeneValue()
+	public int getChainValue()
 	{
 		return chain.getValue();
-	}	
+	}
+	
+	/** 
+	 * @return The value of this biomorph's colorB gene
+	 */
+	public int getColorBValue()
+	{
+		return colorB.getValue();
+	}
+	
+	/** 
+	 * @return The value of this biomorph's colorG gene
+	 */
+	public int getColorGValue()
+	{
+		return colorG.getValue();
+	}
+	
+	/** 
+	 * @return The value of this biomorph's colorR gene
+	 */
+	public int getColorRValue()
+	{
+		return colorR.getValue();
+	}
+	
+	/** 
+	 * @return The value of this biomorph's curvature gene
+	 */
+	public int getCurvatureValue()
+	{
+		return curvature.getValue();
+	}
+	
 	/**
 	 * @return The value of this biomorph's length gene
 	 */
-	public int getLengthGeneValue()
+	public int getLengthValue()
 	{
 		return length.getValue();
 	}
+	
+	/** 
+	 * @return The value of this biomorph's lengthIncrement gene
+	 */
+	public int getLengthIncrementValue()
+	{
+		return lengthIncrement.getValue();
+	}
+	
 	/**
 	 * @return The value of this biomorph's thickness gene
 	 */
-	public int getThicknessGeneValue()
+	public int getThicknessValue()
 	{
 		return thickness.getValue();
 	}
+	
+	/** 
+	 * @return The value of this biomorph's thicknessIncrement gene
+	 */
+	public int getThicknessIncrementValue()
+	{
+		return thicknessIncrement.getValue();
+	}
+	
 }
+

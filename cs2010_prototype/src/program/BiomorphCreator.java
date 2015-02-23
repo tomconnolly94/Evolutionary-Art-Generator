@@ -1,7 +1,7 @@
 package program;
 import java.util.Random;
 /**
- * Factory class to generate a random biomorph.
+ * Factory class to generate a biomorph, assigning all its gene values.
  * @author Tom Connolly, Jack Taylor
  * @version 18/12/2014
  */
@@ -10,13 +10,14 @@ public class BiomorphCreator
 	private Random rand;	
 	public BiomorphCreator()
 	{	
-		rand = new Random();
 	}
 	/**
 	 * @return A new, randomly generated biomorph.
 	 */
 	public Biomorph createBiomorph()
 	{	
+		rand = new Random();
+		
 		//The branch gene has been limited to a minimum of 3 to prevent a simple line being generated.
 		int branch = rand.nextInt(8) + 3;
 		int branchIncrement = rand.nextInt(10);
