@@ -9,15 +9,31 @@ import genes.*;
 public class Biomorph
 {	
 	private Gene branch;
-	private Gene chain;
+	private Gene branchIncrement;
+	private Gene chain;	
+	private Gene colorB;
+	private Gene colorG;
+	private Gene colorR;
+	private Gene curvature;
 	private Gene length;
+	private Gene lengthIncrement;
 	private Gene thickness;	
-	public Biomorph(int branch, int chain, int length, int thickness)
+	private Gene thicknessIncrement;
+	
+	public Biomorph(int branch, int branchIncrement, int chain, int colorB, int colorG, int colorR, int curvature, int length, int lengthIncrement, int thickness, int thicknessIncrement)
 	{	
-		this.branch = new BranchGene(branch);
-		this.chain = new ChainGene(chain);
-		this.length = new LengthGene(length);
-		this.thickness = new ThicknessGene(thickness);	
+		this.branch = new Branch(branch);
+		this.branchIncrement = new BranchIncrement(branchIncrement);
+		this.chain = new Chain(chain);
+		this.colorB = new ColorB(colorB);
+		this.colorG = new ColorG(colorG);
+		this.colorR = new ColorR(colorR);
+		this.curvature = new Curvature(curvature);
+		this.length = new Length(length);
+		this.lengthIncrement = new LengthIncrement(lengthIncrement);
+		this.thickness = new Thickness(thickness);
+		this.thicknessIncrement = new ThicknessIncrement(thicknessIncrement);
+		
 	}
 	/**
 	 * Draws this biomorph.
