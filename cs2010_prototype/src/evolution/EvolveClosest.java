@@ -16,7 +16,7 @@ public class EvolveClosest{
 		this.mother = mother;
 	}
 
-	public Biomorph Evolve(){
+	public Biomorph evolve(){
 		
 		Gene[] fatherGenes = father.getGenes();
 		Gene[] motherGenes = mother.getGenes();

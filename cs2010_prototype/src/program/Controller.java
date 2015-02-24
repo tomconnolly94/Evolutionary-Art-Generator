@@ -64,6 +64,7 @@ public class Controller
 	 */
 	public static void main(String[] args)
 	{
+		int[] perfectValues = {5,5,5,5,5,5,5,5,5,5,5};
 		boolean quit = false;
 		boolean keystop = false;
 		float aspect;
@@ -93,11 +94,12 @@ public class Controller
 					for(int i=0; i<c.getSize(); i++){
 						c.remove(i);
 					}
-					eb = new EvolveBlend(c.createAndAdd(), c.createAndAdd());
-					c.addSpecific(eb.evolve());
+					EvolveClosest ec = new EvolveClosest(c.createAndAdd(), c.createAndAdd(), perfectValues);
+					c.addSpecific(ec.evolve());
 				}
 				keystop = true;
 			}
+			
 			//This prevents repeated creations of biomorphs while the Enter key is held down.
 			if (Keyboard.isKeyDown(Keyboard.KEY_RETURN) == false) keystop = false;
 			if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) quit = true;
