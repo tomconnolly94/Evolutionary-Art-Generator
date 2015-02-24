@@ -14,11 +14,8 @@ import evolution.*;
  */
 public class Controller
 {
-	private ArrayList<Biomorph> biomorphCollection;	
-	public Controller()
-	{
-		biomorphCollection = new ArrayList<Biomorph>();
-	}
+	private ArrayList<Biomorph> biomorphCollection = new ArrayList<Biomorph>();;	
+	public Controller(){}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
 	 */
