@@ -54,6 +54,7 @@ public class Controller
 	{
 		biomorphCollection.remove(index);
 	}
+	/** @return How many biomorphs are currently held in the biomorphCollection*/
 	public int getSize(){
 		return biomorphCollection.size();
 	}
@@ -83,6 +84,9 @@ public class Controller
 		//Set projection boundaries for OpenGL drawing
 		GL11.glOrtho(-50.0f * aspect, 50.0f * aspect, -50.0f, 50.0f, 0.0f, 1.0f);
 		Controller c = new Controller();
+		/* Two new biomorphs are created and immediately added to the biomorphCollection, then they are given to the
+		 * EvolveBlend object to be evolved using its specific averaging algorithm. The resulting biomorph is then 
+		 * added to the array at index 2 so that the code on line 113 will find it. */
 		EvolveBlend eb = new EvolveBlend(c.createAndAdd(), c.createAndAdd());
 		c.addSpecific(eb.evolve());
 		while (quit == false)
@@ -92,9 +96,14 @@ public class Controller
 			{
 				if (keystop == false)
 				{
+					//biomorph collection is emptied.
 					for(int i=0; i<c.getSize(); i++){
 						c.remove(i);
 					}
+					/*Two new biomorphs are created and immediately added to the biomorphCollection, then they are 
+					 * given to the EvolveBlend object to be evolved using its specific 'closest value wins' algorithm. 
+					 * The resulting biomorph is then added to the array at index 2 so that the code on line 113 will 
+					 * find it. */
 					EvolveClosest ec = new EvolveClosest(c.createAndAdd(), c.createAndAdd(), perfectValues);
 					c.addSpecific(ec.evolve());
 				}

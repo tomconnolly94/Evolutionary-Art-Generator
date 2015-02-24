@@ -9,11 +9,13 @@ import genes.*;
  */
 public class Biomorph
 {
+	//An array is instantiated to hold 11 Genes that will be defined in the constructor.
 	private Gene[] Genes = new Gene[11];
 
-	
 	public Biomorph(int branchVal, int branchIncrementVal, int chainVal, int redVal, int greenVal, int blueVal, int curvatureVal, int lengthVal, int lengthIncrementVal, int thicknessVal, int thicknessIncrementVal)
 	{	
+		/*	Genes are created and assigned values according to the parameters given. They are then placed 
+		 *	in an array in alphabetical (apart from colours which are RGB) order.*/
 		Gene branch = new Branch(branchVal);
 		Genes[0] = branch;
 		Gene branchIncrement = new BranchIncrement(branchIncrementVal);

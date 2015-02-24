@@ -17,26 +17,34 @@ import genes.*;
 
 public class EvolveClosest{
 
+	/*Globally accessible arrays of the father's and mother's genes and a third array to hold the 
+	 *numbers which will become the child's gene values.*/
 	private int[] perfectValues;
 	private Biomorph father;
 	private Biomorph mother;
 	
+	//Assigns parameters to global variables so they can be accessed further on.
 	public EvolveClosest(Biomorph father, Biomorph mother, int[] perfectValues){
 		this.perfectValues = perfectValues;
 		this.father = father;
 		this.mother = mother;
 	}
-
+	/**
+	 * This method takes two sets of genes and for each one compares it to the number held in the 'perfect 
+	 * values' array, whichever number is closest to the perfect value is assigned to an array of numbers 
+	 * which are given to a new child biomorph as gene values.
+	 * @return A Biomorph with gene values as described above.
+	 */
 	public Biomorph evolve(){
 		
+		/*	The father and mother's genes are extracted from the Biomorph itself into arrays and the 
+	     *	childGenes array is instantiated.*/
 		Gene[] fatherGenes = father.getGenes();
 		Gene[] motherGenes = mother.getGenes();
 		int[] childGenes = new int[11];
 
-		/*	loop to cycle through all the father genes and for each one choose either the gene
-		 *  from the mother of the gene from the father to be assigned to an array called 'childGenes' 
-		 *  which holds all the values (in order) of the Genes.
-		 */
+		/*	Each father gene and each mother gene are pulled out and compared to the 'perfect value', the 
+		 * 	gene value closest to the perfect number is added to the child Genes array. */
 		for(int i=0; i<fatherGenes.length; i++){
 			if((Math.abs(perfectValues[i] - fatherGenes[i].getValue())) < (Math.abs(perfectValues[i] - motherGenes[i].getValue()))){
 				childGenes[i] = fatherGenes[i].getValue();
@@ -45,7 +53,7 @@ public class EvolveClosest{
 				childGenes[i] = motherGenes[i].getValue();
 			}
 		}
-		//use biomorph creator to create a new child biomorph with the values held in the array 'childGenes'
+		//BiomorphCreator is used to create a new child biomorph with the values held in the array 'childGenes'.
 		BiomorphCreator bc = new BiomorphCreator();
 		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10]);		
 		
