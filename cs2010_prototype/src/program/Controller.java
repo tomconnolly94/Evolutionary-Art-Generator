@@ -7,9 +7,10 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import evolution.*;
 /**
- * Top-level class for this project
+ * Top-level class for this project. Manages the collection of biomorphs and handles the drawing of said
+ * biomorphs using openGL. 
  * @author Tom Connolly, Jack Taylor
- * @version 18/12/2014
+ * @version 24/02/2015
  */
 public class Controller
 {

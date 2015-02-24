@@ -2,8 +2,8 @@ package program;
 import java.util.Random;
 /**
  * Factory class to generate a biomorph, assigning all its gene values.
- * @author Tom Connolly, Jack Taylor
- * @version 18/12/2014
+ * @author Tom Connolly
+ * @version 24/02/2015
  */
 public class BiomorphCreator
 {

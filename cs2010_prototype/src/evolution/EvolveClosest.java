@@ -3,6 +3,17 @@ package evolution;
 import program.Biomorph;
 import program.BiomorphCreator;
 import genes.*;
+/**
+ * Class to model a Evolutionary cycle where an array of 'perfect values' and two parent biomorphs 
+ * are given and one child, with gene values being that of whichever parent had the value 
+ * closest to the value set out in the 'perfect values' array, is returned.
+ * 
+ * Depending on the numbers in the 'perfect values' array, models evolution quite closely as a child
+ * biomorph has for each gene either the mothers gene value or the fathers, not a combination of both.
+ * 
+ * @author Tom Connolly
+ * @version 24/02/2015
+ */
 
 public class EvolveClosest{
 

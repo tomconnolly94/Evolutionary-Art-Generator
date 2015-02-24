@@ -3,13 +3,17 @@ package evolution;
 import program.Biomorph;
 import program.BiomorphCreator;
 import genes.*;
-
 /**
- * Class to take two Biomorphs, take the average of all their gene values and 
- * assign those to a new Biomorph which is returned.
- * @author Tom Connolly, Jack Taylor
- * @version 18/12/2014
+ * Class to model a Evolutionary cycle where two parents are given and one child, with gene values 
+ * being the average of their parents, is returned.
+ * 
+ * Doesnt model evolution very well as genes are not spliced together half from your mother and 
+ * half from your father, Each person has either one or the other.
+ * 
+ * @author Tom Connolly
+ * @version 24/02/2015
  */
+
 public class EvolveBlend {
 
 	private Gene[] fatherGenes;

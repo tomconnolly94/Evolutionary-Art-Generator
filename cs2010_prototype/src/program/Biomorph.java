@@ -5,7 +5,7 @@ import genes.*;
 /**
  * Class to model and draw a single biomorph.
  * @author Tom Connolly, Jack Taylor
- * @version 18/12/2014
+ * @version 24/02/2015
  */
 public class Biomorph
 {
