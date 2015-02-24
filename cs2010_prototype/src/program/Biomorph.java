@@ -11,23 +11,22 @@ public class Biomorph
 	private Gene branch;
 	private Gene branchIncrement;
 	private Gene chain;	
-	private Gene colorB;
-	private Gene colorG;
-	private Gene colorR;
+	private Gene colourRed;
+	private Gene colourGreen;
+	private Gene colourBlue;
 	private Gene curvature;
 	private Gene length;
 	private Gene lengthIncrement;
 	private Gene thickness;	
 	private Gene thicknessIncrement;
-	
-	public Biomorph(int branch, int branchIncrement, int chain, int colorB, int colorG, int colorR, int curvature, int length, int lengthIncrement, int thickness, int thicknessIncrement)
+	public Biomorph(int branch, int branchIncrement, int chain, int red, int green, int blue, int curvature, int length, int lengthIncrement, int thickness, int thicknessIncrement)
 	{	
 		this.branch = new Branch(branch);
 		this.branchIncrement = new BranchIncrement(branchIncrement);
 		this.chain = new Chain(chain);
-		this.colorB = new ColorB(colorB);
-		this.colorG = new ColorG(colorG);
-		this.colorR = new ColorR(colorR);
+		this.colourRed = new Colour(red);
+		this.colourGreen = new Colour(green);
+		this.colourBlue = new Colour(blue);
 		this.curvature = new Curvature(curvature);
 		this.length = new Length(length);
 		this.lengthIncrement = new LengthIncrement(lengthIncrement);
@@ -73,7 +72,6 @@ public class Biomorph
 			}
 		}
 	}
-	
 	/** 
 	 * @return The value of this biomorph's branch gene
 	 */
@@ -81,7 +79,6 @@ public class Biomorph
 	{
 		return branch.getValue();
 	}
-	
 	/** 
 	 * @return The value of this biomorph's branchIncrement gene
 	 */
@@ -89,7 +86,6 @@ public class Biomorph
 	{
 		return branchIncrement.getValue();
 	}
-	
 	/**
 	 * @return The value of this biomorph's chain gene
 	 */
@@ -97,31 +93,27 @@ public class Biomorph
 	{
 		return chain.getValue();
 	}
-	
 	/** 
-	 * @return The value of this biomorph's colorB gene
+	 * @return The value of this biomorph's red colour gene
 	 */
-	public int getColorBValue()
+	public int getColourRedValue()
 	{
-		return colorB.getValue();
+		return colourRed.getValue();
 	}
-	
 	/** 
-	 * @return The value of this biomorph's colorG gene
+	 * @return The value of this biomorph's green colour gene
 	 */
-	public int getColorGValue()
+	public int getColourGreenValue()
 	{
-		return colorG.getValue();
+		return colourGreen.getValue();
 	}
-	
 	/** 
-	 * @return The value of this biomorph's colorR gene
+	 * @return The value of this biomorph's blue colour gene
 	 */
 	public int getColorRValue()
 	{
-		return colorR.getValue();
+		return colourBlue.getValue();
 	}
-	
 	/** 
 	 * @return The value of this biomorph's curvature gene
 	 */
@@ -129,7 +121,6 @@ public class Biomorph
 	{
 		return curvature.getValue();
 	}
-	
 	/**
 	 * @return The value of this biomorph's length gene
 	 */
@@ -137,7 +128,6 @@ public class Biomorph
 	{
 		return length.getValue();
 	}
-	
 	/** 
 	 * @return The value of this biomorph's lengthIncrement gene
 	 */
@@ -145,15 +135,13 @@ public class Biomorph
 	{
 		return lengthIncrement.getValue();
 	}
-	
 	/**
 	 * @return The value of this biomorph's thickness gene
 	 */
 	public int getThicknessValue()
 	{
 		return thickness.getValue();
-	}
-	
+	}	
 	/** 
 	 * @return The value of this biomorph's thicknessIncrement gene
 	 */
@@ -161,6 +149,4 @@ public class Biomorph
 	{
 		return thicknessIncrement.getValue();
 	}
-	
 }
-

@@ -15,7 +15,7 @@ public class Controller
 	private ArrayList<Biomorph> biomorphCollection;	
 	public Controller()
 	{
-		biomorphCollection = new ArrayList();
+		biomorphCollection = new ArrayList<Biomorph>();
 	}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
