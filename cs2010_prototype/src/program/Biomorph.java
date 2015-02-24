@@ -19,14 +19,15 @@ public class Biomorph
 	private Gene lengthIncrement;
 	private Gene thickness;	
 	private Gene thicknessIncrement;
+	
 	public Biomorph(int branch, int branchIncrement, int chain, int red, int green, int blue, int curvature, int length, int lengthIncrement, int thickness, int thicknessIncrement)
 	{	
 		this.branch = new Branch(branch);
 		this.branchIncrement = new BranchIncrement(branchIncrement);
 		this.chain = new Chain(chain);
-		this.colourRed = new Colour(red);
-		this.colourGreen = new Colour(green);
-		this.colourBlue = new Colour(blue);
+		this.colourRed = new Color(red);
+		this.colourGreen = new Color(green);
+		this.colourBlue = new Color(blue);
 		this.curvature = new Curvature(curvature);
 		this.length = new Length(length);
 		this.lengthIncrement = new LengthIncrement(lengthIncrement);
