@@ -5,6 +5,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import evolution.*;
 /**
  * Top-level class for this project
  * @author Tom Connolly, Jack Taylor
@@ -20,11 +21,12 @@ public class Controller
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
 	 */
-	public void createAndAdd()
+	public Biomorph createAndAdd()
 	{
 		BiomorphCreator bc = new BiomorphCreator();
 		Biomorph biomorph = bc.createBiomorph();
 		biomorphCollection.add(biomorph);
+		return biomorph;
 	}
 	/**
 	 * @return A random biomorph from the list
@@ -51,6 +53,12 @@ public class Controller
 	{
 		biomorphCollection.remove(index);
 	}
+	public int getSize(){
+		return biomorphCollection.size();
+	}
+	public void addSpecific(Biomorph b){
+		biomorphCollection.add(b);
+	}
 	/**
 	 * The main method for this application.
 	 */
@@ -73,7 +81,8 @@ public class Controller
 		//Set projection boundaries for OpenGL drawing
 		GL11.glOrtho(-50.0f * aspect, 50.0f * aspect, -50.0f, 50.0f, 0.0f, 1.0f);
 		Controller c = new Controller();
-		c.createAndAdd();
+		EvolveBlend eb = new EvolveBlend(c.createAndAdd(), c.createAndAdd());
+		c.addSpecific(eb.evolve());
 		while (quit == false)
 		{
 			//Pressing Enter will generate a new biomorph.
@@ -81,8 +90,11 @@ public class Controller
 			{
 				if (keystop == false)
 				{
-					c.remove(0);
-					c.createAndAdd();
+					for(int i=0; i<c.getSize(); i++){
+						c.remove(i);
+					}
+					eb = new EvolveBlend(c.createAndAdd(), c.createAndAdd());
+					c.addSpecific(eb.evolve());
 				}
 				keystop = true;
 			}
@@ -92,7 +104,7 @@ public class Controller
 	        if (Display.isCloseRequested()) quit = true;
 	        //Clear screen and draw biomorph
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-			c.getSpecific(0).draw();
+			c.getSpecific(2).draw();
 			Display.update();
 			//Limit to 60fps to save CPU usage
 			Display.sync(60);
