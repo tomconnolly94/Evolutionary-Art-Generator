@@ -2,6 +2,7 @@ package evolution;
 
 import program.Biomorph;
 import program.BiomorphCreator;
+import genes.*;
 
 /**
  * Class to take two Biomorphs, take the average of all their gene values and 
@@ -11,29 +12,24 @@ import program.BiomorphCreator;
  */
 public class EvolveBlend {
 
+	private Gene[] fatherGenes;
+	private Gene[] motherGenes;
+	private int[] childGenes;
 	
-	
-	public EvolveBlend(){
-		
+	public EvolveBlend(Biomorph father, Biomorph mother){
+		fatherGenes = father.getGenes();
+		motherGenes = mother.getGenes();
+		childGenes = new int[11];
 	}
 	
-	public Biomorph evolve(Biomorph father, Biomorph mother){
+	public Biomorph evolve(){
 		
-		int branchChild = (father.getBranchValue() + mother.getBranchValue())/2;
-		int branchIncrementChild = (father.getBranchIncrementValue() + mother.getBranchIncrementValue())/2;
-		int chainChild = (father.getChainValue() + mother.getChainValue())/2;
-		int colorBChild = (father.getColorBValue() + mother.getColorBValue())/2;
-		int colorGChild = (father.getColorGValue() + mother.getColorGValue())/2;
-		int colorRChild = (father.getBranchValue() + mother.getBranchValue())/2;
-		int curvatureChild = (father.getCurvatureValue() + mother.getCurvatureValue())/2;
-		int lengthChild = (father.getLengthValue() + mother.getLengthValue())/2;
-		int lengthIncrementChild = (father.getLengthIncrementValue() + mother.getLengthIncrementValue())/2;
-		int thicknessChild = (father.getThicknessValue() + mother.getThicknessValue())/2;
-		int thicknessIncrementChild = (father.getThicknessIncrementValue() + mother.getThicknessIncrementValue())/2;
-		
+		for(int i = 0; i<fatherGenes.length; i++){
+			childGenes[i] = (fatherGenes[i].getValue() + motherGenes[i].getValue())/2;
+		}
 		
 		BiomorphCreator bc = new BiomorphCreator();
-		Biomorph biomorph = bc.createBiomorph(branchChild, branchIncrementChild, chainChild, colorBChild, colorGChild, colorRChild, curvatureChild, lengthChild, lengthIncrementChild, thicknessChild, thicknessIncrementChild);		
+		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10]);		
 		
 		return biomorph;
 	}
