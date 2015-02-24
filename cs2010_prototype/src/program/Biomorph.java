@@ -7,7 +7,15 @@ import genes.*;
  * @version 18/12/2014
  */
 public class Biomorph
-{	
+{
+	enum things
+	{
+		BRANCH,
+		BRANCH_INCREMENT,
+		CHAIN,
+		COLOUR_RED,
+		COLOUR_GREEN,
+	}
 	private Gene branch;
 	private Gene branchIncrement;
 	private Gene chain;	
@@ -56,7 +64,7 @@ public class Biomorph
 				GL11.glRotatef((float)b * (360.0f / branch.getValue()), 0.0f, 0.0f, 1.0f);
 				GL11.glBegin(GL11.GL_LINES);
 					//Draws a branch
-					GL11.glColor3f(1.0f, 1.0f, 1.0f);
+					GL11.glColor3f((float)colourRed.getValue() / 10, (float)colourGreen.getValue() / 10, (float)colourBlue.getValue() / 10);
 					GL11.glVertex2f(0.0f, 0.0f);
 					GL11.glVertex2f(0.0f, (float)length.getValue());
 				GL11.glEnd();
