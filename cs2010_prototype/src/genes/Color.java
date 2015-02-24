@@ -4,9 +4,9 @@ package genes;
  * @author Tom Connolly, Jack Taylor
  * @version 18/12/2014
  */
-public class Colour extends Gene
+public class Color extends Gene
 {	
-	public Colour(int colour)
+	public Color(int colour)
 	{
 		super(colour);
 	}
