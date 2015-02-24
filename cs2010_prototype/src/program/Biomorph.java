@@ -76,7 +76,7 @@ public class Biomorph
 		}
 	}
 	/** 
-	 * @return The value of this biomorph's branch gene
+	 * @return An array containing a value for each Gene of this biomorph
 	 */
 	public Gene[] getGenes()
 	{
