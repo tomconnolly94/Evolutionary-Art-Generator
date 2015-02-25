@@ -11,6 +11,10 @@ public class Biomorph
 {
 	//An array is instantiated to hold 11 Genes that will be defined in the constructor.
 	private Gene[] Genes = new Gene[11];
+	//Every time the length Gene is used, this variable is incremented
+	private int lengthGeneUseCounter = 0;
+	private int origLengGeneValue;
+	
 
 	public Biomorph(int branchVal, int branchIncrementVal, int chainVal, int redVal, int greenVal, int blueVal, int curvatureVal, int lengthVal, int lengthIncrementVal, int thicknessVal, int thicknessIncrementVal)
 	{	
@@ -38,6 +42,7 @@ public class Biomorph
 		Genes[9] = thickness;
 		Gene thicknessIncrement = new ThicknessIncrement(thicknessIncrementVal);
 		Genes[10] = thicknessIncrement;
+		origLengGeneValue = Genes[7].getValue();
 	}
 	/**
 	 * Draws this biomorph.
@@ -54,11 +59,6 @@ public class Biomorph
 	 */
 	private void loop(int chains)
 	{ 
-		/*
-		//Code trying to implement Length Increment Gene. Needs Work.
-		int geneUseCounter = 0;
-		int origLengGeneValue = Genes[7].getValue();
-		*/
 		for (int b = 0; b < Genes[0].getValue(); b++)
 		{
 			GL11.glPushMatrix();
@@ -70,9 +70,12 @@ public class Biomorph
 					GL11.glVertex2f(0.0f, 0.0f);
 					/*
 					// Code trying to implement LengthIncrement Gene. Needs work.
-					Genes[7].setValue(Genes[7].getValue() + Genes[8].getValue());
-					geneUseCounter++;
-					if(geneUseCounter>Math.pow(Genes[0].getValue(), Genes[2].getValue())){
+					int incLength = Genes[8].getValue();
+					int length = Genes[7].getValue() + Genes[8].getValue();
+					Genes[7].setValue(length);
+					lengthGeneUseCounter++;
+					double totalArms = Math.pow(Genes[0].getValue(), Genes[2].getValue());
+					if(lengthGeneUseCounter>totalArms-1){
 						Genes[7].setValue(origLengGeneValue);
 					}
 					if(Genes[7].getValue()>10){

@@ -17,6 +17,7 @@ public class BiomorphManager {
 	public Biomorph createAndAdd()
 	{
 		BiomorphCreator bc = new BiomorphCreator();
+		//Biomorph biomorph = bc.createBiomorph(4,0,2,100,100,100,0,5,1,1,0);
 		Biomorph biomorph = bc.createBiomorph();
 		biomorphCollection.add(biomorph);
 		return biomorph;
@@ -52,6 +53,14 @@ public class BiomorphManager {
 	}
 	public void addSpecific(Biomorph b){
 		biomorphCollection.add(b);
+	}
+	/**
+	 * Takes the biomorphCollection and removes every Biomorph from it.
+	 */
+	public void emptyBiomorphCollection(){
+		for(int i=0; i<getSize(); i++){
+			remove(i);
+		}
 	}
 	/** Two new biomorphs are created and immediately added to the biomorphCollection, then they are given to the
 	 *  EvolveBlend object to be evolved using its specific averaging algorithm. The resulting biomorph is then 

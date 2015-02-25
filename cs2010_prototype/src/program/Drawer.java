@@ -32,6 +32,7 @@ public class Drawer {
 		/* A load biomorphs method is called to use EvolveBlend class to evolve the Biomorph that
 		 * will be displayed.*/
 		bm.loadBiomorphsWithEvBle();
+		//bm.createAndAdd();
 		while (quit == false)
 		{
 			//Pressing Enter will generate a new biomorph.
@@ -40,12 +41,11 @@ public class Drawer {
 				if (keystop == false)
 				{
 					//biomorph collection is emptied.
-					for(int i=0; i<bm.getSize(); i++){
-						bm.remove(i);
-					}
+					bm.emptyBiomorphCollection();
 					/* A load biomorphs method is called to use EvolveClosest class to evolve the 
 					 * Biomorph that will be displayed.*/
 					bm.loadBiomorphsWithEvClo();
+					//bm.createAndAdd();
 				}
 				keystop = true;
 			}
@@ -57,7 +57,7 @@ public class Drawer {
 	        //Clear screen and draw biomorph
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 			//Biomorph is extracted from array at index 2, this is where the evolved Biomorph was placed earlier.
-			bm.getSpecific(2).draw();
+			bm.getSpecific(0).draw();
 			Display.update();
 			//Limit to 60fps to save CPU usage
 			Display.sync(60);
