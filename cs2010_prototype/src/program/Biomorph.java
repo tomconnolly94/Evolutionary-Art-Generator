@@ -53,7 +53,8 @@ public class Biomorph
 	 * @param chains The amount of recursive steps
 	 */
 	private void loop(int chains)
-	{
+	{ int geneUseCounter = 0;
+	int origLengGeneValue = Genes[7].getValue();
 		for (int b = 0; b < Genes[0].getValue(); b++)
 		{
 			GL11.glPushMatrix();
@@ -63,10 +64,16 @@ public class Biomorph
 					//Draws a branch
 					GL11.glColor3f((float)Genes[3].getValue() / 256, (float)Genes[4].getValue() / 256, (float)Genes[5].getValue() / 256);
 					GL11.glVertex2f(0.0f, 0.0f);
-					/*Genes[7].setValue(Genes[7].getValue() + Genes[8].getValue());
+					/*
+					Genes[7].setValue(Genes[7].getValue() + Genes[8].getValue());
+					geneUseCounter++;
+					if(geneUseCounter>Math.pow(Genes[0].getValue(), Genes[2].getValue())){
+						Genes[7].setValue(origLengGeneValue);
+					}
 					if(Genes[7].getValue()>10){
 						Genes[7].setValue(Genes[7].getValue()-10);
 					}*/
+					
 					GL11.glVertex2f(0.0f, (float)Genes[7].getValue());
 				GL11.glEnd();
 			GL11.glPopMatrix();
