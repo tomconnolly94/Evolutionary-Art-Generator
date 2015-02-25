@@ -13,17 +13,24 @@ public abstract class Gene
 		this.value = value;
 	}
 	/**
-	 * @return The gene's value
+	 * @return The gene's value.
 	 */
 	public int getValue()
 	{
 		return value;
 	}
 	/**
-	 * @return The gene's type
+	 * @return The gene's type.
 	 */
 	public String getGeneType()
 	{
 		return type;
+	}
+	/**
+	 * Edits the Genes value.
+	 */
+	public void setValue(int i)
+	{
+		value = i;
 	}
 }
