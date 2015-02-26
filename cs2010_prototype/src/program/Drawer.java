@@ -1,4 +1,5 @@
 package program;
+import java.util.Random;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -34,8 +35,8 @@ public class Drawer
 		 * A load biomorphs method is called to use EvolveBlend class to evolve
 		 * the Biomorph that will be displayed.
 		 */
-		bm.loadBiomorphsWithEvClo();
-		// bm.createAndAdd();
+		
+		int biomorphIndex = 0;
 		while (quit == false)
 		{
 			// Pressing Enter will generate a new biomorph.
@@ -43,14 +44,12 @@ public class Drawer
 			{
 				if (keystop == false)
 				{
-					// biomorph collection is emptied.
-					bm.emptyBiomorphCollection();
-					/*
-					 * A load biomorphs method is called to use EvolveClosest
-					 * class to evolve the Biomorph that will be displayed.
-					 */
-					bm.loadBiomorphsWithEvClo();
-					// bm.createAndAdd();
+					
+
+					Random rand = new Random();
+					biomorphIndex = rand.nextInt(bm.getSize());
+					
+					
 				}
 				keystop = true;
 			}
@@ -61,9 +60,8 @@ public class Drawer
 			if (Display.isCloseRequested()) quit = true;
 			// Clear screen and draw biomorph
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-			// Biomorph is extracted from array at index 2, this is where the
-			// evolved Biomorph was placed earlier.
-			bm.getSpecific(0).draw();
+			//locates and draws biomorph depending on which is chosen to be drawn by random above
+			bm.getSpecific(biomorphIndex).draw();
 			Display.update();
 			// Limit to 60fps to save CPU usage
 			Display.sync(60);

@@ -7,7 +7,7 @@ public class BiomorphManager
 	private ArrayList<Biomorph> biomorphCollection;
 	int[] perfectValues =
 	{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-	EvolutionStats statMachine = new EvolutionStats();
+	EvolutionStats statisticMachine = new EvolutionStats();
 	
 	public BiomorphManager()
 	{
@@ -25,6 +25,7 @@ public class BiomorphManager
 		/*takes parents in indexes 0 and 1, evolves them together and places the 
 		 *resulting biomorph in index 0.*/
 		biomorphCollection.set(2, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
+		remove(3);
 	}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
@@ -86,38 +87,44 @@ public class BiomorphManager
 			remove(i);
 		}
 	}
-
-	/**
+/*
+	*//**
 	 * Two new biomorphs are created and immediately added to the
 	 * biomorphCollection, then they are given to the EvolveBlend object to be
 	 * evolved using its specific averaging algorithm. The resulting biomorph is
 	 * then added to the array at index 2 so that the code on line 113 will find
 	 * it.
-	 */
+	 *//*
 	public void loadBiomorphsWithEvBle()
 	{
 		EvolveBlend eb = new EvolveBlend(getRandomBiomorph(), getRandomBiomorph());
 		addSpecific(eb.evolve());
 	}
-	/**
+	*//**
 	 * Two new biomorphs are created and immediately added to the
 	 * biomorphCollection, then they are given to the EvolveBlend object to be
 	 * evolved using its specific 'closest value wins' algorithm. The resulting
 	 * biomorph is then added to the array at index 2 so that the code on line
 	 * 113 will find it.
-	 */
+	 *//*
 	public void loadBiomorphsWithEvClo()
 	{
 		EvolveClosest ec = new EvolveClosest(getRandomBiomorph(), getRandomBiomorph(), perfectValues);
 		addSpecific(ec.evolve());
-		statMachine.saveGeneValues(ec.getChildGenes());
-		statMachine.printRunningStats();
+		statisticMachine.saveGeneValues(ec.getChildGenes());
+		statisticMachine.printRunningStats();
 	}
-	
+*/
+	/**
+	 * Takes two biomorphs and a set of perfect values, uses the EvolveClosest class
+	 * to evolve them together. Then it reports the gene values to the EvolutionStats 
+	 * object and re
+	 */
 	public Biomorph evolveClo(Biomorph father, Biomorph mother){
 		EvolveClosest ec = new EvolveClosest(father, mother, perfectValues);
-		statMachine.saveGeneValues(ec.getChildGenes());
-		statMachine.printRunningStats();
-		return ec.evolve();
+		Biomorph biomorph = ec.evolve();
+		statisticMachine.saveGeneValues(ec.getChildGenes());
+		statisticMachine.printRunningStats();
+		return biomorph;
 	}
 }
