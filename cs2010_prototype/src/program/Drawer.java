@@ -34,7 +34,7 @@ public class Drawer
 		 * A load biomorphs method is called to use EvolveBlend class to evolve
 		 * the Biomorph that will be displayed.
 		 */
-		bm.loadBiomorphsWithEvBle();
+		bm.loadBiomorphsWithEvClo();
 		// bm.createAndAdd();
 		while (quit == false)
 		{

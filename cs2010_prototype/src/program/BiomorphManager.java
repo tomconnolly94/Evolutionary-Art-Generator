@@ -4,13 +4,27 @@ import java.util.Random;
 import evolution.*;
 public class BiomorphManager
 {
-	private ArrayList<Biomorph> biomorphCollection = new ArrayList<Biomorph>();
+	private ArrayList<Biomorph> biomorphCollection;
 	int[] perfectValues =
 	{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-	EvolutionStats es = new EvolutionStats();
+	EvolutionStats statMachine = new EvolutionStats();
 	
 	public BiomorphManager()
 	{
+		biomorphCollection = new ArrayList<Biomorph>();
+		//create 4 random orginal parent Biomorphs and load them into indexes 1-3 in collection
+		for(int i=0; i<4; i++){
+		createAndAdd();
+		}
+		/*takes parents in indexes 0 and 1, evolves them together and places the 
+		 *resulting biomorph in index 0.*/
+		biomorphCollection.set(0, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
+		/*takes parents in indexes 0 and 1, evolves them together and places the 
+		 *resulting biomorph in index 0.*/
+		biomorphCollection.set(1, evolveClo(biomorphCollection.get(2), biomorphCollection.get(3)));
+		/*takes parents in indexes 0 and 1, evolves them together and places the 
+		 *resulting biomorph in index 0.*/
+		biomorphCollection.set(2, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
 	}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
@@ -28,6 +42,11 @@ public class BiomorphManager
 	 */
 	public Biomorph getRandomBiomorph()
 	{
+		//if biomorphCollection is empty, create two random biomorphs to act as initial parents
+		if(biomorphCollection.size() < 2){
+			createAndAdd();
+			createAndAdd();
+		}
 		Random rand = new Random();
 		return biomorphCollection.get(rand.nextInt(biomorphCollection.size() - 1));
 	}
@@ -67,6 +86,7 @@ public class BiomorphManager
 			remove(i);
 		}
 	}
+
 	/**
 	 * Two new biomorphs are created and immediately added to the
 	 * biomorphCollection, then they are given to the EvolveBlend object to be
@@ -76,7 +96,7 @@ public class BiomorphManager
 	 */
 	public void loadBiomorphsWithEvBle()
 	{
-		EvolveBlend eb = new EvolveBlend(createAndAdd(), createAndAdd());
+		EvolveBlend eb = new EvolveBlend(getRandomBiomorph(), getRandomBiomorph());
 		addSpecific(eb.evolve());
 	}
 	/**
@@ -88,9 +108,16 @@ public class BiomorphManager
 	 */
 	public void loadBiomorphsWithEvClo()
 	{
-		EvolveClosest ec = new EvolveClosest(createAndAdd(), createAndAdd(), perfectValues);
+		EvolveClosest ec = new EvolveClosest(getRandomBiomorph(), getRandomBiomorph(), perfectValues);
 		addSpecific(ec.evolve());
-		es.saveGeneValues(ec.getChildGenes());
-		es.printRunningStats();
+		statMachine.saveGeneValues(ec.getChildGenes());
+		statMachine.printRunningStats();
+	}
+	
+	public Biomorph evolveClo(Biomorph father, Biomorph mother){
+		EvolveClosest ec = new EvolveClosest(father, mother, perfectValues);
+		statMachine.saveGeneValues(ec.getChildGenes());
+		statMachine.printRunningStats();
+		return ec.evolve();
 	}
 }
