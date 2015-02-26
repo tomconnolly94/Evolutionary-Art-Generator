@@ -89,34 +89,6 @@ public class BiomorphManager
 			remove(i);
 		}
 	}
-/*
-	*//**
-	 * Two new biomorphs are created and immediately added to the
-	 * biomorphCollection, then they are given to the EvolveBlend object to be
-	 * evolved using its specific averaging algorithm. The resulting biomorph is
-	 * then added to the array at index 2 so that the code on line 113 will find
-	 * it.
-	 *//*
-	public void loadBiomorphsWithEvBle()
-	{
-		EvolveBlend eb = new EvolveBlend(getRandomBiomorph(), getRandomBiomorph());
-		addSpecific(eb.evolve());
-	}
-	*//**
-	 * Two new biomorphs are created and immediately added to the
-	 * biomorphCollection, then they are given to the EvolveBlend object to be
-	 * evolved using its specific 'closest value wins' algorithm. The resulting
-	 * biomorph is then added to the array at index 2 so that the code on line
-	 * 113 will find it.
-	 *//*
-	public void loadBiomorphsWithEvClo()
-	{
-		EvolveClosest ec = new EvolveClosest(getRandomBiomorph(), getRandomBiomorph(), perfectValues);
-		addSpecific(ec.evolve());
-		statisticMachine.saveGeneValues(ec.getChildGenes());
-		statisticMachine.printRunningStats();
-	}
-*/
 	/**
 	 * Takes two biomorphs and a set of perfect values, uses the EvolveClosest class
 	 * to evolve them together. Then it reports the gene values to the EvolutionStats 
@@ -128,6 +100,7 @@ public class BiomorphManager
 		statisticMachine.saveGeneValues(ec.getChildGenes());
 		statisticMachine.printRunningStats();
 		biomorphCollection.add(0,biomorph);
+		createAndAdd();
 		return biomorph;
 	}
 }

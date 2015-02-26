@@ -12,9 +12,6 @@ public class Biomorph
 	// An array is instantiated to hold 11 Genes that will be defined in the
 	// constructor.
 	private Gene[] Genes = new Gene[11];
-	// Every time the length Gene is used, this variable is incremented
-	private int lengthGeneUseCounter = 0;
-	private int origLengGeneValue;
 	public Biomorph(int branchVal, int branchIncrementVal, int chainVal, int redVal, int greenVal, int blueVal, int curvatureVal, int lengthVal, int lengthIncrementVal, int thicknessVal, int thicknessIncrementVal)
 	{
 		/*
@@ -33,7 +30,6 @@ public class Biomorph
 		Genes[8] = new LengthIncrement(lengthIncrementVal, "Length Increment");
 		Genes[9] = new Thickness(thicknessVal, "Thickness");
 		Genes[10] = new ThicknessIncrement(thicknessIncrementVal, "Thickness Increment");
-		origLengGeneValue = Genes[7].getValue();
 	}
 	/**
 	 * Draws this biomorph.
@@ -56,10 +52,12 @@ public class Biomorph
 			// This allows the distribution of branches to be uniform.
 			GL11.glRotatef((float) b * (360.0f / Genes[0].getValue()), 0.0f, 0.0f, 1.0f);
 			new CuboidLimb(Genes[7].getValue(), Genes[9].getValue(), Genes[3].getValue(), Genes[4].getValue(), Genes[5].getValue()).draw();
-			//GL11.glBegin(GL11.GL_LINES);
+			// GL11.glBegin(GL11.GL_LINES);
 			// Draws a branch
-			//GL11.glColor3f((float) Genes[3].getValue() / 256, (float) Genes[4].getValue() / 256, (float) Genes[5].getValue() / 256);
-			//GL11.glVertex2f(0.0f, 0.0f);
+			// GL11.glColor3f((float) Genes[3].getValue() / 256, (float)
+			// Genes[4].getValue() / 256, (float) Genes[5].getValue() / 256);
+			// GL11.glVertex2f(0.0f, 0.0f);
+			
 			/*
 			 * // Code trying to implement LengthIncrement Gene. Needs work. int
 			 * incLength = Genes[8].getValue(); int length = Genes[7].getValue()
@@ -71,8 +69,8 @@ public class Biomorph
 			 * if(Genes[7].getValue()>10){
 			 * Genes[7].setValue(Genes[7].getValue()-10); }
 			 */
-			//GL11.glVertex2f(0.0f, (float) Genes[7].getValue());
-			//GL11.glEnd();
+			// GL11.glVertex2f(0.0f, (float) Genes[7].getValue());
+			// GL11.glEnd();
 			GL11.glPopMatrix();
 			// This draws a new set of branches from the end of each existing
 			// branch if necessary.

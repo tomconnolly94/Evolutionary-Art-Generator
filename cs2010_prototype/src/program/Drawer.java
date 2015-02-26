@@ -1,5 +1,5 @@
 package program;
-import java.util.Random;
+
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -35,8 +35,7 @@ public class Drawer
 		 * A load biomorphs method is called to use EvolveBlend class to evolve
 		 * the Biomorph that will be displayed.
 		 */
-		
-		int biomorphIndex = 0;
+
 		while (quit == false)
 		{
 			// Pressing Enter will generate a new biomorph.
