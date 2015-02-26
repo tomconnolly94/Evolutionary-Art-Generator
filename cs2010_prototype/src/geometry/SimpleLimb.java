@@ -20,10 +20,9 @@ public class SimpleLimb extends Limb
 	{
 		GL11.glLineWidth(thickness);
 		GL11.glBegin(GL11.GL_LINES);
-			GL11.glColor3f((float)red / 256, (float)green / 256, (float)blue / 256);
-			new Vertex(0.0f, 0.0f, 0.0f).draw();
-			new Vertex(0.0f, (float)length, 0.0f).draw();
+		GL11.glColor3f((float) red / 256, (float) green / 256, (float) blue / 256);
+		new Vertex(0.0f, 0.0f, 0.0f).draw();
+		new Vertex(0.0f, (float) length, 0.0f).draw();
 		GL11.glEnd();
-	GL11.glEnd();
 	}
 }

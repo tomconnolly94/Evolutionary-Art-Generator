@@ -1,6 +1,7 @@
 package geometry;
 /**
- * Abstract class for a biomorph limb. This will allow different types of limbs to be modelled.
+ * Abstract class for a biomorph limb. This will allow different types of limbs
+ * to be modelled.
  * @author Jack Taylor
  */
 public abstract class Limb

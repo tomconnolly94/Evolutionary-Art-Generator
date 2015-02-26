@@ -5,7 +5,7 @@ package genes;
  * @version 18/12/2014
  */
 public class Length extends Gene
-{	
+{
 	public Length(int length)
 	{
 		super(length);
