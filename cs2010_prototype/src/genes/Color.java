@@ -7,8 +7,8 @@ package genes;
  */
 public class Color extends Gene
 {
-	public Color(int colour)
+	public Color(int colour, String name)
 	{
-		super(colour);
+		super(colour, name);
 	}
 }

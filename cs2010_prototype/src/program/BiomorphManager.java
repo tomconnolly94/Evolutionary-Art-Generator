@@ -91,6 +91,6 @@ public class BiomorphManager
 		EvolveClosest ec = new EvolveClosest(createAndAdd(), createAndAdd(), perfectValues);
 		addSpecific(ec.evolve());
 		es.saveGeneValues(ec.getChildGenes());
-		es.printStats();
+		es.printRunningStats();
 	}
 }

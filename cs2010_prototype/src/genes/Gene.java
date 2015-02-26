@@ -8,12 +8,12 @@ package genes;
 public abstract class Gene
 {
 	private int value;
-	private String type; // The value of type is never set in any of the gene
-							// classes. It would appear it is not actually
-							// needed.
-	public Gene(int value)
+	private String name;
+	
+	public Gene(int value, String name)
 	{
 		this.value = value;
+		this.name = name;
 	}
 	/**
 	 * @return The gene's value.
@@ -27,7 +27,7 @@ public abstract class Gene
 	 */
 	public String getGeneType()
 	{
-		return type;
+		return name;
 	}
 	/**
 	 * Edits the Genes value.

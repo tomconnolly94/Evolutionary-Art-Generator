@@ -6,8 +6,8 @@ package genes;
  */
 public class Length extends Gene
 {
-	public Length(int length)
+	public Length(int length, String name)
 	{
-		super(length);
+		super(length, name);
 	}
 }

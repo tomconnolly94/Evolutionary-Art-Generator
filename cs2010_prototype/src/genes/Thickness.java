@@ -7,8 +7,8 @@ package genes;
  */
 public class Thickness extends Gene
 {
-	public Thickness(int length)
+	public Thickness(int length, String name)
 	{
-		super(length);
+		super(length, name);
 	}
 }

@@ -22,28 +22,17 @@ public class Biomorph
 		 * given. They are then placed in an array in alphabetical (apart from
 		 * colours which are RGB) order.
 		 */
-		Gene branch = new Branch(branchVal);
-		Genes[0] = branch;
-		Gene branchIncrement = new BranchIncrement(branchIncrementVal);
-		Genes[1] = branchIncrement;
-		Gene chain = new Chain(chainVal);
-		Genes[2] = chain;
-		Gene colorRed = new Color(redVal);
-		Genes[3] = colorRed;
-		Gene colorGreen = new Color(greenVal);
-		Genes[4] = colorGreen;
-		Gene colorBlue = new Color(blueVal);
-		Genes[5] = colorBlue;
-		Gene curvature = new Curvature(curvatureVal);
-		Genes[6] = curvature;
-		Gene length = new Length(lengthVal);
-		Genes[7] = length;
-		Gene lengthIncrement = new LengthIncrement(lengthIncrementVal);
-		Genes[8] = lengthIncrement;
-		Gene thickness = new Thickness(thicknessVal);
-		Genes[9] = thickness;
-		Gene thicknessIncrement = new ThicknessIncrement(thicknessIncrementVal);
-		Genes[10] = thicknessIncrement;
+		Genes[0] = new Branch(branchVal, "Branch");
+		Genes[1] = new BranchIncrement(branchIncrementVal, "Branch Increment");
+		Genes[2] = new Chain(chainVal, "Chain");
+		Genes[3] = new Color(redVal, "Color Red");
+		Genes[4] = new Color(greenVal, "Color Green");
+		Genes[5] = new Color(blueVal, "Color Blue");
+		Genes[6] = new Curvature(curvatureVal, "Curvature");
+		Genes[7] = new Length(lengthVal, "Length");
+		Genes[8] = new LengthIncrement(lengthIncrementVal, "Length Increment");
+		Genes[9] = new Thickness(thicknessVal, "Thickness");
+		Genes[10] = new ThicknessIncrement(thicknessIncrementVal, "Thickness Increment");
 		origLengGeneValue = Genes[7].getValue();
 	}
 	/**

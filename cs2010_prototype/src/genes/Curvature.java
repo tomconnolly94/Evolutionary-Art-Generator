@@ -7,8 +7,8 @@ package genes;
  */
 public class Curvature extends Gene
 {
-	public Curvature(int curvature)
+	public Curvature(int curvature, String name)
 	{
-		super(curvature);
+		super(curvature, name);
 	}
 }

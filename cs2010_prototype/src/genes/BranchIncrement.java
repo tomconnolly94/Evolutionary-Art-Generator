@@ -8,8 +8,8 @@ package genes;
  */
 public class BranchIncrement extends Gene
 {
-	public BranchIncrement(int branchIncrementNum)
+	public BranchIncrement(int branchIncrementNum, String name)
 	{
-		super(branchIncrementNum);
+		super(branchIncrementNum, name);
 	}
 }

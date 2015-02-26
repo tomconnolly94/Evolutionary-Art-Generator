@@ -7,8 +7,8 @@ package genes;
  */
 public class Chain extends Gene
 {
-	public Chain(int numOfChains)
+	public Chain(int numOfChains, String name)
 	{
-		super(numOfChains);
+		super(numOfChains, name);
 	}
 }
