@@ -1,17 +1,19 @@
 package program;
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.Random;
 import evolution.*;
+
 public class BiomorphManager
 {
-	private ArrayList<Biomorph> biomorphCollection;
+	private LinkedList<Biomorph> biomorphCollection;
 	int[] perfectValues =
 	{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
 	EvolutionStats statisticMachine = new EvolutionStats();
 	
 	public BiomorphManager()
 	{
-		biomorphCollection = new ArrayList<Biomorph>();
+		biomorphCollection = new LinkedList<Biomorph>();
 		//create 4 random orginal parent Biomorphs and load them into indexes 1-3 in collection
 		for(int i=0; i<4; i++){
 		createAndAdd();
@@ -49,7 +51,7 @@ public class BiomorphManager
 			createAndAdd();
 		}
 		Random rand = new Random();
-		return biomorphCollection.get(rand.nextInt(biomorphCollection.size() - 1));
+		return biomorphCollection.get(rand.nextInt(biomorphCollection.size()));
 	}
 	/**
 	 * Retrieves a specific biomorph by its index number in the list.
@@ -125,6 +127,7 @@ public class BiomorphManager
 		Biomorph biomorph = ec.evolve();
 		statisticMachine.saveGeneValues(ec.getChildGenes());
 		statisticMachine.printRunningStats();
+		biomorphCollection.add(0,biomorph);
 		return biomorph;
 	}
 }

@@ -44,12 +44,8 @@ public class Drawer
 			{
 				if (keystop == false)
 				{
-					
-
-					Random rand = new Random();
-					biomorphIndex = rand.nextInt(bm.getSize());
-					
-					
+					//evolves two biomorphs together
+					bm.evolveClo(bm.getRandomBiomorph(), bm.getRandomBiomorph());
 				}
 				keystop = true;
 			}
@@ -61,7 +57,7 @@ public class Drawer
 			// Clear screen and draw biomorph
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 			//locates and draws biomorph depending on which is chosen to be drawn by random above
-			bm.getSpecific(biomorphIndex).draw();
+			bm.getSpecific(0).draw();
 			Display.update();
 			// Limit to 60fps to save CPU usage
 			Display.sync(60);
