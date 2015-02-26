@@ -21,6 +21,10 @@ public class EvolveClosest
 	private int[] perfectValues;
 	private Biomorph father;
 	private Biomorph mother;
+	private int[] childGenes;
+	private Gene[] motherGenes;
+	private Gene[] fatherGenes;
+	
 	// Assigns parameters to global variables so they can be accessed further
 	// on.
 	public EvolveClosest(Biomorph father, Biomorph mother, int[] perfectValues)
@@ -42,9 +46,9 @@ public class EvolveClosest
 		 * The father and mother's genes are extracted from the Biomorph itself
 		 * into arrays and the childGenes array is instantiated.
 		 */
-		Gene[] fatherGenes = father.getGenes();
-		Gene[] motherGenes = mother.getGenes();
-		int[] childGenes = new int[11];
+		fatherGenes = father.getGenes();
+		motherGenes = mother.getGenes();
+		childGenes = new int[11];
 		/*
 		 * Each father gene and each mother gene are pulled out and compared to
 		 * the 'perfect value', the gene value closest to the perfect number is
@@ -65,6 +69,12 @@ public class EvolveClosest
 		// values held in the array 'childGenes'.
 		BiomorphCreator bc = new BiomorphCreator();
 		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10]);
+
 		return biomorph;
 	}
+	
+	public int[] getChildGenes(){
+		return childGenes;
+	}
+
 }

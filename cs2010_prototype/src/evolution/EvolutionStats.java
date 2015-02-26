@@ -1,5 +1,6 @@
 package evolution;
 
+import genes.Gene;
 import java.util.ArrayList;
 
 
@@ -11,7 +12,7 @@ public class EvolutionStats
 		statsMaster = new ArrayList<int[]>(50); 
 	}
 	
-	public void saveStats(int[] values){
+	public void saveGeneValues(int[] values){
 		int[] savedValues = new int[11];
 		for(int i=0; i<11; i++){
 			savedValues[i] = values[i];
@@ -19,8 +20,16 @@ public class EvolutionStats
 		statsMaster.add(savedValues);
 	}
 	
+	public void extractAndSaveValuesFromGenes(Gene[] values){
+		int[] savedValues = new int[11];
+		for(int i=0; i<11; i++){
+			savedValues[i] = values[i].getValue();
+		}
+		statsMaster.add(savedValues);
+	}
+	
 	public void printStats(){
-		for(int arrayIndex=0; arrayIndex<statsMaster.size(); arrayIndex++){
+		for(int arrayIndex=statsMaster.size()-1; arrayIndex<statsMaster.size(); arrayIndex++){
 			System.out.println("");
 			System.out.println("Biomorph " + (arrayIndex+1));
 			System.out.println("");
@@ -30,7 +39,7 @@ public class EvolutionStats
 		}
 	}
 
-
+/*
 	public static void main(String[] args){
 		EvolutionStats es = new EvolutionStats();
 		int[] array1 = new int[11];
@@ -43,5 +52,5 @@ public class EvolutionStats
 		}
 		es.saveStats(array1);
 		es.printStats();
-	}
+	}*/
 }

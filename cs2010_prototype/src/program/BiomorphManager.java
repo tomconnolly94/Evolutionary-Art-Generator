@@ -7,6 +7,8 @@ public class BiomorphManager
 	private ArrayList<Biomorph> biomorphCollection = new ArrayList<Biomorph>();
 	int[] perfectValues =
 	{5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+	EvolutionStats es = new EvolutionStats();
+	
 	public BiomorphManager()
 	{
 	}
@@ -88,5 +90,7 @@ public class BiomorphManager
 	{
 		EvolveClosest ec = new EvolveClosest(createAndAdd(), createAndAdd(), perfectValues);
 		addSpecific(ec.evolve());
+		es.saveGeneValues(ec.getChildGenes());
+		es.printStats();
 	}
 }
