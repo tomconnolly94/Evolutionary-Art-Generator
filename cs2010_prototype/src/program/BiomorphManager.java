@@ -27,7 +27,9 @@ public class BiomorphManager
 		/*takes parents in indexes 0 and 1, evolves them together and places the 
 		 *resulting biomorph in index 0.*/
 		biomorphCollection.set(2, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
-		remove(3);
+		for(int i=0; i<4; i++){
+			remove(3);
+		}
 	}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
@@ -79,6 +81,9 @@ public class BiomorphManager
 	{
 		biomorphCollection.add(b);
 	}
+	public Biomorph getFirst(){
+		return biomorphCollection.getFirst();
+	} 
 	/**
 	 * Takes the biomorphCollection and removes every Biomorph from it.
 	 */
@@ -99,7 +104,7 @@ public class BiomorphManager
 		Biomorph biomorph = ec.evolve();
 		statisticMachine.saveGeneValues(ec.getChildGenes());
 		statisticMachine.printRunningStats();
-		biomorphCollection.add(0,biomorph);
+		biomorphCollection.addFirst(biomorph);
 		createAndAdd();
 		return biomorph;
 	}
