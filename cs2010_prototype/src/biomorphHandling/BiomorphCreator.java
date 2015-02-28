@@ -1,4 +1,4 @@
-package program;
+package biomorphHandling;
 import java.util.Random;
 /**
  * Factory class to generate a biomorph, assigning all its gene values.

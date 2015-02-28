@@ -1,6 +1,6 @@
 package evolution;
-import program.Biomorph;
-import program.BiomorphCreator;
+import biomorphHandling.Biomorph;
+import biomorphHandling.BiomorphCreator;
 import genes.*;
 /**
  * Class to model a Evolutionary cycle where two parents are given and one

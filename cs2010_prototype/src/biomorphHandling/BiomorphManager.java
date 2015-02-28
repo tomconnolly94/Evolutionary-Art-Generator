@@ -1,4 +1,4 @@
-package program;
+package biomorphHandling;
 
 import java.util.LinkedList;
 import java.util.Random;
