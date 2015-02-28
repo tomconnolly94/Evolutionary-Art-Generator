@@ -23,7 +23,7 @@ public class BiomorphCreator
 		int branchIncrement = rand.nextInt(10);
 		// Too many chains will freeze the program, so this has been limited to
 		// 0-4.
-		int chain = rand.nextInt(5);
+		int chain = rand.nextInt(4)+1;
 		int red = rand.nextInt(256);
 		int green = rand.nextInt(256);
 		int blue = rand.nextInt(256);
