@@ -14,6 +14,10 @@ public class BiomorphManager
 	
 	public BiomorphManager()
 	{
+		setUp();
+	}
+	
+	public void setUp(){
 		biomorphCollection = new LinkedList<Biomorph>();
 		//create 4 random orginal parent Biomorphs and load them into indexes 1-3 in collection
 		for(int i=0; i<4; i++){
@@ -30,7 +34,7 @@ public class BiomorphManager
 		biomorphCollection.set(2, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
 		for(int i=0; i<4; i++){
 			remove(3);
-		}
+		}		
 	}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
@@ -50,8 +54,7 @@ public class BiomorphManager
 	{
 		//if biomorphCollection is empty, create two random biomorphs to act as initial parents
 		if(biomorphCollection.size() < 2){
-			createAndAdd();
-			createAndAdd();
+			setUp();
 		}
 		Random rand = new Random();
 		return biomorphCollection.get(rand.nextInt(biomorphCollection.size()));
