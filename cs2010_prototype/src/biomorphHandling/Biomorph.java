@@ -46,20 +46,20 @@ public class Biomorph
 	 */
 	private void loop(int chains)
 	{
-		
 		for (int b = 0; b < Genes[0].getValue(); b++)
 		{
 			GL11.glPushMatrix();
 			// This allows the distribution of branches to be uniform.
 			GL11.glRotatef((float) b * (360.0f / Genes[0].getValue()), 0.0f, 0.0f, 1.0f);
 			new CuboidLimb(Genes[7].getValue(), Genes[9].getValue(), Genes[3].getValue(), Genes[4].getValue(), Genes[5].getValue()).draw();
-			// GL11.glBegin(GL11.GL_LINES);
-			// Draws a branch
-			// GL11.glColor3f((float) Genes[3].getValue() / 256, (float)
-			// Genes[4].getValue() / 256, (float) Genes[5].getValue() / 256);
-			// GL11.glVertex2f(0.0f, 0.0f);
-			// GL11.glVertex2f(0.0f, (float) Genes[7].getValue());
-			// GL11.glEnd();
+		/*   GL11.glBegin(GL11.GL_LINES);
+			 Draws a branch
+			 GL11.glColor3f((float) Genes[3].getValue() / 256, (float)
+			 Genes[4].getValue() / 256, (float) Genes[5].getValue() / 256);
+			 GL11.glVertex2f(0.0f, 0.0f);
+			 GL11.glVertex2f(0.0f, (float) Genes[7].getValue());
+			 GL11.glEnd();
+		 */
 			GL11.glPopMatrix();
 			// This draws a new set of branches from the end of each existing
 			// branch if necessary.
