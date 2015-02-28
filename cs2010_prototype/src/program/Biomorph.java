@@ -46,6 +46,7 @@ public class Biomorph
 	 */
 	private void loop(int chains)
 	{
+		
 		for (int b = 0; b < Genes[0].getValue(); b++)
 		{
 			GL11.glPushMatrix();
@@ -74,7 +75,7 @@ public class Biomorph
 			GL11.glPopMatrix();
 			// This draws a new set of branches from the end of each existing
 			// branch if necessary.
-			if (chains > 0)
+			if (chains > 1)
 			{
 				GL11.glPushMatrix();
 				GL11.glRotatef((float) b * (360.0f / Genes[0].getValue()), 0.0f, 0.0f, 1.0f);

@@ -45,7 +45,7 @@ public class Drawer
 				if (keystop == false)
 				{
 					//evolves two biomorphs together
-					bm.evolveClo(bm.getRandomBiomorph(), bm.getRandomBiomorph());
+					bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph());
 				}
 				keystop = true;
 			}
