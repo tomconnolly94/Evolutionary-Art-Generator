@@ -73,28 +73,6 @@ public class BiomorphManager
 	{
 		biomorphCollection.remove(index);
 	}
-	/** @return How many biomorphs are currently held in the biomorphCollection */
-	public int getSize()
-	{
-		return biomorphCollection.size();
-	}
-	public void addSpecific(Biomorph b)
-	{
-		biomorphCollection.add(b);
-	}
-	public Biomorph getFirst(){
-		return biomorphCollection.getFirst();
-	} 
-	/**
-	 * Takes the biomorphCollection and removes every Biomorph from it.
-	 */
-	public void emptyBiomorphCollection()
-	{
-		for (int i = 0; i < getSize(); i++)
-		{
-			remove(i);
-		}
-	}
 	/**
 	 * Takes two biomorphs and a set of perfect values, uses the EvolveClosest class
 	 * to evolve them together. Then it reports the gene values to the EvolutionStats 
