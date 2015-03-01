@@ -11,7 +11,7 @@ public class Biomorph
 {
 	// An array is instantiated to hold 11 Genes that will be defined in the
 	// constructor.
-	private Gene[] Genes = new Gene[11];
+	private Gene[] genes = new Gene[11];
 	public Biomorph(int branchVal, int branchIncrementVal, int chainVal, int redVal, int greenVal, int blueVal, int curvatureVal, int lengthVal, int lengthIncrementVal, int thicknessVal, int thicknessIncrementVal)
 	{
 		/*
@@ -19,17 +19,17 @@ public class Biomorph
 		 * given. They are then placed in an array in alphabetical (apart from
 		 * colours which are RGB) order.
 		 */
-		Genes[0] = new Branch(branchVal, "Branch");
-		Genes[1] = new BranchIncrement(branchIncrementVal, "Branch Increment");
-		Genes[2] = new Chain(chainVal, "Chain");
-		Genes[3] = new Color(redVal, "Color Red");
-		Genes[4] = new Color(greenVal, "Color Green");
-		Genes[5] = new Color(blueVal, "Color Blue");
-		Genes[6] = new Curvature(curvatureVal, "Curvature");
-		Genes[7] = new Length(lengthVal, "Length");
-		Genes[8] = new LengthIncrement(lengthIncrementVal, "Length Increment");
-		Genes[9] = new Thickness(thicknessVal, "Thickness");
-		Genes[10] = new ThicknessIncrement(thicknessIncrementVal, "Thickness Increment");
+		genes[0] = new Branch(branchVal, "Branch");
+		genes[1] = new BranchIncrement(branchIncrementVal, "Branch Increment");
+		genes[2] = new Chain(chainVal, "Chain");
+		genes[3] = new Color(redVal, "Color Red");
+		genes[4] = new Color(greenVal, "Color Green");
+		genes[5] = new Color(blueVal, "Color Blue");
+		genes[6] = new Curvature(curvatureVal, "Curvature");
+		genes[7] = new Length(lengthVal, "Length");
+		genes[8] = new LengthIncrement(lengthIncrementVal, "Length Increment");
+		genes[9] = new Thickness(thicknessVal, "Thickness");
+		genes[10] = new ThicknessIncrement(thicknessIncrementVal, "Thickness Increment");
 	}
 	/**
 	 * Draws this biomorph.
@@ -37,8 +37,8 @@ public class Biomorph
 	public void draw()
 	{
 		// Set the thickness of the branches
-		GL11.glLineWidth(Genes[9].getValue());
-		loop(Genes[2].getValue());
+		GL11.glLineWidth(genes[9].getValue());
+		loop(genes[2].getValue());
 	}
 	/**
 	 * Recursive loop to draw chains from each branch.
@@ -46,12 +46,12 @@ public class Biomorph
 	 */
 	private void loop(int chains)
 	{
-		for (int b = 0; b < Genes[0].getValue(); b++)
+		for (int b = 0; b < genes[0].getValue(); b++)
 		{
 			GL11.glPushMatrix();
 			// This allows the distribution of branches to be uniform.
-			GL11.glRotatef((float) b * (360.0f / Genes[0].getValue()), 0.0f, 0.0f, 1.0f);
-			new CuboidLimb(Genes[7].getValue(), Genes[9].getValue(), Genes[3].getValue(), Genes[4].getValue(), Genes[5].getValue()).draw();
+			GL11.glRotatef((float) b * (360.0f / genes[0].getValue()), 0.0f, 0.0f, 1.0f);
+			new CuboidLimb(genes[7].getValue(), genes[9].getValue(), genes[3].getValue(), genes[4].getValue(), genes[5].getValue()).draw();
 		/*   GL11.glBegin(GL11.GL_LINES);
 			 Draws a branch
 			 GL11.glColor3f((float) Genes[3].getValue() / 256, (float)
@@ -66,8 +66,8 @@ public class Biomorph
 			if (chains > 1)
 			{
 				GL11.glPushMatrix();
-				GL11.glRotatef((float) b * (360.0f / Genes[0].getValue()), 0.0f, 0.0f, 1.0f);
-				GL11.glTranslatef(0.0f, (float) Genes[7].getValue(), 0.0f);
+				GL11.glRotatef((float) b * (360.0f / genes[0].getValue()), 0.0f, 0.0f, 1.0f);
+				GL11.glTranslatef(0.0f, (float) genes[7].getValue(), 0.0f);
 				loop(chains - 1);
 				GL11.glPopMatrix();
 			}
@@ -78,6 +78,6 @@ public class Biomorph
 	 */
 	public Gene[] getGenes()
 	{
-		return Genes;
+		return genes;
 	}
 }
