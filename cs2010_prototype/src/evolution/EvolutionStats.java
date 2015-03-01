@@ -47,7 +47,7 @@ public class EvolutionStats
 		
 	}
 	//Method to load all the geneNames into an array ready to be used for printing.
-	public void loadGeneNames(){
+	private void loadGeneNames(){
 		runningStats = new ArrayList<String>(numOfGenes);
 		runningStats.add("Branch              ");
 		runningStats.add("Branch Increment    ");
