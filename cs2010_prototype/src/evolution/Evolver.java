@@ -12,7 +12,7 @@ import genes.*;
  * @author Tom Connolly
  * @version 24/02/2015
  */
-public class EvolveClosest
+public class Evolver
 {
 	/*
 	 * Globally accessible arrays of the father's and mother's genes and a third
@@ -27,7 +27,7 @@ public class EvolveClosest
 	
 	// Assigns parameters to global variables so they can be accessed further
 	// on.
-	public EvolveClosest(Biomorph father, Biomorph mother, int[] perfectValues)
+	public Evolver(Biomorph father, Biomorph mother, int[] perfectValues)
 	{
 		this.perfectValues = perfectValues;
 		this.father = father;

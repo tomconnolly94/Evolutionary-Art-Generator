@@ -82,7 +82,7 @@ public class BiomorphManager
 	 * object and re
 	 */
 	public Biomorph evolveClo(Biomorph father, Biomorph mother){
-		EvolveClosest ec = new EvolveClosest(father, mother, perfectValues);
+		Evolver ec = new Evolver(father, mother, perfectValues);
 		Biomorph biomorph = ec.evolve();
 		statisticMachine.saveGeneValues(ec.getChildGenes());
 		statisticMachine.printRunningStats();
