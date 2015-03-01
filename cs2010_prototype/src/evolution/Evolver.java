@@ -19,8 +19,6 @@ public class Evolver
 	 * array to hold thenumbers which will become the child's gene values.
 	 */
 	private int[] perfectValues;
-	private Biomorph father;
-	private Biomorph mother;
 	private int[] childGenes;
 	private Gene[] motherGenes;
 	private Gene[] fatherGenes;
@@ -30,8 +28,8 @@ public class Evolver
 	public Evolver(Biomorph father, Biomorph mother, int[] perfectValues)
 	{
 		this.perfectValues = perfectValues;
-		this.father = father;
-		this.mother = mother;
+		fatherGenes = father.getGenes();
+		motherGenes = mother.getGenes();
 	}
 	/**
 	 * This method takes two sets of genes and for each one compares it to the
@@ -41,13 +39,8 @@ public class Evolver
 	 * @return A Biomorph with gene values as described above.
 	 */
 	public Biomorph evolve()
-	{
-		/*
-		 * The father and mother's genes are extracted from the Biomorph itself
-		 * into arrays and the childGenes array is instantiated.
-		 */
-		fatherGenes = father.getGenes();
-		motherGenes = mother.getGenes();
+	{	
+		//The childGenes array is instantiated. 
 		childGenes = new int[11];
 		/*
 		 * Each father gene and each mother gene are pulled out and compared to
@@ -73,6 +66,7 @@ public class Evolver
 		return biomorph;
 	}
 	
+	//returns childGenes array.
 	public int[] getChildGenes(){
 		return childGenes;
 	}
