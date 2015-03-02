@@ -35,12 +35,12 @@ public class Drawer
 		 * A load biomorphs method is called to use EvolveBlend class to evolve
 		 * the Biomorph that will be displayed.
 		 */
-
+		int i=0;
 		while (quit == false)
 		{
 			// Pressing Enter will generate a new biomorph.
-
-			if (Keyboard.isKeyDown(Keyboard.KEY_RETURN))
+			
+			if (i<497)//Keyboard.isKeyDown(Keyboard.KEY_RETURN))
 			{
 				if (keystop == false)
 				{
@@ -61,6 +61,7 @@ public class Drawer
 			Display.update();
 			// Limit to 60fps to save CPU usage
 			Display.sync(60);
+			i++;
 		}
 		Display.destroy();
 	}
