@@ -4,6 +4,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.glu.GLU;
 public class Drawer
 {
 	/**
@@ -26,6 +27,10 @@ public class Drawer
 		catch (Exception e)
 		{
 		}
+//
+//        GLU.gluLookAt(0.0f, 0.0f, 3.0f,   // viewer location        
+//        			1.0f, 1.0f, 1.0f,    // view point loc.
+//  		      		0.0f, 1.0f, 0.0f);
 		// Set the display's aspect ratio (in this case, 4:3)
 		aspect = (float) mode.getWidth() / (float) mode.getHeight();
 		// Set projection boundaries for OpenGL drawing
@@ -40,7 +45,7 @@ public class Drawer
 		{
 			// Pressing Enter will generate a new biomorph.
 			
-			if (i<497)//Keyboard.isKeyDown(Keyboard.KEY_RETURN))
+			if (/*i<497)*/Keyboard.isKeyDown(Keyboard.KEY_RETURN))
 			{
 				if (keystop == false)
 				{
