@@ -39,6 +39,8 @@ public class Biomorph
 		// Set the thickness of the branches
 		GL11.glLineWidth(genes[9].getValue());
 		loop(genes[2].getValue());
+		GL11.glRotatef(90, 0, 1, 0);
+		loop(genes[2].getValue());
 	}
 	/**
 	 * Recursive loop to draw chains from each branch.
