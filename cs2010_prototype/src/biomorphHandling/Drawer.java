@@ -45,7 +45,7 @@ public class Drawer
 		{
 			// Pressing Enter will generate a new biomorph.
 			
-			if (/*i<497)*/Keyboard.isKeyDown(Keyboard.KEY_RETURN))
+			if (i<497)//Keyboard.isKeyDown(Keyboard.KEY_RETURN))
 			{
 				if (keystop == false)
 				{
