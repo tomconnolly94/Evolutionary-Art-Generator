@@ -34,7 +34,7 @@ public class Drawer
 		// Set the display's aspect ratio (in this case, 4:3)
 		aspect = (float) mode.getWidth() / (float) mode.getHeight();
 		// Set projection boundaries for OpenGL drawing
-		GL11.glOrtho(-50.0f * aspect, 50.0f * aspect, -50.0f, 50.0f, 0.0f, 1.0f);
+		GL11.glOrtho(-50.0f * aspect, 50.0f * aspect, -50.0f, 50.0f, -50.0f, 50.0f);
 		BiomorphManager bm = new BiomorphManager();
 		/*
 		 * A load biomorphs method is called to use EvolveBlend class to evolve
