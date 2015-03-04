@@ -8,10 +8,12 @@ import javax.swing.WindowConstants;
  * The main window for the Biomorph Simulation.
  * @author Charandeep Rai
  */
+
 public class GraphicsMain
 {
 	// The main frame used for the GUI
 	private static JFrame mainFrame;
+	
 	public GraphicsMain()
 	{
 		// Creating the main container for the GUI
@@ -28,6 +30,7 @@ public class GraphicsMain
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}
+	
 	private void exitApp()
 	{
 		int response = JOptionPane.showConfirmDialog(mainFrame, "Are you sure that you want to quit?", "Quit?", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -36,6 +39,7 @@ public class GraphicsMain
 			System.exit(0);
 		}
 	}
+	
 	//public static void main(String[] args)
 	//{
 		//GraphicsMain gm = new GraphicsMain();
