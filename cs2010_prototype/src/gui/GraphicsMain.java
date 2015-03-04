@@ -36,8 +36,8 @@ public class GraphicsMain
 			System.exit(0);
 		}
 	}
-	public static void main(String[] args)
-	{
-		GraphicsMain gm = new GraphicsMain();
-	}
+	//public static void main(String[] args)
+	//{
+		//GraphicsMain gm = new GraphicsMain();
+	//}
 }
