@@ -35,6 +35,7 @@ public class Save
 			for(Gene gene : geneValues){
 				content = content + gene + ", ";
 			}
+			//save file to src
 			file = new File("src/" + fileName + ".txt");
 			fop = new FileOutputStream(file);
  

@@ -3,7 +3,6 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.util.glu.GLU;
 public class Drawer
 {
 	/**
@@ -26,19 +25,12 @@ public class Drawer
 		catch (Exception e)
 		{
 		}
-		//
-		// GLU.gluLookAt(0.0f, 0.0f, 3.0f, // viewer location
-		// 1.0f, 1.0f, 1.0f, // view point loc.
-		// 0.0f, 1.0f, 0.0f);
 		// Set the display's aspect ratio (in this case, 4:3)
 		aspect = (float) mode.getWidth() / (float) mode.getHeight();
 		// Set projection boundaries for OpenGL drawing
 		GL11.glOrtho(-50.0f * aspect, 50.0f * aspect, -50.0f, 50.0f, -50.0f, 50.0f);
 		BiomorphManager bm = new BiomorphManager();
-		/*
-		 * A load biomorphs method is called to use EvolveBlend class to evolve
-		 * the Biomorph that will be displayed.
-		 */
+		//Integer to store runCount for auto-run feature.
 		int i = 0;
 		while (quit == false)
 		{
