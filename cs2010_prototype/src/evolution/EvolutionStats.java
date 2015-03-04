@@ -1,8 +1,7 @@
 package evolution;
 import java.util.ArrayList;
 /**
- * Class to model a data processing and displaying machine. Takes the gene
- * values from a Biomorph and stores them to be printed when called.
+ * Class to take the gene values from a Biomorph and store them to be printed when called.
  * @author Tom Connolly
  * @version 28/02/2015
  */

@@ -4,7 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-
+/**
+ * Class to handle importing of Biomorphs.
+ * @author Tom Connolly
+ * @version 04/03/2015
+ */
 public class Load
 {
 	

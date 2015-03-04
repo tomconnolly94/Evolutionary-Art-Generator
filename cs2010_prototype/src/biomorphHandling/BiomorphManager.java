@@ -3,6 +3,11 @@ import input_output.Save;
 import java.util.LinkedList;
 import java.util.Random;
 import evolution.*;
+/**
+ * Class to handle storing and manipulation of Biomorphs.
+ * @author Tom Connolly
+ * @version 04/03/2015
+ */
 public class BiomorphManager
 {
 	private LinkedList<Biomorph> biomorphCollection;
@@ -26,17 +31,17 @@ public class BiomorphManager
 		}
 		/*
 		 * takes parents in indexes 0 and 1, evolves them together and places
-		 * theresulting biomorph in index 0.
+		 * the resulting biomorph in index 0.
 		 */
 		biomorphCollection.set(0, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
 		/*
-		 * takes parents in indexes 0 and 1, evolves them together and places
-		 * theresulting biomorph in index 0.
+		 * takes parents in indexes 2 and 3, evolves them together and places
+		 * the resulting biomorph in index 1.
 		 */
 		biomorphCollection.set(1, evolveClo(biomorphCollection.get(2), biomorphCollection.get(3)));
 		/*
-		 * takes parents in indexes 0 and 1, evolves them together and places
-		 * theresulting biomorph in index 0.
+		 * takes evolved parents in indexes 0 and 1, evolves them together and places
+		 * the resulting biomorph in index 2.
 		 */
 		biomorphCollection.set(2, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
 		for (int i = 0; i < 4; i++)
@@ -99,10 +104,11 @@ public class BiomorphManager
 		statisticMachine.printRunningStats();
 		biomorphCollection.addFirst(biomorph);
 		createAndAdd();
+/*		//Code to save Biomorph TODO:
 		Save save = new Save();
 		String fileName = "Biomorph " + Integer.toString(i);
 		i++;
-		save.saveGeneValuesToTextFile(biomorph.getGenes(), fileName);
+		save.saveGeneValuesToTextFile(biomorph.getGenes(), fileName);*/
 		return biomorph;
 	}
 }

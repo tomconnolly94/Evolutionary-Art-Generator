@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 /**
  * The main window for the Biomorph Simulation.
- * @author Charandeep
+ * @author Charandeep Rai
  */
 public class GraphicsMain
 {
