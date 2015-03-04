@@ -22,7 +22,6 @@ public class Evolver
 	private int[] childGenes;
 	private Gene[] motherGenes;
 	private Gene[] fatherGenes;
-	
 	// Assigns parameters to global variables so they can be accessed further
 	// on.
 	public Evolver(Biomorph father, Biomorph mother, int[] perfectValues)
@@ -39,8 +38,8 @@ public class Evolver
 	 * @return A Biomorph with gene values as described above.
 	 */
 	public Biomorph evolve()
-	{	
-		//The childGenes array is instantiated. 
+	{
+		// The childGenes array is instantiated.
 		childGenes = new int[11];
 		/*
 		 * Each father gene and each mother gene are pulled out and compared to
@@ -62,13 +61,11 @@ public class Evolver
 		// values held in the array 'childGenes'.
 		BiomorphCreator bc = new BiomorphCreator();
 		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10]);
-
 		return biomorph;
 	}
-	
-	//returns childGenes array.
-	public int[] getChildGenes(){
+	// returns childGenes array.
+	public int[] getChildGenes()
+	{
 		return childGenes;
 	}
-
 }

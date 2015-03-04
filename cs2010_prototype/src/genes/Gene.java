@@ -9,7 +9,6 @@ public abstract class Gene
 {
 	private int value;
 	private String name;
-	
 	public Gene(int value, String name)
 	{
 		this.value = value;

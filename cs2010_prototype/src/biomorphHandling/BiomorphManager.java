@@ -1,40 +1,46 @@
 package biomorphHandling;
-
 import java.util.LinkedList;
 import java.util.Random;
 import evolution.*;
-
 public class BiomorphManager
 {
 	private LinkedList<Biomorph> biomorphCollection;
-	//set of perfect values that the Biomorphs will evolve towards.
+	// set of perfect values that the Biomorphs will evolve towards.
 	private int[] perfectValues =
 	{5, 5, 4, 255, 1, 1, 5, 10, 5, 1, 5};
 	private EvolutionStats statisticMachine = new EvolutionStats();
-	
 	public BiomorphManager()
 	{
 		setUp();
 	}
-	
-	public void setUp(){
+	public void setUp()
+	{
 		biomorphCollection = new LinkedList<Biomorph>();
-		//create 4 random orginal parent Biomorphs and load them into indexes 1-3 in collection
-		for(int i=0; i<4; i++){
-		createAndAdd();
+		// create 4 random orginal parent Biomorphs and load them into indexes
+		// 1-3 in collection
+		for (int i = 0; i < 4; i++)
+		{
+			createAndAdd();
 		}
-		/*takes parents in indexes 0 and 1, evolves them together and places the 
-		 *resulting biomorph in index 0.*/
+		/*
+		 * takes parents in indexes 0 and 1, evolves them together and places
+		 * theresulting biomorph in index 0.
+		 */
 		biomorphCollection.set(0, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
-		/*takes parents in indexes 0 and 1, evolves them together and places the 
-		 *resulting biomorph in index 0.*/
+		/*
+		 * takes parents in indexes 0 and 1, evolves them together and places
+		 * theresulting biomorph in index 0.
+		 */
 		biomorphCollection.set(1, evolveClo(biomorphCollection.get(2), biomorphCollection.get(3)));
-		/*takes parents in indexes 0 and 1, evolves them together and places the 
-		 *resulting biomorph in index 0.*/
+		/*
+		 * takes parents in indexes 0 and 1, evolves them together and places
+		 * theresulting biomorph in index 0.
+		 */
 		biomorphCollection.set(2, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
-		for(int i=0; i<4; i++){
+		for (int i = 0; i < 4; i++)
+		{
 			remove(3);
-		}		
+		}
 	}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
@@ -52,8 +58,10 @@ public class BiomorphManager
 	 */
 	public Biomorph getRandomBiomorph()
 	{
-		//if biomorphCollection is empty, create two random biomorphs to act as initial parents
-		if(biomorphCollection.size() < 2){
+		// if biomorphCollection is empty, create two random biomorphs to act as
+		// initial parents
+		if (biomorphCollection.size() < 2)
+		{
 			setUp();
 		}
 		Random rand = new Random();
@@ -77,11 +85,12 @@ public class BiomorphManager
 		biomorphCollection.remove(index);
 	}
 	/**
-	 * Takes two biomorphs and a set of perfect values, uses the EvolveClosest class
-	 * to evolve them together. Then it reports the gene values to the EvolutionStats 
-	 * object and re
+	 * Takes two biomorphs and a set of perfect values, uses the EvolveClosest
+	 * class to evolve them together. Then it reports the gene values to the
+	 * EvolutionStats object and re
 	 */
-	public Biomorph evolveClo(Biomorph father, Biomorph mother){
+	public Biomorph evolveClo(Biomorph father, Biomorph mother)
+	{
 		Evolver ec = new Evolver(father, mother, perfectValues);
 		Biomorph biomorph = ec.evolve();
 		statisticMachine.saveGeneValues(ec.getChildGenes());

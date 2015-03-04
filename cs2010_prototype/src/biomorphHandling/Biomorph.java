@@ -39,12 +39,12 @@ public class Biomorph
 		// Set the thickness of the branches
 		GL11.glLineWidth(genes[9].getValue());
 		GL11.glPushMatrix();
-			GL11.glRotatef(30f, 0.0f, 1.0f, 0.0f);
-			loop(genes[2].getValue());
-			GL11.glPushMatrix();
-				GL11.glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
-				loop(genes[2].getValue());
-			GL11.glPopMatrix();
+		GL11.glRotatef(30f, 0.0f, 1.0f, 0.0f);
+		loop(genes[2].getValue());
+		GL11.glPushMatrix();
+		GL11.glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
+		loop(genes[2].getValue());
+		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}
 	/**
@@ -53,21 +53,25 @@ public class Biomorph
 	 */
 	private void loop(int chains)
 	{
+		int limbCount = 0;
+		int length = genes[7].getValue();
 		for (int b = 0; b < genes[0].getValue(); b++)
 		{
 			GL11.glPushMatrix();
 			// This allows the distribution of branches to be uniform.
 			GL11.glRotatef((float) b * (360.0f / genes[0].getValue()), 0.0f, 0.0f, 1.0f);
-			new CuboidLimb(genes[7].getValue(), genes[9].getValue(), genes[3].getValue(), genes[4].getValue(), genes[5].getValue()).draw();
-		/*   GL11.glBegin(GL11.GL_LINES);
-			 Draws a branch
-			 GL11.glColor3f((float) Genes[3].getValue() / 256, (float)
-			 Genes[4].getValue() / 256, (float) Genes[5].getValue() / 256);
-			 GL11.glVertex2f(0.0f, 0.0f);
-			 GL11.glVertex2f(0.0f, (float) Genes[7].getValue());
-			 GL11.glEnd();
-		 */
+			/* code to update length value using length Increment */
+			// length = (genes[7].getValue() + (limbCount*genes[8].getValue()));
+			new CuboidLimb(length, genes[9].getValue(), genes[3].getValue(), genes[4].getValue(), genes[5].getValue()).draw();
+			/*
+			 * GL11.glBegin(GL11.GL_LINES); Draws a branch
+			 * GL11.glColor3f((float) Genes[3].getValue() / 256, (float)
+			 * Genes[4].getValue() / 256, (float) Genes[5].getValue() / 256);
+			 * GL11.glVertex2f(0.0f, 0.0f); GL11.glVertex2f(0.0f, (float)
+			 * Genes[7].getValue()); GL11.glEnd();
+			 */
 			GL11.glPopMatrix();
+			limbCount++;
 			// This draws a new set of branches from the end of each existing
 			// branch if necessary.
 			if (chains > 1)
@@ -79,6 +83,7 @@ public class Biomorph
 				GL11.glPopMatrix();
 			}
 		}
+		length = genes[8].getValue();
 	}
 	/**
 	 * @return An array containing a value for each Gene of this biomorph

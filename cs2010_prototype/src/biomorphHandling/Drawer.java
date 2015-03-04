@@ -1,5 +1,4 @@
 package biomorphHandling;
-
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -27,10 +26,10 @@ public class Drawer
 		catch (Exception e)
 		{
 		}
-//
-//        GLU.gluLookAt(0.0f, 0.0f, 3.0f,   // viewer location        
-//        			1.0f, 1.0f, 1.0f,    // view point loc.
-//  		      		0.0f, 1.0f, 0.0f);
+		//
+		// GLU.gluLookAt(0.0f, 0.0f, 3.0f, // viewer location
+		// 1.0f, 1.0f, 1.0f, // view point loc.
+		// 0.0f, 1.0f, 0.0f);
 		// Set the display's aspect ratio (in this case, 4:3)
 		aspect = (float) mode.getWidth() / (float) mode.getHeight();
 		// Set projection boundaries for OpenGL drawing
@@ -40,16 +39,15 @@ public class Drawer
 		 * A load biomorphs method is called to use EvolveBlend class to evolve
 		 * the Biomorph that will be displayed.
 		 */
-		int i=0;
+		int i = 0;
 		while (quit == false)
 		{
 			// Pressing Enter will generate a new biomorph.
-			
-			if (i<497)//Keyboard.isKeyDown(Keyboard.KEY_RETURN))
+			if (/* i<497) */Keyboard.isKeyDown(Keyboard.KEY_RETURN))
 			{
 				if (keystop == false)
 				{
-					//evolves two biomorphs together
+					// evolves two biomorphs together
 					bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph());
 				}
 				keystop = true;
@@ -61,7 +59,8 @@ public class Drawer
 			if (Display.isCloseRequested()) quit = true;
 			// Clear screen and draw biomorph
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-			//locates and draws biomorph depending on which is chosen to be drawn by random above
+			// locates and draws biomorph depending on which is chosen to be
+			// drawn by random above
 			bm.getSpecific(0).draw();
 			Display.update();
 			// Limit to 60fps to save CPU usage
