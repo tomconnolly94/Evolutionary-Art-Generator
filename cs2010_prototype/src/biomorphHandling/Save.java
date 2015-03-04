@@ -29,10 +29,10 @@ public class Save
 	public void serialiseBiomorph()
 	{
 	}
-	public void saveGeneValuesToTextFile(Gene[] geneValues, String fileName){
+	public void saveGeneValuesToTextFile(int[] geneValues, String fileName){
 		try {
 			String content = "";
-			for(Gene gene : geneValues){
+			for(int gene : geneValues){
 				content = content + gene + ", ";
 			}
 			//save file to src
@@ -66,5 +66,9 @@ public class Save
 		}
 	}
 	
-	
+/*	//main method for testing
+	public static void main(String[] args){
+		int[] vals = {1,2,3,4,5,6,7,8,9,10,11};
+		saveGeneValuesToTextFile(vals, "Biomorph 1");
+	}*/
 }
