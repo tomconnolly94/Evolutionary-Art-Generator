@@ -1,4 +1,4 @@
-package biomorphHandling;
+package input_output;
 
 import genes.Gene;
 import java.io.File;
@@ -29,11 +29,11 @@ public class Save
 	public void serialiseBiomorph()
 	{
 	}
-	public void saveGeneValuesToTextFile(int[] geneValues, String fileName){
+	public void saveGeneValuesToTextFile(Gene[] geneValues, String fileName){
 		try {
 			String content = "";
-			for(int gene : geneValues){
-				content = content + gene + ", ";
+			for(Gene gene : geneValues){
+				content = content + gene.getValue() + ", ";
 			}
 			//save file to src
 			file = new File("src/" + fileName + ".txt");

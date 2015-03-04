@@ -1,4 +1,5 @@
 package biomorphHandling;
+import input_output.Save;
 import java.util.LinkedList;
 import java.util.Random;
 import evolution.*;
@@ -9,6 +10,7 @@ public class BiomorphManager
 	private int[] perfectValues =
 	{5, 5, 4, 255, 1, 1, 5, 10, 5, 1, 5};
 	private EvolutionStats statisticMachine = new EvolutionStats();
+	private int i=1;
 	public BiomorphManager()
 	{
 		setUp();
@@ -97,6 +99,10 @@ public class BiomorphManager
 		statisticMachine.printRunningStats();
 		biomorphCollection.addFirst(biomorph);
 		createAndAdd();
+		Save save = new Save();
+		String fileName = "Biomorph " + Integer.toString(i);
+		i++;
+		save.saveGeneValuesToTextFile(biomorph.getGenes(), fileName);
 		return biomorph;
 	}
 }
