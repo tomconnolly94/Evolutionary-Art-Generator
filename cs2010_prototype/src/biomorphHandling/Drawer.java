@@ -18,7 +18,9 @@ public class Drawer
 	{
 		boolean quit = false;
 		boolean keystop = false;
-		float aspect;
+		float aspect = 0;
+		float x = 0.0f;
+		float z = 0.0f;
 		// Set display to 1024x768, windowed
 		DisplayMode mode = new DisplayMode(1024, 768);
 		try
@@ -42,23 +44,28 @@ public class Drawer
 			// Pressing Enter will generate a new biomorph.
 			if (/* i<497) */Keyboard.isKeyDown(Keyboard.KEY_RETURN))
 			{
-				if (keystop == false)
-				{
-					// evolves two biomorphs together
-					bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph());
-				}
+				// evolves two biomorphs together
+				if (keystop == false) bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph());
 				keystop = true;
 			}
 			// This prevents repeated creations of biomorphs while the Enter key
 			// is held down.
 			if (Keyboard.isKeyDown(Keyboard.KEY_RETURN) == false) keystop = false;
 			if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) quit = true;
+			if (Keyboard.isKeyDown(Keyboard.KEY_UP)) x += 1.0f;
+			if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) x -= 1.0f;
+			if (Keyboard.isKeyDown(Keyboard.KEY_LEFT)) z -= 1.0f;
+			if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) z += 1.0f;
 			if (Display.isCloseRequested()) quit = true;
 			// Clear screen and draw biomorph
 			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 			// locates and draws biomorph depending on which is chosen to be
 			// drawn by random above
-			bm.getSpecific(0).draw();
+			GL11.glPushMatrix();
+				GL11.glRotatef(x, 1.0f, 0.0f, 0.0f);
+				GL11.glRotatef(z, 0.0f, 0.0f, 1.0f);
+				bm.getSpecific(0).draw();
+			GL11.glPopMatrix();
 			Display.update();
 			// Limit to 60fps to save CPU usage
 			Display.sync(60);
