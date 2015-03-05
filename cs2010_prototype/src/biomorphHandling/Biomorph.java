@@ -67,7 +67,7 @@ public class Biomorph
 			// This allows the distribution of branches to be uniform.
 			GL11.glRotatef((float) b * (360.0f / genes[0].getValue()), 0.0f, 0.0f, 1.0f);
 			/* code to update length value using length Increment  TODO: Uncomment when needed.*/
-			// length = (genes[7].getValue() + (limbCount*genes[8].getValue()));
+			length = (genes[7].getValue() + (limbCount*genes[8].getValue()));
 			new CuboidLimb(length, genes[9].getValue(), genes[3].getValue(), genes[4].getValue(), genes[5].getValue()).draw();
 			GL11.glPopMatrix();
 			limbCount++;
