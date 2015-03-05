@@ -44,6 +44,9 @@ public class EvolutionStats
 			System.out.println("");
 			for (int dataIndex = 0; dataIndex < numOfGenes; dataIndex++)
 			{
+				if(dataIndex == 4){
+					
+				}
 				String spaces = " - ";
 				String val = Integer.toString(statsMaster.get(arrayIndex)[dataIndex]);
 				runningStats.set(dataIndex, runningStats.get(dataIndex) + val + spaces);
