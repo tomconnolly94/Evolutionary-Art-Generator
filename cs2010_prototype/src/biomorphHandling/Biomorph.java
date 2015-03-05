@@ -42,13 +42,13 @@ public class Biomorph
 		//GL11.glRotatef(0.5f, 1.0f, 1.0f, 1.0f);
 		GL11.glPushMatrix();
 			//GL11.glRotatef(45.0f, 1.0f, 1.0f, 1.0f);
-			loop(genes[2].getValue());
+			loop(genes[2].getValue(),0);
 			GL11.glPushMatrix();
 				GL11.glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
-				loop(genes[2].getValue());
+				loop(genes[2].getValue(),0);
 				GL11.glPushMatrix();
 					GL11.glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
-					loop(genes[2].getValue());
+					loop(genes[2].getValue(),0);
 				GL11.glPopMatrix();
 			GL11.glPopMatrix();
 		GL11.glPopMatrix();
@@ -57,9 +57,9 @@ public class Biomorph
 	 * Recursive loop to draw chains from each branch.
 	 * @param chains The amount of recursive steps
 	 */
-	private void loop(int chains)
+	private void loop(int chains, int limbCount)
 	{
-		int limbCount = 0;
+		
 		int length = genes[7].getValue();
 		for (int b = 0; b < genes[0].getValue(); b++)
 		{
@@ -78,7 +78,7 @@ public class Biomorph
 				GL11.glPushMatrix();
 				GL11.glRotatef((float) b * (360.0f / genes[0].getValue()), 0.0f, 0.0f, 1.0f);
 				GL11.glTranslatef(0.0f, (float) genes[7].getValue(), 0.0f);
-				loop(chains - 1);
+				loop(chains - 1, limbCount);
 				GL11.glPopMatrix();
 			}
 		}
