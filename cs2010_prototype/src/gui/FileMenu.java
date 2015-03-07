@@ -1,7 +1,10 @@
 package gui;
 
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 
 /**
@@ -40,7 +43,22 @@ public FileMenu() {
 	openButton.setText("Open");
 	openButton.setToolTipText("Open up a previously created Biomorph");
 	
-
+// Creating containers for the components
+	fileFrame = new JFrame();
+	
+	JPanel newPanel = new JPanel();
+	JPanel savePanel = new JPanel();
+	JPanel openPanel = new JPanel();
+	
+// Specifying the layout used
+	
+	fileFrame.setLayout(new GridLayout());
+	((JPanel)fileFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+	
+	
+		
+	
+	
 	
 	
 	
