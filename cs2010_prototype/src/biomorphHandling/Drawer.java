@@ -5,7 +5,7 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 /**
  * Class to handle the drawing and displaying of Biomorphs.
- * @author Tom Connolly, Jack Taylor
+ * @author Tom Connolly, Jack Taylor, Charandeep Rai.
  * @version 24/02/2015
  */
 public class Drawer
