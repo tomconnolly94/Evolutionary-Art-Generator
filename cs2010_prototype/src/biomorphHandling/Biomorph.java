@@ -87,6 +87,7 @@ public class Biomorph
 				GL11.glPushMatrix();
 				GL11.glRotatef((float) b * (360.0f / genes[0].getValue()), 0.0f, 0.0f, 1.0f);
 				GL11.glTranslatef(0.0f, (float) genes[7].getValue(), 0.0f);
+				limbCount++;
 				loop(chains - 1, limbCount);
 				GL11.glPopMatrix();
 			}
