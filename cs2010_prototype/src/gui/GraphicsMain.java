@@ -1,9 +1,12 @@
 package gui;
+import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 /**
  * The main window for the Biomorph Simulation.
  * @author Charandeep Rai
@@ -16,14 +19,30 @@ public class GraphicsMain
 	
 	public GraphicsMain()
 	{
+		final int blankSpace =1;
+		
 		// Creating the main container for the GUI
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		
-		//Creating the containers for the GUI
+		//Creating the other containers for the GUI
+		JPanel biomorphPanel = new JPanel();
+		JPanel filemenuPanel = new JPanel();
 		
+		// Specifying the layout managers
+		mainFrame.setLayout(new BorderLayout());
+		((JPanel)mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));		
 		
-		// Listeners
+		biomorphPanel.setLayout(new BorderLayout());
+		biomorphPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+		
+		filemenuPanel.setLayout(new BorderLayout());
+		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+		
+		// Add components to containers
+	
+		
+		// Action Listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
 			public void Closewindow(WindowEvent e)
