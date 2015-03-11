@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -52,10 +53,19 @@ public FileMenu() {
 	
 // Specifying the layout used
 	
-	fileFrame.setLayout(new GridLayout());
+	fileFrame.setLayout(new BorderLayout());
 	((JPanel)fileFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 	
+	newPanel.setLayout(new BorderLayout());
+	newPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 	
+	savePanel.setLayout(new BorderLayout());
+	savePanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+	
+	openPanel.setLayout(new BorderLayout());
+	openPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));;
+
+// Adding the components to the containers
 	
 		
 	
