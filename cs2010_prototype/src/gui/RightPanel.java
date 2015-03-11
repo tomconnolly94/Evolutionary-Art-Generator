@@ -39,9 +39,9 @@ public class RightPanel {
 	private static JLabel curvatureLabel;
 	private static JLabel lengthIncLabel;
 	private static JLabel thicknessIncLabel;
-	private static JLabel red;
-	private static JLabel green;
-	private static JLabel blue;
+	private static JLabel redlabel;
+	private static JLabel greenlabel;
+	private static JLabel bluelabel;
 	
 	public RightPanel() {
 		initiate();
