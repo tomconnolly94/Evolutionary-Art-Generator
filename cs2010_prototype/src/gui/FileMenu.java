@@ -16,6 +16,8 @@ import javax.swing.border.EmptyBorder;
  */
 
 public class FileMenu{
+	
+	
 
 //Creation of the frame for the file system.
 	public static JFrame fileFrame;
@@ -27,6 +29,7 @@ public class FileMenu{
 public FileMenu() {
 
 
+	
 // Padding out the borders with blank spaces	
 	final int blankSpace = 1;
 	
@@ -57,6 +60,7 @@ public FileMenu() {
 // Specifying the layout used
 	
 	fileFrame.setLayout(new BorderLayout());
+	
 	((JPanel)fileFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 	
 	newPanel.setLayout(new BorderLayout());
@@ -75,8 +79,8 @@ public FileMenu() {
 	openPanel.add(openButton, BorderLayout.CENTER);
 	
 	fileFrame.add(newPanel, BorderLayout.WEST);
-	fileFrame.add(savePanel, BorderLayout.WEST);
-	fileFrame.add(openPanel, BorderLayout.WEST);
+	fileFrame.add(savePanel, BorderLayout.CENTER);
+	fileFrame.add(openPanel, BorderLayout.EAST);
 	
 // Adding the action listens for the buttons
 	
@@ -102,13 +106,15 @@ public FileMenu() {
 	
 	fileFrame.pack();
 	fileFrame.setVisible(true);
-	
-	
-	
-	
-	
-	
-	
-	
 }
+	public static void main(String[] args)
+	{
+		FileMenu gm = new FileMenu();
+	}	
+	
+	
+	
+	
+	
+	
 }

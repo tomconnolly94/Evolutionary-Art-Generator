@@ -1,5 +1,6 @@
 package gui;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -17,13 +18,14 @@ public class GraphicsMain
 {
 	// The main frame used for the GUI
 	private static JFrame mainFrame;
-	//private static int width = 300;
-	//private static int height = 300;
+	//private FileMenu fileFrame;
+	
 	
 	public GraphicsMain()
 	{
 		final int blankSpace =1;
 		
+		//this.fileFrame = fileFrame;
 		// Creating the main container for the GUI
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,7 +48,7 @@ public class GraphicsMain
 		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
 		// Add components to containers
-		//filemenuPanel.add(FileMenu.fileFrame, BorderLayout.CENTER);
+		
 		
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
@@ -61,10 +63,12 @@ public class GraphicsMain
 				exitApp();
 			}
 		});
-		mainFrame.pack();
-		mainFrame.setVisible(true);
-	}
+		
 	
+	
+	mainFrame.pack();
+	mainFrame.setVisible(true);
+	}
 	private void exitApp()
 	{
 		int response = JOptionPane.showConfirmDialog(mainFrame, "Are you sure that you want to quit?", "Quit?", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
