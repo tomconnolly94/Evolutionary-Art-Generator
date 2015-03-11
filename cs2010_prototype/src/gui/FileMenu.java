@@ -67,7 +67,19 @@ public FileMenu() {
 
 // Adding the components to the containers
 	
-		
+	newPanel.add(newButton, BorderLayout.CENTER);
+	savePanel.add(saveButton, BorderLayout.CENTER);
+	openPanel.add(openButton, BorderLayout.CENTER);
+	
+	fileFrame.add(newPanel, BorderLayout.WEST);
+	fileFrame.add(savePanel, BorderLayout.WEST);
+	fileFrame.add(openPanel, BorderLayout.WEST);
+
+// Packing and displaying the GUI
+	
+	fileFrame.pack();
+	fileFrame.setVisible(true);
+	
 	
 	
 	

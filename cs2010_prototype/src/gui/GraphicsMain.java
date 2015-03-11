@@ -19,6 +19,10 @@ public class GraphicsMain
 		// Creating the main container for the GUI
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		
+		//Creating the containers for the GUI
+		
+		
 		// Listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
