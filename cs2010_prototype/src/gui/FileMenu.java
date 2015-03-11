@@ -2,6 +2,8 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -74,6 +76,26 @@ public FileMenu() {
 	fileFrame.add(newPanel, BorderLayout.WEST);
 	fileFrame.add(savePanel, BorderLayout.WEST);
 	fileFrame.add(openPanel, BorderLayout.WEST);
+	
+// Adding the action listens for the buttons
+	
+	newButton.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent n){
+			//Needs Completing
+		}
+	});
+	
+	saveButton.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent s){
+			//Needs Completing
+	}
+	});
+	
+	openButton.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent o){
+			//Needs Completing
+	}
+	});
 
 // Packing and displaying the GUI
 	
