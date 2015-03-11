@@ -11,13 +11,15 @@ public class EvolutionStats
 	private ArrayList<int[]> statsMaster;
 	private int numOfGenes = 11;
 	private ArrayList<String> runningStats;
+	private int[] perfectValues;
 	/*
 	 * Constructor initialises all fields and loads the geneNames so that genes
 	 * can be labelled. also fills arrayList with the names of each gene to be
 	 * used later.
 	 */
-	public EvolutionStats()
+	public EvolutionStats(int[] perfectValues)
 	{
+		this.perfectValues = perfectValues;
 		statsMaster = new ArrayList<int[]>(50);
 		loadGeneNames();
 	}
@@ -59,16 +61,16 @@ public class EvolutionStats
 	private void loadGeneNames()
 	{
 		runningStats = new ArrayList<String>(numOfGenes);
-		runningStats.add("Branch              ");
-		runningStats.add("Branch Increment    ");
-		runningStats.add("Chain               ");
-		runningStats.add("Color Red           ");
-		runningStats.add("Color Green         ");
-		runningStats.add("Color Blue          ");
-		runningStats.add("Curvature           ");
-		runningStats.add("Length              ");
-		runningStats.add("Length Increment    ");
-		runningStats.add("Thickness           ");
-		runningStats.add("Thickness Increment ");
+		runningStats.add("Branch              "+perfectValues[0]+"(PV)-- ");
+		runningStats.add("Branch Increment    "+perfectValues[1]+"(PV)-- ");
+		runningStats.add("Chain               "+perfectValues[2]+"(PV)-- ");
+		runningStats.add("Color Red           "+perfectValues[3]+"(PV)-- ");
+		runningStats.add("Color Green         "+perfectValues[4]+"(PV)-- ");
+		runningStats.add("Color Blue          "+perfectValues[5]+"(PV)-- ");
+		runningStats.add("Curvature           "+perfectValues[6]+"(PV)-- ");
+		runningStats.add("Length              "+perfectValues[7]+"(PV)-- ");
+		runningStats.add("Length Increment    "+perfectValues[8]+"(PV)-- ");
+		runningStats.add("Thickness           "+perfectValues[9]+"(PV)-- ");
+		runningStats.add("Thickness Increment "+perfectValues[10]+"(PV)-- ");
 	}
 }
