@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 public class FileMenu{
 
 //Creation of the frame for the file system.
-	private static JFrame fileFrame;
+	public static JFrame fileFrame;
 	private static JButton newButton;
 	private static JButton saveButton;
 	private static JButton openButton;

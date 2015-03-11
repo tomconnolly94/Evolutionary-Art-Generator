@@ -1,5 +1,6 @@
 package gui;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -16,6 +17,8 @@ public class GraphicsMain
 {
 	// The main frame used for the GUI
 	private static JFrame mainFrame;
+	//private static int width = 300;
+	//private static int height = 300;
 	
 	public GraphicsMain()
 	{
@@ -23,15 +26,18 @@ public class GraphicsMain
 		
 		// Creating the main container for the GUI
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
-		mainFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Creating the other containers for the GUI
 		JPanel biomorphPanel = new JPanel();
 		JPanel filemenuPanel = new JPanel();
+		JPanel rightPanel = new JPanel();
 		
 		// Specifying the layout managers
 		mainFrame.setLayout(new BorderLayout());
+		mainFrame.setPreferredSize(new Dimension(500, 500));
 		((JPanel)mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));		
+		
 		
 		biomorphPanel.setLayout(new BorderLayout());
 		biomorphPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
@@ -40,7 +46,12 @@ public class GraphicsMain
 		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
 		// Add components to containers
-	
+		//filemenuPanel.add(FileMenu.fileFrame, BorderLayout.CENTER);
+		
+		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
+		mainFrame.add(biomorphPanel, BorderLayout.WEST);
+		mainFrame.add(rightPanel, BorderLayout.EAST);
+		
 		
 		// Action Listeners
 		mainFrame.addWindowListener(new WindowAdapter()
