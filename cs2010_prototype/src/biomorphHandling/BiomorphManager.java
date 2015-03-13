@@ -28,8 +28,8 @@ public class BiomorphManager
 	public void setUp()
 	{
 		biomorphCollection = new LinkedList<Biomorph>();
-		// create 4 random orginal parent Biomorphs and load them into indexes
-		// 1-3 in collection
+		/* create 4 random orginal parent Biomorphs and load them into indexes
+		 0-3 in collection*/
 		for (int i = 0; i < 4; i++)
 		{
 			createAndAdd();
@@ -38,18 +38,21 @@ public class BiomorphManager
 		 * takes parents in indexes 0 and 1, evolves them together and places
 		 * the resulting biomorph in index 0.
 		 */
-		biomorphCollection.set(0, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
+		Biomorph biomorph1 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
+		biomorphCollection.add(0, biomorph1);
 		/*
 		 * takes parents in indexes 2 and 3, evolves them together and places
 		 * the resulting biomorph in index 1.
 		 */
-		biomorphCollection.set(1, evolveClo(biomorphCollection.get(2), biomorphCollection.get(3)));
+		Biomorph biomorph2 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
+		biomorphCollection.add(1, biomorph2);
 		/*
 		 * takes evolved parents in indexes 0 and 1, evolves them together and places
 		 * the resulting biomorph in index 2.
 		 */
-		biomorphCollection.set(2, evolveClo(biomorphCollection.get(0), biomorphCollection.get(1)));
-		for (int i = 0; i < 4; i++)
+		Biomorph biomorph3 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
+		biomorphCollection.add(2, biomorph3);
+		for (int i = 3; i < 7; i++)
 		{
 			remove(3);
 		}
@@ -64,6 +67,14 @@ public class BiomorphManager
 		Biomorph biomorph = bc.createBiomorph();
 		biomorphCollection.add(biomorph);
 		return biomorph;
+	}
+	/**
+	 * Clones and returns biomorphCollection solely for testing.
+	 */
+	public LinkedList<Biomorph> cloneCollection()
+	{
+		LinkedList<Biomorph> clonedCollection = biomorphCollection;
+		return clonedCollection;
 	}
 	/**
 	 * @return A random biomorph from the list
@@ -107,8 +118,6 @@ public class BiomorphManager
 		Biomorph biomorph = ec.evolve();
 		statisticMachine.saveGeneValues(ec.getChildGenes());
 		statisticMachine.printRunningStats();
-		biomorphCollection.addFirst(biomorph);
-		createAndAdd();
 /*		//Code to save Biomorph TODO:
 		Save save = new Save();
 		String fileName = "Biomorph " + Integer.toString(i);

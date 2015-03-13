@@ -1,9 +1,7 @@
 package tests;
 
 import static org.junit.Assert.*;
-import genes.*;
 import org.junit.Before;
-import org.junit.After;
 import org.junit.Test;
 import biomorphHandling.*;
 
@@ -28,10 +26,5 @@ public class Biomorph_Test
 		assertEquals(biomorph.getGenes()[i].getValue(), values[i]);
 		}
 	}
-	
-	@After //post conditions
-	public void cleanUp()
-	{
-		
-	}
+
 }
