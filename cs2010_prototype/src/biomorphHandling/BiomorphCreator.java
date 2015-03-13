@@ -28,7 +28,7 @@ public class BiomorphCreator
 		int green = rand.nextInt(256);
 		int blue = rand.nextInt(256);
 		int length = rand.nextInt(8) + 1;
-		int lengthIncrement = rand.nextInt(2) + 1;
+		int lengthIncrement = rand.nextInt(4) - 2;
 		int thickness = rand.nextInt(10) + 1;
 		int thicknessIncrement = rand.nextInt(10) + 1;
 		Biomorph biomorph = new Biomorph(branch, branchIncrement, chain, red, green, blue, length, lengthIncrement, thickness, thicknessIncrement);
