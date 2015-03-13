@@ -51,8 +51,12 @@ public class Drawer
 		if (Keyboard.isKeyDown(Keyboard.KEY_RETURN))
 		{
 			// evolves two biomorphs together
-			if (keystop == false) bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph());
-			keystop = true;
+			if (keystop == false) 
+			{	
+				bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph());
+				bm.createAndAdd();
+				keystop = true;
+			}
 		}
 		// This prevents repeated creations of biomorphs while the Enter key
 		// is held down.

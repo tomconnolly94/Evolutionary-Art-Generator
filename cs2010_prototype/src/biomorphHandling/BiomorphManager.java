@@ -87,7 +87,7 @@ public class BiomorphManager
 		{
 			setUp();
 		}
-		Random rand = new Random();
+		Random rand = new Random(10);
 		return biomorphCollection.get(rand.nextInt(biomorphCollection.size()));
 	}
 	/**

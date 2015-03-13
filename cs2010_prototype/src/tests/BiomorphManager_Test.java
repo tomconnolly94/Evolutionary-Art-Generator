@@ -18,9 +18,25 @@ public class BiomorphManager_Test
 	}
 	
 	@Test
-	public void test()
+	public void testSize()
 	{
 		assertEquals(3,bm.cloneCollection().size());
 	}
+	
+	@Test
+	public void testCreateAndAdd()
+	{
+		bm.createAndAdd();
+		assertEquals(4,bm.cloneCollection().size());
+	}
+	
+	@Test
+	public void testRemove()
+	{
+		int size = bm.cloneCollection().size();
+		bm.remove(0);
+		assertEquals(size-1,bm.cloneCollection().size());
+	}
+
 
 }
