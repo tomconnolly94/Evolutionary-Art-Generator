@@ -10,7 +10,7 @@ public class EvolutionStats
 {
 	// Fields
 	private ArrayList<int[]> statsMaster;
-	private int numOfGenes = 11;
+	private int numOfGenes = 10;
 	private ArrayList<String> runningStats;
 	private int[] perfectValues;
 	/*
@@ -65,7 +65,6 @@ public class EvolutionStats
 		runningStats.add("Color Red           "+perfectValues[3]+"(PV)-- ");
 		runningStats.add("Color Green         "+perfectValues[4]+"(PV)-- ");
 		runningStats.add("Color Blue          "+perfectValues[5]+"(PV)-- ");
-		runningStats.add("Curvature           "+perfectValues[6]+"(PV)-- ");
 		runningStats.add("Length              "+perfectValues[7]+"(PV)-- ");
 		runningStats.add("Length Increment    "+perfectValues[8]+"(PV)-- ");
 		runningStats.add("Thickness           "+perfectValues[9]+"(PV)-- ");

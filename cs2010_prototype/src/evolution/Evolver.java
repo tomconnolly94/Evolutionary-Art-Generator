@@ -60,7 +60,7 @@ public class Evolver
 		// BiomorphCreator is used to create a new child biomorph with the
 		// values held in the array 'childGenes'.
 		BiomorphCreator bc = new BiomorphCreator();
-		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10]);
+		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9]);
 		return biomorph;
 	}
 	// returns childGenes array.
