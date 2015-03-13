@@ -8,7 +8,7 @@ import org.junit.Test;
 import biomorphHandling.*;
 
 //class to test all features of the Biomorph Class
-public class BiomorphTest
+public class Biomorph_Test
 {
 	private Biomorph biomorph;
 	private int[] values = {2,2,4,100,100,100,5,2,3,1};
