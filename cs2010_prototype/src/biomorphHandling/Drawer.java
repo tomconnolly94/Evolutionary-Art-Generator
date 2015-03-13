@@ -62,7 +62,7 @@ public class Drawer
 		if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) if (lat > -90.0f) lat -= 2.0f;
 		if (Keyboard.isKeyDown(Keyboard.KEY_LEFT)) lon -= 2.0f;
 		if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) lon += 2.0f;
-		if (Keyboard.isKeyDown(Keyboard.KEY_W)) zoom -= 0.01f;
+		if (Keyboard.isKeyDown(Keyboard.KEY_W))if(zoom>0) zoom -= 0.01f;
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) zoom += 0.01f;
 		if (Display.isCloseRequested()) quit = true;
 	}
