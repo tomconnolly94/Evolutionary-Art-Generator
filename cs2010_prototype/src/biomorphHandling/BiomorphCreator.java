@@ -16,7 +16,8 @@ public class BiomorphCreator
 	 */
 	public Biomorph createBiomorph()
 	{
-		rand = new Random();
+		
+		rand = new Random(/*10*/);
 		// The branch gene has been limited to a minimum of 3 to prevent a
 		// simple line being generated.
 		int branch = rand.nextInt(8) + 3;

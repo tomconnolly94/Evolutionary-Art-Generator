@@ -21,8 +21,8 @@ public class Biomorph_Test
 		
 	}
 	
-	@Test //tests
-	public void test()
+	@Test //tests whether the gene values have been assigned to the Biomorph correctly.
+	public void testGeneValues()
 	{
 		for(int i=0; i<biomorph.getGenes().length; i++){
 		assertEquals(biomorph.getGenes()[i].getValue(), values[i]);
