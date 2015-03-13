@@ -56,7 +56,7 @@ public class Biomorph
 			GL11.glPopMatrix();
 		GL11.glPopMatrix();
 		//increase the thickness of the biomorph.
-				i = (genes[8].getValue() + (i+genes[10].getValue()));
+				i = (genes[8].getValue() + (i+genes[9].getValue()));
 			    i++;
 			}
 			  i = genes[9].getValue();
