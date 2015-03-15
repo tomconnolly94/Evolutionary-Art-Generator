@@ -57,6 +57,10 @@ public class BiomorphManager
 			remove(3);
 		}
 	}
+	public void addSpecific(Biomorph b)
+	{
+		biomorphCollection.add(0,b);
+	}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
 	 */
