@@ -8,7 +8,8 @@ import genes.*;
  * whichever parent had the value closest to the value set out in the 'perfect
  * values' array) is returned. Depending on the numbers in the 'perfect values'
  * array, models evolution quite closely as a child biomorph has for each gene
- * either the mothers gene value or the fathers, not a combination of both.
+ * either the mothers gene value or the fathers, not a blend of the values for 
+ * each gene.
  * @author Tom Connolly
  * @version 24/02/2015
  */
