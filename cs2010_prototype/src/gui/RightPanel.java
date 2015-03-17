@@ -121,6 +121,9 @@ public void modify(){
 	
 }
 
+public static void main(String[] args){
+	RightPanel rp = new RightPanel();
+}
 
 }
 
