@@ -114,8 +114,7 @@ public class Biomorph
 				GL11.glPushMatrix();
 				{
 					GL11.glRotatef((float) b * (360.0f / genes[0].getValue()), 0.0f, 0.0f, 1.0f);
-					// When length increment is non-zero, this does not translate correctly. Help would be appreciated. 
-					GL11.glTranslatef(0.0f, length, 0.0f);
+					GL11.glTranslatef(0.0f, genes[6].getValue() + ((genes[2].getValue() - chains + 1) * genes[7].getValue()), 0.0f);
 					loop(chains - 1, limbCount);
 				}
 				GL11.glPopMatrix();
