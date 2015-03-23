@@ -1,6 +1,7 @@
-/gui/
-/biomorphHandling/
-/evolution/
-/genes/
 /geometry/
+/biomorphHandling/
+/genes/
+/tests/
+/evolution/
+/gui/
 /input_output/

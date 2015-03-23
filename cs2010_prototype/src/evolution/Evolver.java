@@ -8,7 +8,7 @@ import genes.*;
  * whichever parent had the value closest to the value set out in the 'perfect
  * values' array) is returned. Depending on the numbers in the 'perfect values'
  * array, models evolution quite closely as a child biomorph has for each gene
- * either the mothers gene value or the fathers, not a blend of the values for 
+ * either the mothers gene value or the fathers, not a blend of the values for
  * each gene.
  * @author Tom Connolly
  * @version 24/02/2015
@@ -41,7 +41,7 @@ public class Evolver
 	public Biomorph evolve()
 	{
 		// The childGenes array is instantiated.
-		childGenes = new int[11];
+		childGenes = new int[13];
 		/*
 		 * Each father gene and each mother gene are pulled out and compared to
 		 * the 'perfect value', the gene value closest to the perfect number is
@@ -61,7 +61,7 @@ public class Evolver
 		// BiomorphCreator is used to create a new child biomorph with the
 		// values held in the array 'childGenes'.
 		BiomorphCreator bc = new BiomorphCreator();
-		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9]);
+		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11], childGenes[12]);
 		return biomorph;
 	}
 	// returns childGenes array.

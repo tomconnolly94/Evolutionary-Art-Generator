@@ -13,48 +13,34 @@ import javax.swing.border.EmptyBorder;
  * The main window for the Biomorph Simulation.
  * @author Charandeep Rai
  */
-
 public class GraphicsMain
 {
 	// The main frame used for the GUI
 	private static JFrame mainFrame;
-	//private FileMenu fileFrame;
-	
-	
+	// private FileMenu fileFrame;
 	public GraphicsMain()
 	{
-		final int blankSpace =1;
-		
-		//this.fileFrame = fileFrame;
+		final int blankSpace = 1;
+		// this.fileFrame = fileFrame;
 		// Creating the main container for the GUI
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//Creating the other containers for the GUI
+		// Creating the other containers for the GUI
 		JPanel biomorphPanel = new JPanel();
 		JPanel filemenuPanel = new JPanel();
 		JPanel rightPanel = new JPanel();
-		
 		// Specifying the layout managers
 		mainFrame.setLayout(new BorderLayout());
 		mainFrame.setPreferredSize(new Dimension(500, 500));
-		((JPanel)mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));		
-		
-		
+		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		biomorphPanel.setLayout(new BorderLayout());
 		biomorphPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-		
 		filemenuPanel.setLayout(new BorderLayout());
 		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-		
 		// Add components to containers
-		
-		
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
 		mainFrame.add(rightPanel, BorderLayout.EAST);
-		
-		
 		// Action Listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
@@ -63,11 +49,8 @@ public class GraphicsMain
 				exitApp();
 			}
 		});
-		
-	
-	
-	mainFrame.pack();
-	mainFrame.setVisible(true);
+		mainFrame.pack();
+		mainFrame.setVisible(true);
 	}
 	private void exitApp()
 	{
@@ -77,7 +60,6 @@ public class GraphicsMain
 			System.exit(0);
 		}
 	}
-	
 	public static void main(String[] args)
 	{
 		GraphicsMain gm = new GraphicsMain();

@@ -2,7 +2,8 @@ package evolution;
 import java.io.IOException;
 import java.util.ArrayList;
 /**
- * Class to take the gene values from a Biomorph and store them to be printed when called.
+ * Class to take the gene values from a Biomorph and store them to be printed
+ * when called.
  * @author Tom Connolly
  * @version 28/02/2015
  */
@@ -59,15 +60,15 @@ public class EvolutionStats
 	private void loadGeneNames()
 	{
 		runningStats = new ArrayList<String>(numOfGenes);
-		runningStats.add("Branch              "+perfectValues[0]+"(PV)-- ");
-		runningStats.add("Branch Increment    "+perfectValues[1]+"(PV)-- ");
-		runningStats.add("Chain               "+perfectValues[2]+"(PV)-- ");
-		runningStats.add("Color Red           "+perfectValues[3]+"(PV)-- ");
-		runningStats.add("Color Green         "+perfectValues[4]+"(PV)-- ");
-		runningStats.add("Color Blue          "+perfectValues[5]+"(PV)-- ");
-		runningStats.add("Length              "+perfectValues[7]+"(PV)-- ");
-		runningStats.add("Length Increment    "+perfectValues[8]+"(PV)-- ");
-		runningStats.add("Thickness           "+perfectValues[9]+"(PV)-- ");
-		runningStats.add("Thickness Increment "+perfectValues[10]+"(PV)-- ");
+		runningStats.add("Branch              " + perfectValues[0] + "(PV)-- ");
+		runningStats.add("Branch Increment    " + perfectValues[1] + "(PV)-- ");
+		runningStats.add("Chain               " + perfectValues[2] + "(PV)-- ");
+		runningStats.add("Color Red           " + perfectValues[3] + "(PV)-- ");
+		runningStats.add("Color Green         " + perfectValues[4] + "(PV)-- ");
+		runningStats.add("Color Blue          " + perfectValues[5] + "(PV)-- ");
+		runningStats.add("Length              " + perfectValues[7] + "(PV)-- ");
+		runningStats.add("Length Increment    " + perfectValues[8] + "(PV)-- ");
+		runningStats.add("Thickness           " + perfectValues[9] + "(PV)-- ");
+		runningStats.add("Thickness Increment " + perfectValues[10] + "(PV)-- ");
 	}
 }

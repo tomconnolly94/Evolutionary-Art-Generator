@@ -1,9 +1,4 @@
-
-
-
-
-  package biomorphHandling;
-
+package biomorphHandling;
 import java.util.LinkedList;
 import java.util.Random;
 import evolution.*;
@@ -17,10 +12,10 @@ public class BiomorphManager
 	private LinkedList<Biomorph> biomorphCollection;
 	// set of perfect values that the Biomorphs will evolve towards.
 	private int[] perfectValues =
-	{5, 5, 4, 100, 256, 50, 5, 8, 2, 2, 5};
+	{5, 5, 4, 100, 256, 50, 5, 8, 2, 2, 5, 0, 0};
 	private EvolutionStats statisticMachine = new EvolutionStats(perfectValues);
-	//integer to change the name of Biomorphs after they are saved.
-	private int i=1;
+	// integer to change the name of Biomorphs after they are saved.
+	private int i = 1;
 	public BiomorphManager()
 	{
 		setUp();
@@ -28,8 +23,10 @@ public class BiomorphManager
 	public void setUp()
 	{
 		biomorphCollection = new LinkedList<Biomorph>();
-		/* create 4 random orginal parent Biomorphs and load them into indexes
-		 0-3 in collection*/
+		/*
+		 * create 4 random orginal parent Biomorphs and load them into indexes
+		 * 0-3 in collection
+		 */
 		for (int i = 0; i < 4; i++)
 		{
 			createAndAdd();
@@ -47,8 +44,8 @@ public class BiomorphManager
 		Biomorph biomorph2 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
 		biomorphCollection.add(1, biomorph2);
 		/*
-		 * takes evolved parents in indexes 0 and 1, evolves them together and places
-		 * the resulting biomorph in index 2.
+		 * takes evolved parents in indexes 0 and 1, evolves them together and
+		 * places the resulting biomorph in index 2.
 		 */
 		Biomorph biomorph3 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
 		biomorphCollection.add(2, biomorph3);
@@ -59,7 +56,7 @@ public class BiomorphManager
 	}
 	public void addSpecific(Biomorph b)
 	{
-		biomorphCollection.add(0,b);
+		biomorphCollection.add(0, b);
 	}
 	/**
 	 * Creates a biomorph and adds it to the list of biomorphs.
@@ -122,11 +119,11 @@ public class BiomorphManager
 		Biomorph biomorph = ec.evolve();
 		statisticMachine.saveGeneValues(ec.getChildGenes());
 		statisticMachine.printRunningStats();
-/*		//Code to save Biomorph TODO:
-		Save save = new Save();
-		String fileName = "Biomorph " + Integer.toString(i);
-		i++;
-		save.saveGeneValuesToTextFile(biomorph.getGenes(), fileName);*/
+		/*
+		 * //Code to save Biomorph TODO: Save save = new Save(); String fileName
+		 * = "Biomorph " + Integer.toString(i); i++;
+		 * save.saveGeneValuesToTextFile(biomorph.getGenes(), fileName);
+		 */
 		return biomorph;
 	}
 }

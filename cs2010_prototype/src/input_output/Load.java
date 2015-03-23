@@ -1,5 +1,4 @@
 package input_output;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -11,13 +10,11 @@ import java.io.IOException;
  */
 public class Load
 {
-	
-	public Load(){
-		
+	public Load()
+	{
 	}
-	
-	public void loadGeneValuesFromTextFile(String fileName) throws IOException{
-	
+	public void loadGeneValuesFromTextFile(String fileName) throws IOException
+	{
 		try
 		{
 			BufferedReader br = new BufferedReader(new FileReader("src/" + fileName + ".txt"));
@@ -28,11 +25,9 @@ public class Load
 		{
 			System.out.println("FILE NOT FOUND");
 		}
-		
 	}
-	
-/*	//main method for testing
-	public static void main(String[] args) throws IOException{
-		loadGeneValuesFromTextFile("Biomorph 1");
-	}*/
+	/*
+	 * //main method for testing public static void main(String[] args) throws
+	 * IOException{ loadGeneValuesFromTextFile("Biomorph 1"); }
+	 */
 }
