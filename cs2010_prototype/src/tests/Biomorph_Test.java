@@ -13,7 +13,7 @@ public class Biomorph_Test
 	// pre-conditions
 	public void setUp()
 	{
-		biomorph = new Biomorph(2, 2, 4, 100, 100, 100, 5, 2, 3, 1);
+		biomorph = new Biomorph(2, 2, 4, 100, 100, 100, 5, 2, 3, 1, 200, 200, 200);
 	}
 	@Test
 	// tests whether the gene values have been assigned to the Biomorph
