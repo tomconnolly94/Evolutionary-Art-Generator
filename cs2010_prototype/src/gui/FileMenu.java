@@ -21,7 +21,6 @@ public class FileMenu
 	private JMenuBar createMenuBar(String name, int depth)
 	{
 		JMenuBar menubar = new JMenuBar();
-		// JMenuBar openmenubar= new JMenuBar();
 		menubar.add(createNewMenu("New", 4));
 		menubar.add(createSaveMenu("Save", 1));
 		menubar.add(createOpenMenu("Open", 2));

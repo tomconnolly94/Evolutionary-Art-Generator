@@ -21,14 +21,15 @@ public class GraphicsMain
 	public GraphicsMain()
 	{
 		final int blankSpace = 1;
-		// this.fileFrame = fileFrame;
 		// Creating the main container for the GUI
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		// Creating the other containers for the GUI
 		JPanel biomorphPanel = new JPanel();
 		JPanel filemenuPanel = new JPanel();
 		JPanel rightPanel = new JPanel();
+		
 		// Specifying the layout managers
 		mainFrame.setLayout(new BorderLayout());
 		mainFrame.setPreferredSize(new Dimension(500, 500));
@@ -37,10 +38,12 @@ public class GraphicsMain
 		biomorphPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		filemenuPanel.setLayout(new BorderLayout());
 		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+		
 		// Add components to containers
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
 		mainFrame.add(rightPanel, BorderLayout.EAST);
+		
 		// Action Listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
@@ -52,6 +55,7 @@ public class GraphicsMain
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}
+	
 	private void exitApp()
 	{
 		int response = JOptionPane.showConfirmDialog(mainFrame, "Are you sure that you want to quit?", "Quit?", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -60,6 +64,7 @@ public class GraphicsMain
 			System.exit(0);
 		}
 	}
+	
 	public static void main(String[] args)
 	{
 		GraphicsMain gm = new GraphicsMain();
