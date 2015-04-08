@@ -4,6 +4,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -15,8 +16,8 @@ import javax.swing.border.EmptyBorder;
  * The File Menu element of the program
  * @author Charandeep Rai
  */
-public class FileMenu
-{
+public class FileMenu extends JComponent {
+
 	// public static JFrame fileFrame;
 	private JMenuBar createMenuBar(String name, int depth)
 	{

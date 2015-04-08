@@ -25,6 +25,8 @@ public class GraphicsMain
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		final FileMenu filemenu = new FileMenu();
+		
 		// Creating the other containers for the GUI
 		JPanel biomorphPanel = new JPanel();
 		JPanel filemenuPanel = new JPanel();
@@ -40,10 +42,13 @@ public class GraphicsMain
 		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
 		// Add components to containers
+		filemenuPanel.add(filemenu, BorderLayout.CENTER);
+
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
 		mainFrame.add(rightPanel, BorderLayout.EAST);
 		
+				
 		// Action Listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
