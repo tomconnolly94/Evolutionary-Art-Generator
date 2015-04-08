@@ -4,6 +4,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,9 +26,12 @@ public class GraphicsMain
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		final FileMenu filemenu = new FileMenu();
+		//Importing the filemenu element
+		FileMenu filemenu = new FileMenu();
 		
 		// Creating the other containers for the GUI
+		//JButton button = new JButton();
+		
 		JPanel biomorphPanel = new JPanel();
 		JPanel filemenuPanel = new JPanel();
 		JPanel rightPanel = new JPanel();
@@ -36,14 +40,16 @@ public class GraphicsMain
 		mainFrame.setLayout(new BorderLayout());
 		mainFrame.setPreferredSize(new Dimension(500, 500));
 		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+		
 		biomorphPanel.setLayout(new BorderLayout());
 		biomorphPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+		
 		filemenuPanel.setLayout(new BorderLayout());
 		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
 		// Add components to containers
 		filemenuPanel.add(filemenu, BorderLayout.CENTER);
-
+		
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
 		mainFrame.add(rightPanel, BorderLayout.EAST);
