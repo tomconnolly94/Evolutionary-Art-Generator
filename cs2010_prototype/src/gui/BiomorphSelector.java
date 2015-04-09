@@ -61,35 +61,35 @@ public class BiomorphSelector
 		JButton button8 = new JButton();
 
 		// Setting the properties
-		button1.setText("Button 1!"); 
+		button1.setText("Biomorph Placeholder 1"); 
 		button1.setBorder(BorderFactory.createEmptyBorder());
 		button1.setContentAreaFilled(false);
 	
-		button2.setText("Button 2!"); 
+		button2.setText("Biomorph Placeholder 2"); 
 		button2.setBorder(BorderFactory.createEmptyBorder());
 		button2.setContentAreaFilled(false);	
 		
-		button3.setText("Button 3!"); 
+		button3.setText("Biomorph Placeholder 3"); 
 		button3.setBorder(BorderFactory.createEmptyBorder());
 		button3.setContentAreaFilled(false);
 	
-		button4.setText("Button 4!"); 
+		button4.setText("Biomorph Placeholder 4"); 
 		button4.setBorder(BorderFactory.createEmptyBorder());
 		button4.setContentAreaFilled(false);
 		
-		button5.setText("Button 5!"); 
+		button5.setText("Biomorph Placeholder 5"); 
 		button5.setBorder(BorderFactory.createEmptyBorder());
 		button5.setContentAreaFilled(false);
 	
-		button6.setText("Button 6!"); 
+		button6.setText("Biomorph Placeholder 6"); 
 		button6.setBorder(BorderFactory.createEmptyBorder());
 		button6.setContentAreaFilled(false);
 	
-		button7.setText("Button 7!"); 
+		button7.setText("Biomorph Placeholder 7"); 
 		button7.setBorder(BorderFactory.createEmptyBorder());
 		button7.setContentAreaFilled(false);
 	
-		button8.setText("Button 8!"); 
+		button8.setText("Biomorph Placeholder 8"); 
 		button8.setBorder(BorderFactory.createEmptyBorder());
 		button8.setContentAreaFilled(false);
 	
