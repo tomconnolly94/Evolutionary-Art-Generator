@@ -35,7 +35,7 @@ public class GraphicsMain
 		JPanel biomorphPanel = new JPanel();
 		JPanel filemenuPanel = new JPanel();
 		JPanel rightPanel = new JPanel();
-		JPanel selectorPanel = new JPanel
+		JPanel selectorPanel = new JPanel();
 		
 		// Specifying the layout managers
 		mainFrame.setLayout(new BorderLayout());
@@ -54,7 +54,7 @@ public class GraphicsMain
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
 		mainFrame.add(rightPanel, BorderLayout.EAST);
-		main
+		mainFrame.add(selectorPanel, BorderLayout.SOUTH);
 		
 				
 		// Action Listeners

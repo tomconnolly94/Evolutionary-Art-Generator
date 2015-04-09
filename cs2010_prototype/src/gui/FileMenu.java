@@ -115,7 +115,7 @@ public class FileMenu extends JComponent {
 		});
 		return jMenuItem;
 	}
-	protected void intialise()
+	protected void initialise()
 	{
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,6 +125,6 @@ public class FileMenu extends JComponent {
 	}
 	public static void main(String[] args)
 	{
-		new FileMenu().intialise();
+		new FileMenu().initialise();
 	}
 }
