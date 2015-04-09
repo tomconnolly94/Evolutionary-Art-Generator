@@ -57,6 +57,8 @@ public class GraphicsMain
 		// Add components to containers
 		filemenuPanel.add(filemenu.getContents(), BorderLayout.CENTER);
 		
+		selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
+		
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
 		mainFrame.add(rightPanel, BorderLayout.EAST);
