@@ -118,6 +118,11 @@ public class BiomorphSelector
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}
+	
+	public JPanel getContents()
+	{
+		return (JPanel)mainFrame.getContentPane();
+	}
 
 	public static void main (String[] args)
 	{

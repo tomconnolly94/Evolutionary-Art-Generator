@@ -29,6 +29,9 @@ public class GraphicsMain
 		//Importing the filemenu element
 		FileMenu filemenu = new FileMenu();
 		
+		//Importing the Biomorph selection element
+		BiomorphSelector selector = new BiomorphSelector();
+		
 		// Creating the other containers for the GUI
 		//JButton button = new JButton();
 		
@@ -47,6 +50,9 @@ public class GraphicsMain
 		
 		filemenuPanel.setLayout(new BorderLayout());
 		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+		
+		selectorPanel.setLayout(new BorderLayout());
+		selectorPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
 		// Add components to containers
 		filemenuPanel.add(filemenu.getContents(), BorderLayout.CENTER);
