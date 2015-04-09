@@ -8,12 +8,12 @@ public class Biomorph_Test
 {
 	private Biomorph biomorph;
 	private int[] values =
-	{2, 2, 4, 100, 100, 100, 5, 2, 3, 1};
+	{2, 2, 4, 100, 100, 100, 5, 2, 3, 1, 0, 0, 0};
 	@Before
 	// pre-conditions
 	public void setUp()
 	{
-		biomorph = new Biomorph(2, 2, 4, 100, 100, 100, 5, 2, 3, 1);
+		biomorph = new Biomorph(2, 2, 4, 100, 100, 100, 5, 2, 3, 1, 0, 0, 0);
 	}
 	@Test
 	// tests whether the gene values have been assigned to the Biomorph

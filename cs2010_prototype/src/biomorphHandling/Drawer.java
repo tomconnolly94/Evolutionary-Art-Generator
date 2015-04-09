@@ -8,7 +8,7 @@ import org.lwjgl.util.glu.GLU;
  * Class to handle the drawing and displaying of Biomorphs. Also serves as
  * application's main class.
  * @author Tom Connolly, Jack Taylor, Charandeep Rai.
- * @version 24/02/2015
+ * @version 09/04/2015
  */
 public class Drawer
 {
@@ -102,12 +102,12 @@ public class Drawer
 	{
 		Drawer d = new Drawer();
 		// Integer to store runCount for auto-run feature.
-		int i = 0;
+		// int i = 0;
 		while (quit == false)
 		{
 			d.checkInput();
 			d.draw();
-			i++;
+			// i++;
 		}
 		Display.destroy();
 	}

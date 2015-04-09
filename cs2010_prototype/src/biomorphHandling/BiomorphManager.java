@@ -5,7 +5,7 @@ import evolution.*;
 /**
  * Class to handle storing and manipulation of Biomorphs.
  * @author Tom Connolly
- * @version 04/03/2015
+ * @version 09/04/2015
  */
 public class BiomorphManager
 {
@@ -15,7 +15,7 @@ public class BiomorphManager
 	{5, 5, 4, 100, 256, 50, 5, 8, 2, 2, 5, 0, 0};
 	private EvolutionStats statisticMachine = new EvolutionStats(perfectValues);
 	// integer to change the name of Biomorphs after they are saved.
-	private int i = 1;
+	// private int i = 1;
 	public BiomorphManager()
 	{
 		setUp();

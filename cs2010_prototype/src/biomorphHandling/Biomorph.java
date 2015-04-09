@@ -5,11 +5,11 @@ import geometry.*;
 /**
  * Class to model and draw a single biomorph.
  * @author Tom Connolly, Jack Taylor
- * @version 23/03/2015
+ * @version 09/04/2015
  */
 public class Biomorph
 {
-	//List of array indices for genes
+	// List of array indices for genes
 	public static final int BRANCH = 0;
 	public static final int BRANCH_INCREMENT = 1;
 	public static final int CHAIN = 2;
@@ -25,6 +25,7 @@ public class Biomorph
 	public static final int IRIDESCENCE_BLUE = 12;
 	// An array is instantiated to hold 13 Genes that will be defined in the constructor.
 	private Gene[] genes = new Gene[13];
+	// Due to the cumbersome parameter list, I propose that we pass an array of integers instead of the individual values.
 	public Biomorph(int branchVal, int branchIncrementVal, int chainVal, int redVal, int greenVal, int blueVal, int lengthVal, int lengthIncrementVal, int thicknessVal, int thicknessIncrementVal, int iridRedVal, int iridGreenVal, int iridBlueVal)
 	{
 		// Genes are created and assigned values according to the parameters given. They are then placed in an array in
