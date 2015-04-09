@@ -18,7 +18,15 @@ import javax.swing.border.EmptyBorder;
  */
 public class FileMenu extends JComponent {
 
-	// public static JFrame fileFrame;
+	private JFrame frame;
+	public FileMenu()
+	{
+		initialise();
+	}
+	public JPanel getContents()
+	{
+		return (JPanel)frame.getContentPane();
+	}
 	private JMenuBar createMenuBar(String name, int depth)
 	{
 		JMenuBar menubar = new JMenuBar();
@@ -117,11 +125,11 @@ public class FileMenu extends JComponent {
 	}
 	protected void initialise()
 	{
-		JFrame frame = new JFrame();
+		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(createMenuBar("Save", 1));
 		frame.pack();
-		frame.setVisible(true);
+		//frame.setVisible(true);
 	}
 	public static void main(String[] args)
 	{

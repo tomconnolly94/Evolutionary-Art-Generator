@@ -49,7 +49,7 @@ public class GraphicsMain
 		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
 		// Add components to containers
-		filemenuPanel.add(filemenu, BorderLayout.CENTER);
+		filemenuPanel.add(filemenu.getContents(), BorderLayout.CENTER);
 		
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
