@@ -54,7 +54,6 @@ public class GraphicsMain
 		rightPanel.setLayout(new BorderLayout());
 		rightPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
-		
 		selectorPanel.setLayout(new BorderLayout());
 		selectorPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		

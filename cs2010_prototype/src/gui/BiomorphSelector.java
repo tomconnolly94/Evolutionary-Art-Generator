@@ -4,6 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,7 +28,29 @@ public class BiomorphSelector
 		// Creating the containers for the components
 		mainFrame = new JFrame("Biomorph Selector");
 		JPanel grid = new JPanel();	
+		
+//		BufferedImage button1Icon = ImageIO.read(new File(""));
+//		BufferedImage button2Icon = ImageIO.read(new File(""));
+//		BufferedImage button3Icon = ImageIO.read(new File(""));
+//		BufferedImage button4Icon = ImageIO.read(new File(""));
+//		BufferedImage button5Icon = ImageIO.read(new File(""));
+//		BufferedImage button6Icon = ImageIO.read(new File(""));
+//		BufferedImage button7Icon = ImageIO.read(new File(""));
+//		BufferedImage button8Icon = ImageIO.read(new File(""));
 
+		
+		
+		// Creating new buttons
+//		JButton button1 = new JButton(new ImageIcon(button1Icon));
+//		JButton button2 = new JButton(new ImageIcon(button2Icon));
+//		JButton button3 = new JButton(new ImageIcon(button3Icon));
+//		JButton button4 = new JButton(new ImageIcon(button4Icon));
+//		JButton button5 = new JButton(new ImageIcon(button5Icon));
+//		JButton button6 = new JButton(new ImageIcon(button6Icon));
+//		JButton button7 = new JButton(new ImageIcon(button7Icon));
+//		JButton button8 = new JButton(new ImageIcon(button8Icon));
+
+		
 		JButton button1 = new JButton();
 		JButton button2 = new JButton();
 		JButton button3 = new JButton();
@@ -35,14 +62,37 @@ public class BiomorphSelector
 
 		// Setting the properties
 		button1.setText("Button 1!"); 
+		button1.setBorder(BorderFactory.createEmptyBorder());
+		button1.setContentAreaFilled(false);
+	
 		button2.setText("Button 2!"); 
+		button2.setBorder(BorderFactory.createEmptyBorder());
+		button2.setContentAreaFilled(false);	
+		
 		button3.setText("Button 3!"); 
+		button3.setBorder(BorderFactory.createEmptyBorder());
+		button3.setContentAreaFilled(false);
+	
 		button4.setText("Button 4!"); 
+		button4.setBorder(BorderFactory.createEmptyBorder());
+		button4.setContentAreaFilled(false);
+		
 		button5.setText("Button 5!"); 
+		button5.setBorder(BorderFactory.createEmptyBorder());
+		button5.setContentAreaFilled(false);
+	
 		button6.setText("Button 6!"); 
+		button6.setBorder(BorderFactory.createEmptyBorder());
+		button6.setContentAreaFilled(false);
+	
 		button7.setText("Button 7!"); 
+		button7.setBorder(BorderFactory.createEmptyBorder());
+		button7.setContentAreaFilled(false);
+	
 		button8.setText("Button 8!"); 
-
+		button8.setBorder(BorderFactory.createEmptyBorder());
+		button8.setContentAreaFilled(false);
+	
 		// Specifying the layout managers
 		mainFrame.setLayout(new BorderLayout());
 		((JPanel)mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
