@@ -35,7 +35,7 @@ public class BiomorphWindow {
 			
 		       @Override
 	            public void reshape( GLAutoDrawable glautodrawable, int x, int y, int width, int height ) {
-	                Drawer.draw();
+	             //   Drawer.draw();
 	            }
 	            
 	            @Override
