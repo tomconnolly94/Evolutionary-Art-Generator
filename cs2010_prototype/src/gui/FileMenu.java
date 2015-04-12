@@ -129,7 +129,6 @@ public class FileMenu extends JComponent {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(createMenuBar("Save", 1));
 		frame.pack();
-		//frame.setVisible(true);
 	}
 	public static void main(String[] args)
 	{

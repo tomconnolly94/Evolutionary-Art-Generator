@@ -5,6 +5,7 @@ import javax.media.opengl.GLProfile;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import biomorphHandling.Drawer;
 import java.awt.BorderLayout;
@@ -18,6 +19,7 @@ import java.awt.event.WindowEvent;
  *
  */
 public class BiomorphWindow {
+	
 	public static void main( String [] args) {
 		//Sets it to a default GL Profile
 		GLProfile profile = GLProfile.getDefault();
@@ -60,20 +62,16 @@ public class BiomorphWindow {
 		}
 				);
 	
+
+  
+
+	}
 	
-	  final JFrame window = new JFrame(); 
-       window.getContentPane().add( canvas, BorderLayout.CENTER );
-       window.setSize( 640, 480 );
-       window.setVisible( true );
-       
-	}
-
-	public JPanel getContents(JFrame window, GLCanvas canvas){
-		return window.getContentPane().add(canvas, BorderLayout.CENTER);
-
-	}
-
-
+	 final JFrame window = new JFrame(); 
+	 
+	 public JPanel getContents(){
+	 return (JPanel)window.getContentPane();//.add( canvas, BorderLayout.CENTER);
+	   	}
 }
 
 	
