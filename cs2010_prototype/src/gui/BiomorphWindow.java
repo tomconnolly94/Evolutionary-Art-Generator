@@ -13,11 +13,10 @@ import java.awt.event.WindowEvent;
 /**
  * The Biomorph window using JOGL and Swing Components
  * 
- * @author Charandeep
+ * @author Charandeep Rai
  *
  */
 public class BiomorphWindow {
-
 	public static void main( String [] args) {
 		//Sets it to a default GL Profile
 		GLProfile profile = GLProfile.getDefault();
@@ -25,42 +24,47 @@ public class BiomorphWindow {
 		GLCapabilities capabilities = new GLCapabilities(profile);
 		//Applies those capabilities to a new OpenGL Canvas
 		GLCanvas canvas = new GLCanvas( capabilities);
-		
+
 		//Adds OpenGL event listeners to the canvas
-        canvas.addGLEventListener( new GLEventListener() {
+		canvas.addGLEventListener( new GLEventListener() {
 
 			@Override
 			public void display(GLAutoDrawable arg0)
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void dispose(GLAutoDrawable arg0)
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void init(GLAutoDrawable arg0)
 			{
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void reshape(GLAutoDrawable arg0, int arg1, int arg2, int arg3, int arg4)
 			{
 				// TODO Auto-generated method stub
-				
-			}
-            
-            }
-        );
 
-        
-    
+			}
+
+		}
+				);
+	}
+	
+	   final JFrame window = new JFrame(); 
+       window.getContentPane().add( glcanvas, BorderLayout.CENTER );
+       winodw.setSize( 640, 480 );
+       window.setVisible( true );
+       
+       
 }
 }
