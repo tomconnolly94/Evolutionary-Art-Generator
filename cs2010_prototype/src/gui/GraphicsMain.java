@@ -6,6 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
@@ -21,6 +22,8 @@ public class GraphicsMain
 	// private FileMenu fileFrame;
 	public GraphicsMain()
 	{
+		final JLabel tempRightLabel = new JLabel("Right Panel");
+		final JLabel tempLeftLabel = new JLabel("Biomorph Window");
 		final int blankSpace = 1;
 		// Creating the main container for the GUI
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
@@ -46,7 +49,7 @@ public class GraphicsMain
 		
 		// Specifying the layout managers
 		mainFrame.setLayout(new BorderLayout());
-		mainFrame.setPreferredSize(new Dimension(500, 500));
+		mainFrame.setPreferredSize(new Dimension(1024,1024));
 		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		
 		biomorphPanel.setLayout(new BorderLayout());
@@ -66,7 +69,10 @@ public class GraphicsMain
 		
 		selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
 		
-		biomorphPanel.add(biowindow.getContents(), BorderLayout.CENTER);
+		biomorphPanel.add(biowindow.getContents(), BorderLayout.WEST);
+		biomorphPanel.add(tempLeftLabel, BorderLayout.EAST);
+		
+		rightPanel.add(tempRightLabel, BorderLayout.CENTER);
 		
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
@@ -82,6 +88,7 @@ public class GraphicsMain
 				exitApp();
 			}
 		});
+		
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}
