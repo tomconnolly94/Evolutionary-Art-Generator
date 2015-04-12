@@ -20,6 +20,8 @@ import java.awt.event.WindowEvent;
  */
 public class BiomorphWindow {
 	
+	 final JFrame window = new JFrame(); 
+	
 	public static void main( String [] args) {
 		//Sets it to a default GL Profile
 		GLProfile profile = GLProfile.getDefault();
@@ -67,8 +69,15 @@ public class BiomorphWindow {
 
 	}
 	
-	 final JFrame window = new JFrame(); 
-	 
+
+	protected void initialise()
+	{
+		window.setSize(640,480);
+		window.pack();
+		window.setVisible(true);
+	}
+	
+	
 	 public JPanel getContents(){
 	 return (JPanel)window.getContentPane();//.add( canvas, BorderLayout.CENTER);
 	   	}
