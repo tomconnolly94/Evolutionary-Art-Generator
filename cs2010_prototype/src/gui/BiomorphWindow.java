@@ -32,34 +32,24 @@ public class BiomorphWindow {
 
 		//Adds OpenGL event listeners to the canvas
 		canvas.addGLEventListener( new GLEventListener() {
-
-			@Override
-			public void display(GLAutoDrawable arg0)
-			{
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void dispose(GLAutoDrawable arg0)
-			{
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void init(GLAutoDrawable arg0)
-			{
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void reshape(GLAutoDrawable arg0, int arg1, int arg2, int arg3, int arg4)
-			{
-				// TODO Auto-generated method stub
-
-			}
+			
+		       @Override
+	            public void reshape( GLAutoDrawable glautodrawable, int x, int y, int width, int height ) {
+	                Drawer.draw();
+	            }
+	            
+	            @Override
+	            public void init( GLAutoDrawable glautodrawable ) {
+	            }
+	            
+	            @Override
+	            public void dispose( GLAutoDrawable glautodrawable ) {
+	            }
+	            
+	            @Override
+	            public void display( GLAutoDrawable glautodrawable ) {
+//	
+	            	}
 
 		}
 				);
