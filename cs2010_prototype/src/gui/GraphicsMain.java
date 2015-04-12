@@ -32,6 +32,10 @@ public class GraphicsMain
 		//Importing the Biomorph selection element
 		BiomorphSelector selector = new BiomorphSelector();
 		
+		//Importing the Biomorph display window
+		BiomorphWindow window = new BiomorphWindow();
+		
+		
 		// Creating the other containers for the GUI
 		//JButton button = new JButton();
 		
@@ -61,6 +65,8 @@ public class GraphicsMain
 		filemenuPanel.add(filemenu.getContents(), BorderLayout.CENTER);
 		
 		selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
+		
+		biomorphPanel.add(window.getContents(), BorderLayout.CENTER);
 		
 		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 		mainFrame.add(biomorphPanel, BorderLayout.WEST);
