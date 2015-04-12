@@ -58,13 +58,13 @@ public class BiomorphWindow {
 
 		}
 				);
-	}
+	
 	
 	   final JFrame window = new JFrame(); 
-       window.getContentPane().add( glcanvas, BorderLayout.CENTER );
-       winodw.setSize( 640, 480 );
+       window.getContentPane().add( canvas, BorderLayout.CENTER );
+       window.setSize( 640, 480 );
        window.setVisible( true );
        
-       
+	}   
 }
-}
+
