@@ -11,9 +11,9 @@ public class BiomorphCustomisation
 {
 	private static JFrame customiseFrame;
 	
-	private static JPanel custoPanel;
+	private static JPanel customisePanel;
+	 
 	
-	private 
 	
 	
 	public BiomorphCustomisation(){
@@ -23,10 +23,7 @@ public class BiomorphCustomisation
 		customiseFrame = new JFrame();
 	
 	// Creation of the Box Layout panel
-		custoPanel = new JPanel();
-		
-	//	
-		
+		customisePanel = new JPanel();
 		
 	}
 	
