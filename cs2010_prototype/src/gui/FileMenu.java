@@ -44,6 +44,8 @@ public class FileMenu extends JComponent {
 			savemenu.add(createSaveMenuItem("Save as PDF"));
 			savemenu.add(createSaveMenuItem("Save as JPEG"));
 			savemenu.add(createSaveMenuItem("Save as TextFile"));
+			savemenu.add(createSaveMenuItem("Save as PNG"));
+			savemenu.add(createSaveMenuItem("Serialise Biomorph"));
 		}
 		return savemenu;
 	}
