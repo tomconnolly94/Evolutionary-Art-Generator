@@ -69,8 +69,7 @@ public class GraphicsMain
 		
 		selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
 		
-		biomorphPanel.add(biowindow.getContents(), BorderLayout.WEST);
-		biomorphPanel.add(tempLeftLabel, BorderLayout.EAST);
+		biomorphPanel.add(biowindow.getContents(), BorderLayout.EAST);
 		
 		rightPanel.add(tempRightLabel, BorderLayout.CENTER);
 		
