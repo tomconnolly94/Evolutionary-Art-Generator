@@ -7,6 +7,9 @@ import javax.media.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
 import biomorphHandling.Drawer;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -33,11 +36,7 @@ public class BiomorphWindow {
 		//Adds OpenGL event listeners to the canvas
 		canvas.addGLEventListener( new GLEventListener() {
 			
-		       public void reshape( GLAutoDrawable glautodrawable) {
-		    	   
-		       }
-	            
-	            @Override
+		       @Override
 	            public void init( GLAutoDrawable glautodrawable ) {
 	            }
 	            
@@ -47,8 +46,27 @@ public class BiomorphWindow {
 	            
 	            @Override
 	            public void display( GLAutoDrawable glautodrawable ) {
-	              //  Drawer.draw();
+	               DisplayMode mode = new DisplayMode(1024, 768);
+	            	
+	            	try
+					{
+						Display.setDisplayMode(mode);
+						Display.create();
+						Display.setTitle("Biomorph Display");
+					}
+					catch (Exception e)
+					{
+						e.printStackTrace();
+					}
+	                
 	            }
+
+				@Override
+				public void reshape(GLAutoDrawable arg0, int arg1, int arg2, int arg3, int arg4)
+				{
+					// TODO Auto-generated method stub
+					
+				}
 
 			
 
