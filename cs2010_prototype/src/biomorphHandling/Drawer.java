@@ -4,6 +4,9 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.GLU;
+import javax.media.opengl.GL;
+import javax.media.opengl.GL2;
+
 /**
  * Class to handle the drawing and displaying of Biomorphs. Also serves as
  * application's main class.

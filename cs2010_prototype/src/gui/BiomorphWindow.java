@@ -36,6 +36,9 @@ public class BiomorphWindow {
 		//Adds OpenGL event listeners to the canvas
 		canvas.addGLEventListener( new GLEventListener() {
 			
+			//TODO: Complete the init method as well as the display method, once this is complete the Biomorph will display in the GUI
+			
+			
 		       @Override
 	            public void init( GLAutoDrawable glautodrawable ) {
 	            }
@@ -62,9 +65,8 @@ public class BiomorphWindow {
 	            }
 
 				@Override
-				public void reshape(GLAutoDrawable arg0, int arg1, int arg2, int arg3, int arg4)
+				public void reshape(GLAutoDrawable glautodrawable, int aspect, int lat, int lon, int zoom)
 				{
-					// TODO Auto-generated method stub
 					
 				}
 
