@@ -67,7 +67,7 @@ public class BiomorphWindow {
 				@Override
 				public void reshape(GLAutoDrawable glautodrawable, int aspect, int lat, int lon, int zoom)
 				{
-					
+					Drawer.draw(glautodrawable.getGL(), aspect, lat, lon, zoom);
 				}
 
 			
