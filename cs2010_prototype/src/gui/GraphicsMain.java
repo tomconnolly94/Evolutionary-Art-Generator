@@ -36,7 +36,7 @@ public class GraphicsMain
 		BiomorphSelector selector = new BiomorphSelector();
 		
 		//Importing the Biomorph display window
-		BiomorphWindow biowindow = new BiomorphWindow();
+	//	BiomorphWindow biowindow = new BiomorphWindow();
 		
 		
 		// Creating the other containers for the GUI
@@ -69,7 +69,7 @@ public class GraphicsMain
 		
 		selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
 		
-		biomorphPanel.add(biowindow.getContents(), BorderLayout.EAST);
+		//biomorphPanel.add(biowindow.getContents(), BorderLayout.EAST);
 		
 		rightPanel.add(tempRightLabel, BorderLayout.CENTER);
 		
