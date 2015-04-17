@@ -31,9 +31,9 @@ public class BiomorphWindow implements GLEventListener {
 
 
     public static void main(String[] args) {
-        GLProfile glp = GLProfile.getDefault();
-        GLCapabilities caps = new GLCapabilities(glp);
-        GLCanvas canvas = new GLCanvas(caps);
+        GLProfile profile = GLProfile.getDefault();
+        GLCapabilities capabilities = new GLCapabilities(profile);
+        GLCanvas canvas = new GLCanvas(capabilities);
 
         Frame frame = new Frame("Test Biomorph Window");
         frame.setSize(1024, 768);
