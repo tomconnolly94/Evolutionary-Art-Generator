@@ -44,11 +44,11 @@ public class EvolutionStats
 		for (int arrayIndex = statsMaster.size() - 1; arrayIndex < statsMaster.size(); arrayIndex++)
 		{
 			System.out.println("");
-			System.out.println("---------- Iteration " + (arrayIndex + 1) + " ----------");
+			System.out.println("~~~~~~~~~~ Iteration " + (arrayIndex + 1) + " ~~~~~~~~~~");
 			System.out.println("");
 			for (int dataIndex = 0; dataIndex < numOfGenes; dataIndex++)
 			{
-				String spaces = " - ";
+				String spaces = " ~ ";
 				String val = Integer.toString(statsMaster.get(arrayIndex)[dataIndex]);
 				runningStats.set(dataIndex, runningStats.get(dataIndex) + val + spaces);
 				System.out.println(runningStats.get(dataIndex));
@@ -59,19 +59,20 @@ public class EvolutionStats
 	// printing.
 	private void loadGeneNames()
 	{
+		String pv = "(PV)~~ ";
 		runningStats = new ArrayList<String>(numOfGenes);
-		runningStats.add("Branch              " + perfectValues[0] + "(PV)-- ");
-		runningStats.add("Branch Increment    " + perfectValues[1] + "(PV)-- ");
-		runningStats.add("Chain               " + perfectValues[2] + "(PV)-- ");
-		runningStats.add("Color Red           " + perfectValues[3] + "(PV)-- ");
-		runningStats.add("Color Green         " + perfectValues[4] + "(PV)-- ");
-		runningStats.add("Color Blue          " + perfectValues[5] + "(PV)-- ");
-		runningStats.add("Length              " + perfectValues[6] + "(PV)-- ");
-		runningStats.add("Length Increment    " + perfectValues[7] + "(PV)-- ");
-		runningStats.add("Thickness           " + perfectValues[8] + "(PV)-- ");
-		runningStats.add("Thickness Increment " + perfectValues[9] + "(PV)-- ");
-		runningStats.add("Iridescence Red     " + perfectValues[10] + "(PV)-- ");
-		runningStats.add("Iridescence Green   " + perfectValues[11] + "(PV)-- ");
-		runningStats.add("Iridescence Blue    " + perfectValues[12] + "(PV)-- ");
+		runningStats.add("Branch              " + perfectValues[0] + pv);
+		runningStats.add("Branch Increment    " + perfectValues[1] + pv);
+		runningStats.add("Chain               " + perfectValues[2] + pv);
+		runningStats.add("Color Red           " + perfectValues[3] + pv);
+		runningStats.add("Color Green         " + perfectValues[4] + pv);
+		runningStats.add("Color Blue          " + perfectValues[5] + pv);
+		runningStats.add("Length              " + perfectValues[6] + pv);
+		runningStats.add("Length Increment    " + perfectValues[7] + pv);
+		runningStats.add("Thickness           " + perfectValues[8] + pv);
+		runningStats.add("Thickness Increment " + perfectValues[9] + pv);
+		runningStats.add("Iridescence Red     " + perfectValues[10] + pv);
+		runningStats.add("Iridescence Green   " + perfectValues[11] + pv);
+		runningStats.add("Iridescence Blue    " + perfectValues[12] + pv);
 	}
 }
