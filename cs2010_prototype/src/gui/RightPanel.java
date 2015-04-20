@@ -57,7 +57,7 @@ public class RightPanel
 		random.setText("Random");
 		// Set Layout
 		openingPane.setLayout(new BoxLayout(openingPane, BoxLayout.Y_AXIS));
-		openingPane.setBorder(BorderFactory.createLineBorder(Color.black));
+		openingPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		// add components to panel
 		openingPane.add(create);
 		openingPane.add(random);
@@ -144,5 +144,9 @@ public class RightPanel
 		viewFrame.remove(createClicked);
 		viewFrame.add(modify);
 		viewFrame.add(colourPane);
+	}
+	
+	public static void main(String args[]){
+		RightPanel rp = new RightPanel();
 	}
 }
