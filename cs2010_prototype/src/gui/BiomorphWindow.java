@@ -64,6 +64,7 @@ public class BiomorphWindow implements GLEventListener {
 
     @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int w, int h) {
+    	System.out.println("yes");
     }
 
 
