@@ -35,10 +35,10 @@ public GraphicsMain()
 	FileMenu filemenu = new FileMenu();
 	
 	//Importing the Biomorph selection element
-	BiomorphSelector selector = new BiomorphSelector();
+	//BiomorphSelector selector = new BiomorphSelector();
 	
 	//Importing the Biomorph display window
-	BiomorphWindows biowindow = new BiomorphWindows();
+	//BiomorphWindows biowindow = new BiomorphWindows();
 	
 	
 	// Creating the other containers for the GUI
@@ -69,9 +69,9 @@ public GraphicsMain()
 	// Add components to containers
 	filemenuPanel.add(filemenu.getContents(), BorderLayout.CENTER);
 	
-	selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
+	//selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
 	
-	biomorphPanel.add(biowindow.getContents(), BorderLayout.EAST);
+	//biomorphPanel.add(biowindow.getContents(), BorderLayout.EAST);
 	
 	rightPanel.add(tempRightLabel, BorderLayout.CENTER);
 	

@@ -57,12 +57,12 @@ public class BiomorphWindows implements GLEventListener {
         GLCanvas canvas = new GLCanvas(capabilities);
 
         frame = new JFrame("Test Biomorph Window");
-        frame.add(canvas);
         frame.setSize(800, 600);
+        frame.add(canvas);
         frame.setVisible(true);
 		
 		// Set display to 1024x768, windowed
-				DisplayMode mode = new DisplayMode(800, 600);
+				DisplayMode mode = new DisplayMode(200, 150);
 				try
 				{
 					Display.setDisplayMode(mode);
