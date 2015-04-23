@@ -1,4 +1,6 @@
 package geometry;
+import javax.media.opengl.GL2;
+import javax.media.opengl.GLAutoDrawable;
 import org.lwjgl.opengl.GL11;
 /**
  * Class for a 3D vertex. This will be used for each point of a biomorph limb.
@@ -9,11 +11,13 @@ public class Vertex
 	private float x;
 	private float y;
 	private float z;
+	private GL2 gl;
 	/**
 	 * Constructor
 	 */
-	public Vertex(float x, float y, float z)
+	public Vertex(float x, float y, float z, GLAutoDrawable drawable)
 	{
+		gl = drawable.getGL().getGL2();
 		this.x = x;
 		this.y = y;
 		this.z = z;
@@ -23,7 +27,7 @@ public class Vertex
 	 */
 	public void draw()
 	{
-		GL11.glVertex3f(x, y, z);
+		gl.glVertex3f(x, y, z);
 	}
 	/**
 	 * @return The x position of this vertex.

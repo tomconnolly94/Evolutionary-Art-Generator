@@ -1,4 +1,7 @@
 package geometry;
+
+import javax.media.opengl.GLAutoDrawable;
+
 /**
  * Abstract class for a biomorph limb. This will allow different types of limbs
  * to be modelled.
@@ -22,5 +25,5 @@ public abstract class Limb
 		this.green = green;
 		this.blue = blue;
 	}
-	public abstract void draw();
+	public abstract void draw(GLAutoDrawable drawable);
 }

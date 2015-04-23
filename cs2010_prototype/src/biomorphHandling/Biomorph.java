@@ -1,5 +1,8 @@
 package biomorphHandling;
+import javax.media.opengl.GL2;
+import javax.media.opengl.GLAutoDrawable;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 import genes.*;
 import geometry.*;
 /**
@@ -23,6 +26,8 @@ public class Biomorph
 	public static final int IRIDESCENCE_RED = 10;
 	public static final int IRIDESCENCE_GREEN = 11;
 	public static final int IRIDESCENCE_BLUE = 12;
+	//drawing environment
+	private GLAutoDrawable drawable;
 	// An array is instantiated to hold 13 Genes that will be defined in the constructor.
 	private Gene[] genes = new Gene[13];
 	// Due to the cumbersome parameter list, I propose that we pass an array of integers instead of the individual values.
@@ -47,25 +52,28 @@ public class Biomorph
 	/**
 	 * Draws this biomorph.
 	 */
-	public void draw()
+	public void draw(GLAutoDrawable drawable)
 	{
-		GL11.glPushMatrix();
+		this.drawable = drawable;
+		GL2 gl = drawable.getGL().getGL2();
+		
+		gl.glPushMatrix();
 		{
 			loop(genes[CHAIN].getValue(), 0);
-			GL11.glPushMatrix();
+			gl.glPushMatrix();
 			{
-				GL11.glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
+				gl.glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
 				loop(genes[CHAIN].getValue(), 0);
-				GL11.glPushMatrix();
+				gl.glPushMatrix();
 				{
-					GL11.glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
+					gl.glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
 					loop(genes[CHAIN].getValue(), 0);
 				}
-				GL11.glPopMatrix();
+				gl.glPopMatrix();
 			}
-			GL11.glPopMatrix();
+			gl.glPopMatrix();
 		}
-		GL11.glPopMatrix();
+		gl.glPopMatrix();
 	}
 	/**
 	 * Recursive loop to draw chains from each branch.
@@ -74,6 +82,7 @@ public class Biomorph
 	 */
 	private void loop(int chains, int limbCount)
 	{
+		GL2 gl = drawable.getGL().getGL2();
 		int length = genes[LENGTH].getValue() + ((genes[CHAIN].getValue() - chains) * genes[LENGTH_INCREMENT].getValue());
 		int thickness = genes[THICKNESS].getValue() + ((genes[CHAIN].getValue() - chains) * genes[THICKNESS_INCREMENT].getValue());
 		int red = (genes[COLOR_RED].getValue() + limbCount * genes[IRIDESCENCE_RED].getValue()) % 256;
@@ -85,27 +94,27 @@ public class Biomorph
 		if (thickness < 1) thickness = 1;
 		if (thickness > 10) thickness = 10;
 		// Set the thickness of the branches (Simple Limb only)
-		GL11.glLineWidth(thickness);
+		gl.glLineWidth(thickness);
 		for (int b = 0; b < genes[BRANCH].getValue(); b++)
 		{
-			GL11.glPushMatrix();
+			gl.glPushMatrix();
 			{
 				// This allows the distribution of branches to be uniform.
-				GL11.glRotatef((float) b * (360.0f / genes[BRANCH].getValue()), 0.0f, 0.0f, 1.0f);
-				new CuboidLimb(length, thickness, red, green, blue).draw();
+				gl.glRotatef((float) b * (360.0f / genes[BRANCH].getValue()), 0.0f, 0.0f, 1.0f);
+				new CuboidLimb(length, thickness, red, green, blue).draw(drawable);
 			}
-			GL11.glPopMatrix();
+			gl.glPopMatrix();
 			limbCount++;
 			// This draws a new set of branches from the end of each existing branch if necessary.
 			if (chains > 1)
 			{
-				GL11.glPushMatrix();
+				gl.glPushMatrix();
 				{
-					GL11.glRotatef((float) b * (360.0f / genes[BRANCH].getValue()), 0.0f, 0.0f, 1.0f);
-					GL11.glTranslatef(0.0f, genes[LENGTH].getValue() + ((genes[CHAIN].getValue() - chains + 1) * genes[LENGTH_INCREMENT].getValue()), 0.0f);
+					gl.glRotatef((float) b * (360.0f / genes[BRANCH].getValue()), 0.0f, 0.0f, 1.0f);
+					gl.glTranslatef(0.0f, genes[LENGTH].getValue() + ((genes[CHAIN].getValue() - chains + 1) * genes[LENGTH_INCREMENT].getValue()), 0.0f);
 					loop(chains - 1, limbCount);
 				}
-				GL11.glPopMatrix();
+				gl.glPopMatrix();
 			}
 		}
 	}

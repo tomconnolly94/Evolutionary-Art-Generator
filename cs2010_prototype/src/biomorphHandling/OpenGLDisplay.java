@@ -13,7 +13,7 @@ import javax.media.opengl.GL2;
  * @author Tom Connolly, Jack Taylor, Charandeep Rai.
  * @version 09/04/2015
  */
-public class Drawer
+public class OpenGLDisplay
 {
 	private static boolean quit;
 	private boolean keystop;
@@ -25,7 +25,7 @@ public class Drawer
 	/**
 	 * Constructor
 	 */
-	public Drawer()
+	public OpenGLDisplay()
 	{
 		quit = false;
 		keystop = false;
@@ -103,7 +103,7 @@ public class Drawer
 	 */
 	public static void main(String[] args)
 	{
-		Drawer d = new Drawer();
+		OpenGLDisplay d = new OpenGLDisplay();
 		// Integer to store runCount for auto-run feature.
 		// int i = 0;
 		while (quit == false)
