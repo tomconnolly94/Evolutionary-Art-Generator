@@ -40,6 +40,7 @@ public GraphicsMain()
 	//Importing the Biomorph display window
 	//BiomorphWindows biowindow = new BiomorphWindows();
 	
+	//Importing the RightPanel
 	
 	// Creating the other containers for the GUI
 	//JButton button = new JButton();
