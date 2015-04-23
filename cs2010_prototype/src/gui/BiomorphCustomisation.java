@@ -114,6 +114,10 @@ public class BiomorphCustomisation {
 		return (JPanel)viewFrame.getContentPane();
 	}
 
+	public static void main(String[] args){
+		BiomorphCustomisation bc = new BiomorphCustomisation();
+	}
+	
 }
 
 
