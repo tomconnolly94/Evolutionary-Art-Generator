@@ -11,22 +11,22 @@ public class RightPanel
 	private static JFrame viewFrame;
 	// Panels used
 	private static JPanel openingPane;
-	
 	// Buttons used
 	private static JButton create;
 	private static JButton random;
 
 	public RightPanel()
 	{
-		initiate();
+		initiate();		
 	}
 	public void initiate()
+	
 	{
-		// Create instance of side container
+		//set frame and panel
 		viewFrame = new JFrame("Menu");
 		openingPane = new JPanel();
+		//set close
 		viewFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-		// Listeners
 		// setTitle
 		viewFrame.setTitle("Menu");
 		// Create Buttons
@@ -43,8 +43,12 @@ public class RightPanel
 		// add panel to frame
 		viewFrame.add(openingPane);
 		// make visible
-		viewFrame.setVisible(true);
-		// Create instance of side container
 		
-}
+
+		
+	}
+	public JPanel getContents()
+	{
+		return (JPanel)viewFrame.getContentPane();
+	}
 }

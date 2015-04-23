@@ -1,7 +1,6 @@
 package gui;
 
 import java.awt.*;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -43,11 +42,9 @@ public class BiomorphCustomisation {
 	}
 	
 	public void initiate(){
-	
 	viewFrame = new JFrame();	
 	modifyPane = new JPanel();
 	colourPane = new JPanel();
-	
 	chainLabel = new JLabel("Chain");
 	chain = new JSlider();
 	chainLabel.setLabelFor(chain);
@@ -114,9 +111,12 @@ public class BiomorphCustomisation {
 	
 	viewFrame.add(colourPane, BorderLayout.SOUTH);
 	viewFrame.add(modifyPane, BorderLayout.NORTH);
-	viewFrame.setVisible(true);
-}
 	
+}
+	public JPanel getContents()
+	{
+		return (JPanel)viewFrame.getContentPane();
+	}
 
 }
 

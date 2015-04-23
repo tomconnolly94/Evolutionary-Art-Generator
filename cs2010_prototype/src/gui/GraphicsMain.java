@@ -41,6 +41,8 @@ public GraphicsMain()
 	//BiomorphWindows biowindow = new BiomorphWindows();
 	
 	//Importing the RightPanel
+	RightPanel rp = new RightPanel();
+	
 	
 	// Creating the other containers for the GUI
 	//JButton button = new JButton();
@@ -74,7 +76,7 @@ public GraphicsMain()
 	
 	//biomorphPanel.add(biowindow.getContents(), BorderLayout.EAST);
 	
-	rightPanel.add(tempRightLabel, BorderLayout.CENTER);
+	//rightPanel.add(rp.getContents(), BorderLayout.CENTER);
 	
 	mainFrame.add(filemenuPanel, BorderLayout.NORTH);
 	mainFrame.add(biomorphPanel, BorderLayout.WEST);
