@@ -2,15 +2,22 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Panel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.media.opengl.GLCapabilities;
+import javax.media.opengl.GLProfile;
+import javax.media.opengl.awt.GLCanvas;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
+import com.jogamp.opengl.util.FPSAnimator;
 /**
  * The main window for the Biomorph Simulation.
  * @author Charandeep Rai
@@ -43,6 +50,22 @@ public GraphicsMain()
 	//Importing the RightPanel
 	RightPanel rp = new RightPanel();
 	
+	//setting up the biomorph window
+	GLProfile glp = GLProfile.getDefault();
+	GLCapabilities caps = new GLCapabilities(glp);
+	GLCanvas canvas = new GLCanvas(caps);
+	JPanel bioWindow = new JPanel();
+	int width = 400;
+	int height = 400;
+	bioWindow.setPreferredSize(new Dimension(width, height));
+	Float aspect = 0.0f;
+	aspect = (float)width / (float)height;
+	bioWindow.add(canvas);
+	bioWindow.setVisible(true);
+	
+	canvas.addGLEventListener(new OpenGLFrame());
+	FPSAnimator animator = new FPSAnimator(canvas, 60);
+	animator.start();
 	
 	// Creating the other containers for the GUI
 	//JButton button = new JButton();
@@ -74,12 +97,13 @@ public GraphicsMain()
 	
 	//selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
 	
-	//biomorphPanel.add(biowindow.getContents(), BorderLayout.EAST);
+	biomorphPanel.add(bioWindow);
+	System.out.println(canvas.getPreferredSize());
 	
 	//rightPanel.add(rp.getContents(), BorderLayout.CENTER);
 	
 	mainFrame.add(filemenuPanel, BorderLayout.NORTH);
-	mainFrame.add(biomorphPanel, BorderLayout.WEST);
+	mainFrame.add(canvas);
 	mainFrame.add(rightPanel, BorderLayout.EAST);
 	mainFrame.add(selectorPanel, BorderLayout.SOUTH);
 	

@@ -5,6 +5,8 @@ import java.awt.event.WindowEvent;
 import javax.media.opengl.*;
 import javax.media.opengl.awt.GLCanvas;
 import javax.media.opengl.glu.GLU;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import biomorphHandling.BiomorphManager;
 import com.jogamp.opengl.util.*;
 public class OpenGLFrame implements GLEventListener
@@ -16,16 +18,20 @@ public class OpenGLFrame implements GLEventListener
 	private BiomorphManager bm = new BiomorphManager();
 	private GL2 gl;
 	private GLU glu;
+	
 	public static void main(String[] args)
 	{
 		GLProfile glp = GLProfile.getDefault();
 		GLCapabilities caps = new GLCapabilities(glp);
 		GLCanvas canvas = new GLCanvas(caps);
-		Frame frame = new Frame("AWT Window Test");
+		JFrame frame = new JFrame("FRAME");
+		JPanel panel = new JPanel();
 		int width = 400;
 		int height = 400;
+		panel.setSize(width, height);
 		frame.setSize(width, height);
 		aspect = (float)width / (float)height;
+		canvas.addGLEventListener(new OpenGLFrame());
 		frame.add(canvas);
 		frame.setVisible(true);
 		frame.addWindowListener(new WindowAdapter()
@@ -35,9 +41,9 @@ public class OpenGLFrame implements GLEventListener
 				System.exit(0);
 			}
 		});
-		canvas.addGLEventListener(new OpenGLFrame());
+		frame.add(panel);
+		
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
-		//animator.add(canvas);
 		animator.start();
 	}
 	public void init(GLAutoDrawable drawable)
