@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Panel;
 import java.awt.event.WindowAdapter;
@@ -61,7 +63,7 @@ public GraphicsMain()
 	int width = 800;
 	int height = 800;
 	float aspect = (float)width / (float)height;
-	canvas.setMinimumSize(new Dimension(width,height));
+	canvas.setSize(new Dimension(width-150,height-150));
 	bioWindow.add(canvas);
 	bioWindow.setSize(new Dimension(width, height));
 	bioWindow.setVisible(true);
@@ -70,47 +72,49 @@ public GraphicsMain()
 	FPSAnimator animator = new FPSAnimator(canvas, 60);
 	animator.start();
 	
-	// Creating the other containers for the GUI
-	//JButton button = new JButton();
 	
-	JPanel biomorphPanel = new JPanel();
+	
+	// Creating the other containers for the GUI	
 	JPanel filemenuPanel = new JPanel();
 	JPanel rightPanel = new JPanel();
-	JPanel selectorPanel = new JPanel();
+	JPanel bigBiomorphDisplayArea = new JPanel(new GridBagLayout());
+	
+	
 	
 	// Specifying the layout managers
-	mainFrame.setLayout(new BorderLayout(50,1));
+	mainFrame.setLayout(new BorderLayout());
 	mainFrame.setPreferredSize(new Dimension(800,800));
 	((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-	
-	biomorphPanel.setLayout(new BorderLayout());
-	biomorphPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-	
+
 	filemenuPanel.setLayout(new BorderLayout());
 	filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 	
 	rightPanel.setLayout(new BorderLayout());
 	rightPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 	
-	selectorPanel.setLayout(new BorderLayout());
-	selectorPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-	selectorPanel.setMinimumSize(new Dimension(width,height));
+	GridBagConstraints gbc = new GridBagConstraints();
+	gbc.fill = GridBagConstraints.HORIZONTAL;
+	gbc.gridx=0;
+	gbc.gridy=0;
+	//bigBiomorphDisplayArea.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+	bigBiomorphDisplayArea.setMinimumSize(new Dimension(width,height));
+	
+	
 	
 	// Add components to containers
 	filemenuPanel.add(filemenu.getContents(), BorderLayout.CENTER);
 	
-	//selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
-	
-	//bioWindow.add(canvas);
-	
 	rightPanel.add(rp.getContents(), BorderLayout.CENTER);
 	
-	selectorPanel.setBackground(Color.BLUE);
-	selectorPanel.add(canvas, BorderLayout.CENTER);
-	selectorPanel.add(rightPanel, BorderLayout.EAST);
+	bigBiomorphDisplayArea.add(canvas, gbc);
+	gbc.fill = GridBagConstraints.HORIZONTAL;
+	gbc.gridx=1;
+	gbc.gridy=0;
+	bigBiomorphDisplayArea.add(rightPanel, gbc);
 	
 	mainFrame.add(filemenuPanel, BorderLayout.NORTH);
-	mainFrame.add(selectorPanel, BorderLayout.CENTER);
+	mainFrame.add(bigBiomorphDisplayArea, BorderLayout.CENTER);
+	
 	
 	
 	// Action Listeners

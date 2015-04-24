@@ -14,7 +14,7 @@ public class OpenGLFrame implements GLEventListener
 	private static float aspect = 0.0f;
 	private float lat = 0.0f; // Latitude
 	private float lon = 0.0f; // Longitude
-	private float zoom = 1.0f;
+	private float zoom = 0.00000001f;
 	private BiomorphManager bm = new BiomorphManager();
 	private GL2 gl;
 	private GLU glu;
@@ -66,7 +66,8 @@ public class OpenGLFrame implements GLEventListener
 	}
 	private void update()
 	{
-		
+		lat++;
+		lon=lon+2;
 	}
 	private void render(GLAutoDrawable drawable)
 	{
@@ -74,14 +75,12 @@ public class OpenGLFrame implements GLEventListener
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 		gl.glPushMatrix();
 		{
-			// Positions the camera according to latitude and longitude, as if the biomorph is a globe-like object
-			gl.glOrtho(-50.0f * aspect * zoom, 50.0f * aspect * zoom, -50.0f * zoom, 50.0f * zoom, -50.0f * zoom, 50.0f * zoom);
+			// Positions the camera according to latitude and longitude, as if the biomorph is a globe-like object			
 			glu.gluLookAt((float) Math.cos(Math.toRadians(lat)) * -(float)Math.cos(Math.toRadians(lon)), (float)Math.sin(Math.toRadians(lat)), (float)Math.cos(Math.toRadians(lat)) * (float)Math.sin(Math.toRadians(lon)), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+			gl.glOrtho(-50.0f * aspect * zoom, 50.0f * aspect * zoom, -50.0f * zoom, 50.0f * zoom, -50.0f * zoom, 50.0f * zoom);
 			bm.getSpecific(0).draw(drawable);
 		}
 		gl.glPopMatrix();
 	}
-	public JPanel getContents(){
-		return
-	}
+
 }
