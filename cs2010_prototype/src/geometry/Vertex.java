@@ -1,10 +1,10 @@
 package geometry;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
-import org.lwjgl.opengl.GL11;
 /**
  * Class for a 3D vertex. This will be used for each point of a biomorph limb.
  * @author Jack Taylor
+ * @version 24/04/2015
  */
 public class Vertex
 {

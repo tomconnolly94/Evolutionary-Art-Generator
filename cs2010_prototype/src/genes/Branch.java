@@ -1,10 +1,8 @@
 package genes;
 /**
- * Class to model a Branch gene. This determines how many branches will be
- * generated from the centre, then at the end of each branch if the Chain gene
- * permits it.
+ * Class to model a Branch gene. This determines how many branches will be generated from the centre, then at the end of each branch if the Chain gene permits it.
  * @author Tom Connolly, Jack Taylor
- * @version 18/12/2014
+ * @version 24/04/2015
  */
 public class Branch extends Gene
 {

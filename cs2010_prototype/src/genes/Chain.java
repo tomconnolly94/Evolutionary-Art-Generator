@@ -1,9 +1,8 @@
 package genes;
 /**
- * Class to model a Chain gene. This determines how many times the biomorph will
- * branch.
+ * Class to model a Chain gene. This determines how many times the biomorph will branch.
  * @author Tom Connolly, Jack Taylor
- * @version 18/12/2014
+ * @version 24/04/2015
  */
 public class Chain extends Gene
 {

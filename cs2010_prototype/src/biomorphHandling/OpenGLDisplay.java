@@ -90,7 +90,7 @@ public class OpenGLDisplay
 			// the biomorph is a globe-like object
 			GL11.glOrtho(-80.0f * aspect * zoom, 80.0f * aspect * zoom, -80.0f * zoom, 80.0f * zoom, -80.0f * zoom, 80.0f * zoom);
 			GLU.gluLookAt((float) Math.cos(Math.toRadians(lat)) * -(float) Math.cos(Math.toRadians(lon)), (float) Math.sin(Math.toRadians(lat)), (float) Math.cos(Math.toRadians(lat)) * (float) Math.sin(Math.toRadians(lon)), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-			bm.getSpecific(0).draw();
+			//bm.getSpecific(0).draw();
 		}
 		GL11.glPopMatrix();
 		Display.update();

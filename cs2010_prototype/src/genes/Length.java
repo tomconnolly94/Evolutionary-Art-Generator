@@ -2,7 +2,7 @@ package genes;
 /**
  * Class to model a Length gene. This determines how long each branch is.
  * @author Tom Connolly, Jack Taylor
- * @version 18/12/2014
+ * @version 24/04/2015
  */
 public class Length extends Gene
 {

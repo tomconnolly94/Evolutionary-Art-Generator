@@ -1,53 +1,63 @@
 package biomorphHandling;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 import genes.*;
 import geometry.*;
 /**
  * Class to model and draw a single biomorph.
  * @author Tom Connolly, Jack Taylor
- * @version 09/04/2015
+ * @version 24/04/2015
  */
 public class Biomorph
 {
 	// List of array indices for genes
 	public static final int BRANCH = 0;
-	public static final int BRANCH_INCREMENT = 1;
-	public static final int CHAIN = 2;
-	public static final int COLOR_RED = 3;
-	public static final int COLOR_GREEN = 4;
-	public static final int COLOR_BLUE = 5;
-	public static final int LENGTH = 6;
-	public static final int LENGTH_INCREMENT = 7;
-	public static final int THICKNESS = 8;
-	public static final int THICKNESS_INCREMENT = 9;
-	public static final int IRIDESCENCE_RED = 10;
-	public static final int IRIDESCENCE_GREEN = 11;
-	public static final int IRIDESCENCE_BLUE = 12;
-	//drawing environment
+	public static final int CHAIN = 1;
+	public static final int COLOR_RED = 2;
+	public static final int COLOR_GREEN = 3;
+	public static final int COLOR_BLUE = 4;
+	public static final int LENGTH = 5;
+	public static final int LENGTH_INCREMENT = 6;
+	public static final int THICKNESS = 7;
+	public static final int THICKNESS_INCREMENT = 8;
+	public static final int IRIDESCENCE_RED = 9;
+	public static final int IRIDESCENCE_GREEN = 10;
+	public static final int IRIDESCENCE_BLUE = 11;
+	// drawing environment
 	private GLAutoDrawable drawable;
-	// An array is instantiated to hold 13 Genes that will be defined in the constructor.
-	private Gene[] genes = new Gene[13];
-	// Due to the cumbersome parameter list, I propose that we pass an array of integers instead of the individual values.
-	public Biomorph(int branchVal, int branchIncrementVal, int chainVal, int redVal, int greenVal, int blueVal, int lengthVal, int lengthIncrementVal, int thicknessVal, int thicknessIncrementVal, int iridRedVal, int iridGreenVal, int iridBlueVal)
+	// An array is instantiated to hold 12 Genes that will be defined in the constructor.
+	private Gene[] genes = new Gene[12];
+	/**
+	 * Constructor
+	 * @param branch The value of the Branch gene
+	 * @param chain The value of the Chain gene
+	 * @param red The value of the Color Red gene
+	 * @param green The value of the Color Green gene
+	 * @param blue The value of the Color Blue gene
+	 * @param length The value of the Length gene
+	 * @param lengthInc The value of the Length Increment gene
+	 * @param thickness The value of the Thickness gene
+	 * @param thicknessInc The value of the Thickness Increment gene
+	 * @param iridRed The value of the Iridescence Red gene
+	 * @param iridGreen The value of the Iridescence Green gene
+	 * @param iridBlue The value of the Iridescence Blue gene
+	 */
+	public Biomorph(int branch, int chain, int red, int green, int blue, int length, int lengthInc, int thickness, int thicknessInc, int iridRed, int iridGreen, int iridBlue)
 	{
-		// Genes are created and assigned values according to the parameters given. They are then placed in an array in
-		// alphabetical (apart from colours which are RGB) order.
-		genes[BRANCH] = new Branch(branchVal, "Branch");
-		genes[BRANCH_INCREMENT] = new BranchIncrement(branchIncrementVal, "Branch Increment");
-		genes[CHAIN] = new Chain(chainVal, "Chain");
-		genes[COLOR_RED] = new Color(redVal, "Color Red");
-		genes[COLOR_GREEN] = new Color(greenVal, "Color Green");
-		genes[COLOR_BLUE] = new Color(blueVal, "Color Blue");
-		genes[LENGTH] = new Length(lengthVal, "Length");
-		genes[LENGTH_INCREMENT] = new LengthIncrement(lengthIncrementVal, "Length Increment");
-		genes[THICKNESS] = new Thickness(thicknessVal, "Thickness");
-		genes[THICKNESS_INCREMENT] = new ThicknessIncrement(thicknessIncrementVal, "Thickness Increment");
-		genes[IRIDESCENCE_RED] = new Iridescence(iridRedVal, "Iridescence Red");
-		genes[IRIDESCENCE_GREEN] = new Iridescence(iridGreenVal, "Iridescence Green");
-		genes[IRIDESCENCE_BLUE] = new Iridescence(iridBlueVal, "Iridescence Blue");
+		// Genes are created and assigned values according to the parameters given. They are then placed in an
+		// array in alphabetical (apart from colours which are RGB) order.
+		genes[BRANCH] = new Branch(branch, "Branch");
+		genes[CHAIN] = new Chain(chain, "Chain");
+		genes[COLOR_RED] = new Color(red, "Color Red");
+		genes[COLOR_GREEN] = new Color(green, "Color Green");
+		genes[COLOR_BLUE] = new Color(blue, "Color Blue");
+		genes[LENGTH] = new Length(length, "Length");
+		genes[LENGTH_INCREMENT] = new LengthIncrement(lengthInc, "Length Increment");
+		genes[THICKNESS] = new Thickness(thickness, "Thickness");
+		genes[THICKNESS_INCREMENT] = new ThicknessIncrement(thicknessInc, "Thickness Increment");
+		genes[IRIDESCENCE_RED] = new Iridescence(iridRed, "Iridescence Red");
+		genes[IRIDESCENCE_GREEN] = new Iridescence(iridGreen, "Iridescence Green");
+		genes[IRIDESCENCE_BLUE] = new Iridescence(iridBlue, "Iridescence Blue");
 	}
 	/**
 	 * Draws this biomorph.
@@ -56,7 +66,6 @@ public class Biomorph
 	{
 		this.drawable = drawable;
 		GL2 gl = drawable.getGL().getGL2();
-		
 		gl.glPushMatrix();
 		{
 			loop(genes[CHAIN].getValue(), 0);
@@ -88,7 +97,7 @@ public class Biomorph
 		int red = (genes[COLOR_RED].getValue() + limbCount * genes[IRIDESCENCE_RED].getValue()) % 256;
 		int green = (genes[COLOR_GREEN].getValue() + limbCount * genes[IRIDESCENCE_GREEN].getValue()) % 256;
 		int blue = (genes[COLOR_BLUE].getValue() + limbCount * genes[IRIDESCENCE_BLUE].getValue()) % 256;
-		//Prevent length or thickness from going out of bounds
+		// Prevent length or thickness from going out of bounds
 		if (length < 1) length = 1;
 		if (length > 10) length = 10;
 		if (thickness < 1) thickness = 1;
@@ -105,7 +114,8 @@ public class Biomorph
 			}
 			gl.glPopMatrix();
 			limbCount++;
-			// This draws a new set of branches from the end of each existing branch if necessary.
+			// This draws a new set of branches from the end of each existing
+			// branch if necessary.
 			if (chains > 1)
 			{
 				gl.glPushMatrix();
