@@ -54,12 +54,13 @@ public GraphicsMain()
 	GLProfile glp = GLProfile.getDefault();
 	GLCapabilities caps = new GLCapabilities(glp);
 	GLCanvas canvas = new GLCanvas(caps);
-	JPanel bioWindow = new JPanel();
+	Panel bioWindow = new Panel();
 	int width = 400;
 	int height = 400;
 	bioWindow.setPreferredSize(new Dimension(width, height));
 	Float aspect = 0.0f;
 	aspect = (float)width / (float)height;
+	canvas.setPreferredSize(new Dimension(10,10));
 	bioWindow.add(canvas);
 	bioWindow.setVisible(true);
 	
@@ -98,16 +99,16 @@ public GraphicsMain()
 	//selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
 	
 	biomorphPanel.add(bioWindow);
-	System.out.println(canvas.getPreferredSize());
+	System.out.println(canvas.getSize());
 	
 	//rightPanel.add(rp.getContents(), BorderLayout.CENTER);
 	
 	mainFrame.add(filemenuPanel, BorderLayout.NORTH);
-	mainFrame.add(canvas);
+	//mainFrame.add(biomorphPanel,BorderLayout.WEST);
 	mainFrame.add(rightPanel, BorderLayout.EAST);
 	mainFrame.add(selectorPanel, BorderLayout.SOUTH);
+	mainFrame.add(canvas);
 	
-			
 	// Action Listeners
 	mainFrame.addWindowListener(new WindowAdapter()
 	{
