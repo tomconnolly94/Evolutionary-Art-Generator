@@ -57,11 +57,10 @@ public GraphicsMain()
 	GLProfile glp = GLProfile.getDefault();
 	GLCapabilities caps = new GLCapabilities(glp);
 	GLCanvas canvas = new GLCanvas(caps);
-	GLJPanel bioWindow = new GLJPanel();
-	int width = 200;
-	int height = 200;
-	Float aspect = 0.0f;
-	aspect = (float)width / (float)height;
+	JPanel bioWindow = new JPanel();
+	int width = 800;
+	int height = 800;
+	float aspect = (float)width / (float)height;
 	canvas.setMinimumSize(new Dimension(width,height));
 	bioWindow.add(canvas);
 	bioWindow.setSize(new Dimension(width, height));

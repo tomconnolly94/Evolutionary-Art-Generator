@@ -81,4 +81,7 @@ public class OpenGLFrame implements GLEventListener
 		}
 		gl.glPopMatrix();
 	}
+	public JPanel getContents(){
+		return
+	}
 }
