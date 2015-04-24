@@ -1,14 +1,17 @@
 package gui;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.GridLayout;
 import java.awt.Panel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
+import javax.media.opengl.awt.GLJPanel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -54,14 +57,14 @@ public GraphicsMain()
 	GLProfile glp = GLProfile.getDefault();
 	GLCapabilities caps = new GLCapabilities(glp);
 	GLCanvas canvas = new GLCanvas(caps);
-	Panel bioWindow = new Panel();
-	int width = 400;
-	int height = 400;
-	bioWindow.setPreferredSize(new Dimension(width, height));
+	GLJPanel bioWindow = new GLJPanel();
+	int width = 200;
+	int height = 200;
 	Float aspect = 0.0f;
 	aspect = (float)width / (float)height;
-	canvas.setPreferredSize(new Dimension(10,10));
+	canvas.setMinimumSize(new Dimension(width,height));
 	bioWindow.add(canvas);
+	bioWindow.setSize(new Dimension(width, height));
 	bioWindow.setVisible(true);
 	
 	canvas.addGLEventListener(new OpenGLFrame());
@@ -77,7 +80,7 @@ public GraphicsMain()
 	JPanel selectorPanel = new JPanel();
 	
 	// Specifying the layout managers
-	mainFrame.setLayout(new BorderLayout());
+	mainFrame.setLayout(new BorderLayout(50,1));
 	mainFrame.setPreferredSize(new Dimension(800,800));
 	((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 	
@@ -92,22 +95,24 @@ public GraphicsMain()
 	
 	selectorPanel.setLayout(new BorderLayout());
 	selectorPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
+	selectorPanel.setMinimumSize(new Dimension(width,height));
 	
 	// Add components to containers
 	filemenuPanel.add(filemenu.getContents(), BorderLayout.CENTER);
 	
 	//selectorPanel.add(selector.getContents(), BorderLayout.CENTER);
 	
-	biomorphPanel.add(bioWindow);
-	System.out.println(canvas.getSize());
+	//bioWindow.add(canvas);
 	
-	//rightPanel.add(rp.getContents(), BorderLayout.CENTER);
+	rightPanel.add(rp.getContents(), BorderLayout.CENTER);
+	
+	selectorPanel.setBackground(Color.BLUE);
+	selectorPanel.add(canvas, BorderLayout.CENTER);
+	selectorPanel.add(rightPanel, BorderLayout.EAST);
 	
 	mainFrame.add(filemenuPanel, BorderLayout.NORTH);
-	//mainFrame.add(biomorphPanel,BorderLayout.WEST);
-	mainFrame.add(rightPanel, BorderLayout.EAST);
-	mainFrame.add(selectorPanel, BorderLayout.SOUTH);
-	mainFrame.add(canvas);
+	mainFrame.add(selectorPanel, BorderLayout.CENTER);
+	
 	
 	// Action Listeners
 	mainFrame.addWindowListener(new WindowAdapter()
