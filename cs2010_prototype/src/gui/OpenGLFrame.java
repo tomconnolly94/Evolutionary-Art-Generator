@@ -1,5 +1,4 @@
 package gui;
-import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.media.opengl.*;
@@ -11,27 +10,24 @@ import biomorphHandling.BiomorphManager;
 import com.jogamp.opengl.util.*;
 public class OpenGLFrame implements GLEventListener
 {
-	private static float aspect = 0.0f;
-	private float lat = 0.0f; // Latitude
-	private float lon = 0.0f; // Longitude
-	private float zoom = 0.8f;
-	private BiomorphManager bm = new BiomorphManager();
 	private GL2 gl;
 	private GLU glu;
-	
+	private float aspect = 1.0f;
+	private float lat = 0.0f; // Latitude
+	private float lon = 0.0f; // Longitude
+	private float zoom = 1.0f;
+	private BiomorphManager bm = new BiomorphManager();
+	private static JFrame frame = new JFrame("FRAME");
+	private static JPanel panel = new JPanel();
 	public static void main(String[] args)
 	{
-		GLProfile glp = GLProfile.getDefault();
-		GLCapabilities caps = new GLCapabilities(glp);
-		GLCanvas canvas = new GLCanvas(caps);
-		JFrame frame = new JFrame("FRAME");
-		JPanel panel = new JPanel();
+		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
+		OpenGLFrame oframe = new OpenGLFrame();
+		canvas.addGLEventListener(oframe);
 		int width = 400;
 		int height = 400;
 		panel.setSize(width, height);
 		frame.setSize(width, height);
-		aspect = (float)width / (float)height;
-		canvas.addGLEventListener(new OpenGLFrame());
 		frame.add(canvas);
 		frame.setVisible(true);
 		frame.addWindowListener(new WindowAdapter()
@@ -67,7 +63,7 @@ public class OpenGLFrame implements GLEventListener
 	private void update()
 	{
 		lat++;
-		lon=lon+2;
+		lon += 2;
 	}
 	private void render(GLAutoDrawable drawable)
 	{
@@ -77,7 +73,7 @@ public class OpenGLFrame implements GLEventListener
 		{
 			// Positions the camera according to latitude and longitude, as if the biomorph is a globe-like object			
 			glu.gluLookAt((float) Math.cos(Math.toRadians(lat)) * -(float)Math.cos(Math.toRadians(lon)), (float)Math.sin(Math.toRadians(lat)), (float)Math.cos(Math.toRadians(lat)) * (float)Math.sin(Math.toRadians(lon)), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-			//gl.glOrtho(-50.0f * aspect * zoom, 50.0f * aspect * zoom, -50.0f * zoom, 50.0f * zoom, -50.0f * zoom, 50.0f * zoom);
+			gl.glOrtho(-50.0f * aspect * zoom, 50.0f * aspect * zoom, -50.0f * zoom, 50.0f * zoom, -50.0f * zoom, 50.0f * zoom);
 			bm.getSpecific(0).draw(drawable);
 		}
 		gl.glPopMatrix();

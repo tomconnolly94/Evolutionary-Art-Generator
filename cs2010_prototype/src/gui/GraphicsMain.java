@@ -62,12 +62,10 @@ public GraphicsMain()
 	JPanel bioWindow = new JPanel();
 	int width = 800;
 	int height = 800;
-	float aspect = (float)width / (float)height;
 	canvas.setSize(new Dimension(width-150,height-150));
 	bioWindow.add(canvas);
 	bioWindow.setSize(new Dimension(width, height));
 	bioWindow.setVisible(true);
-	
 	canvas.addGLEventListener(new OpenGLFrame());
 	FPSAnimator animator = new FPSAnimator(canvas, 60);
 	animator.start();
