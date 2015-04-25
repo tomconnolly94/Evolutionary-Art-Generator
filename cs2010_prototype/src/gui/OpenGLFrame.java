@@ -57,12 +57,8 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		glu = GLU.createGLU(gl);
 	}
 	public void reshape(GLAutoDrawable drawable, int x, int y, int w, int h)
-	{	
-		gl.glViewport(0, 0, w, h);
-	    gl.glMatrixMode(GL2.GL_PROJECTION);
-	    gl.glLoadIdentity();
-	    glu.gluPerspective(60.0, (float) w / (float) h, 1.0, 20.0);
-	    gl.glMatrixMode(GL2.GL_MODELVIEW);
+	{
+		
 	}
 	public void display(GLAutoDrawable drawable)
 	{
