@@ -25,8 +25,8 @@ public class BiomorphCreator
 		int blue = rand.nextInt(256); // Value: 0 to 255
 		int length = rand.nextInt(8) + 1; // Value: 1 to 8
 		int lengthIncrement = rand.nextInt(7) - 3; // Value: -3 to 3
-		int thickness = 1; //rand.nextInt(10) + 1; // Value: 1 to 10
-		int thicknessIncrement = 0; //rand.nextInt(7) - 3; // Value: -3 to 3
+		int thickness = rand.nextInt(10) + 1; // Value: 1 to 10
+		int thicknessIncrement = rand.nextInt(7) - 3; // Value: -3 to 3
 		int iridRed = rand.nextInt(33) - 8; // Value: -16 to 16
 		int iridGreen = rand.nextInt(33) - 8; // Value: -16 to 16
 		int iridBlue = rand.nextInt(33) - 8; // Value: -16 to 16
