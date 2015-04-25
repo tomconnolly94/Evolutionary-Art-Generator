@@ -1,4 +1,6 @@
 package gui;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.media.opengl.*;
@@ -8,8 +10,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import biomorphHandling.BiomorphManager;
 import com.jogamp.opengl.util.*;
-public class OpenGLFrame implements GLEventListener
+public class OpenGLFrame implements GLEventListener, KeyListener
 {
+	private static final int UP = 0;
+	private static final int DOWN = 1;
+	private static final int LEFT = 2;
+	private static final int RIGHT = 3;
+	private static final int W = 4;
+	private static final int S = 5;
+	private boolean keys[] = new boolean[6];
 	private GL2 gl;
 	private GLU glu;
 	private float aspect = 1.0f;
@@ -17,15 +26,16 @@ public class OpenGLFrame implements GLEventListener
 	private float lon = 0.0f; // Longitude
 	private float zoom = 1.0f;
 	private BiomorphManager bm = new BiomorphManager();
-	private static JFrame frame = new JFrame("FRAME");
-	private static JPanel panel = new JPanel();
 	public static void main(String[] args)
 	{
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
 		OpenGLFrame oframe = new OpenGLFrame();
 		canvas.addGLEventListener(oframe);
+		canvas.addKeyListener(oframe);
 		int width = 400;
 		int height = 400;
+		JFrame frame = new JFrame("FRAME");
+		JPanel panel = new JPanel();
 		panel.setSize(width, height);
 		frame.setSize(width, height);
 		frame.add(canvas);
@@ -38,7 +48,6 @@ public class OpenGLFrame implements GLEventListener
 			}
 		});
 		frame.add(panel);
-		
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 	}
@@ -48,25 +57,21 @@ public class OpenGLFrame implements GLEventListener
 		glu = GLU.createGLU(gl);
 	}
 	public void reshape(GLAutoDrawable drawable, int x, int y, int w, int h)
-	{
-		
+	{	
+		gl.glViewport(0, 0, w, h);
+	    gl.glMatrixMode(GL2.GL_PROJECTION);
+	    gl.glLoadIdentity();
+	    glu.gluPerspective(60.0, (float) w / (float) h, 1.0, 20.0);
+	    gl.glMatrixMode(GL2.GL_MODELVIEW);
 	}
 	public void display(GLAutoDrawable drawable)
 	{
-		update();
-		render(drawable);
-	}
-	public void dispose(GLAutoDrawable drawable)
-	{
-		
-	}
-	private void update()
-	{
-		lat++;
-		lon += 2;
-	}
-	private void render(GLAutoDrawable drawable)
-	{
+		if (keys[UP]) if (lat < 90.0f) lat += 2.0f;
+		if (keys[DOWN]) if (lat > -90.0f) lat -= 2.0f;
+		if (keys[LEFT]) lon -= 2.0f;
+		if (keys[RIGHT]) lon += 2.0f;
+		if (keys[W]) if (zoom > 0) zoom -= 0.01f;
+		if (keys[S]) zoom += 0.01f;
 		// Clear screen and draw biomorph
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 		gl.glPushMatrix();
@@ -77,6 +82,73 @@ public class OpenGLFrame implements GLEventListener
 			bm.getSpecific(0).draw(drawable);
 		}
 		gl.glPopMatrix();
+		gl.glFlush();
 	}
-
+	public void dispose(GLAutoDrawable drawable)
+	{
+		
+	}
+	public void keyPressed(KeyEvent key)
+	{
+		switch (key.getKeyCode())
+		{
+		case KeyEvent.VK_ESCAPE:
+			System.exit(0);
+			break;
+		case KeyEvent.VK_ENTER:
+			bm.addSpecific(bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph()));
+			bm.createAndAdd();
+			break;
+		case KeyEvent.VK_UP:
+			keys[UP] = true;
+			break;
+		case KeyEvent.VK_DOWN:
+			keys[DOWN] = true;
+			break;
+		case KeyEvent.VK_LEFT:
+			keys[LEFT] = true;
+			break;
+		case KeyEvent.VK_RIGHT:
+			keys[RIGHT] = true;
+			break;
+		case KeyEvent.VK_W:
+			keys[W] = true;
+			break;
+		case KeyEvent.VK_S:
+			keys[S] = true;
+			break;
+		default:
+			break;
+	    }
+	}
+	public void keyReleased(KeyEvent key)
+	{
+		switch (key.getKeyCode())
+		{
+		case KeyEvent.VK_UP:
+			keys[UP] = false;
+			break;
+		case KeyEvent.VK_DOWN:
+			keys[DOWN] = false;
+			break;
+		case KeyEvent.VK_LEFT:
+			keys[LEFT] = false;
+			break;
+		case KeyEvent.VK_RIGHT:
+			keys[RIGHT] = false;
+			break;
+		case KeyEvent.VK_W:
+			keys[W] = false;
+			break;
+		case KeyEvent.VK_S:
+			keys[S] = false;
+			break;
+		default:
+			break;
+	    }
+	}
+	public void keyTyped(KeyEvent key)
+	{
+		
+	}
 }

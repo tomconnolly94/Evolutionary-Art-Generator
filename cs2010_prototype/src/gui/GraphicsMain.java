@@ -66,7 +66,9 @@ public GraphicsMain()
 	bioWindow.add(canvas);
 	bioWindow.setSize(new Dimension(width, height));
 	bioWindow.setVisible(true);
-	canvas.addGLEventListener(new OpenGLFrame());
+	OpenGLFrame oframe = new OpenGLFrame();
+	canvas.addGLEventListener(oframe);
+	canvas.addKeyListener(oframe);
 	FPSAnimator animator = new FPSAnimator(canvas, 60);
 	animator.start();
 	
