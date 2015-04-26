@@ -1,5 +1,7 @@
 package gui;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 public class RightPanel
 {
@@ -12,8 +14,8 @@ public class RightPanel
 	// Panels used
 	private static JPanel openingPane;
 	// Buttons used
-	private static JButton create;
-	private static JButton random;
+	private static JButton createButton;
+	private static JButton randomButton;
 
 	public RightPanel()
 	{
@@ -30,22 +32,38 @@ public class RightPanel
 		// setTitle
 		viewFrame.setTitle("Menu");
 		// Create Buttons
-		create = new JButton();
-		create.setText("Create");
-		random = new JButton();
-		random.setText("Random");
+		createButton = new JButton();
+		createButton.setText("Create");
+		randomButton = new JButton();
+		randomButton.setText("Random");
 		// Set Layout
 		openingPane.setLayout(new BoxLayout(openingPane, BoxLayout.Y_AXIS));
 		openingPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		// add components to panel
-		openingPane.add(create);
-		openingPane.add(random);
+		openingPane.add(createButton);
+		openingPane.add(randomButton);
 		// add panel to frame
 		viewFrame.add(openingPane);
 		// make visible
+	
+	
+	createButton.addActionListener( new ActionListener() {
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
 		
-
+	});
+	
+	randomButton.addActionListener( new ActionListener() {
+		public void actionPerformed(ActionEvent e)
+		{
+			
+		}
 		
+	});
+	
+	
 	}
 	public JPanel getContents()
 	{

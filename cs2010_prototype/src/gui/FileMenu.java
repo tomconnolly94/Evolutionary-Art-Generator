@@ -1,8 +1,15 @@
 package gui;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -12,11 +19,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 /**
  * The File Menu element of the program
  * @author Charandeep Rai
  */
-public class FileMenu extends JComponent {
+public class FileMenu extends JComponent implements MenuListener, ActionListener {
 
 	private JFrame frame;
 	public FileMenu()
@@ -32,20 +41,28 @@ public class FileMenu extends JComponent {
 		JMenuBar menubar = new JMenuBar();
 		menubar.add(createNewMenu("New", 4));
 		menubar.add(createSaveMenu("Save", 1));
-		menubar.add(createOpenMenu("Open", 2));
 		menubar.add(createPrintMenu("Print", 3));
+		menubar.add(createOpenMenu("Open", 2));
+		
 		return menubar;
 	}
 	private JMenu createSaveMenu(String savename, int menudepth)
 	{
-		JMenu savemenu = new JMenu(savename);
+		JMenu savemenu = new JMenu("Save");
+		JMenuItem PDFsave = new JMenuItem("Save to PDF");
+		JMenuItem JPEGsave = new JMenuItem("Save to JPEG");
+		JMenuItem Textfilesave = new JMenuItem("Save to Text File");
+		JMenuItem PNGsave = new JMenuItem("Save to PNG");
+		JMenuItem Bioserialise = new JMenuItem("Serialise Biomorph");
+		
+		
 		for (int i = 0; i < 1; i++)
 		{
-			savemenu.add(createSaveMenuItem("Save as PDF"));
-			savemenu.add(createSaveMenuItem("Save as JPEG"));
-			savemenu.add(createSaveMenuItem("Save as TextFile"));
-			savemenu.add(createSaveMenuItem("Save as PNG"));
-			savemenu.add(createSaveMenuItem("Serialise Biomorph"));
+			savemenu.add(PDFSave(PDFsave));
+			savemenu.add(JPEGsave(JPEGsave));
+			savemenu.add(Textfilesave(Textfilesave));
+			savemenu.add(PNGsave(PNGsave));
+			savemenu.add(Bioserialise(Bioserialise));
 		}
 		return savemenu;
 	}
@@ -89,18 +106,128 @@ public class FileMenu extends JComponent {
 		});
 		return jMenuItem;
 	}
+	
+	
+	
 	private JMenuItem createSaveMenuItem(String savebutton)
 	{
+		
 		JMenuItem jMenuItem = new JMenuItem(savebutton);
 		jMenuItem.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent s)
 			{
-				JOptionPane.showMessageDialog(jMenuItem, "Saved!");
-			}
+//				JOptionPane.showMessageDialog(jMenuItem, "Saved!");
+//				BufferedImage biomorphImage = new BufferedImage(this.getSize().width, this.getSize().height, BufferedImage.TYPE_INT_ARGB); 
+//				Graphics g = biomorphImage.createGraphics();
+//				this.paint(g);  //this == JComponent
+//				g.dispose();
+//				try{ImageIO.write(biomorphImage,"png",new File("test.png"));}catch (Exception e) {}
+			}	
+//
+//			private Object getSize()
+//			{
+//				return BiomorphWindows.frame ;
+//			}
+//
+//			private void paint(Graphics g)
+//			{
+//				
+//			}
 		});
 		return jMenuItem;
+		
 	}
+	
+	private JMenuItem PDFSave(JMenuItem savePDF){
+		
+		savePDF.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				
+			}
+			
+		});
+		return savePDF;
+	}
+	
+	private JMenuItem JPEGsave(JMenuItem JPEGsave){
+		
+		JPEGsave.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				
+			}
+			
+		});
+		return JPEGsave;
+	}
+	
+	private JMenuItem Textfilesave(JMenuItem Textfilesave){
+		
+		Textfilesave.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				
+			}
+			
+		});
+		return Textfilesave;
+	}
+	
+	private JMenuItem PNGsave(JMenuItem PNGsave){
+		
+		PNGsave.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent p)
+			{
+				//JOptionPane.showMessageDialog(PNGsave, "New!");
+				JOptionPane.showMessageDialog(PNGsave, "Saved as PNG!");
+				BufferedImage biomorphImage = new BufferedImage(canvas.getSize().width, canvas.getSize().height, BufferedImage.TYPE_INT_ARGB); 
+		
+
+			}
+
+			private Object getSize()
+			{
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+		});
+		return PNGsave;
+	}
+	
+	private JMenuItem Bioserialise(JMenuItem Bioserialise){
+		
+		Bioserialise.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				
+			}
+			
+		});
+		return Bioserialise;
+	}
+	
+	
+	
+		
+	//}
 	private JMenuItem createNewMenuItem(String newbutton)
 	{
 		JMenuItem jMenuItem = new JMenuItem(newbutton);
@@ -132,8 +259,40 @@ public class FileMenu extends JComponent {
 		frame.add(createMenuBar("Save", 1));
 		frame.pack();
 	}
+	
+	 
+	
 	public static void main(String[] args)
 	{
 		new FileMenu().initialise();
+	}
+	
+	public Dimension getSize(){
+		return null;
+		//return BiomorphWindows.frame ;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void menuCanceled(MenuEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void menuDeselected(MenuEvent e)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void menuSelected(MenuEvent e)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }
