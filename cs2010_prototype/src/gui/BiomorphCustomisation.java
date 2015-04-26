@@ -126,28 +126,28 @@ public class BiomorphCustomisation {
 	chainSlider.addChangeListener( new ChangeListener() {
 		public void stateChanged(ChangeEvent c)
 		{
-			// TODO Auto-generated method stub	
+            System.out.println(((JSlider) c.getSource()).getValue());
 		}
 	});
 	
 	branchSlider.addChangeListener( new ChangeListener() {
 		public void stateChanged(ChangeEvent b)
 		{
-			// TODO Auto-generated method stub	
+            System.out.println(((JSlider) b.getSource()).getValue());
 		}
 	});
 	
 	lengthSlider.addChangeListener( new ChangeListener() {
 		public void stateChanged(ChangeEvent l)
 		{
-			// TODO Auto-generated method stub	
+            System.out.println(((JSlider) l.getSource()).getValue());
 		}
 	});
 	
 	thicknessSlider.addChangeListener( new ChangeListener() {
 		public void stateChanged(ChangeEvent t)
 		{
-			// TODO Auto-generated method stub	
+            System.out.println(((JSlider) t.getSource()).getValue());
 		}
 	});
 	
@@ -155,21 +155,21 @@ public class BiomorphCustomisation {
 	curvatureSlider.addChangeListener( new ChangeListener() {
 		public void stateChanged(ChangeEvent c)
 		{
-			// TODO Auto-generated method stub	
+            System.out.println(((JSlider) c.getSource()).getValue());
 		}
 	});
 		
 	lengthIncrementSlider.addChangeListener( new ChangeListener() {
-			public void stateChanged(ChangeEvent li)
-			{
-				// TODO Auto-generated method stub	
-			}
+		public void stateChanged(ChangeEvent li)
+		{
+            System.out.println(((JSlider) li.getSource()).getValue());
+		}
 		});
 	
 	thicknessIncrementSlider.addChangeListener( new ChangeListener() {
 		public void stateChanged(ChangeEvent th)
 		{
-			// TODO Auto-generated method stub	
+            System.out.println(((JSlider) th.getSource()).getValue());
 		}
 	});	
 	}
