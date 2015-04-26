@@ -1,8 +1,14 @@
 package gui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class BiomorphCustomisation {
 	
@@ -18,13 +24,13 @@ public class BiomorphCustomisation {
 	final int  blankSpace = 10;
 	
 	// Sliders used
-	private static JSlider chain;
-	private static JSlider branch;
-	private static JSlider length;
-	private static JSlider thickness;
-	private static JSlider curvature;
-	private static JSlider lengthIncrement;
-	private static JSlider thicknessIncrement;
+	private static JSlider chainSlider;
+	private static JSlider branchSlider;
+	private static JSlider lengthSlider;
+	private static JSlider thicknessSlider;
+	private static JSlider curvatureSlider;
+	private static JSlider lengthIncrementSlider;
+	private static JSlider thicknessIncrementSlider;
 
 	private static JLabel chainLabel;
 	private static JLabel branchLabel;
@@ -41,45 +47,52 @@ public class BiomorphCustomisation {
 		viewFrame = new JFrame();	
 		modifyPane = new JPanel();
 		colourPane = new JPanel();
+		
 		chainLabel = new JLabel("Chain");
-		chain = new JSlider();
-		chainLabel.setLabelFor(chain);
+		chainSlider = new JSlider();
+		chainLabel.setLabelFor(chainSlider);
+		
 		branchLabel = new JLabel("Branch");
-		branch = new JSlider();
-		branchLabel.setLabelFor(branch);
+		branchSlider = new JSlider();
+		branchLabel.setLabelFor(branchSlider);
+		
 		lengthLabel = new JLabel("Length");
-		length = new JSlider();
-		lengthLabel.setLabelFor(length);
+		lengthSlider= new JSlider();
+		lengthLabel.setLabelFor(lengthSlider);
+		
 		thicknessLabel = new JLabel("Thickness");
-		thickness = new JSlider();
-		thicknessLabel.setLabelFor(thickness);
+		thicknessSlider = new JSlider();
+		thicknessLabel.setLabelFor(thicknessSlider);
+		
 		curvatureLabel = new JLabel("Curvature");
-		curvature = new JSlider();
-		curvatureLabel.setLabelFor(curvature);
+		curvatureSlider = new JSlider();
+		curvatureLabel.setLabelFor(curvatureSlider);
+		
 		lengthIncLabel = new JLabel("Length Increment");
-		lengthIncrement = new JSlider();
-		lengthIncLabel.setLabelFor(lengthIncrement);
+		lengthIncrementSlider = new JSlider();
+		lengthIncLabel.setLabelFor(lengthIncrementSlider);
+		
 		thicknessIncLabel = new JLabel("Thickness Increment");
-		thicknessIncrement = new JSlider();
-		thicknessIncLabel.setLabelFor(thicknessIncrement);
+		thicknessIncrementSlider = new JSlider();
+		thicknessIncLabel.setLabelFor(thicknessIncrementSlider);
 
 		modifyPane.setLayout(new BoxLayout(modifyPane, BoxLayout.Y_AXIS));
 		modifyPane.setBorder(BorderFactory.createLineBorder(Color.black));
 
 		modifyPane.add(chainLabel);
-		modifyPane.add(chain);
+		modifyPane.add(chainSlider);
 		modifyPane.add(branchLabel);
-		modifyPane.add(branch);
+		modifyPane.add(branchSlider);
 		modifyPane.add(lengthLabel);
-		modifyPane.add(length);
+		modifyPane.add(lengthSlider);
 		modifyPane.add(thicknessLabel);
-		modifyPane.add(thickness);
+		modifyPane.add(thicknessSlider);
 		modifyPane.add(curvatureLabel);
-		modifyPane.add(curvature);
+		modifyPane.add(curvatureSlider);
 		modifyPane.add(lengthIncLabel);
-		modifyPane.add(lengthIncrement);
+		modifyPane.add(lengthIncrementSlider);
 		modifyPane.add(thicknessIncLabel);
-		modifyPane.add(thicknessIncrement);
+		modifyPane.add(thicknessIncrementSlider);
 
 		red = new JSlider();
 		redLabel = new JLabel("Red");
@@ -107,6 +120,58 @@ public class BiomorphCustomisation {
 		
 		viewFrame.add(colourPane, BorderLayout.SOUTH);
 		viewFrame.add(modifyPane, BorderLayout.NORTH);
+	
+	
+	
+	chainSlider.addChangeListener( new ChangeListener() {
+		public void stateChanged(ChangeEvent c)
+		{
+			// TODO Auto-generated method stub	
+		}
+	});
+	
+	branchSlider.addChangeListener( new ChangeListener() {
+		public void stateChanged(ChangeEvent b)
+		{
+			// TODO Auto-generated method stub	
+		}
+	});
+	
+	lengthSlider.addChangeListener( new ChangeListener() {
+		public void stateChanged(ChangeEvent l)
+		{
+			// TODO Auto-generated method stub	
+		}
+	});
+	
+	thicknessSlider.addChangeListener( new ChangeListener() {
+		public void stateChanged(ChangeEvent t)
+		{
+			// TODO Auto-generated method stub	
+		}
+	});
+	
+	
+	curvatureSlider.addChangeListener( new ChangeListener() {
+		public void stateChanged(ChangeEvent c)
+		{
+			// TODO Auto-generated method stub	
+		}
+	});
+		
+	lengthIncrementSlider.addChangeListener( new ChangeListener() {
+			public void stateChanged(ChangeEvent li)
+			{
+				// TODO Auto-generated method stub	
+			}
+		});
+	
+	thicknessIncrementSlider.addChangeListener( new ChangeListener() {
+		public void stateChanged(ChangeEvent th)
+		{
+			// TODO Auto-generated method stub	
+		}
+	});	
 	}
 
 	public JPanel getContents()

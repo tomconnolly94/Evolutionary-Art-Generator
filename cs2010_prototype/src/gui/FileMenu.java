@@ -193,8 +193,8 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			public void actionPerformed(ActionEvent p)
 			{
 				//JOptionPane.showMessageDialog(PNGsave, "New!");
-				JOptionPane.showMessageDialog(PNGsave, "Saved as PNG!");
-				BufferedImage biomorphImage = new BufferedImage(canvas.getSize().width, canvas.getSize().height, BufferedImage.TYPE_INT_ARGB); 
+			//	JOptionPane.showMessageDialog(PNGsave, "Saved as PNG!");
+		//		BufferedImage biomorphImage = new BufferedImage(canvas.getSize().width, canvas.getSize().height, BufferedImage.TYPE_INT_ARGB); 
 		
 
 			}
