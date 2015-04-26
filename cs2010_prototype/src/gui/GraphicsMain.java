@@ -34,75 +34,70 @@ public class GraphicsMain
 	// private FileMenu fileFrame;
 	public GraphicsMain()
 	{
+		// *0* Set local variables
+		int width = 800;
+		int height = 800;
+		
+		// *1* Create components
 		final JLabel tempLeftLabel = new JLabel("Biomorph Window");
 		final JLabel tempRightLabel = new JLabel("Right Panel");
 		final int blankSpace = 1;
 		
-		// Creating the main container for the GUI
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		// Importing the filemenu element
 		FileMenu filemenu = new FileMenu();
-		
-		// Importing the Biomorph selection element
-		// BiomorphSelector selector = new BiomorphSelector();
-		
-		// Importing the Biomorph display window
-		// BiomorphWindows biowindow = new BiomorphWindows();
-		
-		// Setting up the biomorph window
+		RightPanel rp = new RightPanel();
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
-		JPanel bioWindow = new JPanel();
-		int width = 800;
-		int height = 800;
-		canvas.setSize(new Dimension(width - 110, height - 110));
-		bioWindow.add(canvas);
-		bioWindow.setSize(new Dimension(width, height));
-		bioWindow.setVisible(true);
 		OpenGLFrame oframe = new OpenGLFrame();
+		JPanel largeBiomorphWindow = new JPanel();
+		
+		// *2* Set up the biomorph window
+		canvas.setSize(new Dimension(width - 110, height - 110));
+		largeBiomorphWindow.add(canvas);
+		largeBiomorphWindow.setSize(new Dimension(width-200, height-400));
+		largeBiomorphWindow.setVisible(true);
 		canvas.addGLEventListener(oframe);
 		canvas.addKeyListener(oframe);
 		FPSAnimator animator = new FPSAnimator(canvas, 120);
 		animator.start();
 		
-		// Importing the RightPanel
-		RightPanel rp = new RightPanel();
+		// *3* Create containers
+		JPanel contentPanel = new JPanel(new GridBagLayout());
+		JPanel biomorphPanel= new JPanel();
+		biomorphPanel.setSize(new Dimension(width-200,height-400));
+		JPanel hallOfFamePanel = new JPanel();
 		
-		// Creating the other containers for the GUI
-		JPanel filemenuPanel = new JPanel();
-		JPanel rightPanel = new JPanel();
-		JPanel bigBiomorphDisplayArea = new JPanel(new GridBagLayout());
-		
-		// Specifying the layout managers
+		// *4* Specify layout managers
 		mainFrame.setLayout(new BorderLayout());
-		mainFrame.setPreferredSize(new Dimension(800, 800));
+		mainFrame.setPreferredSize(new Dimension(width, height));
 		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-		
-		filemenuPanel.setLayout(new BorderLayout());
-		filemenuPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-		
-		rightPanel.setLayout(new BorderLayout());
-		rightPanel.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-		
+				
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		// bigBiomorphDisplayArea.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-		bigBiomorphDisplayArea.setMinimumSize(new Dimension(width, height));
+		contentPanel.setMinimumSize(new Dimension(width, height));
 		
-		// Add components to containers
-		filemenuPanel.add(filemenu.getContents(), BorderLayout.CENTER);
-		rightPanel.add(rp.getContents(), BorderLayout.CENTER);
-		bigBiomorphDisplayArea.add(canvas, gbc);
+		// *5* Add components to containers
+		
+		//TODO:add small biomorph windows to hall of fame panel 
+		
+		biomorphPanel.add(largeBiomorphWindow, BorderLayout.NORTH);
+		biomorphPanel.add(hallOfFamePanel, BorderLayout.SOUTH);
+		
+		contentPanel.add(largeBiomorphWindow, gbc);
+		
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = 1;
 		gbc.gridy = 0;
-		bigBiomorphDisplayArea.add(rightPanel, gbc);
-		mainFrame.add(filemenuPanel, BorderLayout.NORTH);
-		mainFrame.add(bigBiomorphDisplayArea, BorderLayout.CENTER);
-		// Action Listeners
+		contentPanel.add(rp.getContents(), gbc);
+		
+		
+		mainFrame.add(filemenu.getContents(), BorderLayout.NORTH);
+		mainFrame.add(contentPanel, BorderLayout.CENTER);
+		
+		// *6* Create action listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
 			public void Closewindow(WindowEvent e)
@@ -110,6 +105,8 @@ public class GraphicsMain
 				exitApp();
 			}
 		});
+		
+		// *7* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}
