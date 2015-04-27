@@ -69,7 +69,7 @@ public class GraphicsMain
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 		
-		
+		// second biomorph Window
 		GLCanvas canvas2 = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
 		OpenGLFrame oframe2 = new OpenGLFrame(bm.getRandomBiomorph());
 		JPanel largeBiomorphWindow2 = new JPanel();
