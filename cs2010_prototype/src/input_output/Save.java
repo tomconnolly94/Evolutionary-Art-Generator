@@ -24,6 +24,7 @@ import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.text.View;
 import jogamp.opengl.glu.mipmap.Image;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
@@ -42,27 +43,32 @@ public class Save
 
 	public Save(GLCanvas canvas, GL2 gl) throws AWTException
 	{
-		BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+		/*BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
 	    Graphics graphics = screenshot.getGraphics();
 
-	/*    ByteBuffer buffer = BufferUtils.createByteBuffer(canvas.getWidth() * canvas.getHeight() * 3);
+	    ByteBuffer buffer = BufferUtils.createByteBuffer(canvas.getWidth() * canvas.getHeight() * 3);
 
-	    //gl.glReadPixels(0, 0, canvas.getWidth(), canvas.getHeight(), gl.GL_RGB, gl.GL_BYTE, buffer);
+	    gl.glReadPixels(canvas.getHeight(), 0, canvas.getWidth(), canvas.getHeight(), gl.GL_RGB, gl.GL_UNSIGNED_BYTE, buffer);
 
 
 	    for (int h = 0; h < canvas.getHeight(); h++) {
 	        for (int w = 0; w < canvas.getWidth(); w++) {
-	            // The color are the three consecutive bytes, it's like referencing
-	            // to the next consecutive array elements, so we got red, green, blue..
-	            // red, green, blue, and so on..
 	            graphics.setColor(new Color( buffer.get()*2, buffer.get()*2, buffer.get()*2 ));
 	            graphics.drawRect(w,canvas.getHeight() - h, 1, 1); // canvas.getHeight() - h is for flipping the image
 	        }
-	    }*/
+	    }
 	    try {
             ImageIO.write(screenshot, "PNG", new File(fileDest));
         } catch (IOException ex) {
-        }
+        }*/
+		
+		View view = gl.glGetIntegerv(gl.GL_VIEWPORT)
+				img = wx.EmptyImage(view[2], view[3] )
+				pixels = glReadPixels(0, 0, view[2], view[3], GL_RGB,
+				                 GL_UNSIGNED_BYTE)
+				img.SetData( pixels )
+				img = img.Mirror(False)
+				img.SaveFile("out.png", wx.BITMAP_TYPE_PNG)
 	}
 	
 	public static void main(String[] args) throws AWTException{
