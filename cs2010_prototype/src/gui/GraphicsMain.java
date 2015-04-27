@@ -40,7 +40,7 @@ public class GraphicsMain
 		final int blankSpace = 1;
 		int width = 800;
 		int height = 800;
-		int largeBiomorphWindowSize = 600;
+		int largeBiomorphWindowSize = 300;
 		
 		// *1* Create components
 		final JLabel tempLeftLabel = new JLabel("Biomorph Window");
@@ -65,15 +65,29 @@ public class GraphicsMain
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 		
+		
+		GLCanvas canvas2 = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
+		OpenGLFrame oframe2 = new OpenGLFrame();
+		JPanel largeBiomorphWindow2 = new JPanel();
+		canvas2.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
+		largeBiomorphWindow2.add(canvas2);
+		//largeBiomorphWindow.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
+		largeBiomorphWindow2.setVisible(true);
+		canvas2.addGLEventListener(oframe2);
+		canvas2.addKeyListener(oframe2);
+		FPSAnimator animator2 = new FPSAnimator(canvas2, 60);
+		animator2.start();
+		
 		// *3* Create containers
 		JPanel contentPanel = new JPanel(new GridBagLayout());
 		//contentPanel.setSize(new Dimension(900,900));
 		JPanel biomorphPanel= new JPanel();
+		JPanel biomorphPanel2= new JPanel();
 		biomorphPanel.setSize(new Dimension(largeBiomorphWindowSize,largeBiomorphWindowSize));
 		JPanel hallOfFamePanel = new JPanel();
 		
 		// *4* Specify layout managers
-		mainFrame.setLayout(new BoxLayout(mainFrame,BoxLayout.Y_AXIS));
+		mainFrame.setLayout(new BorderLayout()/*new BoxLayout(mainFrame,BoxLayout.Y_AXIS)*/);
 		mainFrame.setPreferredSize(new Dimension(width, height));
 		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 				
@@ -90,9 +104,19 @@ public class GraphicsMain
 		//TODO:add small biomorph windows to hall of fame panel 
 		
 		biomorphPanel.add(largeBiomorphWindow, BorderLayout.NORTH);
+		
+		
+		
 		//biomorphPanel.add(hallOfFamePanel, BorderLayout.SOUTH);
 		
 		contentPanel.add(largeBiomorphWindow, gbc);
+		
+		
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		biomorphPanel2.add(largeBiomorphWindow2, BorderLayout.SOUTH);
+		contentPanel.add(largeBiomorphWindow2, gbc);
 		
 		
 		gbc.gridx = 1;
@@ -100,7 +124,7 @@ public class GraphicsMain
 		contentPanel.add(rp.getContents(), gbc);
 		
         //fileMenu.getContents().setAlignmentX(mainFrame.LEFT_ALIGNMENT);
-        contentPanel.setAlignmentX(mainFrame.LEFT_ALIGNMENT);
+        //contentPanel.setAlignmentX(mainFrame.LEFT_ALIGNMENT);
 		mainFrame.add(fileMenu.getContents());
 		mainFrame.add(contentPanel);
 		
