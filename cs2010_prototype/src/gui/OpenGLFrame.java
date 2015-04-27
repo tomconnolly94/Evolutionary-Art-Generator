@@ -8,6 +8,8 @@ import javax.media.opengl.awt.GLCanvas;
 import javax.media.opengl.glu.GLU;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import biomorphHandling.Biomorph;
+import biomorphHandling.BiomorphCreator;
 import biomorphHandling.BiomorphManager;
 import com.jogamp.opengl.util.*;
 public class OpenGLFrame implements GLEventListener, KeyListener
@@ -25,32 +27,12 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	private float lat = 0.0f; // Latitude
 	private float lon = 0.0f; // Longitude
 	private float zoom = 1.0f;
-	private BiomorphManager bm = new BiomorphManager();
-	public static void main(String[] args)
-	{
-		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
-		OpenGLFrame oframe = new OpenGLFrame();
-		canvas.addGLEventListener(oframe);
-		canvas.addKeyListener(oframe);
-		int width = 400;
-		int height = 400;
-		JFrame frame = new JFrame("FRAME");
-		JPanel panel = new JPanel();
-		panel.setSize(width, height);
-		frame.setSize(width, height);
-		frame.add(canvas);
-		frame.setVisible(true);
-		frame.addWindowListener(new WindowAdapter()
-		{
-			public void windowClosing(WindowEvent e)
-			{
-				System.exit(0);
-			}
-		});
-		frame.add(panel);
-		FPSAnimator animator = new FPSAnimator(canvas, 60);
-		animator.start();
+	private Biomorph biomorph;
+	
+	public OpenGLFrame(Biomorph biomorph){
+		this.biomorph=biomorph;
 	}
+	
 	public void init(GLAutoDrawable drawable)
 	{
 		gl = drawable.getGL().getGL2();
@@ -75,7 +57,7 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 			// Positions the camera according to latitude and longitude, as if the biomorph is a globe-like object
 			gl.glOrtho(-50.0f * aspect * zoom, 50.0f * aspect * zoom, -50.0f * zoom, 50.0f * zoom, -50.0f * zoom, 50.0f * zoom);
 			glu.gluLookAt((float) Math.cos(Math.toRadians(lat)) * -(float)Math.cos(Math.toRadians(lon)), (float)Math.sin(Math.toRadians(lat)), (float)Math.cos(Math.toRadians(lat)) * (float)Math.sin(Math.toRadians(lon)), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-			bm.getSpecific(0).draw(drawable);
+			biomorph.draw(drawable);
 		}
 		gl.glPopMatrix();
 		gl.glFlush();
@@ -92,8 +74,8 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 			System.exit(0);
 			break;
 		case KeyEvent.VK_ENTER:
-			bm.addSpecific(bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph()));
-			bm.createAndAdd();
+			//bm.addSpecific(bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph()));
+			//bm.createAndAdd();
 			break;
 		case KeyEvent.VK_UP:
 			keys[UP] = true;
@@ -146,5 +128,32 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	public void keyTyped(KeyEvent key)
 	{
 		
+	}
+	
+	public static void main(String[] args)
+	{
+		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
+		BiomorphCreator bc = new BiomorphCreator();
+		OpenGLFrame oframe = new OpenGLFrame(bc.createBiomorph());
+		canvas.addGLEventListener(oframe);
+		canvas.addKeyListener(oframe);
+		int width = 400;
+		int height = 400;
+		JFrame frame = new JFrame("FRAME");
+		JPanel panel = new JPanel();
+		panel.setSize(width, height);
+		frame.setSize(width, height);
+		frame.add(canvas);
+		frame.setVisible(true);
+		frame.addWindowListener(new WindowAdapter()
+		{
+			public void windowClosing(WindowEvent e)
+			{
+				System.exit(0);
+			}
+		});
+		frame.add(panel);
+		FPSAnimator animator = new FPSAnimator(canvas, 60);
+		animator.start();
 	}
 }

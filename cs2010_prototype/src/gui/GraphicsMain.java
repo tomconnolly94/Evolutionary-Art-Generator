@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
+import biomorphHandling.*;
 import com.jogamp.opengl.util.FPSAnimator;
 /**
  * The main window for the Biomorph Simulation.
@@ -33,14 +34,17 @@ public class GraphicsMain
 {
 	// The main frame used for the GUI
 	private static JFrame mainFrame;
-	// private FileMenu fileFrame;
+	// the Biomorph Manager used to arrange and organise Biomorphs
+	private static BiomorphManager bm;
+	
 	public GraphicsMain()
 	{
-		// *0* Set local variables
+		// *0* Initialise variables
 		final int blankSpace = 1;
 		int width = 800;
 		int height = 800;
 		int largeBiomorphWindowSize = 300;
+		bm = new BiomorphManager();
 		
 		// *1* Create components
 		final JLabel tempLeftLabel = new JLabel("Biomorph Window");
@@ -52,7 +56,7 @@ public class GraphicsMain
 		FileMenu fileMenu = new FileMenu();
 		RightPanel rp = new RightPanel();
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
-		OpenGLFrame oframe = new OpenGLFrame();
+		OpenGLFrame oframe = new OpenGLFrame(bm.getRandomBiomorph());
 		JPanel largeBiomorphWindow = new JPanel();
 		
 		// *2* Set up the biomorph window
@@ -67,7 +71,7 @@ public class GraphicsMain
 		
 		
 		GLCanvas canvas2 = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
-		OpenGLFrame oframe2 = new OpenGLFrame();
+		OpenGLFrame oframe2 = new OpenGLFrame(bm.getRandomBiomorph());
 		JPanel largeBiomorphWindow2 = new JPanel();
 		canvas2.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
 		largeBiomorphWindow2.add(canvas2);

@@ -3,6 +3,7 @@ import genes.Gene;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.media.opengl.GL2;
 /**
  * Class to handle exporting of Biomorphs.
  * @author Tom Connolly
@@ -12,8 +13,14 @@ public class Save
 {
 	static FileOutputStream fop = null;
 	static File file;
-	public Save()
+	public Save(String format, GL2 gl )
 	{
+		GL11.glReadBuffer(GL11.GL_FRONT);
+		int width = Display.getDisplayMode().getWidth();
+		int height= Display.getDisplayMode().getHeight();
+		int bpp = 4; // Assuming a 32-bit display with a byte each for red, green, blue, and alpha.
+		ByteBuffer buffer = BufferUtils.createByteBuffer(width * height * bpp);
+		GL11.glReadPixels(0, 0, width, height, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, buffer );
 	}
 	public void changeSaveDestination()
 	{
