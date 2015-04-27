@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -121,5 +122,15 @@ public class GraphicsMain
 	public static void main(String[] args)
 	{
 		GraphicsMain gm = new GraphicsMain();
+	}
+	public int getWidth()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public void paintAll(Graphics biomorphgraphics)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }

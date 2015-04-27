@@ -1,8 +1,13 @@
 package input_output;
 import genes.Gene;
+import gui.GraphicsMain;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 /**
  * Class to handle exporting of Biomorphs.
  * @author Tom Connolly
@@ -12,23 +17,54 @@ public class Save
 {
 	static FileOutputStream fop = null;
 	static File file;
+	String fileLocation = "";
+
 	public Save()
 	{
 	}
-	public void changeSaveDestination()
+	
+	public void saveToPNG(GraphicsMain canvas)
 	{
+		JFileChooser fileChooser = new JFileChooser();
+		if(fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION)
+		{
+			File file = fileChooser.getSelectedFile();
+			fileLocation = file.getAbsolutePath() + ".png";
+		}	
+		BufferedImage biomorphImage = new BufferedImage(canvas.getWidth(), canvas.getWidth(), BufferedImage.TYPE_INT_RGB ); 
+		Graphics biomorphgraphics = biomorphImage.createGraphics();
+		canvas.paintAll(biomorphgraphics);
+		try{ImageIO.write(biomorphImage,"png",new File("test.png"));}catch (Exception e) {}
 	}
-	public void saveToPNG()
-	{
-	}
+		
+		
+	
 	public void saveToJPG()
 	{
+		JFileChooser fileChooser = new JFileChooser();
+		if(fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION)
+		{
+			File file = fileChooser.getSelectedFile();
+			fileLocation = file.getAbsolutePath() + ".jpg";
+		}	
 	}
 	public void saveToPDF()
 	{
+		JFileChooser fileChooser = new JFileChooser();
+		if(fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION)
+		{
+			File file = fileChooser.getSelectedFile();
+			fileLocation = file.getAbsolutePath() + ".PDF";
+		}	
 	}
 	public void serialiseBiomorph()
 	{
+		JFileChooser fileChooser = new JFileChooser();
+		if(fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION)
+		{
+			File file = fileChooser.getSelectedFile();
+			fileLocation = file.getAbsolutePath() + ".";
+		}	
 	}
 	public void saveGeneValuesToTextFile(Gene[] geneValues, String fileName)
 	{
