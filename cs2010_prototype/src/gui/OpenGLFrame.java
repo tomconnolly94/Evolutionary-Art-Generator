@@ -130,6 +130,10 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		
 	}
 	
+	public GL2 getGL2(){
+		return gl;
+	}
+	
 	public static void main(String[] args)
 	{
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
