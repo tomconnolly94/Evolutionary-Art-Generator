@@ -1,9 +1,12 @@
 package input_output;
 import genes.Gene;
 import gui.OpenGLFrame;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,6 +19,7 @@ import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import jogamp.opengl.glu.mipmap.Image;
 import org.lwjgl.BufferUtils;
 import biomorphHandling.BiomorphCreator;
 import com.jogamp.opengl.util.FPSAnimator;
@@ -30,32 +34,25 @@ public class Save
 	static File file;
 	
 	public Save(String imageName, String format, GL2 gl, GLCanvas canvas)
-	{
-		gl.glReadBuffer(gl.GL_FRONT);
-		int width = canvas.getWidth();
-		int height= canvas.getHeight();
-		int bpp = 4; // Assuming a 32-bit display with a byte each for red, green, blue, and alpha.
-		ByteBuffer buffer = BufferUtils.createByteBuffer(width * height * bpp);
-		gl.glReadPixels(0, 0, width, height, gl.GL_RGBA, gl.GL_UNSIGNED_BYTE, buffer );
-	
-		File file = new File("C:/Users/Tom/Pictures/biomorphImages");
-		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		   
-		for(int x = 0; x < width; x++) 
-		{
-		    for(int y = 0; y < height; y++)
-		    {
-		        int i = (x + (width * y)) * bpp;
-		        int r = buffer.get(i) & 0xFF;
-		        int g = buffer.get(i + 1) & 0xFF;
-		        int b = buffer.get(i + 2) & 0xFF;
-		        image.setRGB(x, height - (y + 1), (0xFF << 24) | (r << 16) | (g << 8) | b);
-		    }
-		}
-		   
-		try {
-		    ImageIO.write(image, format, file);
-		} catch (IOException e) { e.printStackTrace(); }
+	{  
+		BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+	    Graphics graphics = screenshot.getGraphics();
+
+	    ByteBuffer buffer = BufferUtils.createByteBuffer(canvas.getWidth() * canvas.getHeight() * 3);
+
+	    glReadPixels(0, 0, canvas.getWidth(), canvas.getHeight(), GL_RGB, GL_BYTE, buffer);
+
+
+	    for (int h = 0; h < canvas.getHeight(); h++) {
+	        for (int w = 0; w < canvas.getWidth(); w++) {
+	            // The color are the three consecutive bytes, it's like referencing
+	            // to the next consecutive array elements, so we got red, green, blue..
+	            // red, green, blue, and so on..
+	            graphics.setColor(new Color( buffer.get()*2, buffer.get()*2, buffer.get()*2 ));
+	            graphics.drawRect(w,canvas.getHeight() - h, 1, 1); // height - h is for flipping the image
+	        }
+	    }
+	    //return screenshot;
 	}
 	public void changeSaveDestination()
 	{

@@ -40,7 +40,6 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	}
 	public void reshape(GLAutoDrawable drawable, int x, int y, int w, int h)
 	{
-		
 	}
 	public void display(GLAutoDrawable drawable)
 	{
