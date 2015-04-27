@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -14,6 +15,7 @@ import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
 import javax.media.opengl.awt.GLJPanel;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -35,41 +37,43 @@ public class GraphicsMain
 	public GraphicsMain()
 	{
 		// *0* Set local variables
+		final int blankSpace = 1;
 		int width = 800;
 		int height = 800;
+		int largeBiomorphWindowSize = 600;
 		
 		// *1* Create components
 		final JLabel tempLeftLabel = new JLabel("Biomorph Window");
 		final JLabel tempRightLabel = new JLabel("Right Panel");
-		final int blankSpace = 1;
 		
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		FileMenu filemenu = new FileMenu();
+		FileMenu fileMenu = new FileMenu();
 		RightPanel rp = new RightPanel();
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
 		OpenGLFrame oframe = new OpenGLFrame();
 		JPanel largeBiomorphWindow = new JPanel();
 		
 		// *2* Set up the biomorph window
-		canvas.setSize(new Dimension(width - 110, height - 110));
+		canvas.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
 		largeBiomorphWindow.add(canvas);
-		largeBiomorphWindow.setSize(new Dimension(width-200, height-400));
+		//largeBiomorphWindow.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
 		largeBiomorphWindow.setVisible(true);
 		canvas.addGLEventListener(oframe);
 		canvas.addKeyListener(oframe);
-		FPSAnimator animator = new FPSAnimator(canvas, 120);
+		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 		
 		// *3* Create containers
 		JPanel contentPanel = new JPanel(new GridBagLayout());
+		//contentPanel.setSize(new Dimension(900,900));
 		JPanel biomorphPanel= new JPanel();
-		biomorphPanel.setSize(new Dimension(width-200,height-400));
+		biomorphPanel.setSize(new Dimension(largeBiomorphWindowSize,largeBiomorphWindowSize));
 		JPanel hallOfFamePanel = new JPanel();
 		
 		// *4* Specify layout managers
-		mainFrame.setLayout(new BorderLayout());
+		mainFrame.setLayout(new BoxLayout(mainFrame,BoxLayout.Y_AXIS));
 		mainFrame.setPreferredSize(new Dimension(width, height));
 		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 				
@@ -77,6 +81,8 @@ public class GraphicsMain
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.gridx = 0;
 		gbc.gridy = 0;
+		//gbc.gridwidth = 1;
+		
 		contentPanel.setMinimumSize(new Dimension(width, height));
 		
 		// *5* Add components to containers
@@ -84,18 +90,19 @@ public class GraphicsMain
 		//TODO:add small biomorph windows to hall of fame panel 
 		
 		biomorphPanel.add(largeBiomorphWindow, BorderLayout.NORTH);
-		biomorphPanel.add(hallOfFamePanel, BorderLayout.SOUTH);
+		//biomorphPanel.add(hallOfFamePanel, BorderLayout.SOUTH);
 		
 		contentPanel.add(largeBiomorphWindow, gbc);
 		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
+		
 		gbc.gridx = 1;
 		gbc.gridy = 0;
 		contentPanel.add(rp.getContents(), gbc);
 		
-		
-		mainFrame.add(filemenu.getContents(), BorderLayout.NORTH);
-		mainFrame.add(contentPanel, BorderLayout.CENTER);
+        //fileMenu.getContents().setAlignmentX(mainFrame.LEFT_ALIGNMENT);
+        contentPanel.setAlignmentX(mainFrame.LEFT_ALIGNMENT);
+		mainFrame.add(fileMenu.getContents());
+		mainFrame.add(contentPanel);
 		
 		// *6* Create action listeners
 		mainFrame.addWindowListener(new WindowAdapter()
@@ -121,5 +128,15 @@ public class GraphicsMain
 	public static void main(String[] args)
 	{
 		GraphicsMain gm = new GraphicsMain();
+	}
+	public int getWidth()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public void paintAll(Graphics biomorphgraphics)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 }
