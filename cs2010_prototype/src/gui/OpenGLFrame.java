@@ -1,4 +1,6 @@
 package gui;
+import input_output.Save;
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -37,7 +39,6 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	private float zoom = 1.0f;
 	private Biomorph biomorph;
 	private static GLCanvas canvas;
-	private static String fileDest = "C:/Users/Tom/Pictures/biomorphImages/biomorphImage.png";
 	
 	public OpenGLFrame(Biomorph biomorph, GLCanvas canvas){
 		this.biomorph=biomorph;
@@ -140,25 +141,8 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		
 	}
 	
-	public static void save(){
-		BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
-	    Graphics graphics = screenshot.getGraphics();
-
-	    ByteBuffer buffer = BufferUtils.createByteBuffer(canvas.getWidth() * canvas.getHeight() * 3);
-
-	    gl.glReadPixels(canvas.getHeight(), 0, canvas.getWidth(), canvas.getHeight(), gl.GL_RGB, gl.GL_UNSIGNED_BYTE, buffer);
-
-
-	    for (int h = 0; h < canvas.getHeight(); h++) {
-	        for (int w = 0; w < canvas.getWidth(); w++) {
-	            graphics.setColor(new Color( buffer.get()*2, buffer.get()*2, buffer.get()*2 ));
-	            graphics.drawRect(w,canvas.getHeight() - h, 1, 1); // canvas.getHeight() - h is for flipping the image
-	        }
-	    }
-	    try {
-            ImageIO.write(screenshot, "PNG", new File(fileDest));
-        } catch (IOException ex) {
-        }
+	public static void save() throws AWTException{
+		Save save = new Save(canvas);
 	}
 	
 	public static void main(String[] args)
@@ -186,6 +170,5 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		frame.add(panel);
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
-		save();
 	}
 }
