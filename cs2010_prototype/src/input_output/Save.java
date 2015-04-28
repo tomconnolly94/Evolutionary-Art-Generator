@@ -45,15 +45,14 @@ public class Save
 	private String fileDest = "C:/Users/Tom/Pictures/biomorphImages/biomorphImage.png";
 	private GL2 gl;
 	
-	public Save(GLCanvas canvas, GLAutoDrawable drawable) throws AWTException
+	public Save(GLCanvas canvas) throws AWTException
 	{
-		gl = drawable.getGL().getGL2();
 		BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
 	    Graphics graphics = screenshot.getGraphics();
 
 	    ByteBuffer buffer = BufferUtils.createByteBuffer(canvas.getWidth() * canvas.getHeight() * 3);
 
-	    gl.glReadPixels(canvas.getHeight(), 0, canvas.getWidth(), canvas.getHeight(), gl.GL_RGB, gl.GL_UNSIGNED_BYTE, buffer);
+	    gl.glReadPixels(0, 0, canvas.getWidth(), canvas.getHeight(), GL2.GL_RGB, GL2.GL_UNSIGNED_BYTE, buffer);
 
 
 	    for (int h = 0; h < canvas.getHeight(); h++) {
@@ -93,7 +92,7 @@ public class Save
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 		
-		Save save = new Save(canvas, drawable);
+		Save save = new Save(canvas);
 	}
 	
 	
