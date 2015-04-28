@@ -46,7 +46,7 @@ public class Save
 	
 	public Save(GLCanvas canvas) throws AWTException
 	{
-		gl = (GL2) GLContext.getCurrentGL();
+		gl = drawable.
 		BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
 	    Graphics graphics = screenshot.getGraphics();
 
@@ -65,14 +65,6 @@ public class Save
             ImageIO.write(screenshot, "PNG", new File(fileDest));
         } catch (IOException ex) {
         }
-		
-		/*View view = gl.glGetIntegerv(gl.GL_VIEWPORT)
-				img = wx.EmptyImage(view[2], view[3] )
-				pixels = glReadPixels(0, 0, view[2], view[3], GL_RGB,
-				                 GL_UNSIGNED_BYTE)
-				img.SetData( pixels )
-				img = img.Mirror(False)
-				img.SaveFile("out.png", wx.BITMAP_TYPE_PNG)*/
 	}
 	
 	public static void main(String[] args) throws AWTException{
