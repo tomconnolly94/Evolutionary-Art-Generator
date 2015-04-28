@@ -17,6 +17,7 @@ import javax.media.opengl.awt.GLCanvas;
 import javax.media.opengl.glu.GLU;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import org.lwjgl.BufferUtils;
 import biomorphHandling.Biomorph;
 import biomorphHandling.BiomorphCreator;
 import biomorphHandling.BiomorphManager;
