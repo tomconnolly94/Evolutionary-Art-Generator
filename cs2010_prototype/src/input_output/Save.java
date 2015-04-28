@@ -28,9 +28,8 @@ import javax.media.opengl.awt.GLJPanel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.text.View;
-import jogamp.opengl.glu.mipmap.Image;
 import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
+import jogamp.opengl.glu.mipmap.Image;
 import biomorphHandling.*;
 import com.jogamp.opengl.util.FPSAnimator;
 /**
@@ -43,7 +42,6 @@ public class Save
 	static FileOutputStream fop = null;
 	static File file;
 	private String fileDest = "C:/Users/Tom/Pictures/biomorphImages/biomorphImage.png";
-	private GL2 gl;
 	
 	public Save(GLCanvas canvas) throws AWTException
 	{
@@ -52,7 +50,7 @@ public class Save
 
 	    ByteBuffer buffer = BufferUtils.createByteBuffer(canvas.getWidth() * canvas.getHeight() * 3);
 
-	    gl.glReadPixels(0, 0, canvas.getWidth(), canvas.getHeight(), GL2.GL_RGB, GL2.GL_UNSIGNED_BYTE, buffer);
+	    glReadPixels(0, 0, canvas.getWidth(), canvas.getHeight(), GL2.GL_RGB, GL2.GL_UNSIGNED_BYTE, buffer);
 
 
 	    for (int h = 0; h < canvas.getHeight(); h++) {
