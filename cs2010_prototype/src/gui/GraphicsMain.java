@@ -54,33 +54,19 @@ public class GraphicsMain
 		JPanel smallBiomorphWindow[] = new JPanel[8];
 		for (int i = 0; i < smallBiomorphWindow.length; i++) smallBiomorphWindow[i] = new JPanel();
 		RightPanel rp = new RightPanel();
-		GLCanvas canvas[] = new GLCanvas[9];
 		OpenGLFrame oframe[] = new OpenGLFrame[9];
-		FPSAnimator animator[] = new FPSAnimator[9];
 		// *2* Set up the biomorph window
-		oframe[0] = new OpenGLFrame(bm.getRandomBiomorph());
-		canvas[0] = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
-		canvas[0].setSize(largeBiomorphWindowSize, largeBiomorphWindowSize);
-		canvas[0].addGLEventListener(oframe[0]);
-		canvas[0].addKeyListener(oframe[0]);
-		largeBiomorphWindow.add(canvas[0]);
+		oframe[0] = new OpenGLFrame(bm.getRandomBiomorph(), largeBiomorphWindowSize);
+		largeBiomorphWindow.add(oframe[0].getCanvas());
 		largeBiomorphWindow.setSize(largeBiomorphWindowSize, largeBiomorphWindowSize);
 		largeBiomorphWindow.setVisible(true);
-		animator[0] = new FPSAnimator(canvas[0], 60);
-		animator[0].start();
 		//Smaller biomorphs for mutation
-		for (int i = 1; i < canvas.length; i++)
+		for (int i = 1; i < oframe.length; i++)
 		{
-			oframe[i] = new OpenGLFrame(bm.getRandomBiomorph());
-			canvas[i] = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
-			canvas[i].setSize(smallBiomorphWindowSize, smallBiomorphWindowSize);
-			canvas[i].addGLEventListener(oframe[i]);
-			canvas[i].addKeyListener(oframe[i]);
-			smallBiomorphWindow[i - 1].add(canvas[i]);
+			oframe[i] = new OpenGLFrame(bm.getRandomBiomorph(), smallBiomorphWindowSize);
+			smallBiomorphWindow[i - 1].add(oframe[i].getCanvas());
 			smallBiomorphWindow[i - 1].setSize(smallBiomorphWindowSize, smallBiomorphWindowSize);
 			smallBiomorphWindow[i - 1].setVisible(true);
-			animator[i] = new FPSAnimator(canvas[i], 60);
-			animator[i].start();
 		}
 		// *3* Create containers
 		JPanel contentPanel = new JPanel(new GridBagLayout());
