@@ -1,5 +1,6 @@
 package gui;
 
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,7 @@ public class BiomorphCustomisation {
 	
 	private static JPanel modifyPane;
 	private static JPanel colourPane;
+	private static JPanel backPane;
 	
 	private static JFrame viewFrame;
 	
@@ -43,10 +45,14 @@ public class BiomorphCustomisation {
 	private static JLabel greenLabel;
 	private static JLabel blueLabel;
 	
+	private static JButton back;
+	
 	public BiomorphCustomisation(){
 		viewFrame = new JFrame();	
+		
 		modifyPane = new JPanel();
 		colourPane = new JPanel();
+		backPane = new JPanel();
 		
 		chainLabel = new JLabel("Chain");
 		chainSlider = new JSlider();
@@ -118,9 +124,14 @@ public class BiomorphCustomisation {
 		colourPane.add(blue);
 		colourPane.add(greenLabel);
 		
-		viewFrame.add(colourPane, BorderLayout.SOUTH);
+		back = new JButton();
+		back.setText("Back");
+		
+		backPane.add(back);
+		
+		viewFrame.add(colourPane, BorderLayout.CENTER);
 		viewFrame.add(modifyPane, BorderLayout.NORTH);
-	
+		viewFrame.add(backPane, BorderLayout.SOUTH);
 	
 	
 	chainSlider.addChangeListener( new ChangeListener() {
@@ -172,6 +183,17 @@ public class BiomorphCustomisation {
             System.out.println(((JSlider) th.getSource()).getValue());
 		}
 	});	
+	
+	back.addActionListener( new ActionListener() {
+		public void actionPerformed(ActionEvent e)
+		{
+		viewFrame.remove(backPane);
+		viewFrame.remove(colourPane);
+		viewFrame.remove(modifyPane);
+		CreateClicked cc = new CreateClicked();
+		viewFrame.add(cc.getContents());
+		}
+		});
 	}
 
 	public JPanel getContents()
@@ -179,9 +201,7 @@ public class BiomorphCustomisation {
 		return (JPanel)viewFrame.getContentPane();
 	}
 
-	public static void main(String[] args){
-		BiomorphCustomisation bc = new BiomorphCustomisation();
-	}
+
 	
 }
 
