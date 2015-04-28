@@ -1,31 +1,16 @@
 package gui;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Panel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.media.opengl.GLCapabilities;
-import javax.media.opengl.GLProfile;
-import javax.media.opengl.awt.GLCanvas;
-import javax.media.opengl.awt.GLJPanel;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import biomorphHandling.*;
-import com.jogamp.opengl.util.FPSAnimator;
 /**
  * The main window for the Biomorph Simulation.
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
@@ -34,7 +19,7 @@ import com.jogamp.opengl.util.FPSAnimator;
 public class GraphicsMain
 {
 	private static JFrame mainFrame; // The main frame used for the GUI
-	private static BiomorphManager bm; // the Biomorph Manager used to arrange and organise Biomorphs
+	private static BiomorphManager bm; // The Biomorph Manager used to arrange and organise Biomorphs
 	public GraphicsMain()
 	{
 		// *0* Initialise variables
@@ -45,8 +30,6 @@ public class GraphicsMain
 		int smallBiomorphWindowSize = 100;
 		bm = new BiomorphManager();
 		// *1* Create components
-		final JLabel tempLeftLabel = new JLabel("Biomorph Window");
-		final JLabel tempRightLabel = new JLabel("Right Panel");
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		FileMenu fileMenu = new FileMenu();
@@ -83,7 +66,7 @@ public class GraphicsMain
 		gbcMutate.fill = GridBagConstraints.HORIZONTAL;
 		gbcContent.fill = GridBagConstraints.HORIZONTAL;
 		// *5* Add components to containers
-		biomorphPanel.add(largeBiomorphWindow, BorderLayout.CENTER);
+		biomorphPanel.add(largeBiomorphWindow, 0);
 		for (int i = 0; i < smallBiomorphWindow.length; i++)
 		{	
 			gbcMutate.gridx = i % 4;
@@ -104,6 +87,7 @@ public class GraphicsMain
 		// *6* Create action listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
+			@SuppressWarnings("unused")
 			public void Closewindow(WindowEvent e)
 			{
 				exitApp();
@@ -134,6 +118,5 @@ public class GraphicsMain
 	public void paintAll(Graphics biomorphgraphics)
 	{
 		// TODO Auto-generated method stub
-		
 	}
 }
