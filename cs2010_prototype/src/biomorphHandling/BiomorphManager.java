@@ -11,7 +11,7 @@ public class BiomorphManager
 {
 	private LinkedList<Biomorph> biomorphCollection;
 	// set of perfect values that the Biomorphs will evolve towards.
-	private int[] perfectValues = {5, 4, 100, 256, 50, 5, 8, 2, 2, 5, 0, 0};
+	private int[] perfectValues = {5, 2, 100, 256, 50, 5, 8, 2, 2, 5, 0, 0};
 	private EvolutionStats statisticMachine = new EvolutionStats(perfectValues);
 	// integer to change the name of Biomorphs after they are saved.
 	// private int i = 1;

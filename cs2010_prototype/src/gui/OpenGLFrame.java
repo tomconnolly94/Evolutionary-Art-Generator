@@ -107,6 +107,8 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		case KeyEvent.VK_S:
 			keys[S] = true;
 			break;
+		case KeyEvent.VK_ENTER:
+			
 		default:
 			break;
 	    }
