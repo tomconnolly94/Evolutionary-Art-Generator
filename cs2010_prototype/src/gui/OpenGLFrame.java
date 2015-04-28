@@ -1,5 +1,6 @@
 package gui;
 import input_output.Save;
+import java.awt.AWTException;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -38,12 +39,16 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	private float zoom = 1.0f;
 	private Biomorph biomorph;
 	private static GLCanvas canvas;
-	
-	public OpenGLFrame(Biomorph biomorph, GLCanvas canvas){
-		this.biomorph=biomorph;
-		this.canvas = canvas;
+	public OpenGLFrame(Biomorph biomorph, int size)
+	{
+		this.biomorph = biomorph;
+		canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
+		canvas.setSize(size, size);
+		canvas.addGLEventListener(this);
+		canvas.addKeyListener(this);
+		FPSAnimator animator = new FPSAnimator(canvas, 60);
+		animator.start();
 	}
-	
 	public void init(GLAutoDrawable drawable)
 	{
 		gl = drawable.getGL().getGL2();
@@ -82,10 +87,6 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		{
 		case KeyEvent.VK_ESCAPE:
 			System.exit(0);
-			break;
-		case KeyEvent.VK_ENTER:
-			//bm.addSpecific(bm.evolveClo(bm.getSpecific(0), bm.getRandomBiomorph()));
-			//bm.createAndAdd();
 			break;
 		case KeyEvent.VK_UP:
 			keys[UP] = true;
@@ -139,8 +140,12 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	{
 		
 	}
-	
-	public static void save(){
+	public GLCanvas getCanvas()
+	{
+		return canvas;
+	}
+	public static void save() throws AWTException
+	{
 		Save save = new Save(canvas);
 	}
 	
@@ -148,7 +153,7 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	{
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
 		BiomorphCreator bc = new BiomorphCreator();
-		OpenGLFrame oframe = new OpenGLFrame(bc.createBiomorph(),canvas);
+		OpenGLFrame oframe = new OpenGLFrame(bc.createBiomorph(), 400);
 		canvas.addGLEventListener(oframe);
 		canvas.addKeyListener(oframe);
 		int width = 400;
