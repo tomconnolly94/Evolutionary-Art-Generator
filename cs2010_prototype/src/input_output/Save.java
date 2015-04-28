@@ -22,6 +22,7 @@ import javax.media.opengl.GL2;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLProfile;
 import javax.media.opengl.awt.GLCanvas;
+import javax.media.opengl.awt.GLJPanel;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.text.View;
@@ -41,9 +42,9 @@ public class Save
 	static File file;
 	private String fileDest = "C:/Users/Tom/Pictures/biomorphImages/biomorphImage.png";
 
-	public Save(GLCanvas canvas, GL2 gl) throws AWTException
+	public Save(GLJPanel canvas, GL2 gl) throws AWTException
 	{
-		/*BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+		BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
 	    Graphics graphics = screenshot.getGraphics();
 
 	    ByteBuffer buffer = BufferUtils.createByteBuffer(canvas.getWidth() * canvas.getHeight() * 3);
@@ -60,19 +61,19 @@ public class Save
 	    try {
             ImageIO.write(screenshot, "PNG", new File(fileDest));
         } catch (IOException ex) {
-        }*/
+        }
 		
-		View view = gl.glGetIntegerv(gl.GL_VIEWPORT)
+		/*View view = gl.glGetIntegerv(gl.GL_VIEWPORT)
 				img = wx.EmptyImage(view[2], view[3] )
 				pixels = glReadPixels(0, 0, view[2], view[3], GL_RGB,
 				                 GL_UNSIGNED_BYTE)
 				img.SetData( pixels )
 				img = img.Mirror(False)
-				img.SaveFile("out.png", wx.BITMAP_TYPE_PNG)
+				img.SaveFile("out.png", wx.BITMAP_TYPE_PNG)*/
 	}
 	
 	public static void main(String[] args) throws AWTException{
-		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
+		GLJPanel canvas = new GLJPanel(new GLCapabilities(GLProfile.getDefault()));
 		BiomorphCreator bc = new BiomorphCreator();
 		OpenGLFrame oframe = new OpenGLFrame(bc.createBiomorph());
 		canvas.addGLEventListener(oframe);

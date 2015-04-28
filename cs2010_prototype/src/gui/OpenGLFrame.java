@@ -1,13 +1,21 @@
 package gui;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import javax.imageio.ImageIO;
 import javax.media.opengl.*;
 import javax.media.opengl.awt.GLCanvas;
 import javax.media.opengl.glu.GLU;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import org.lwjgl.BufferUtils;
 import biomorphHandling.Biomorph;
 import biomorphHandling.BiomorphCreator;
 import biomorphHandling.BiomorphManager;
@@ -21,16 +29,19 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	private static final int W = 4;
 	private static final int S = 5;
 	private boolean keys[] = new boolean[6];
-	private GL2 gl;
+	private static GL2 gl;
 	private GLU glu;
 	private float aspect = 1.0f;
 	private float lat = 0.0f; // Latitude
 	private float lon = 0.0f; // Longitude
 	private float zoom = 1.0f;
 	private Biomorph biomorph;
+	private static GLCanvas canvas;
+	private static String fileDest = "C:/Users/Tom/Pictures/biomorphImages/biomorphImage.png";
 	
-	public OpenGLFrame(Biomorph biomorph){
+	public OpenGLFrame(Biomorph biomorph, GLCanvas canvas){
 		this.biomorph=biomorph;
+		this.canvas = canvas;
 	}
 	
 	public void init(GLAutoDrawable drawable)
@@ -129,15 +140,32 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		
 	}
 	
-	public GL2 getGL2(){
-		return gl;
+	public static void save(){
+		BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+	    Graphics graphics = screenshot.getGraphics();
+
+	    ByteBuffer buffer = BufferUtils.createByteBuffer(canvas.getWidth() * canvas.getHeight() * 3);
+
+	    gl.glReadPixels(canvas.getHeight(), 0, canvas.getWidth(), canvas.getHeight(), gl.GL_RGB, gl.GL_UNSIGNED_BYTE, buffer);
+
+
+	    for (int h = 0; h < canvas.getHeight(); h++) {
+	        for (int w = 0; w < canvas.getWidth(); w++) {
+	            graphics.setColor(new Color( buffer.get()*2, buffer.get()*2, buffer.get()*2 ));
+	            graphics.drawRect(w,canvas.getHeight() - h, 1, 1); // canvas.getHeight() - h is for flipping the image
+	        }
+	    }
+	    try {
+            ImageIO.write(screenshot, "PNG", new File(fileDest));
+        } catch (IOException ex) {
+        }
 	}
 	
 	public static void main(String[] args)
 	{
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
 		BiomorphCreator bc = new BiomorphCreator();
-		OpenGLFrame oframe = new OpenGLFrame(bc.createBiomorph());
+		OpenGLFrame oframe = new OpenGLFrame(bc.createBiomorph(),canvas);
 		canvas.addGLEventListener(oframe);
 		canvas.addKeyListener(oframe);
 		int width = 400;
@@ -158,5 +186,6 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		frame.add(panel);
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
+		save();
 	}
 }
