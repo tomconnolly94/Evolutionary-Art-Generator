@@ -95,7 +95,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	}
 	private JMenuItem createOpenMenuItem(String name)
 	{
-		JMenuItem jMenuItem = new JMenuItem(name);
+		final JMenuItem jMenuItem = new JMenuItem(name);
 		jMenuItem.addActionListener(new ActionListener()
 		{
 			@Override
@@ -230,7 +230,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	//}
 	private JMenuItem createNewMenuItem(String newbutton)
 	{
-		JMenuItem jMenuItem = new JMenuItem(newbutton);
+		final JMenuItem jMenuItem = new JMenuItem(newbutton);
 		jMenuItem.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent n)
@@ -242,7 +242,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	}
 	private JMenuItem createPrintMenuItem(String printbutton)
 	{
-		JMenuItem jMenuItem = new JMenuItem(printbutton);
+		final JMenuItem jMenuItem = new JMenuItem(printbutton);
 		jMenuItem.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent n)
