@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -93,6 +95,8 @@ public class GraphicsMain
 				exitApp();
 			}
 		});
+		
+		
 		// *7* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -109,14 +113,5 @@ public class GraphicsMain
 	{
 		@SuppressWarnings("unused")
 		GraphicsMain gm = new GraphicsMain();
-	}
-	public int getWidth()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	public void paintAll(Graphics biomorphgraphics)
-	{
-		// TODO Auto-generated method stub
 	}
 }
