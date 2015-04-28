@@ -46,7 +46,7 @@ public class GraphicsMain
 		//Smaller biomorphs for mutation
 		for (int i = 1; i < oframe.length; i++)
 		{
-			oframe[i] = new OpenGLFrame(bm.getSpecific(i), smallBiomorphWindowSize);
+			oframe[i] = new OpenGLFrame(bm.getRandomBiomorph(), smallBiomorphWindowSize);
 			smallBiomorphWindow[i - 1].add(oframe[i].getCanvas());
 			smallBiomorphWindow[i - 1].setSize(smallBiomorphWindowSize, smallBiomorphWindowSize);
 			smallBiomorphWindow[i - 1].setVisible(true);
