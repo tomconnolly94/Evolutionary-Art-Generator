@@ -28,110 +28,93 @@ import biomorphHandling.*;
 import com.jogamp.opengl.util.FPSAnimator;
 /**
  * The main window for the Biomorph Simulation.
- * @author Charandeep Rai
+ * @author Charandeep Rai, Jack Taylor, Tom Connolly
+ * @version 28/04/2015
  */
 public class GraphicsMain
 {
-	// The main frame used for the GUI
-	private static JFrame mainFrame;
-	// the Biomorph Manager used to arrange and organise Biomorphs
-	private static BiomorphManager bm;
-	
+	private static JFrame mainFrame; // The main frame used for the GUI
+	private static BiomorphManager bm; // the Biomorph Manager used to arrange and organise Biomorphs
 	public GraphicsMain()
 	{
 		// *0* Initialise variables
 		final int blankSpace = 1;
 		int width = 800;
 		int height = 800;
-		int largeBiomorphWindowSize = 300;
+		int largeBiomorphWindowSize = 400;
+		int smallBiomorphWindowSize = 100;
 		bm = new BiomorphManager();
-		
 		// *1* Create components
 		final JLabel tempLeftLabel = new JLabel("Biomorph Window");
 		final JLabel tempRightLabel = new JLabel("Right Panel");
-		
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		FileMenu fileMenu = new FileMenu();
-		RightPanel rp = new RightPanel();
-		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
-		OpenGLFrame oframe = new OpenGLFrame(bm.getRandomBiomorph());
 		JPanel largeBiomorphWindow = new JPanel();
-		
+		JPanel smallBiomorphWindow[] = new JPanel[8];
+		for (int i = 0; i < smallBiomorphWindow.length; i++) smallBiomorphWindow[i] = new JPanel();
+		RightPanel rp = new RightPanel();
+		GLCanvas canvas[] = new GLCanvas[9];
+		OpenGLFrame oframe[] = new OpenGLFrame[9];
+		FPSAnimator animator[] = new FPSAnimator[9];
 		// *2* Set up the biomorph window
-		canvas.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
-		largeBiomorphWindow.add(canvas);
-		//largeBiomorphWindow.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
+		oframe[0] = new OpenGLFrame(bm.getRandomBiomorph());
+		canvas[0] = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
+		canvas[0].setSize(largeBiomorphWindowSize, largeBiomorphWindowSize);
+		canvas[0].addGLEventListener(oframe[0]);
+		canvas[0].addKeyListener(oframe[0]);
+		largeBiomorphWindow.add(canvas[0]);
+		largeBiomorphWindow.setSize(largeBiomorphWindowSize, largeBiomorphWindowSize);
 		largeBiomorphWindow.setVisible(true);
-		canvas.addGLEventListener(oframe);
-		canvas.addKeyListener(oframe);
-		FPSAnimator animator = new FPSAnimator(canvas, 60);
-		animator.start();
-		
-		// second biomorph Window
-		GLCanvas canvas2 = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
-		OpenGLFrame oframe2 = new OpenGLFrame(bm.getRandomBiomorph());
-		JPanel largeBiomorphWindow2 = new JPanel();
-		canvas2.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
-		largeBiomorphWindow2.add(canvas2);
-		//largeBiomorphWindow.setSize(new Dimension(largeBiomorphWindowSize, largeBiomorphWindowSize));
-		largeBiomorphWindow2.setVisible(true);
-		canvas2.addGLEventListener(oframe2);
-		canvas2.addKeyListener(oframe2);
-		FPSAnimator animator2 = new FPSAnimator(canvas2, 60);
-		animator2.start();
-		
+		animator[0] = new FPSAnimator(canvas[0], 60);
+		animator[0].start();
+		//Smaller biomorphs for mutation
+		for (int i = 1; i < canvas.length; i++)
+		{
+			oframe[i] = new OpenGLFrame(bm.getRandomBiomorph());
+			canvas[i] = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
+			canvas[i].setSize(smallBiomorphWindowSize, smallBiomorphWindowSize);
+			canvas[i].addGLEventListener(oframe[i]);
+			canvas[i].addKeyListener(oframe[i]);
+			smallBiomorphWindow[i - 1].add(canvas[i]);
+			smallBiomorphWindow[i - 1].setSize(smallBiomorphWindowSize, smallBiomorphWindowSize);
+			smallBiomorphWindow[i - 1].setVisible(true);
+			animator[i] = new FPSAnimator(canvas[i], 60);
+			animator[i].start();
+		}
 		// *3* Create containers
 		JPanel contentPanel = new JPanel(new GridBagLayout());
-		//contentPanel.setSize(new Dimension(900,900));
-		JPanel biomorphPanel= new JPanel();
-		JPanel biomorphPanel2= new JPanel();
-		biomorphPanel.setSize(new Dimension(largeBiomorphWindowSize,largeBiomorphWindowSize));
-		JPanel hallOfFamePanel = new JPanel();
-		
+		JPanel biomorphPanel = new JPanel();
+		JPanel mutatePanel = new JPanel(new GridBagLayout());
+		//mutatePanel.setSize(smallBiomorphWindowSize * 4, smallBiomorphWindowSize * 2);
 		// *4* Specify layout managers
 		mainFrame.setLayout(new BorderLayout()/*new BoxLayout(mainFrame,BoxLayout.Y_AXIS)*/);
 		mainFrame.setPreferredSize(new Dimension(width, height));
 		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
-				
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		//gbc.gridwidth = 1;
-		
 		contentPanel.setMinimumSize(new Dimension(width, height));
-		
+		GridBagConstraints gbcMutate = new GridBagConstraints();
+		GridBagConstraints gbcContent = new GridBagConstraints();
+		gbcMutate.fill = GridBagConstraints.HORIZONTAL;
+		gbcContent.fill = GridBagConstraints.HORIZONTAL;
 		// *5* Add components to containers
-		
-		//TODO:add small biomorph windows to hall of fame panel 
-		
-		biomorphPanel.add(largeBiomorphWindow, BorderLayout.NORTH);
-		
-		
-		
-		//biomorphPanel.add(hallOfFamePanel, BorderLayout.SOUTH);
-		
-		contentPanel.add(largeBiomorphWindow, gbc);
-		
-		
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		biomorphPanel2.add(largeBiomorphWindow2, BorderLayout.SOUTH);
-		contentPanel.add(largeBiomorphWindow2, gbc);
-		
-		
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		contentPanel.add(rp.getContents(), gbc);
-		
-        //fileMenu.getContents().setAlignmentX(mainFrame.LEFT_ALIGNMENT);
-        //contentPanel.setAlignmentX(mainFrame.LEFT_ALIGNMENT);
+		biomorphPanel.add(largeBiomorphWindow, BorderLayout.CENTER);
+		for (int i = 0; i < smallBiomorphWindow.length; i++)
+		{	
+			gbcMutate.gridx = i % 4;
+			gbcMutate.gridy = i / 4;
+			mutatePanel.add(smallBiomorphWindow[i], gbcMutate);
+		}
+		gbcContent.gridx = 0;
+		gbcContent.gridy = 0;
+		contentPanel.add(biomorphPanel, gbcContent);
+		gbcContent.gridx = 0;
+		gbcContent.gridy = 1;
+		contentPanel.add(mutatePanel, gbcContent);
+		gbcContent.gridx = 1;
+		gbcContent.gridy = 0;
+		contentPanel.add(rp.getContents(), gbcContent);
 		mainFrame.add(fileMenu.getContents());
 		mainFrame.add(contentPanel);
-		
 		// *6* Create action listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
@@ -140,7 +123,6 @@ public class GraphicsMain
 				exitApp();
 			}
 		});
-		
 		// *7* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -155,6 +137,7 @@ public class GraphicsMain
 	}
 	public static void main(String[] args)
 	{
+		@SuppressWarnings("unused")
 		GraphicsMain gm = new GraphicsMain();
 	}
 	public int getWidth()
