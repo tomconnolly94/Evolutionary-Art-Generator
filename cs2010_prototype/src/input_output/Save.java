@@ -19,6 +19,7 @@ import java.nio.ByteBuffer;
 import javax.imageio.ImageIO;
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
+import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLCapabilities;
 import javax.media.opengl.GLContext;
 import javax.media.opengl.GLProfile;
@@ -44,9 +45,9 @@ public class Save
 	private String fileDest = "C:/Users/Tom/Pictures/biomorphImages/biomorphImage.png";
 	private GL2 gl;
 	
-	public Save(GLCanvas canvas) throws AWTException
+	public Save(GLCanvas canvas, GLAutoDrawable drawable) throws AWTException
 	{
-		gl = drawable.
+		gl = drawable.getGL().getGL2();
 		BufferedImage screenshot = new BufferedImage(canvas.getWidth(), canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
 	    Graphics graphics = screenshot.getGraphics();
 
@@ -70,7 +71,7 @@ public class Save
 	public static void main(String[] args) throws AWTException{
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
 		BiomorphCreator bc = new BiomorphCreator();
-		OpenGLFrame oframe = new OpenGLFrame(bc.createBiomorph(),canvas);
+		OpenGLFrame oframe = new OpenGLFrame(bc.createBiomorph(),400);
 		canvas.addGLEventListener(oframe);
 		canvas.addKeyListener(oframe);
 		int width = 400;
@@ -92,7 +93,7 @@ public class Save
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 		
-		Save save = new Save(canvas);
+		Save save = new Save(canvas, drawable);
 	}
 	
 	

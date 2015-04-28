@@ -39,6 +39,7 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	private float zoom = 1.0f;
 	private Biomorph biomorph;
 	private static GLCanvas canvas;
+	
 	public OpenGLFrame(Biomorph biomorph, int size)
 	{
 		this.biomorph = biomorph;
@@ -144,12 +145,8 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	{
 		return canvas;
 	}
-	public static void save() throws AWTException
-	{
-		Save save = new Save(canvas);
-	}
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws AWTException
 	{
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
 		BiomorphCreator bc = new BiomorphCreator();
