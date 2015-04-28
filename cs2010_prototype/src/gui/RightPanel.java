@@ -60,7 +60,9 @@ public class RightPanel
 	randomButton.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
-			
+			viewFrame.remove(openingPane);
+			CreateClicked cc = new CreateClicked();
+			viewFrame.add(cc.getContents());
 		}
 		
 	});
