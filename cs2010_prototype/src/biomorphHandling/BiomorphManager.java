@@ -26,32 +26,20 @@ public class BiomorphManager
 		 * create 4 random orginal parent Biomorphs and load them into indexes
 		 * 0-3 in collection
 		 */
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			createAndAdd();
 		}
-		/*
-		 * takes parents in indexes 0 and 1, evolves them together and places
-		 * the resulting biomorph in index 0.
-		 */
-		Biomorph biomorph1 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
-		biomorphCollection.add(0, biomorph1);
-		/*
-		 * takes parents in indexes 2 and 3, evolves them together and places
-		 * the resulting biomorph in index 1.
-		 */
-		Biomorph biomorph2 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
-		biomorphCollection.add(1, biomorph2);
-		/*
-		 * takes evolved parents in indexes 0 and 1, evolves them together and
-		 * places the resulting biomorph in index 2.
-		 */
-		Biomorph biomorph3 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
-		biomorphCollection.add(2, biomorph3);
-		for (int i = 3; i < 7; i++)
-		{
-			remove(3);
+		
+/*		for(int i=0;i<9;i++){
+			Biomorph biomorph1 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
+			biomorphCollection.add(0, biomorph1);
 		}
+		
+		for (int i = 9; i < 11; i++)
+		{
+			remove(9);
+		}*/
 	}
 	public void addSpecific(Biomorph b)
 	{
