@@ -31,15 +31,14 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	private static final int W = 4;
 	private static final int S = 5;
 	private boolean keys[] = new boolean[6];
-	private static GL2 gl;
+	private GL2 gl;
 	private GLU glu;
 	private float aspect = 1.0f;
 	private float lat = 0.0f; // Latitude
 	private float lon = 0.0f; // Longitude
 	private float zoom = 1.0f;
 	private Biomorph biomorph;
-	private static GLCanvas canvas;
-	
+	private GLCanvas canvas;
 	public OpenGLFrame(Biomorph biomorph, int size)
 	{
 		this.biomorph = biomorph;

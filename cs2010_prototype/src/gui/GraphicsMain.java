@@ -58,7 +58,7 @@ public class GraphicsMain
 		JPanel contentPanel = new JPanel(new GridBagLayout());
 		JPanel biomorphPanel = new JPanel();
 		JPanel mutatePanel = new JPanel(new GridBagLayout());
-		//mutatePanel.setSize(smallBiomorphWindowSize * 4, smallBiomorphWindowSize * 2);
+		mutatePanel.setSize(smallBiomorphWindowSize * 4, smallBiomorphWindowSize * 2);
 		// *4* Specify layout managers
 		mainFrame.setLayout(new BorderLayout()/*new BoxLayout(mainFrame,BoxLayout.Y_AXIS)*/);
 		mainFrame.setPreferredSize(new Dimension(width, height));
@@ -91,14 +91,11 @@ public class GraphicsMain
 		// *6* Create action listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
-			@SuppressWarnings("unused")
-			public void Closewindow(WindowEvent e)
+			public void windowClosing(WindowEvent e)
 			{
 				exitApp();
 			}
 		});
-		
-		
 		// *7* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
