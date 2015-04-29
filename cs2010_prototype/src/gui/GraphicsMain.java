@@ -3,6 +3,9 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -26,6 +29,7 @@ public class GraphicsMain
 	private JPanel smallBiomorphWindow[]; // The array of 8 small biomorph windows.
 	private RightPanel rp; // The right panel.
 	private BiomorphManager bm; // The Biomorph Manager used to arrange and organise Biomorphs
+	private OpenGLFrame oframe[];
 	private int largeBiomorphWindowSize;
 	private int smallBiomorphWindowSize;
 	/**
@@ -48,7 +52,7 @@ public class GraphicsMain
 		smallBiomorphWindow = new JPanel[8];
 		for (int i = 0; i < smallBiomorphWindow.length; i++) smallBiomorphWindow[i] = new JPanel();
 		rp = new RightPanel();
-		OpenGLFrame oframe[] = new OpenGLFrame[9];
+		oframe = new OpenGLFrame[9];
 		// *2* Set up the biomorph windows
 		oframe[0] = new OpenGLFrame(bm.getRandomBiomorph(), largeBiomorphWindowSize);
 		largeBiomorphWindow.add(oframe[0].getCanvas());
@@ -101,11 +105,27 @@ public class GraphicsMain
 				exitApp();
 			}
 		});
+		mainFrame.addComponentListener(new ComponentAdapter()
+		{
+			public void componentResized(ComponentEvent e)
+			{
+				resize();
+			}
+		});
 		// *7* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}
-	//TODO: Add an update method allowing the biomorph windows to be resized.
+	/**
+	 * Scales the biomorph windows according to the size of the main frame.
+	 */
+	private void resize()
+	{
+		largeBiomorphWindowSize = (int)(mainFrame.getHeight() * 0.6);
+		smallBiomorphWindowSize = largeBiomorphWindowSize / 4;
+		oframe[0].getCanvas().setSize(largeBiomorphWindowSize, largeBiomorphWindowSize);
+		for (int i = 1; i < oframe.length; i++) oframe[i].getCanvas().setSize(smallBiomorphWindowSize, smallBiomorphWindowSize);
+	}
 	/**
 	 * Shows a confirmation dialog to exit the application.
 	 */
