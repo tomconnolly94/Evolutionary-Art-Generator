@@ -22,6 +22,11 @@ import biomorphHandling.Biomorph;
 import biomorphHandling.BiomorphCreator;
 import biomorphHandling.BiomorphManager;
 import com.jogamp.opengl.util.*;
+/**
+ * An OpenGL window to be displayed within a JPanel in Swing.
+ * @author Jack Taylor, Tom Connolly
+ * @version 29/04/2015
+ */
 public class OpenGLFrame implements GLEventListener, KeyListener
 {
 	private static final int UP = 0;
@@ -39,6 +44,11 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	private float zoom = 1.0f;
 	private Biomorph biomorph;
 	private GLCanvas canvas;
+	/**
+	 * Constructor
+	 * @param biomorph The biomorph this window will display.
+	 * @param size The size of this window (both width and height), in pixels.
+	 */
 	public OpenGLFrame(Biomorph biomorph, int size)
 	{
 		this.biomorph = biomorph;
@@ -49,6 +59,9 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		FPSAnimator animator = new FPSAnimator(canvas, 60);
 		animator.start();
 	}
+	/**
+	 * Initialises this window.
+	 */
 	public void init(GLAutoDrawable drawable)
 	{
 		gl = drawable.getGL().getGL2();
@@ -56,7 +69,11 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	}
 	public void reshape(GLAutoDrawable drawable, int x, int y, int w, int h)
 	{
+		
 	}
+	/**
+	 * Draws the biomorph contained in this window.
+	 */
 	public void display(GLAutoDrawable drawable)
 	{
 		if (keys[UP]) if (lat < 90.0f) lat += 2.0f;
@@ -81,6 +98,9 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	{
 		
 	}
+	/**
+	 * Specifies actions when a key has been pressed.
+	 */
 	public void keyPressed(KeyEvent key)
 	{
 		switch (key.getKeyCode())
@@ -111,6 +131,9 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 			break;
 	    }
 	}
+	/**
+	 * Specifies actions when a key has been released.
+	 */
 	public void keyReleased(KeyEvent key)
 	{
 		switch (key.getKeyCode())
@@ -141,11 +164,16 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	{
 		
 	}
+	/**
+	 * @return The OpenGL canvas for this window.
+	 */
 	public GLCanvas getCanvas()
 	{
 		return canvas;
 	}
-	
+	/**
+	 * Main method for testing.
+	 */
 	public static void main(String[] args) throws AWTException
 	{
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
