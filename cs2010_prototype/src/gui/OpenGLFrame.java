@@ -1,26 +1,16 @@
 package gui;
-import input_output.Save;
 import java.awt.AWTException;
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.imageio.ImageIO;
 import javax.media.opengl.*;
 import javax.media.opengl.awt.GLCanvas;
 import javax.media.opengl.glu.GLU;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import org.lwjgl.BufferUtils;
 import biomorphHandling.Biomorph;
 import biomorphHandling.BiomorphCreator;
-import biomorphHandling.BiomorphManager;
 import com.jogamp.opengl.util.*;
 /**
  * An OpenGL window to be displayed within a JPanel in Swing.
@@ -170,6 +160,20 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 	public GLCanvas getCanvas()
 	{
 		return canvas;
+	}
+	/**
+	 * @return The biomorph used in this window.
+	 */
+	public Biomorph getBiomorph()
+	{
+		return biomorph;
+	}
+	/**
+	 * Replaces the current biomorph.
+	 */
+	public void setBiomorph(Biomorph biomorph)
+	{
+		this.biomorph = biomorph;
 	}
 	/**
 	 * Main method for testing.
