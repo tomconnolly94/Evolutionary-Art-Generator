@@ -1,5 +1,6 @@
 package gui;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
@@ -28,8 +29,8 @@ public class GraphicsMain
 		final int blankSpace = 1;
 		int width = 800;
 		int height = 800;
-		int largeBiomorphWindowSize = 400;
-		int smallBiomorphWindowSize = 100;
+		int largeBiomorphWindowSize = 600;
+		int smallBiomorphWindowSize = 150;
 		bm = new BiomorphManager();
 		// *1* Create components
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
@@ -74,6 +75,7 @@ public class GraphicsMain
 			gbcMutate.gridx = i % 4;
 			gbcMutate.gridy = i / 4;
 			mutatePanel.add(smallBiomorphWindow[i], gbcMutate);
+			smallBiomorphWindow[i].setBorder(new EmptyBorder(-5, -5, -5, -5)); //Remove default padding
 		}
 		gbcContent.gridx = 0;
 		gbcContent.gridy = 0;

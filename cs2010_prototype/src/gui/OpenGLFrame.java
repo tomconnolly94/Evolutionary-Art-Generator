@@ -71,7 +71,7 @@ public class OpenGLFrame implements GLEventListener, KeyListener
 		gl.glPushMatrix();
 		{
 			// Positions the camera according to latitude and longitude, as if the biomorph is a globe-like object
-			gl.glOrtho(-40.0f * aspect * zoom, 40.0f * aspect * zoom, -40.0f * zoom, 40.0f * zoom, -40.0f * zoom, 40.0f * zoom);
+			gl.glOrtho(-32.0f * aspect * zoom, 32.0f * aspect * zoom, -32.0f * zoom, 32.0f * zoom, -64.0f * zoom, 64.0f * zoom);
 			glu.gluLookAt((float) Math.cos(Math.toRadians(lat)) * -(float)Math.cos(Math.toRadians(lon)), (float)Math.sin(Math.toRadians(lat)), (float)Math.cos(Math.toRadians(lat)) * (float)Math.sin(Math.toRadians(lon)), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 			biomorph.draw(drawable);
 		}
