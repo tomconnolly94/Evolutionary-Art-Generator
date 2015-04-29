@@ -1,12 +1,8 @@
 package gui;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
@@ -22,22 +18,25 @@ import biomorphHandling.*;
 public class GraphicsMain
 {
 	private JFrame mainFrame; // The main frame used for the GUI
-	private FileMenu fileMenu;
-	private JPanel contentPanel;
-	private JPanel biomorphPanel;
-	private JPanel mutatePanel;
-	private JPanel largeBiomorphWindow;
-	private JPanel smallBiomorphWindow[];
-	private RightPanel rp;
+	private FileMenu fileMenu; // The file menu to be displayed at the top of the window
+	private JPanel contentPanel; // The content panel, containing the biomorph panel, mutation panel and right panel.
+	private JPanel biomorphPanel; // The main biomorph panel, containing the large biomorph window.
+	private JPanel mutatePanel; // The mutation panel, containing 8 smaller biomorph windows.
+	private JPanel largeBiomorphWindow; // The large biomorph window.
+	private JPanel smallBiomorphWindow[]; // The array of 8 small biomorph windows.
+	private RightPanel rp; // The right panel.
 	private BiomorphManager bm; // The Biomorph Manager used to arrange and organise Biomorphs
 	private int largeBiomorphWindowSize;
 	private int smallBiomorphWindowSize;
+	/**
+	 * Constructor
+	 */
 	public GraphicsMain()
 	{
 		// *0* Initialise variables
-		final int blankSpace = 1;
-		int width = 800;
-		int height = 800;
+		final int blankSpace = 15;
+		int width = 720;
+		int height = 720;
 		largeBiomorphWindowSize = 400;
 		smallBiomorphWindowSize = 100;
 		bm = new BiomorphManager();
@@ -53,24 +52,21 @@ public class GraphicsMain
 		// *2* Set up the biomorph windows
 		oframe[0] = new OpenGLFrame(bm.getRandomBiomorph(), largeBiomorphWindowSize);
 		largeBiomorphWindow.add(oframe[0].getCanvas());
-		largeBiomorphWindow.setSize(largeBiomorphWindowSize, largeBiomorphWindowSize);
 		largeBiomorphWindow.setVisible(true);
 		//Smaller biomorphs for mutation
 		for (int i = 1; i < oframe.length; i++)
 		{
 			oframe[i] = new OpenGLFrame(bm.getSpecific(i), smallBiomorphWindowSize);
 			smallBiomorphWindow[i - 1].add(oframe[i].getCanvas());
-			smallBiomorphWindow[i - 1].setSize(smallBiomorphWindowSize, smallBiomorphWindowSize);
 			smallBiomorphWindow[i - 1].setVisible(true);
 		}
 		// *3* Create containers
 		contentPanel = new JPanel(new GridBagLayout());
 		biomorphPanel = new JPanel();
 		mutatePanel = new JPanel(new GridBagLayout());
-		mutatePanel.setSize(smallBiomorphWindowSize * 4, smallBiomorphWindowSize * 2);
 		// *4* Specify layout managers
-		mainFrame.setLayout(new BorderLayout()/*new BoxLayout(mainFrame,BoxLayout.Y_AXIS)*/);
-		mainFrame.setPreferredSize(new Dimension(width, height));
+		mainFrame.setLayout(new BorderLayout());
+		mainFrame.setMinimumSize(new Dimension(width, height));
 		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		contentPanel.setMinimumSize(new Dimension(width, height));
 		GridBagConstraints gbcMutate = new GridBagConstraints();
@@ -109,6 +105,10 @@ public class GraphicsMain
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}
+	//TODO: Add an update method allowing the biomorph windows to be resized.
+	/**
+	 * Shows a confirmation dialog to exit the application.
+	 */
 	private void exitApp()
 	{
 		int response = JOptionPane.showConfirmDialog(mainFrame, "Are you sure that you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -117,6 +117,9 @@ public class GraphicsMain
 			System.exit(0);
 		}
 	}
+	/**
+	 * Main method
+	 */
 	public static void main(String[] args)
 	{
 		new GraphicsMain();
