@@ -1,5 +1,6 @@
 package gui;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import biomorphHandling.Biomorph;
 /**
  * The large biomorph panel for the GUI.
@@ -21,6 +22,7 @@ public class MainBiomorphPanel extends JPanel
 		size = 400;
 		oframe = new OpenGLFrame(biomorph, size);
 		add(oframe.getCanvas());
+		setBorder(new EmptyBorder(-5, -5, 10, -5));
 		setVisible(true);
 	}
 	/**

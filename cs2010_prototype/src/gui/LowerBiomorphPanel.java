@@ -49,7 +49,7 @@ public abstract class LowerBiomorphPanel extends JPanel
 	public void resize(int newSize)
 	{
 		this.size = newSize;
-		setSize(size * 4, size * 2);
+		//setSize(size * 4, size * 2);
 		for (int i = 0; i < panel.length; i++) panel[i].setSize(size, size);
 		for (int i = 0; i < oframe.length; i++) oframe[i].getCanvas().setSize(size, size);
 	}

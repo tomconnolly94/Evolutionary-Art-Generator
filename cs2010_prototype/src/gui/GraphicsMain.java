@@ -37,7 +37,7 @@ public class GraphicsMain implements ActionListener
 	public GraphicsMain()
 	{
 		// *0* Initialise variables
-		final int blankSpace = 15;
+		final int blankSpace = 25;
 		int width = 720;
 		int height = 720;
 		bm = new BiomorphManager();
@@ -118,8 +118,8 @@ public class GraphicsMain implements ActionListener
 	 */
 	private void resize()
 	{
-		mainPanel.resize((int)(mainFrame.getHeight() * 0.6));
-		lowerPanel.resize((int)(mainFrame.getHeight() * 0.15));
+		mainPanel.resize((int)(mainFrame.getHeight() * 0.55));
+		lowerPanel.resize((int)(mainFrame.getHeight() * 0.1375));
 	}
 	/**
 	 * Shows a confirmation dialog to exit the application.
