@@ -31,6 +31,7 @@ public class RightPanel
 		viewFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
 		// setTitle
 		viewFrame.setTitle("Menu");
+		viewFrame.setSize(new Dimension(200,200));
 		// Create Buttons
 		createButton = new JButton();
 		createButton.setText("Create");
