@@ -61,7 +61,7 @@ public class GraphicsMain implements ActionListener
 		rp = new RightPanel();
 		oframe = new OpenGLFrame[9];
 		// *2* Set up the biomorph windows
-		oframe[0] = new OpenGLFrame(bm.getRandomBiomorph(), largeBiomorphWindowSize);
+		oframe[0] = new OpenGLFrame(bm.getSpecific(0), largeBiomorphWindowSize);
 		largeBiomorphWindow.add(oframe[0].getCanvas());
 		largeBiomorphWindow.setVisible(true);
 		//Smaller biomorphs for mutation
