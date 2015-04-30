@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.file.Files;
 import javax.imageio.ImageIO;
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
@@ -34,7 +33,6 @@ public class Save
 {
 	static FileOutputStream fop = null;
 	static File file;
-	static String anchorDestination = "src/biomorphTextFiles/";
 
 	public Save(Gene[] geneValues, String fileName)
 	{
@@ -45,12 +43,8 @@ public class Save
 			{
 				content = content + gene.getValue() + ",";
 			}
-			File dir = new File(anchorDestination);
-			if(!(dir.exists())){
-				dir.mkdir();
-			}
 			// save file to src
-			file = new File(anchorDestination + fileName + ".txt");
+			file = new File("src/biomorphTextFiles/" + fileName + ".txt");
 			fop = new FileOutputStream(file);
 			// if file doesnt exists, then create it
 			if (!file.exists())

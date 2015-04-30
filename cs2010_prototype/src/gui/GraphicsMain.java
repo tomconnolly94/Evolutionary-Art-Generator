@@ -182,12 +182,12 @@ public class GraphicsMain implements ActionListener
 		}
 		if (e.getActionCommand().equals("Reset")){
 			bm = new BiomorphManager();
-			fileMenu.updateBM(bm);;
 			refreshMainPanel();
 		}
 	}
 	
 	public void refreshMainPanel(){
+		selectedForEvol.clear();
 		mainPanel.setBiomorph(bm.getSpecific(0));
 		fileMenu.updateBiomorph(bm.getSpecific(0));
 		refreshLowerPanel();
