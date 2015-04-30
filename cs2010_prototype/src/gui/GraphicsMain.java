@@ -66,10 +66,16 @@ public class GraphicsMain implements ActionListener
 		Biomorph biomorphs[] = new Biomorph[8];
 		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
 		mutationPanel = new MutationPanel(biomorphs);
-		checkBoxArr = new JCheckBox[8];
+		checkBoxArr = new JCheckBox[9];
 		for (int i = 0; i < checkBoxArr.length; i++)
 		{
-			String number = "" + (i + 1);
+			String number;
+			if(i==checkBoxArr.length-1){
+				number = "Random";
+			}
+			else{ 
+				number = "" + (i + 1);
+			}
 			JCheckBox box = new JCheckBox(number);
 			checkBoxArr[i] = box;
 		}
@@ -152,19 +158,24 @@ public class GraphicsMain implements ActionListener
 				// check if each box has been selected
 				if (checkBoxArr[i].isSelected())
 				{
+					if(checkBoxArr[i].getText()=="Random"){
+						selectedForEvol.add(bm.createAndAdd());
+					}
+					else{
 					// add corresponding biomorph to an arraylist
 					selectedForEvol.add(bm.getSpecific(i));
+					}
 					System.out.println("boxes selected are " + (i + 1));
 				}
 			}
 			Biomorph returnBiomorph;
 			// evolve using selected biomorphs
-			if (selectedForEvol.size() > 1)
+			if (selectedForEvol.size() > 0)
 			{
 				// assign Biomorph variable so that multiple evolutions can occur
-				returnBiomorph = selectedForEvol.get(0);
+				returnBiomorph = bm.getSpecific(0);
 				// parse the Biomorphs selected for evolution
-				for (int i = 1; i < selectedForEvol.size(); i++)
+				for (int i = 0; i < selectedForEvol.size(); i++)
 				{
 					// evolve two biomorphs
 					returnBiomorph = bm.evolveClo(returnBiomorph, selectedForEvol.get(i));

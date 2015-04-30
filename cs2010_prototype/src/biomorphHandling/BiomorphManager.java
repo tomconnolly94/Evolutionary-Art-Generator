@@ -31,15 +31,11 @@ public class BiomorphManager
 			createAndAdd();
 		}
 		
-/*		for(int i=0;i<9;i++){
+		for(int i=0;i<9;i++){
 			Biomorph biomorph1 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(1));
 			biomorphCollection.add(0, biomorph1);
 		}
-		
-		for (int i = 9; i < 11; i++)
-		{
-			remove(9);
-		}*/
+
 	}
 	public void addSpecific(Biomorph b)
 	{
@@ -53,7 +49,7 @@ public class BiomorphManager
 		BiomorphCreator bc = new BiomorphCreator();
 		// Biomorph biomorph = bc.createBiomorph(4,0,2,100,100,100,0,5,1,1,0);
 		Biomorph biomorph = bc.createBiomorph();
-		biomorphCollection.add(biomorph);
+		addSpecific(biomorph);
 		return biomorph;
 	}
 	/**
