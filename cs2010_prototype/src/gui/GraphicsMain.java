@@ -176,6 +176,7 @@ public class GraphicsMain implements ActionListener
 		selectedForEvol.clear();
 		bm.addSpecific(returnBiomorph);
 		mainPanel.setBiomorph(bm.getSpecific(0));
+		fileMenu.updateBiomorph(bm.getSpecific(0));
 		}
 	}
 	

@@ -44,7 +44,7 @@ public class Save
 				content = content + gene.getValue() + ", ";
 			}
 			// save file to src
-			file = new File("src/" + fileName + ".txt");
+			file = new File("src/biomorphTextFiles/" + fileName + ".txt");
 			fop = new FileOutputStream(file);
 			// if file doesnt exists, then create it
 			if (!file.exists())

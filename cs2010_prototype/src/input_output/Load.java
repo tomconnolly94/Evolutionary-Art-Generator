@@ -10,10 +10,7 @@ import java.io.IOException;
  */
 public class Load
 {
-	public Load()
-	{
-	}
-	public void loadGeneValuesFromTextFile(String fileName) throws IOException
+	public Load(String fileName) throws IOException
 	{
 		try
 		{
