@@ -8,6 +8,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -32,6 +33,7 @@ public class GraphicsMain
 	private OpenGLFrame oframe[];
 	private int largeBiomorphWindowSize;
 	private int smallBiomorphWindowSize;
+	private JButton evolveButton;
 	/**
 	 * Constructor
 	 */
