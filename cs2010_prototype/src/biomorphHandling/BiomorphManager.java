@@ -107,6 +107,7 @@ public class BiomorphManager
 		statisticMachine.saveGeneValues(ec.getChildGenes());
 		statisticMachine.printRunningStats();
 		createAndAdd();
+		createAndAdd();
 		/*
 		 * //Code to save Biomorph TODO: Save save = new Save(); String fileName
 		 * = "Biomorph " + Integer.toString(i); i++;
