@@ -18,7 +18,7 @@ import biomorphHandling.*;
 /**
  * The main window for the Biomorph Simulation.
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
- * @version 29/04/2015
+ * @version 30/04/2015
  */
 public class GraphicsMain implements ActionListener
 {
@@ -47,9 +47,9 @@ public class GraphicsMain implements ActionListener
 		fileMenu = new FileMenu();
 		evolveButton = new JButton("Evolve");
 		evolvePanel = new JPanel();
-		mainPanel = new MainBiomorphPanel(bm.getSpecific(0));
+		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
-		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = bm.getSpecific(i + 1);
+		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
 		lowerPanel = new MutationPanel(biomorphs);
 		rp = new RightPanel();
 		// *2* Create containers
