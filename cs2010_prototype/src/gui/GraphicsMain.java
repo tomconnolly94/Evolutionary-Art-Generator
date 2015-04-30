@@ -7,9 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,7 +24,7 @@ import biomorphHandling.*;
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
  * @version 30/04/2015
  */
-public class GraphicsMain implements ActionListener
+public class GraphicsMain implements ActionListener, ItemListener
 {
 	private JFrame mainFrame; // The main frame used for the GUI
 	private FileMenu fileMenu; // The file menu to be displayed at the top of the window
@@ -31,13 +35,16 @@ public class GraphicsMain implements ActionListener
 	private RightPanel rp; // The right panel.
 	private BiomorphManager bm; // The Biomorph Manager used to arrange and organise Biomorphs
 	private JButton evolveButton;
+	private JPanel buttonPanel;
+	private JCheckBox[] checkBoxArr;
+	private Biomorph[] selectedForEvol;
 	/**
 	 * Constructor
 	 */
 	public GraphicsMain()
 	{
 		// *0* Initialise variables
-		final int blankSpace = 25;
+		final int blankSpace = 3;
 		int width = 720;
 		int height = 720;
 		bm = new BiomorphManager();
@@ -46,14 +53,24 @@ public class GraphicsMain implements ActionListener
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		fileMenu = new FileMenu();
 		evolveButton = new JButton("Evolve");
-		evolvePanel = new JPanel();
+		evolveButton.setSize(new Dimension(70,20));
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
 		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
 		lowerPanel = new MutationPanel(biomorphs);
+		checkBoxArr = new JCheckBox[8];
+		for(int i=0; i<checkBoxArr.length;i++){
+			String number = ""+(i+1);
+			JCheckBox box = new JCheckBox(number);
+			checkBoxArr[i] = box;
+		}
 		rp = new RightPanel();
+		selectedForEvol = new Biomorph[8];
 		// *2* Create containers
 		contentPanel = new JPanel(new GridBagLayout());
+		buttonPanel = new JPanel(new BorderLayout());
+		evolvePanel = new JPanel();
+		JPanel boxPanel = new JPanel();
 		// *3* Specify layout managers
 		mainFrame.setLayout(new BorderLayout());
 		mainFrame.setMinimumSize(new Dimension(width, height));
@@ -69,15 +86,16 @@ public class GraphicsMain implements ActionListener
 		gbc.gridx = 1;
 		gbc.gridy = 1;
 		contentPanel.add(lowerPanel, gbc);
-		gbc.gridx = 2;
-		gbc.gridy = 0;
-		contentPanel.add(rp.getContents(), gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		contentPanel.add(evolveButton, gbc);
-		mainFrame.add(fileMenu.getContents());
-		mainFrame.add(contentPanel);
-		mainFrame.add(evolvePanel, BorderLayout.WEST);
+		for(JCheckBox box : checkBoxArr){
+			boxPanel.add(box);
+		}
+		evolvePanel.add(evolveButton, BorderLayout.CENTER);
+		buttonPanel.add(rp.getContents(), BorderLayout.WEST);
+		buttonPanel.add(evolvePanel, BorderLayout.EAST);
+		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
+		mainFrame.add(fileMenu.getContents(),BorderLayout.NORTH);
+		mainFrame.add(contentPanel, BorderLayout.WEST);
+		mainFrame.add(buttonPanel, BorderLayout.EAST);
 		// *5* Create action listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
@@ -109,10 +127,32 @@ public class GraphicsMain implements ActionListener
 			{
 				lowerPanel.setBiomorph(i, bm.getSpecific(i));
 			}
-			bm.addSpecific(bm.evolveClo(bm.getSpecific(1), bm.getRandomBiomorph()));
+			Biomorph biomorph = new Biomorph(0,0,0,0,0,0,0,0,0,0,0,0);
+			if(selectedForEvol.length>1){
+				
+				for(int i=0;i<selectedForEvol.length;i++){
+					biomorph = bm.evolveClo(selectedForEvol[i], selectedForEvol[i+1]);
+				}
+			}
+			else{
+				biomorph = bm.evolveClo(bm.getSpecific(1), bm.getRandomBiomorph());
+			}
+			bm.addSpecific(biomorph);
 			mainPanel.setBiomorph(bm.getSpecific(0));
 		}
 	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e)
+	{
+		Object source = e.getItemSelectable();
+		for(int i=0;i<checkBoxArr.length; i++){
+			if(source == checkBoxArr[i]){
+				selectedForEvol[i] = bm.getSpecific(i+1);
+			}
+		}
+	}	
+	
 	/**
 	 * Scales the biomorph windows according to the size of the main frame.
 	 */
@@ -139,4 +179,5 @@ public class GraphicsMain implements ActionListener
 	{
 		new GraphicsMain();
 	}
+
 }
