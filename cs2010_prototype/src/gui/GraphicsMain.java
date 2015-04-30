@@ -165,7 +165,7 @@ public class GraphicsMain implements ActionListener
 			for (int i = 8; i > 0; i--){
 				oframe[i].setBiomorph(oframe[i-1].getBiomorph());
 			}
-			bm.addSpecific(bm.evolveClo(bm.getSpecific(1), bm.getSpecific(2)));
+			bm.addSpecific(bm.evolveClo(bm.getSpecific(1), bm.getRandomBiomorph()));
 			oframe[0].setBiomorph(bm.getSpecific(0));
 		}
 		
