@@ -1,14 +1,16 @@
 package gui;
-import biomorphHandling.Biomorph;
-public class HallOfFamePanel extends LowerBiomorphPanel
+/**
+ * Placeholder
+ * @author Jack Taylor
+ * @version 30/04/2015
+ */
+public class HallOfFamePanel
 {
-	private static final long serialVersionUID = -8545611875997727849L;
 	/**
 	 * Constructor
-	 * @param biomorphs The array of biomorphs for initialising the OpenGL canvases.
 	 */
-	public HallOfFamePanel(Biomorph biomorphs[])
+	public HallOfFamePanel()
 	{
-		super(biomorphs);
+		
 	}
 }
