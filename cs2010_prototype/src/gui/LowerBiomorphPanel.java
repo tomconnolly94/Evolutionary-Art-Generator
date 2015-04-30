@@ -1,6 +1,8 @@
 package gui;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import biomorphHandling.Biomorph;
 /**
  * Abstract class for the lower biomorph panel. This can either be the mutation panel or the Hall of Fame panel.
@@ -10,6 +12,7 @@ import biomorphHandling.Biomorph;
 public abstract class LowerBiomorphPanel extends JPanel
 {
 	private static final long serialVersionUID = -2142660654932148667L;
+	protected JPanel panel[];
 	protected OpenGLFrame oframe[];
 	protected int size;
 	/**
@@ -20,8 +23,23 @@ public abstract class LowerBiomorphPanel extends JPanel
 	{
 		super(new GridBagLayout());
 		size = 100;
+		panel = new JPanel[8];
 		oframe = new OpenGLFrame[8];
-		for (int i = 0; i < oframe.length; i++) oframe[i] = new OpenGLFrame(biomorphs[i], size);
+		for (int i = 0; i < panel.length; i++) panel[i] = new JPanel();
+		for (int i = 0; i < oframe.length; i++)
+		{
+			oframe[i] = new OpenGLFrame(biomorphs[i], size);
+			panel[i].add(oframe[i].getCanvas());
+		}
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		for (int i = 0; i < panel.length; i++)
+		{	
+			gbc.gridx = i % 4;
+			gbc.gridy = i / 4;
+			add(panel[i], gbc);
+			panel[i].setBorder(new EmptyBorder(-5, -5, -5, -5)); //Remove default padding
+		}
 		setVisible(true);
 	}
 	/**
@@ -31,7 +49,8 @@ public abstract class LowerBiomorphPanel extends JPanel
 	public void resize(int newSize)
 	{
 		this.size = newSize;
-		setSize(size, size);
+		setSize(size * 4, size * 2);
+		for (int i = 0; i < panel.length; i++) panel[i].setSize(size, size);
 		for (int i = 0; i < oframe.length; i++) oframe[i].getCanvas().setSize(size, size);
 	}
 	/**
