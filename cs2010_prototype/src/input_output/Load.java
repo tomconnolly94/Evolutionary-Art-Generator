@@ -14,7 +14,7 @@ public class Load
 {
 	private String fileName;
 	
-	public Load(String fileName) throws IOException
+	public Load(String fileName)
 	{
 		this.fileName = fileName;
 	}
