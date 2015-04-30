@@ -109,23 +109,20 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
+					String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
 				
-				Load load;
-				try
-				{
-					load = new Load(response);
-					Biomorph loadedBiomorph = load.load();
-					bm.addSpecific(loadedBiomorph);
-					gm.refreshMainPanel();
-				}
-				catch (IOException ea)
-				{
-					// TODO Auto-generated catch block
-					ea.printStackTrace();
-				}
-				
-				System.out.println("loaded");
+					Load load;
+					try
+					{
+						load = new Load(response);
+						Biomorph loadedBiomorph = load.load();
+						bm.addSpecific(loadedBiomorph);
+						gm.refreshMainPanel();
+					}
+					catch (IOException ea)
+					{
+						ea.printStackTrace();
+					}				
 			}
 		});
 		return jMenuItem;
@@ -185,23 +182,6 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
-				
-					Load load;
-					try
-					{
-						load = new Load(response);
-						Biomorph loadedBiomorph = load.load();
-						bm.addSpecific(loadedBiomorph);
-						gm.refreshMainPanel();
-					}
-					catch (IOException e)
-					{
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					System.out.println("loaded");
 				
 		}});
 		return loadItem;
@@ -267,10 +247,10 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		new FileMenu(bm, gm).initialise();
 	}
 	
-	public Dimension getSize(){
-		return null;
-		//return BiomorphWindows.frame ;
+	public void updateBM(BiomorphManager bm){
+		this.bm = bm;
 	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
