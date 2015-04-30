@@ -11,8 +11,8 @@ public class BiomorphManager
 {
 	private LinkedList<Biomorph> biomorphCollection;
 	// set of perfect values that the Biomorphs will evolve towards.
-	private int[] perfectValues = {5, 2, 100, 256, 50, 5, 8, 2, 2, 5, 0, 0};
-	private EvolutionStats statisticMachine = new EvolutionStats(perfectValues);
+	private int[] targetValues = {5, 2, 100, 256, 50, 5, 8, 2, 2, 5, 0, 0};
+	private EvolutionStats statisticMachine = new EvolutionStats(targetValues);
 	// integer to change the name of Biomorphs after they are saved.
 	// private int i = 1;
 	public BiomorphManager()
@@ -102,7 +102,7 @@ public class BiomorphManager
 	 */
 	public Biomorph evolveClo(Biomorph father, Biomorph mother)
 	{
-		Evolver ec = new Evolver(father, mother, perfectValues);
+		Evolver ec = new Evolver(father, mother, targetValues);
 		Biomorph biomorph = ec.evolve();
 		statisticMachine.saveGeneValues(ec.getChildGenes());
 		statisticMachine.printRunningStats();
