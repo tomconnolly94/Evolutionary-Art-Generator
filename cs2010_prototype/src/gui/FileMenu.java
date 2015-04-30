@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -24,6 +25,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 import biomorphHandling.Biomorph;
+import biomorphHandling.BiomorphManager;
 /**
  * The File Menu element of the program
  * @author Charandeep Rai
@@ -32,8 +34,13 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 
 	private JFrame frame;
 	private Biomorph biomorph;
-	public FileMenu()
+	private BiomorphManager bm;
+	private GraphicsMain gm;
+	
+	public FileMenu(BiomorphManager bm, GraphicsMain gm)
 	{
+		this.gm = gm;
+		this.bm = bm;
 		initialise();
 	}
 	public JPanel getContents()
@@ -102,7 +109,23 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				JOptionPane.showMessageDialog(jMenuItem, "Successfully pressed a menu item");
+				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
+				
+				Load load;
+				try
+				{
+					load = new Load(response);
+					Biomorph loadedBiomorph = load.load();
+					bm.addSpecific(loadedBiomorph);
+					gm.refreshMainPanel();
+				}
+				catch (IOException ea)
+				{
+					// TODO Auto-generated catch block
+					ea.printStackTrace();
+				}
+				
+				System.out.println("loaded");
 			}
 		});
 		return jMenuItem;
@@ -147,7 +170,9 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Save save = new Save(biomorph.getGenes(), "biomorph");
+				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
+				
+				Save save = new Save(biomorph.getGenes(), response);
 			}
 		});
 		return Textfilesave;
@@ -160,14 +185,25 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			@Override
 			public void actionPerformed(ActionEvent arg0)
 			{
-				String response = JOptionPane.showConfirmDialog(parent, "Are you sure that you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-				if (response == JOptionPane.YES_OPTION)
-				{
-					System.exit(0);
-				}
-				Load load = new Load(biomorph.getGenes(), "biomorph");
-			}
-		});
+				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
+				
+					Load load;
+					try
+					{
+						load = new Load(response);
+						Biomorph loadedBiomorph = load.load();
+						bm.addSpecific(loadedBiomorph);
+						gm.refreshMainPanel();
+					}
+					catch (IOException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					System.out.println("loaded");
+				
+		}});
 		return loadItem;
 	}
 	
@@ -226,7 +262,9 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	
 	public static void main(String[] args)
 	{
-		new FileMenu().initialise();
+		GraphicsMain gm = new GraphicsMain();
+		BiomorphManager bm = new BiomorphManager();
+		new FileMenu(bm, gm).initialise();
 	}
 	
 	public Dimension getSize(){

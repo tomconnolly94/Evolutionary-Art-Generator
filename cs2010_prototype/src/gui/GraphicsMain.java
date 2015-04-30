@@ -38,6 +38,7 @@ public class GraphicsMain implements ActionListener
 	private RightPanel rp; // The right panel.
 	private BiomorphManager bm; // The Biomorph Manager used to arrange and organise Biomorphs
 	private JButton evolveButton;
+	private JButton resetButton;
 	private JPanel buttonPanel;
 	private JCheckBox[] checkBoxArr;
 	private ArrayList<Biomorph> selectedForEvol;
@@ -54,8 +55,10 @@ public class GraphicsMain implements ActionListener
 		// *1* Create components
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		fileMenu = new FileMenu();
+		fileMenu = new FileMenu(bm, this);
 		evolveButton = new JButton("Evolve");
+		evolveButton.setSize(new Dimension(70,20));
+		resetButton = new JButton("Reset");
 		evolveButton.setSize(new Dimension(70,20));
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
@@ -81,7 +84,6 @@ public class GraphicsMain implements ActionListener
 		contentPanel.setMinimumSize(new Dimension(width, height));
 		GridBagConstraints gbc = new GridBagConstraints();
 		//gbc.fill = GridBagConstraints.HORIZONTAL;
-		evolveButton.setSize(new Dimension(200,50));
 		
 		
 		// *4* Add components to containers
@@ -105,6 +107,7 @@ public class GraphicsMain implements ActionListener
 			i++;
 		}
 		evolvePanel.add(evolveButton, BorderLayout.CENTER);
+		evolvePanel.add(resetButton, BorderLayout.CENTER);
 		buttonPanel.add(rp.getContents(), BorderLayout.WEST);
 		buttonPanel.add(evolvePanel, BorderLayout.EAST);
 		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
@@ -127,7 +130,8 @@ public class GraphicsMain implements ActionListener
 			}
 		});
 		evolveButton.addActionListener(this);
-			checkBoxArr[0].addActionListener(this);
+		resetButton.addActionListener(this);
+		checkBoxArr[0].addActionListener(this);
 		
 		// *6* Pack and display
 		mainFrame.pack();
@@ -140,14 +144,12 @@ public class GraphicsMain implements ActionListener
 	{
 		if (e.getActionCommand().equals("Evolve"))
 		{
-			for (int i = 7; i >= 0; i--)
-			{
-				lowerPanel.setBiomorph(i, bm.getSpecific(i));
-			}
-				//check if checkboxes are selected
-				for(int i=0;i<checkBoxArr.length;i++){
-					//check if each box has been selected
-					if(checkBoxArr[i].isSelected()){
+			refreshLowerPanel();
+			
+			//check if checkboxes are selected
+			for(int i=0;i<checkBoxArr.length;i++){
+				//check if each box has been selected
+				if(checkBoxArr[i].isSelected()){
 						//add corresponding biomorph to an arraylist
 						selectedForEvol.add(bm.getSpecific(i));
 						System.out.println("boxes selected are " + (i+1));
@@ -177,6 +179,24 @@ public class GraphicsMain implements ActionListener
 		bm.addSpecific(returnBiomorph);
 		mainPanel.setBiomorph(bm.getSpecific(0));
 		fileMenu.updateBiomorph(bm.getSpecific(0));
+		}
+		if (e.getActionCommand().equals("Reset")){
+			bm = new BiomorphManager();
+			refreshMainPanel();
+		}
+	}
+	
+	public void refreshMainPanel(){
+		selectedForEvol.clear();
+		mainPanel.setBiomorph(bm.getSpecific(0));
+		fileMenu.updateBiomorph(bm.getSpecific(0));
+		refreshLowerPanel();
+	}
+	
+	public void refreshLowerPanel(){
+		for (int i = 7; i >= 0; i--)
+		{
+			lowerPanel.setBiomorph(i, bm.getSpecific(i));
 		}
 	}
 	

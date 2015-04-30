@@ -41,7 +41,7 @@ public class Save
 			String content = "";
 			for (Gene gene : geneValues)
 			{
-				content = content + gene.getValue() + ", ";
+				content = content + gene.getValue() + ",";
 			}
 			// save file to src
 			file = new File("src/biomorphTextFiles/" + fileName + ".txt");
