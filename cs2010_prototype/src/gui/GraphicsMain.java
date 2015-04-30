@@ -3,6 +3,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -19,7 +21,7 @@ import biomorphHandling.*;
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
  * @version 29/04/2015
  */
-public class GraphicsMain
+public class GraphicsMain implements ActionListener
 {
 	private JFrame mainFrame; // The main frame used for the GUI
 	private FileMenu fileMenu; // The file menu to be displayed at the top of the window
@@ -28,6 +30,7 @@ public class GraphicsMain
 	private JPanel mutatePanel; // The mutation panel, containing 8 smaller biomorph windows.
 	private JPanel largeBiomorphWindow; // The large biomorph window.
 	private JPanel smallBiomorphWindow[]; // The array of 8 small biomorph windows.
+	private JPanel evolvePanel;
 	private RightPanel rp; // The right panel.
 	private BiomorphManager bm; // The Biomorph Manager used to arrange and organise Biomorphs
 	private OpenGLFrame oframe[];
@@ -50,6 +53,8 @@ public class GraphicsMain
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		fileMenu = new FileMenu();
+		evolveButton = new JButton("Evolve");
+		evolvePanel = new JPanel();
 		largeBiomorphWindow = new JPanel();
 		smallBiomorphWindow = new JPanel[8];
 		for (int i = 0; i < smallBiomorphWindow.length; i++) smallBiomorphWindow[i] = new JPanel();
@@ -62,7 +67,7 @@ public class GraphicsMain
 		//Smaller biomorphs for mutation
 		for (int i = 1; i < oframe.length; i++)
 		{
-			oframe[i] = new OpenGLFrame(bm.getSpecific(i), smallBiomorphWindowSize);
+			oframe[i] = new OpenGLFrame(bm.getSpecific(i-1), smallBiomorphWindowSize);
 			smallBiomorphWindow[i - 1].add(oframe[i].getCanvas());
 			smallBiomorphWindow[i - 1].setVisible(true);
 		}
@@ -79,6 +84,7 @@ public class GraphicsMain
 		GridBagConstraints gbcContent = new GridBagConstraints();
 		gbcMutate.fill = GridBagConstraints.HORIZONTAL;
 		gbcContent.fill = GridBagConstraints.HORIZONTAL;
+		evolveButton.setSize(new Dimension(200,50));
 		// *5* Add components to containers
 		biomorphPanel.add(largeBiomorphWindow, 0);
 		for (int i = 0; i < smallBiomorphWindow.length; i++)
@@ -88,17 +94,21 @@ public class GraphicsMain
 			mutatePanel.add(smallBiomorphWindow[i], gbcMutate);
 			smallBiomorphWindow[i].setBorder(new EmptyBorder(-5, -5, -5, -5)); //Remove default padding
 		}
-		gbcContent.gridx = 0;
-		gbcContent.gridy = 0;
-		contentPanel.add(biomorphPanel, gbcContent);
-		gbcContent.gridx = 0;
-		gbcContent.gridy = 1;
-		contentPanel.add(mutatePanel, gbcContent);
 		gbcContent.gridx = 1;
 		gbcContent.gridy = 0;
+		contentPanel.add(biomorphPanel, gbcContent);
+		gbcContent.gridx = 1;
+		gbcContent.gridy = 1;
+		contentPanel.add(mutatePanel, gbcContent);
+		gbcContent.gridx = 2;
+		gbcContent.gridy = 0;
 		contentPanel.add(rp.getContents(), gbcContent);
+		gbcContent.gridx = 0;
+		gbcContent.gridy = 0;
+		contentPanel.add(evolveButton,gbcContent);
 		mainFrame.add(fileMenu.getContents());
 		mainFrame.add(contentPanel);
+		mainFrame.add(evolvePanel, BorderLayout.WEST);
 		// *6* Create action listeners
 		mainFrame.addWindowListener(new WindowAdapter()
 		{
@@ -114,6 +124,8 @@ public class GraphicsMain
 				resize();
 			}
 		});
+		evolveButton.addActionListener(this);
+
 		// *7* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -145,5 +157,17 @@ public class GraphicsMain
 	public static void main(String[] args)
 	{
 		new GraphicsMain();
+	}
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		if(e.getActionCommand().equals("Evolve")){
+			for (int i = 8; i > 0; i--){
+				oframe[i].setBiomorph(oframe[i-1].getBiomorph());
+			}
+			bm.addSpecific(bm.evolveClo(bm.getSpecific(1), bm.getSpecific(2)));
+			oframe[0].setBiomorph(bm.getSpecific(0));
+		}
+		
 	}
 }

@@ -45,7 +45,8 @@ public class RightPanel
 		// add panel to frame
 		viewFrame.add(openingPane);
 		// make visible
-	
+		/*viewFrame.pack();
+		viewFrame.setVisible(true);*/
 	
 	createButton.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
@@ -72,5 +73,9 @@ public class RightPanel
 	public JPanel getContents()
 	{
 		return (JPanel)viewFrame.getContentPane();
+	}
+	
+	public static void main(String[] args){
+		RightPanel rp = new RightPanel();
 	}
 }
