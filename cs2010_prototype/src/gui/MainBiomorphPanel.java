@@ -18,18 +18,18 @@ public class MainBiomorphPanel extends JPanel
 	public MainBiomorphPanel(Biomorph biomorph)
 	{
 		super();
+		size = 400;
 		oframe = new OpenGLFrame(biomorph, size);
 		add(oframe.getCanvas());
-		size = 400;
 		setVisible(true);
 	}
 	/**
 	 * Changes the size of this panel. The length and width will always be the same.
 	 * @param size The new size for the panel
 	 */
-	public void resize(int size)
+	public void resize(int newSize)
 	{
-		this.size = size;
+		this.size = newSize;
 		setSize(size, size);
 		oframe.getCanvas().setSize(size, size);
 	}
