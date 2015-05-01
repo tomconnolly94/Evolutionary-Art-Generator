@@ -13,7 +13,7 @@ public class HallOfFamePanel extends JPanel
 {
 	private static final long serialVersionUID = 5281756429180071005L;
 	protected JPanel panel[];
-	protected OpenGLFrame canvas[];
+	protected OpenGLCanvas canvas[];
 	protected int size;
 	/**
 	 * Constructor
@@ -22,24 +22,24 @@ public class HallOfFamePanel extends JPanel
 	public HallOfFamePanel(Biomorph biomorphs[])
 	{
 		super(new GridBagLayout());
-		size = 100;
+		size = 150;
 		panel = new JPanel[4];
-		canvas = new OpenGLFrame[4];
+		canvas = new OpenGLCanvas[4];
 		for (int i = 0; i < panel.length; i++) panel[i] = new JPanel();
 		for (int i = 0; i < canvas.length; i++)
 		{
-			if (i < biomorphs.length && biomorphs[i] != null) canvas[i] = new OpenGLFrame(biomorphs[i], size);
-			else canvas[i] = new OpenGLFrame(null, size);
+			if (i < biomorphs.length && biomorphs[i] != null) canvas[i] = new OpenGLCanvas(biomorphs[i], size);
+			else canvas[i] = new OpenGLCanvas(null, size);
 			panel[i].add(canvas[i].getCanvas());
 		}
 		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		for (int i = 0; i < panel.length; i++)
-		{	
-			gbc.gridx = i % 2;
-			gbc.gridy = i / 2;
+		{
+			gbc.gridx = 0;
+			gbc.gridy = i;
 			add(panel[i], gbc);
-			panel[i].setBorder(new EmptyBorder(-5, -5, -5, -5)); //Remove default padding
+			if (gbc.gridy == 3) panel[i].setBorder(new EmptyBorder(-5, -5, -5, -3));
+			else panel[i].setBorder(new EmptyBorder(-5, -5, -4, -3));
 		}
 		setVisible(true);
 	}

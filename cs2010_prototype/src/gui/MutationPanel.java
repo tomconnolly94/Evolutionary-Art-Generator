@@ -13,7 +13,7 @@ public class MutationPanel extends JPanel
 {
 	private static final long serialVersionUID = -2142660654932148667L;
 	protected JPanel panel[];
-	protected OpenGLFrame canvas[];
+	protected OpenGLCanvas canvas[];
 	protected int size;
 	/**
 	 * Constructor
@@ -24,22 +24,22 @@ public class MutationPanel extends JPanel
 		super(new GridBagLayout());
 		size = 100;
 		panel = new JPanel[8];
-		canvas = new OpenGLFrame[8];
+		canvas = new OpenGLCanvas[8];
 		for (int i = 0; i < panel.length; i++) panel[i] = new JPanel();
 		for (int i = 0; i < canvas.length; i++)
 		{
-			if (i < biomorphs.length && biomorphs[i] != null) canvas[i] = new OpenGLFrame(biomorphs[i], size);
-			else canvas[i] = new OpenGLFrame(null, size);
+			if (i < biomorphs.length && biomorphs[i] != null) canvas[i] = new OpenGLCanvas(biomorphs[i], size);
+			else canvas[i] = new OpenGLCanvas(null, size);
 			panel[i].add(canvas[i].getCanvas());
 		}
 		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.fill = GridBagConstraints.HORIZONTAL;
 		for (int i = 0; i < panel.length; i++)
 		{	
 			gbc.gridx = i % 4;
 			gbc.gridy = i / 4;
 			add(panel[i], gbc);
-			panel[i].setBorder(new EmptyBorder(-5, -5, -5, -5)); //Remove default padding
+			if (gbc.gridx == 3) panel[i].setBorder(new EmptyBorder(-5, -5, -4, -5));
+			else panel[i].setBorder(new EmptyBorder(-5, -5, -4, -4));
 		}
 		setVisible(true);
 	}

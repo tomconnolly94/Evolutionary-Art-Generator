@@ -33,7 +33,6 @@ public class GraphicsMain implements ActionListener
 	private JPanel contentPanel; // The content panel, containing the biomorph panel, mutation panel and right panel.
 	private MainBiomorphPanel mainPanel; // The main biomorph panel, containing the large biomorph window.
 	private MutationPanel mutationPanel; // The mutation panel, containing 8 smaller biomorph windows.
-	@SuppressWarnings("unused")
 	private HallOfFamePanel hallOfFame; // The hall of fame panel.
 	private JPanel evolvePanel;
 	private RightPanel rp; // The right panel.
@@ -50,8 +49,8 @@ public class GraphicsMain implements ActionListener
 	public GraphicsMain()
 	{
 		// *0* Initialise variables
-		final int blankSpace = 3;
-		int width = 800;
+		final int blankSpace = 5;
+		int width = 1024;
 		int height = 720;
 		bm = new BiomorphManager();
 		// *1* Create components
@@ -66,9 +65,9 @@ public class GraphicsMain implements ActionListener
 		loadToMainWindowButton.setSize(new Dimension(70, 20));
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
-		for (int i = 0; i < biomorphs.length; i++)
-			biomorphs[i] = null;
+		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
 		mutationPanel = new MutationPanel(biomorphs);
+		hallOfFame = new HallOfFamePanel(biomorphs);
 		checkBoxArr = new JCheckBox[9];
 		for (int i = 0; i < checkBoxArr.length; i++)
 		{
@@ -98,13 +97,18 @@ public class GraphicsMain implements ActionListener
 		contentPanel.setMinimumSize(new Dimension(width, height));
 		evolvePanel.setLayout(new BoxLayout(evolvePanel, BoxLayout.PAGE_AXIS));
 		GridBagConstraints gbc = new GridBagConstraints();
-		// gbc.fill = GridBagConstraints.HORIZONTAL;
 		// *4* Add components to containers
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.gridheight = 2;
+		contentPanel.add(hallOfFame, gbc);
 		gbc.gridx = 1;
 		gbc.gridy = 0;
+		gbc.gridheight = 1;
 		contentPanel.add(mainPanel, gbc);
 		gbc.gridx = 1;
 		gbc.gridy = 1;
+		gbc.gridheight = 1;
 		contentPanel.add(mutationPanel, gbc);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -264,8 +268,9 @@ public class GraphicsMain implements ActionListener
 	 */
 	private void resize()
 	{
-		mainPanel.resize((int) (mainFrame.getHeight() * 0.6));
-		mutationPanel.resize((int) (mainFrame.getHeight() * 0.15));
+		mainPanel.resize((int)(mainFrame.getHeight() * 0.6) - 1);
+		mutationPanel.resize((int)(mainFrame.getHeight() * 0.15) - 1);
+		hallOfFame.resize((int)(mainFrame.getHeight() * 0.225));
 	}
 	/**
 	 * Shows a confirmation dialog to exit the application.

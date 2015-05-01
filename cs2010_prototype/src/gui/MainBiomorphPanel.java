@@ -10,7 +10,7 @@ import biomorphHandling.Biomorph;
 public class MainBiomorphPanel extends JPanel
 {
 	private static final long serialVersionUID = 9104451169664277399L;
-	private OpenGLFrame oframe;
+	private OpenGLCanvas canvas;
 	private int size;
 	/**
 	 * Constructor
@@ -20,9 +20,9 @@ public class MainBiomorphPanel extends JPanel
 	{
 		super();
 		size = 400;
-		oframe = new OpenGLFrame(biomorph, size);
-		add(oframe.getCanvas());
-		setBorder(new EmptyBorder(-5, -5, 10, -5));
+		canvas = new OpenGLCanvas(biomorph, size);
+		add(canvas.getCanvas());
+		setBorder(new EmptyBorder(-5, -5, -3, -5));
 		setVisible(true);
 	}
 	/**
@@ -33,7 +33,7 @@ public class MainBiomorphPanel extends JPanel
 	{
 		this.size = newSize;
 		setSize(size, size);
-		oframe.getCanvas().setSize(size, size);
+		canvas.getCanvas().setSize(size, size);
 	}
 	/**
 	 * Changes the biomorph to be displayed on the canvas.
@@ -41,6 +41,6 @@ public class MainBiomorphPanel extends JPanel
 	 */
 	public void setBiomorph(Biomorph biomorph)
 	{
-		oframe.setBiomorph(biomorph);
+		canvas.setBiomorph(biomorph);
 	}
 }
