@@ -1,7 +1,6 @@
 package gui;
 import input_output.Load;
 import input_output.Save;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JComponent;
