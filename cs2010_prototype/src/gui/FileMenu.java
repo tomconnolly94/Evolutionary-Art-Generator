@@ -19,10 +19,11 @@ import biomorphHandling.BiomorphManager;
 /**
  * The File Menu element of the program
  * @author Charandeep Rai
+ * @version 02/05/2015
  */
 public class FileMenu extends JComponent implements MenuListener, ActionListener
 {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -6163251826528350603L;
 	private JFrame frame;
 	private Biomorph biomorph;
 	private BiomorphManager bm;
@@ -112,6 +113,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			public void actionPerformed(ActionEvent arg0)
 			{
 				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
+				@SuppressWarnings("unused")
 				Save save = new Save(biomorph.getGenes(), response);
 			}
 		});
