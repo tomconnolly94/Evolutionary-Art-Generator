@@ -22,12 +22,11 @@ public class BiomorphManager
 	public void setUp()
 	{
 		biomorphCollection = new LinkedList<Biomorph>();
+		
 		for(int i=0;i<9;i++){
 			createAndAdd();
-			Biomorph biomorph1 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(getSize()-1));
-			biomorphCollection.add(0, biomorph1);
-			
 		}
+		@SuppressWarnings("unused")
 		Biomorph biomorph2 = biomorphCollection.get(0);
 	}
 	public void addSpecific(Biomorph b)
