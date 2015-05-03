@@ -26,7 +26,6 @@ public class BiomorphManager
 		for(int i=0;i<9;i++){
 			createAndAdd();		
 		}
-		Biomorph biomorph2 = biomorphCollection.get(0);
 	}
 	public void addSpecific(Biomorph b)
 	{

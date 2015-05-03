@@ -77,7 +77,6 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		biomorphMenu.add(createNewMenuItem("New"));
 		biomorphMenu.add(createOpenMenuItem("Open"));
 		biomorphMenu.add(createSaveMenuItem("Save"));
-		biomorphMenu.add(createPrintMenuItem("Print (unimplemented)"));
 		return biomorphMenu;
 	}
 	private JMenu createSettingsMenu(String name, int depth)
@@ -172,7 +171,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				outer.add(radioButtons, BorderLayout.NORTH);
 				outer.add(inputPanel, BorderLayout.SOUTH);
 				
-				int result = JOptionPane.showConfirmDialog(null, outer, 
+				JOptionPane.showConfirmDialog(null, outer, 
 			               "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
 				System.out.println(Integer.parseInt(tfa[0].getText()));
 				bm.updateTargetValues(Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[1].getText()), Integer.parseInt(tfa[2].getText()), Integer.parseInt(tfa[3].getText()), Integer.parseInt(tfa[4].getText()), Integer.parseInt(tfa[5].getText()), Integer.parseInt(tfa[6].getText()), Integer.parseInt(tfa[7].getText()), Integer.parseInt(tfa[8].getText()), Integer.parseInt(tfa[9].getText()), Integer.parseInt(tfa[10].getText()), Integer.parseInt(tfa[11].getText()));
@@ -255,18 +254,6 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		});
 		return jMenuItem;
 	}
-	private JMenuItem createPrintMenuItem(String name)
-	{
-		final JMenuItem jMenuItem = new JMenuItem(name);
-		jMenuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent n)
-			{
-				JOptionPane.showMessageDialog(jMenuItem, "Printed!");
-			}
-		});
-		return jMenuItem;
-	}
 	private JMenuItem createAddToHallOfFameItem(String name)
 	{
 		final JMenuItem jMenuItem = new JMenuItem(name);
@@ -309,71 +296,4 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	{
 		
 	}
-	public static void main(String[] args)
-	{
-		GraphicsMain gm = new GraphicsMain();
-		BiomorphManager bm = new BiomorphManager();
-		int[] perfect = {1,1,1,1,1,1,1,1,1,1,1,1};
-		EvolutionStats es = new EvolutionStats(perfect);
-		new FileMenu(bm, gm , es).initialise();
-	}
-//	private JMenu createSaveMenu(String savename, int menudepth)
-//	{
-//		JMenu savemenu = new JMenu("Save");
-//		JMenuItem Textfilesave = new JMenuItem("Save to Text File");
-//		for (int i = 0; i < 1; i++)
-//		{
-//			savemenu.add(Textfilesave(Textfilesave));
-//		}
-//		return savemenu;
-//	}
-//	private JMenu createOpenMenu(String name, int menudepth)
-//	{
-//		JMenu openmenu = new JMenu(name);
-//		for (int i = 0; i < 1; i++)
-//		{
-//			openmenu.add(createOpenMenuItem("Open from TextFile"));
-//		}
-//		return openmenu;
-//	}
-//	private JMenu createPrintMenu(String name, int menudepth)
-//	{
-//		JMenu printmenu = new JMenu(name);
-//		for (int i = 0; i < 1; i++)
-//		{
-//			printmenu.add(createPrintMenuItem("Print Biomorph"));
-//		}
-//		return printmenu;
-//	}
-//	private JMenu createNewMenu(String name, int menudepth)
-//	{
-//		JMenu newmenu = new JMenu(name);
-//		for (int i = 0; i < 1; i++)
-//		{
-//			newmenu.add(createNewMenuItem("Create New Biomorph"));
-//		}
-//		return newmenu;
-//	}
-//	private JMenuItem loadBiomorph(JMenuItem loadItem)
-//	{
-//		loadItem.addActionListener(new ActionListener()
-//		{
-//			@Override
-//			public void actionPerformed(ActionEvent arg0)
-//			{
-//			}
-//		});
-//		return loadItem;
-//	}
-//	private JMenuItem Bioserialise(JMenuItem Bioserialise)
-//	{
-//		Bioserialise.addActionListener(new ActionListener()
-//		{
-//			@Override
-//			public void actionPerformed(ActionEvent arg0)
-//			{
-//			}
-//		});
-//		return Bioserialise;
-//	}
 }
