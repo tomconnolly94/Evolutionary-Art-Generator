@@ -23,10 +23,7 @@ public class BiomorphManager
 	{
 		biomorphCollection = new LinkedList<Biomorph>();
 		for(int i=0;i<9;i++){
-			createAndAdd();
-			Biomorph biomorph1 = evolveClo(biomorphCollection.get(0), biomorphCollection.get(getSize()-1));
-			biomorphCollection.add(0, biomorph1);
-			
+			createAndAdd();		
 		}
 		Biomorph biomorph2 = biomorphCollection.get(0);
 	}
