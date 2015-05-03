@@ -56,7 +56,7 @@ public class GraphicsMain implements ActionListener
 		// *1* Create components
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		fileMenu = new FileMenu(bm, this);
+		fileMenu = new FileMenu(bm, this,bm.getEvolStats());
 		evolveButton = new JButton("Evolve");
 		evolveButton.setSize(new Dimension(70, 20));
 		resetButton = new JButton("Reset");
@@ -220,6 +220,7 @@ public class GraphicsMain implements ActionListener
 		{
 			bm = new BiomorphManager();
 			fileMenu.updateBM(bm);
+			fileMenu.updateES(bm.getEvolStats());
 			refreshMainPanel();
 			selected.clear();
 		}

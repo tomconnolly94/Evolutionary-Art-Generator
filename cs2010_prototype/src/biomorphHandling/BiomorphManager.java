@@ -12,12 +12,13 @@ public class BiomorphManager
 	private LinkedList<Biomorph> biomorphCollection;
 	// set of perfect values that the Biomorphs will evolve towards.
 	private int[] targetValues = {5, 2, 100, 256, 50, 5, 8, 2, 2, 100, 100, 100};
-	private EvolutionStats statisticMachine = new EvolutionStats(targetValues);
+	private EvolutionStats statisticMachine;
 	// integer to change the name of Biomorphs after they are saved.
 	// private int i = 1;
 	public BiomorphManager()
 	{
 		setUp();
+		statisticMachine = new EvolutionStats(targetValues);
 	}
 	public void setUp()
 	{
@@ -95,7 +96,7 @@ public class BiomorphManager
 		Evolver ec = new Evolver(father, mother, targetValues);
 		Biomorph biomorph = ec.evolve();
 		statisticMachine.saveGeneValues(ec.getChildGenes());
-		statisticMachine.printRunningStats();
+		//statisticMachine.printRunningStats();
 		
 		
 		return biomorph;
@@ -114,5 +115,8 @@ public class BiomorphManager
 		for(int i=0;i<12;i++){
 			System.out.println(targetValues[i]);
 		}
+	}
+	public EvolutionStats getEvolStats(){
+		return statisticMachine;
 	}
 }

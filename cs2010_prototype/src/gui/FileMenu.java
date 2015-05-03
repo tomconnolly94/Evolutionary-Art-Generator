@@ -20,11 +20,13 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ToolTipManager;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import evolution.EvolutionStats;
 import biomorphHandling.Biomorph;
 import biomorphHandling.BiomorphManager;
 /**
@@ -39,13 +41,15 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	private Biomorph biomorph;
 	private BiomorphManager bm;
 	private GraphicsMain gm;
-	public FileMenu(BiomorphManager bm, GraphicsMain gm)
+	private EvolutionStats es;
+	public FileMenu(BiomorphManager bm, GraphicsMain gm, EvolutionStats es)
 	{
 		//These two methods make the file menu "heavyweight" so it draws on top of the canvas.
 		JPopupMenu.setDefaultLightWeightPopupEnabled(false);
 		ToolTipManager.sharedInstance().setLightWeightPopupEnabled(false);
 		this.gm = gm;
 		this.bm = bm;
+		this.es = es;
 		initialise();
 	}
 	public JPanel getContents()
@@ -175,7 +179,8 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				
 				int result = JOptionPane.showConfirmDialog(null, outer, 
 			               "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
-				bm.updateTargetValues(Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()));
+				System.out.println(Integer.parseInt(tfa[0].getText()));
+				bm.updateTargetValues(Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[1].getText()), Integer.parseInt(tfa[2].getText()), Integer.parseInt(tfa[3].getText()), Integer.parseInt(tfa[4].getText()), Integer.parseInt(tfa[5].getText()), Integer.parseInt(tfa[6].getText()), Integer.parseInt(tfa[7].getText()), Integer.parseInt(tfa[8].getText()), Integer.parseInt(tfa[9].getText()), Integer.parseInt(tfa[10].getText()), Integer.parseInt(tfa[11].getText()));
 				bm.printTargetValues();
 			}
 		});
@@ -188,7 +193,12 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		{
 			public void actionPerformed(ActionEvent n)
 			{
-				JOptionPane.showMessageDialog(jMenuItem, "Cleared!");
+				JFrame frame = new JFrame();
+				JTextArea textArea = es.returnStats();
+				textArea.setEditable(false);
+				frame.add(textArea);
+				frame.pack();
+				frame.setVisible(true);
 			}
 		});
 		return jMenuItem;
@@ -282,6 +292,10 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	{
 		this.bm = bm;
 	}
+	public void updateES(EvolutionStats es)
+	{
+		this.es = es;
+	}
 	public void actionPerformed(ActionEvent e)
 	{
 		
@@ -302,7 +316,9 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	{
 		GraphicsMain gm = new GraphicsMain();
 		BiomorphManager bm = new BiomorphManager();
-		new FileMenu(bm, gm).initialise();
+		int[] perfect = {1,1,1,1,1,1,1,1,1,1,1,1};
+		EvolutionStats es = new EvolutionStats(perfect);
+		new FileMenu(bm, gm , es).initialise();
 	}
 //	private JMenu createSaveMenu(String savename, int menudepth)
 //	{
