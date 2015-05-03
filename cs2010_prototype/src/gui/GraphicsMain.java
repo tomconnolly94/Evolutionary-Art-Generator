@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -114,7 +116,7 @@ public class GraphicsMain implements ActionListener
 		gbc.gridy = 0;
 		gbc.gridheight = 2;
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
-		boxPanel.add(new JLabel("Check the boxes to evolve the corresponding Biomorphs"), gbc);
+		boxPanel.add(new JLabel("Check the boxes to select the corresponding 1-8 Biomorphs"), gbc);
 		gbc.gridwidth = 1;
 		gbc.gridy = 2;
 		int i = 0;
@@ -163,6 +165,23 @@ public class GraphicsMain implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
+		//code to find out whether a window has focus (not being used yet)
+		mainPanel.getCanvas().getCanvas().addFocusListener(new FocusListener(){
+
+			@Override
+			public void focusGained(FocusEvent arg0)
+			{
+				System.out.println("MAIN WINDOW FOCUS: YES");	
+			}
+
+			@Override
+			public void focusLost(FocusEvent arg0)
+			{
+				System.out.println("MAIN WINDOW FOCUS: NO");
+			}
+			
+		});
+
 		refreshMutationPanel();
 		bm.createAndAdd();
 		// check if checkboxes are selected

@@ -50,4 +50,7 @@ public class MainBiomorphPanel extends JPanel
 	{
 		canvas.setBiomorph(biomorph);
 	}
+	public OpenGLCanvas getCanvas(){
+		return canvas;
+	}
 }

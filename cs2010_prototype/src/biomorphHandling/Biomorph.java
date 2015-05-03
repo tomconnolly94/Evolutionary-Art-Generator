@@ -10,6 +10,9 @@ import geometry.*;
  */
 public class Biomorph
 {
+	//references to this biomorphs mother and father biomorphs
+	private Biomorph mother;
+	private Biomorph father;
 	// List of array indices for genes
 	public static final int BRANCH = 0;
 	public static final int CHAIN = 1;
@@ -42,7 +45,7 @@ public class Biomorph
 	 * @param iridGreen The value of the Iridescence Green gene
 	 * @param iridBlue The value of the Iridescence Blue gene
 	 */
-	public Biomorph(int branch, int chain, int red, int green, int blue, int length, int lengthInc, int thickness, int thicknessInc, int iridRed, int iridGreen, int iridBlue)
+	public Biomorph(Biomorph mother, Biomorph father, int branch, int chain, int red, int green, int blue, int length, int lengthInc, int thickness, int thicknessInc, int iridRed, int iridGreen, int iridBlue)
 	{
 		// Genes are created and assigned values according to the parameters given. They are then placed in an
 		// array in alphabetical (apart from colours which are RGB) order.
@@ -134,5 +137,13 @@ public class Biomorph
 	public Gene[] getGenes()
 	{
 		return genes;
+	}
+	
+	public Biomorph getMother(){
+		return mother;
+	}
+
+	public Biomorph getFather(){
+		return father;
 	}
 }

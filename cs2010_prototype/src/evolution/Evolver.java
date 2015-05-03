@@ -21,11 +21,15 @@ public class Evolver
 	private Gene[] motherGenes;
 	private Gene[] fatherGenes;
 	private boolean useEvolveClo = true;
+	private Biomorph mother;
+	private Biomorph father;
 	/**
 	 * Assigns parameters to global variables so they can be accessed further on.
 	 */
 	public Evolver(Biomorph father, Biomorph mother, int[] perfectValues)
 	{
+		this.father = father;
+		this.mother = mother;
 		this.perfectValues = perfectValues;
 		fatherGenes = father.getGenes();
 		motherGenes = mother.getGenes();
@@ -56,7 +60,7 @@ public class Evolver
 			// BiomorphCreator is used to create a new child biomorph with the values held in the array 'childGenes'.
 		
 		BiomorphCreator bc = new BiomorphCreator();
-		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11]);
+		Biomorph biomorph = bc.createBiomorph(father, mother, childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11]);
 		return biomorph;
 	}
 	public Biomorph evolveAv(){
@@ -64,7 +68,7 @@ public class Evolver
 			childGenes[i] = (fatherGenes[i].getValue() + motherGenes[i].getValue())/2;
 		}
 		BiomorphCreator bc = new BiomorphCreator();
-		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11]);
+		Biomorph biomorph = bc.createBiomorph(father, mother, childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11]);
 		return biomorph;
 	}
 	/**

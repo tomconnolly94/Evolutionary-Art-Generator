@@ -40,7 +40,7 @@ public class BiomorphManager
 	{
 		BiomorphCreator bc = new BiomorphCreator();
 		// Biomorph biomorph = bc.createBiomorph(4,0,2,100,100,100,0,5,1,1,0);
-		Biomorph biomorph = bc.createBiomorph();
+		Biomorph biomorph = bc.createRandomBiomorph();
 		biomorphCollection.addLast(biomorph);
 		return biomorph;
 	}

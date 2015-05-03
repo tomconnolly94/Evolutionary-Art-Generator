@@ -15,7 +15,7 @@ public class BiomorphCreator
 	/**
 	 * @return A new, randomly generated biomorph.
 	 */
-	public Biomorph createBiomorph()
+	public Biomorph createRandomBiomorph()
 	{
 		rand = new Random(/* 10 */); // Seed used for testing
 		int branch = rand.nextInt(8) + 3; // Value: 3 to 10 (The branch gene has been limited to a minimum of 3 to prevent a simple line from being generated)
@@ -30,14 +30,14 @@ public class BiomorphCreator
 		int iridRed = rand.nextInt(33) - 8; // Value: -16 to 16
 		int iridGreen = rand.nextInt(33) - 8; // Value: -16 to 16
 		int iridBlue = rand.nextInt(33) - 8; // Value: -16 to 16
-		Biomorph biomorph = new Biomorph(branch, chain, red, green, blue, length, lengthIncrement, thickness, thicknessIncrement, iridRed, iridGreen, iridBlue);
+		Biomorph biomorph = new Biomorph(null, null, branch, chain, red, green, blue, length, lengthIncrement, thickness, thicknessIncrement, iridRed, iridGreen, iridBlue);
 		return biomorph;
 	}
 	/**
 	 * @return A new biomorph whose genes have values that are given.
 	 */
-	public Biomorph createBiomorph(int branch, int chain, int red, int green, int blue, int length, int lengthInc, int thickness, int thicknessInc, int iridRed, int iridGreen, int iridBlue)
+	public Biomorph createBiomorph(Biomorph father, Biomorph mother, int branch, int chain, int red, int green, int blue, int length, int lengthInc, int thickness, int thicknessInc, int iridRed, int iridGreen, int iridBlue)
 	{
-		return new Biomorph(branch, chain, red, green, blue, length, lengthInc, thickness, thicknessInc, iridRed, iridGreen, iridBlue);
+		return new Biomorph(father, mother, branch, chain, red, green, blue, length, lengthInc, thickness, thicknessInc, iridRed, iridGreen, iridBlue);
 	}
 }

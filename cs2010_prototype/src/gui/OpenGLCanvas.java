@@ -181,7 +181,7 @@ public class OpenGLCanvas implements GLEventListener, KeyListener
 	{
 		GLCanvas canvas = new GLCanvas(new GLCapabilities(GLProfile.getDefault()));
 		BiomorphCreator bc = new BiomorphCreator();
-		OpenGLCanvas ocanvas = new OpenGLCanvas(bc.createBiomorph(), 400);
+		OpenGLCanvas ocanvas = new OpenGLCanvas(bc.createRandomBiomorph(), 400);
 		canvas.addGLEventListener(ocanvas);
 		canvas.addKeyListener(ocanvas);
 		int width = 400;

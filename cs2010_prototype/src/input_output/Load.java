@@ -27,7 +27,7 @@ public class Load
 	 */
 	public Biomorph load()
 	{
-		Biomorph biomorph = new Biomorph(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		Biomorph biomorph = new Biomorph(null,null,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		try
 		{
 			BufferedReader br = new BufferedReader(new FileReader("src/biomorphTextFiles/" + fileName + ".txt"));
@@ -51,7 +51,7 @@ public class Load
 				genes[i] = Integer.parseInt(letter);
 				i++;
 			}
-			biomorph = bc.createBiomorph(genes[0], genes[1], genes[2], genes[3], genes[4], genes[5], genes[6], genes[7], genes[8], genes[9], genes[10], genes[11]);
+			biomorph = bc.createBiomorph(null,null,genes[0], genes[1], genes[2], genes[3], genes[4], genes[5], genes[6], genes[7], genes[8], genes[9], genes[10], genes[11]);
 			br.close();
 		}
 		catch (FileNotFoundException e)

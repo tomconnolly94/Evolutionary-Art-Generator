@@ -19,8 +19,8 @@ public class BiomorphCreator_Test
 		 * means the random factor of the createBiomorph class can be tested.
 		 */
 		bc = new BiomorphCreator();
-		biomorphRand = bc.createBiomorph();
-		biomorphNonRand = bc.createBiomorph(geneValues[0], geneValues[1], geneValues[2], geneValues[3], geneValues[4], geneValues[5], geneValues[6], geneValues[7], geneValues[8], geneValues[9], geneValues[10], geneValues[11]);
+		biomorphRand = bc.createRandomBiomorph();
+		biomorphNonRand = bc.createBiomorph(null, null, geneValues[0], geneValues[1], geneValues[2], geneValues[3], geneValues[4], geneValues[5], geneValues[6], geneValues[7], geneValues[8], geneValues[9], geneValues[10], geneValues[11]);
 	}
 	@Test
 	public void testRandValues()
