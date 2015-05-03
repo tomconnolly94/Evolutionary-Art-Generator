@@ -3,10 +3,12 @@ import input_output.*;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -241,12 +243,18 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
-				Load load;
-				load = new Load(response);
-				Biomorph loadedBiomorph = load.load();
-				bm.addSpecific(loadedBiomorph);
-				gm.refreshMainPanel();				
+				final JFileChooser fc = new JFileChooser("src/biomorphTextFiles/");
+				int returnVal = fc.showOpenDialog(frame);
+
+				if (returnVal == JFileChooser.APPROVE_OPTION) {
+				    File file = fc.getSelectedFile();
+
+				    Load load = new Load(file.getName().replace(".txt", ""));
+				    System.out.println(file.getName());
+					Biomorph loadedBiomorph = load.load();
+					bm.addSpecific(loadedBiomorph);
+					gm.refreshMainPanel();	
+				}							
 			}
 		});
 		return jMenuItem;
@@ -258,9 +266,17 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
+				/*String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
 				@SuppressWarnings("unused")
-				SaveBiomorphToText save = new SaveBiomorphToText(biomorph.getGenes(), response);
+				SaveBiomorphToText save = new SaveBiomorphToText(biomorph.getGenes(), response);*/	
+				final JFileChooser fc = new JFileChooser("src/biomorphTextFiles/");
+				int returnVal = fc.showSaveDialog(frame);
+
+				if (returnVal == JFileChooser.APPROVE_OPTION) {
+				    File file = fc.getSelectedFile();
+				    //This is where a real application would open the file.
+				    SaveBiomorphToText save = new SaveBiomorphToText(biomorph.getGenes(), file.getName());
+				} 
 			}
 		});
 		return jMenuItem;
