@@ -20,7 +20,9 @@ public class Evolver
 	private int[] childGenes;
 	private Gene[] motherGenes;
 	private Gene[] fatherGenes;
-	// Assigns parameters to global variables so they can be accessed further on.
+	/**
+	 * Assigns parameters to global variables so they can be accessed further on.
+	 */
 	public Evolver(Biomorph father, Biomorph mother, int[] perfectValues)
 	{
 		this.perfectValues = perfectValues;
