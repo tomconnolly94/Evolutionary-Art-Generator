@@ -3,18 +3,14 @@ import input_output.Load;
 import input_output.Save;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import javax.swing.ToolTipManager;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
@@ -55,31 +51,21 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	private JMenuBar createMenuBar(String name, int depth)
 	{
 		JMenuBar menubar = new JMenuBar();
-		menubar.add(createFileMenu("Biomorph", 4));
-		menubar.add(createSettingsMenu("Settings", 4));
+		menubar.add(createBiomorphMenu("Biomorph", 4));
 		menubar.add(createHallOfFameMenu("Hall Of Fame", 3));
-		menubar.add(createHelpMenu("Help", 4));
 		return menubar;
 	}
 	public void updateBiomorph(Biomorph biomorph)
 	{
 		this.biomorph = biomorph;
 	}
-	private JMenu createFileMenu(String name, int depth)
+	private JMenu createBiomorphMenu(String name, int depth)
 	{
-		JMenu biomorphMenu = new JMenu("File");
-		biomorphMenu.add(createNewMenuItem("New"));
-		biomorphMenu.add(createOpenMenuItem("Open"));
-		biomorphMenu.add(createSaveMenuItem("Save"));
-		biomorphMenu.add(createPrintMenuItem("Print (unimplemented)"));
-		return biomorphMenu;
-	}
-	private JMenu createSettingsMenu(String name, int depth)
-	{
-		JMenu biomorphMenu = new JMenu("Settings");
-		biomorphMenu.add(createEditEvolSettingsItem("Edit evolution settings"));
-		biomorphMenu.add(createDisplayEvolStatsItem("Display evolution stats"));
-		biomorphMenu.add(createSaveEvolStatsItem("Save evolution stats"));
+		JMenu biomorphMenu = new JMenu("Biomorph");
+		biomorphMenu.add(createNewMenuItem("Create New Biomorph"));
+		biomorphMenu.add(createOpenMenuItem("Open from Text File"));
+		biomorphMenu.add(createSaveMenuItem("Save to Text File"));
+		biomorphMenu.add(createPrintMenuItem("Print Biomorph"));
 		return biomorphMenu;
 	}
 	private JMenu createHallOfFameMenu(String name, int depth)
@@ -88,12 +74,6 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		biomorphMenu.add(createAddToHallOfFameItem("Add to Hall of Fame"));
 		biomorphMenu.add(createRemoveSelectedItem("Remove Selected"));
 		biomorphMenu.add(createClearHallOfFameItem("Clear Hall of Fame"));
-		return biomorphMenu;
-	}
-	private JMenu createHelpMenu(String name, int depth)
-	{
-		JMenu biomorphMenu = new JMenu("Help");
-		biomorphMenu.add(createViewHelpDocItem("View Help Document"));
 		return biomorphMenu;
 	}
 	private JMenuItem createNewMenuItem(String name)
@@ -176,79 +156,6 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		return jMenuItem;
 	}
 	private JMenuItem createClearHallOfFameItem(String name)
-	{
-		final JMenuItem jMenuItem = new JMenuItem(name);
-		jMenuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent n)
-			{
-				JOptionPane.showMessageDialog(jMenuItem, "Cleared!");
-			}
-		});
-		return jMenuItem;
-	}
-	private JMenuItem createEditEvolSettingsItem(String name)
-	{
-		final JMenuItem jMenuItem = new JMenuItem(name);
-		jMenuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent n)
-			{
-				JPanel outer = new JPanel();
-				JPanel radioButtons = new JPanel();
-				JPanel inputPanel = new JPanel();
-				int result = 0;
-				
-				JRadioButton button1 = new JRadioButton("Use target values to evolve",false);
-				JRadioButton button2 = new JRadioButton("Use avg of parents to evolve", true);
-				
-				radioButtons.add(button1);
-				radioButtons.add(button2);
-				while(result==0){
-					if(button1.isSelected()){
-						for(int i=0;i<12;i++){
-							JTextField gene = new JTextField(2);
-							inputPanel.add(new JLabel(""+(i+1)));
-							inputPanel.add(gene);
-							inputPanel.add(Box.createHorizontalStrut(15));
-						}
-					}
-				
-				outer.add(radioButtons);
-				outer.add(inputPanel);
-				}
-				result = JOptionPane.showConfirmDialog(null, outer, 
-			               "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
-				
-				}
-		});
-		return jMenuItem;
-	}
-	private JMenuItem createDisplayEvolStatsItem(String name)
-	{
-		final JMenuItem jMenuItem = new JMenuItem(name);
-		jMenuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent n)
-			{
-				JOptionPane.showMessageDialog(jMenuItem, "Cleared!");
-			}
-		});
-		return jMenuItem;
-	}
-	private JMenuItem createSaveEvolStatsItem(String name)
-	{
-		final JMenuItem jMenuItem = new JMenuItem(name);
-		jMenuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent n)
-			{
-				JOptionPane.showMessageDialog(jMenuItem, "Cleared!");
-			}
-		});
-		return jMenuItem;
-	}
-	private JMenuItem createViewHelpDocItem(String name)
 	{
 		final JMenuItem jMenuItem = new JMenuItem(name);
 		jMenuItem.addActionListener(new ActionListener()
