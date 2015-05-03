@@ -1,0 +1,12 @@
+Branch              5(PV)~~ 
+Chain               2(PV)~~ 
+Color Red           100(PV)~~ 
+Color Green         256(PV)~~ 
+Color Blue          50(PV)~~ 
+Length              5(PV)~~ 
+Length Increment    8(PV)~~ 
+Thickness           2(PV)~~ 
+Thickness Increment 2(PV)~~ 
+Iridescence Red     100(PV)~~ 
+Iridescence Green   100(PV)~~ 
+Iridescence Blue    100(PV)~~ 
