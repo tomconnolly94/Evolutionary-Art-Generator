@@ -1,8 +1,6 @@
 package gui;
-import input_output.Load;
-import input_output.Save;
+import input_output.*;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Box;
@@ -11,7 +9,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,10 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.ListModel;
 import javax.swing.ToolTipManager;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
@@ -210,7 +205,9 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		{
 			public void actionPerformed(ActionEvent n)
 			{
-				JOptionPane.showMessageDialog(jMenuItem, "Cleared!");
+				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
+
+				new SaveStatsToText(es.getRunningStats(), response);
 			}
 		});
 		return jMenuItem;
@@ -253,7 +250,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			{
 				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
 				@SuppressWarnings("unused")
-				Save save = new Save(biomorph.getGenes(), response);
+				SaveBiomorphToText save = new SaveBiomorphToText(biomorph.getGenes(), response);
 			}
 		});
 		return jMenuItem;

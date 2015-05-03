@@ -9,7 +9,7 @@ import biomorphHandling.*;
  * @author Tom Connolly
  * @version 04/03/2015
  */
-public class Save
+public class SaveBiomorphToText
 {
 	static FileOutputStream fop = null;
 	static File file;
@@ -19,7 +19,7 @@ public class Save
 	 * @param geneValues The array of genes to save
 	 * @param fileName The name of the file to save to
 	 */
-	public Save(Gene[] geneValues, String fileName)
+	public SaveBiomorphToText(Gene[] geneValues, String fileName)
 	{
 		try
 		{
@@ -74,6 +74,6 @@ public class Save
 	{
 		BiomorphCreator bc = new BiomorphCreator();
 		Biomorph biomorph = bc.createBiomorph();
-		new Save(biomorph.getGenes(), "biomorph");
+		new SaveBiomorphToText(biomorph.getGenes(), "biomorph");
 	}
 }

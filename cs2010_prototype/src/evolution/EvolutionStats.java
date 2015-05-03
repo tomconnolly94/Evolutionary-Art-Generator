@@ -113,4 +113,7 @@ public class EvolutionStats
 	public void updateTargetValues(int[] targetValues){
 		this.targetValues = targetValues;
 	}
+	public ArrayList<String> getRunningStats(){
+		return runningStats;
+	}
 }
