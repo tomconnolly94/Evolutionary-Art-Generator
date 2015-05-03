@@ -104,4 +104,15 @@ public class BiomorphManager
 	public int getSize(){
 		return biomorphCollection.size();
 	}
+	
+	public void updateTargetValues(int gene1,int gene2,int gene3,int gene4,int gene5,int gene6,int gene7,int gene8,int gene9,int gene10,int gene11,int gene12){
+		int[] newTargetValues = {gene1,gene2,gene3,gene4,gene5,gene6,gene7,gene8,gene9,gene10,gene11,gene12};
+		targetValues = newTargetValues;
+	}
+	
+	public void printTargetValues(){
+		for(int i=0;i<12;i++){
+			System.out.println(targetValues[i]);
+		}
+	}
 }

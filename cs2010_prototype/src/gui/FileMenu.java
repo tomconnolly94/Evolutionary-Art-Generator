@@ -2,13 +2,16 @@ package gui;
 import input_output.Load;
 import input_output.Save;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -16,7 +19,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListModel;
 import javax.swing.ToolTipManager;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
@@ -121,6 +126,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				JPanel outer = new JPanel(new BorderLayout());
 				JPanel radioButtons = new JPanel();
 				final JPanel inputPanel = new JPanel();
+				inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.Y_AXIS));
 				
 				//create buttons
 				ButtonGroup bg = new ButtonGroup();
@@ -132,10 +138,12 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				bg.add(button2);
 				
 				String[] geneNames = {"Branch","Chain Gene","Colour Red","Colour Green","Colour Blue","Length","Length Increment","Thickness","Thickness Increment","Iridescence Red","Iridescence Green","Iridescence Blue"};
-				
+							     
+				JTextField[] tfa = new JTextField[12];
 				for(int i=0;i<12;i++){
 					JTextField gene = new JTextField(2);
-					inputPanel.add(new JLabel(""+(i+1)));
+					tfa[i] = gene;
+					inputPanel.add(new JLabel(geneNames[i]));
 					inputPanel.add(gene);
 					inputPanel.add(Box.createHorizontalStrut(15));
 				}
@@ -167,7 +175,8 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				
 				int result = JOptionPane.showConfirmDialog(null, outer, 
 			               "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
-				
+				bm.updateTargetValues(Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[0].getText()));
+				bm.printTargetValues();
 			}
 		});
 		return jMenuItem;
