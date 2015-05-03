@@ -134,37 +134,19 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	private JMenuItem createAddToHallOfFameItem(String name)
 	{
 		final JMenuItem jMenuItem = new JMenuItem(name);
-		jMenuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent n)
-			{
-				JOptionPane.showMessageDialog(jMenuItem, "Added!");
-			}
-		});
+		jMenuItem.addActionListener(gm);
 		return jMenuItem;
 	}
 	private JMenuItem createRemoveSelectedItem(String name)
 	{	
 		final JMenuItem jMenuItem = new JMenuItem(name);
-		jMenuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent n)
-			{
-				JOptionPane.showMessageDialog(jMenuItem, "Removed!");
-			}
-		});
+		jMenuItem.addActionListener(gm);
 		return jMenuItem;
 	}
 	private JMenuItem createClearHallOfFameItem(String name)
 	{
 		final JMenuItem jMenuItem = new JMenuItem(name);
-		jMenuItem.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent n)
-			{
-				JOptionPane.showMessageDialog(jMenuItem, "Cleared!");
-			}
-		});
+		jMenuItem.addActionListener(gm);
 		return jMenuItem;
 	}
 	public void updateBM(BiomorphManager bm)

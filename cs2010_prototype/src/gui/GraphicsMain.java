@@ -243,6 +243,26 @@ public class GraphicsMain implements ActionListener
 			}
 			selected.clear();
 		}
+		if (e.getActionCommand().equals("Add to Hall of Fame"))
+		{
+			if (mainPanel.getBiomorph() == null) JOptionPane.showMessageDialog(mainFrame, "The main panel contains no biomorph to add.");
+			else
+			{
+				if (hallOfFame.getBiomorph(0) == null) hallOfFame.setBiomorph(0, mainPanel.getBiomorph());
+				else if (hallOfFame.getBiomorph(1) == null) hallOfFame.setBiomorph(1, mainPanel.getBiomorph());
+				else if (hallOfFame.getBiomorph(2) == null) hallOfFame.setBiomorph(2, mainPanel.getBiomorph());
+				else if (hallOfFame.getBiomorph(3) == null) hallOfFame.setBiomorph(3, mainPanel.getBiomorph());
+				else JOptionPane.showMessageDialog(mainFrame, "The Hall of Fame can only store 4 biomorphs.");
+			}
+		}
+		if (e.getActionCommand().equals("Remove Selected"))
+		{
+			JOptionPane.showMessageDialog(mainFrame, "Removed!");
+		}
+		if (e.getActionCommand().equals("Clear Hall of Fame"))
+		{
+			for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
+		}
 	}
 	/**
 	 * Refreshes the contents of the main biomorph panel.

@@ -36,6 +36,13 @@ public class MainBiomorphPanel extends JPanel
 		canvas.getCanvas().setSize(size, size);
 	}
 	/**
+	 * Returns the biomorph displayed on the canvas.
+	 */
+	public Biomorph getBiomorph()
+	{
+		return canvas.getBiomorph();
+	}
+	/**
 	 * Changes the biomorph to be displayed on the canvas.
 	 * @param biomorph The new biomorph to display
 	 */

@@ -54,6 +54,13 @@ public class HallOfFamePanel extends JPanel
 		for (int i = 0; i < canvas.length; i++) canvas[i].getCanvas().setSize(size, size);
 	}
 	/**
+	 * Returns the biomorph displayed on a specified canvas.
+	 */
+	public Biomorph getBiomorph(int index)
+	{
+		return canvas[index].getBiomorph();
+	}
+	/**
 	 * Changes the biomorph to be displayed on a specified canvas.
 	 * @param index The canvas to change
 	 * @param biomorph The new biomorph to display
