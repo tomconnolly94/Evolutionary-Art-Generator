@@ -1,6 +1,5 @@
 package input_output;
 import genes.Gene;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,7 +14,11 @@ public class Save
 	static FileOutputStream fop = null;
 	static File file;
 	static String anchorDestination = "src/biomorphTextFiles/";
-
+	/**
+	 * Constructor
+	 * @param geneValues The array of genes to save
+	 * @param fileName The name of the file to save to
+	 */
 	public Save(Gene[] geneValues, String fileName)
 	{
 		try
@@ -26,7 +29,8 @@ public class Save
 				content = content + gene.getValue() + ",";
 			}
 			File dir = new File(anchorDestination);
-			if(!(dir.exists())){
+			if (!(dir.exists()))
+			{
 				dir.mkdir();
 			}
 			// save file to src
@@ -63,12 +67,13 @@ public class Save
 			}
 		}
 	}
-	
-	public static void main(String[] args){
+	/**
+	 * Main method for testing
+	 */
+	public static void main(String[] args)
+	{
 		BiomorphCreator bc = new BiomorphCreator();
 		Biomorph biomorph = bc.createBiomorph();
-		Save save = new Save(biomorph.getGenes(), "biomorph");
+		new Save(biomorph.getGenes(), "biomorph");
 	}
-	
-	
 }
