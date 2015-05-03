@@ -1,6 +1,8 @@
 package gui;
+import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import biomorphHandling.Biomorph;
@@ -21,7 +23,12 @@ public class HallOfFamePanel extends JPanel
 	 */
 	public HallOfFamePanel(Biomorph biomorphs[])
 	{
+		
 		super(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		this.add(new JLabel("Hall of Fame Panel"), gbc);
 		size = 150;
 		panel = new JPanel[4];
 		canvas = new OpenGLCanvas[4];
@@ -32,14 +39,13 @@ public class HallOfFamePanel extends JPanel
 			else canvas[i] = new OpenGLCanvas(null, size);
 			panel[i].add(canvas[i].getCanvas());
 		}
-		GridBagConstraints gbc = new GridBagConstraints();
+		
 		for (int i = 0; i < panel.length; i++)
 		{
 			gbc.gridx = 0;
-			gbc.gridy = i;
+			gbc.gridy = i+1;
 			add(panel[i], gbc);
-			if (gbc.gridy == 3) panel[i].setBorder(new EmptyBorder(-5, -5, -5, -3));
-			else panel[i].setBorder(new EmptyBorder(-5, -5, -4, -3));
+			panel[i].setBorder(new EmptyBorder(-5, -5, -4, -3));
 		}
 		setVisible(true);
 	}

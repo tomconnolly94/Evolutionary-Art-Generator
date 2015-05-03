@@ -225,13 +225,11 @@ public class GraphicsMain implements ActionListener
 			selected.clear();
 		}
 		// code run after 'Load to main window' button clicked
-		System.out.println("before button check");
 		if (e.getActionCommand().equals("Load to main window"))
 		{
 			System.out.println("after button check");
 			if (selected.size() == 1)
 			{
-				System.out.println("size is 1");
 				bm.addSpecific(selected.get(0));
 				refreshMainPanel();
 			}
@@ -310,6 +308,5 @@ public class GraphicsMain implements ActionListener
 	public static void main(String[] args)
 	{
 		new GraphicsMain();
-		System.out.println("STOP");
 	}
 }
