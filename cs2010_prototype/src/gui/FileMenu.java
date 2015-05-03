@@ -173,9 +173,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				outer.add(radioButtons, BorderLayout.NORTH);
 				outer.add(inputPanel, BorderLayout.SOUTH);
 				
-				JOptionPane.showConfirmDialog(null, outer, 
-			               "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
-				//System.out.println(Integer.parseInt(tfa[0].getText()));
+				JOptionPane.showConfirmDialog(null, outer, "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
 				if(button1.isSelected()){
 					bm.setEvolveClo(true);
 					for(int i=0;i<12;i++){
@@ -266,15 +264,11 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				/*String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
-				@SuppressWarnings("unused")
-				SaveBiomorphToText save = new SaveBiomorphToText(biomorph.getGenes(), response);*/	
 				final JFileChooser fc = new JFileChooser("src/biomorphTextFiles/");
 				int returnVal = fc.showSaveDialog(frame);
 
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 				    File file = fc.getSelectedFile();
-				    //This is where a real application would open the file.
 				    SaveBiomorphToText save = new SaveBiomorphToText(biomorph.getGenes(), file.getName());
 				} 
 			}
