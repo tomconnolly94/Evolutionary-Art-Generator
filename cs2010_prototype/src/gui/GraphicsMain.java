@@ -189,7 +189,7 @@ public class GraphicsMain implements ActionListener
 		{
 			Biomorph returnBiomorph;
 			// evolve using selected biomorphs
-			if (selected.size() > 1)
+			if (selected.size() > 0)
 			{
 				// assign Biomorph variable so that multiple evolutions can occur
 				returnBiomorph = bm.getSpecific(0);
@@ -197,7 +197,7 @@ public class GraphicsMain implements ActionListener
 				for (int i = 0; i < selected.size(); i++)
 				{
 					// evolve two biomorphs
-					returnBiomorph = bm.evolveClo(returnBiomorph, selected.get(i));
+					returnBiomorph = bm.evolve(returnBiomorph, selected.get(i));
 					// bug tracking
 					System.out.println("internal evolution happened");
 					for (Gene gene : returnBiomorph.getGenes())
@@ -209,7 +209,7 @@ public class GraphicsMain implements ActionListener
 			}
 			else
 			{
-				returnBiomorph = bm.evolveClo(bm.getSpecific(1), bm.getSpecific(bm.getSize()-1));
+				returnBiomorph = bm.evolve(bm.getSpecific(1), bm.getSpecific(bm.getSize()-1));
 			}
 			selected.clear();
 			bm.addSpecific(returnBiomorph);
@@ -261,6 +261,9 @@ public class GraphicsMain implements ActionListener
 		if (e.getActionCommand().equals("Clear Hall of Fame"))
 		{
 			for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
+		}
+		for(JCheckBox box : checkBoxArr){
+			box.setSelected(false);
 		}
 	}
 	/**

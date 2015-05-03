@@ -128,8 +128,8 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				
 				//create buttons
 				ButtonGroup bg = new ButtonGroup();
-				final JRadioButton button1 = new JRadioButton("Use target values to evolve",true);
-				final JRadioButton button2 = new JRadioButton("Use avg of parents to evolve", false);
+				final JRadioButton button1 = new JRadioButton("Use target values to evolve",bm.getUseEvolveClo());
+				final JRadioButton button2 = new JRadioButton("Use avg of parents to evolve", !bm.getUseEvolveClo());
 				
 				//add buttons to button group
 				bg.add(button1);
@@ -173,9 +173,20 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				
 				JOptionPane.showConfirmDialog(null, outer, 
 			               "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
-				System.out.println(Integer.parseInt(tfa[0].getText()));
-				bm.updateTargetValues(Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[1].getText()), Integer.parseInt(tfa[2].getText()), Integer.parseInt(tfa[3].getText()), Integer.parseInt(tfa[4].getText()), Integer.parseInt(tfa[5].getText()), Integer.parseInt(tfa[6].getText()), Integer.parseInt(tfa[7].getText()), Integer.parseInt(tfa[8].getText()), Integer.parseInt(tfa[9].getText()), Integer.parseInt(tfa[10].getText()), Integer.parseInt(tfa[11].getText()));
-				bm.printTargetValues();
+				//System.out.println(Integer.parseInt(tfa[0].getText()));
+				if(button1.isSelected()){
+					bm.setEvolveClo(true);
+					for(int i=0;i<12;i++){
+						if(tfa[i].getText().equals("")){
+							tfa[i].setText(Integer.toString(bm.getTargetValues()[i]));
+						}
+					}
+					bm.updateTargetValues(Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[1].getText()), Integer.parseInt(tfa[2].getText()), Integer.parseInt(tfa[3].getText()), Integer.parseInt(tfa[4].getText()), Integer.parseInt(tfa[5].getText()), Integer.parseInt(tfa[6].getText()), Integer.parseInt(tfa[7].getText()), Integer.parseInt(tfa[8].getText()), Integer.parseInt(tfa[9].getText()), Integer.parseInt(tfa[10].getText()), Integer.parseInt(tfa[11].getText()));
+					bm.printTargetValues();
+				}
+				else{
+					bm.setEvolveClo(false);
+				}
 			}
 		});
 		return jMenuItem;

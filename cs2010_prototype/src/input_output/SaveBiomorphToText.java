@@ -67,13 +67,4 @@ public class SaveBiomorphToText
 			}
 		}
 	}
-	/**
-	 * Main method for testing
-	 */
-	public static void main(String[] args)
-	{
-		BiomorphCreator bc = new BiomorphCreator();
-		Biomorph biomorph = bc.createBiomorph();
-		new SaveBiomorphToText(biomorph.getGenes(), "biomorph");
-	}
 }

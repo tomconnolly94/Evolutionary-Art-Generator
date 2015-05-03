@@ -20,6 +20,7 @@ public class Evolver
 	private int[] childGenes;
 	private Gene[] motherGenes;
 	private Gene[] fatherGenes;
+	private boolean useEvolveClo = true;
 	/**
 	 * Assigns parameters to global variables so they can be accessed further on.
 	 */
@@ -28,30 +29,40 @@ public class Evolver
 		this.perfectValues = perfectValues;
 		fatherGenes = father.getGenes();
 		motherGenes = mother.getGenes();
+		// The childGenes array is instantiated.
+		childGenes = new int[12];
 	}
 	/**
 	 * This method takes two sets of genes and for each one compares it to the number held in the 'perfect values' array, whichever number is closest to
 	 * the perfect value is assigned to an array of numbers which are given to a new child biomorph as gene values.
 	 * @return A Biomorph with gene values as described above.
 	 */
-	public Biomorph evolve()
+	public Biomorph evolveClo()
 	{
-		// The childGenes array is instantiated.
-		childGenes = new int[12];
-		// Each father gene and each mother gene are pulled out and compared to the 'perfect value', the gene value closest to the
-		// perfect number is added to the child Genes array.
-		for (int i = 0; i < fatherGenes.length; i++)
-		{
-			if ((Math.abs(perfectValues[i] - fatherGenes[i].getValue())) < (Math.abs(perfectValues[i] - motherGenes[i].getValue())))
+		
+			// Each father gene and each mother gene are pulled out and compared to the 'perfect value', the gene value closest to the
+			// perfect number is added to the child Genes array.
+			for (int i = 0; i < childGenes.length; i++)
 			{
-				childGenes[i] = fatherGenes[i].getValue();
+				if ((Math.abs(perfectValues[i] - fatherGenes[i].getValue())) < (Math.abs(perfectValues[i] - motherGenes[i].getValue())))
+				{
+					childGenes[i] = fatherGenes[i].getValue();
+				}
+				else
+				{
+					childGenes[i] = motherGenes[i].getValue();
+				}
 			}
-			else
-			{
-				childGenes[i] = motherGenes[i].getValue();
-			}
+			// BiomorphCreator is used to create a new child biomorph with the values held in the array 'childGenes'.
+		
+		BiomorphCreator bc = new BiomorphCreator();
+		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11]);
+		return biomorph;
+	}
+	public Biomorph evolveAv(){
+		for(int i=0;i<childGenes.length;i++){
+			childGenes[i] = (fatherGenes[i].getValue() + motherGenes[i].getValue())/2;
 		}
-		// BiomorphCreator is used to create a new child biomorph with the values held in the array 'childGenes'.
 		BiomorphCreator bc = new BiomorphCreator();
 		Biomorph biomorph = bc.createBiomorph(childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11]);
 		return biomorph;
@@ -62,5 +73,9 @@ public class Evolver
 	public int[] getChildGenes()
 	{
 		return childGenes;
+	}
+	
+	public void useEvolveClo(boolean useEvolveClo){
+		this.useEvolveClo = useEvolveClo;
 	}
 }

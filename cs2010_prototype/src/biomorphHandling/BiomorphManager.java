@@ -13,12 +13,14 @@ public class BiomorphManager
 	// set of perfect values that the Biomorphs will evolve towards.
 	private int[] targetValues = {5, 2, 100, 256, 50, 5, 8, 2, 2, 100, 100, 100};
 	private EvolutionStats statisticMachine;
+	private boolean useEvolveClo;
 	// integer to change the name of Biomorphs after they are saved.
 	// private int i = 1;
 	public BiomorphManager()
 	{
 		setUp();
 		statisticMachine = new EvolutionStats(targetValues);
+		useEvolveClo = true;
 	}
 	public void setUp()
 	{
@@ -90,13 +92,17 @@ public class BiomorphManager
 	 * class to evolve them together. Then it reports the gene values to the
 	 * EvolutionStats object and re
 	 */
-	public Biomorph evolveClo(Biomorph father, Biomorph mother)
+	public Biomorph evolve(Biomorph father, Biomorph mother)
 	{
+		Biomorph biomorph;
 		Evolver ec = new Evolver(father, mother, targetValues);
-		Biomorph biomorph = ec.evolve();
+		if(useEvolveClo){
+			biomorph = ec.evolveClo();
+		}
+		else{
+			biomorph = ec.evolveAv();
+		}
 		statisticMachine.saveGeneValues(ec.getChildGenes());
-		//statisticMachine.printRunningStats();
-		
 		
 		return biomorph;
 	}
@@ -117,5 +123,17 @@ public class BiomorphManager
 	}
 	public EvolutionStats getEvolStats(){
 		return statisticMachine;
+	}
+	
+	public void setEvolveClo(boolean bool){
+		this.useEvolveClo = bool;
+	}
+	
+	public boolean getUseEvolveClo(){
+		return useEvolveClo;
+	}
+	 
+	public int[] getTargetValues(){
+		return targetValues;
 	}
 }
