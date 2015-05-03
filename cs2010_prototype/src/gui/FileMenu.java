@@ -1,9 +1,11 @@
 package gui;
 import input_output.Load;
 import input_output.Save;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Box;
+import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -115,33 +117,56 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		{
 			public void actionPerformed(ActionEvent n)
 			{
-				JPanel outer = new JPanel();
+				//create Panels
+				JPanel outer = new JPanel(new BorderLayout());
 				JPanel radioButtons = new JPanel();
-				JPanel inputPanel = new JPanel();
-				int result = 0;
+				final JPanel inputPanel = new JPanel();
 				
-				JRadioButton button1 = new JRadioButton("Use target values to evolve",false);
-				JRadioButton button2 = new JRadioButton("Use avg of parents to evolve", true);
+				//create buttons
+				ButtonGroup bg = new ButtonGroup();
+				final JRadioButton button1 = new JRadioButton("Use target values to evolve",true);
+				final JRadioButton button2 = new JRadioButton("Use avg of parents to evolve", false);
+				
+				//add buttons to button group
+				bg.add(button1);
+				bg.add(button2);
+				
+				for(int i=0;i<12;i++){
+					JTextField gene = new JTextField(2);
+					inputPanel.add(new JLabel(""+(i+1)));
+					inputPanel.add(gene);
+					inputPanel.add(Box.createHorizontalStrut(15));
+				}
+				
+				button1.addActionListener(new ActionListener(){
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						inputPanel.setVisible(true);
+					}
+					
+				});
+				button2.addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent e)
+					{
+						inputPanel.setVisible(false);
+					}
+					
+				});
+
 				
 				radioButtons.add(button1);
 				radioButtons.add(button2);
-				while(result==0){
-					if(button1.isSelected()){
-						for(int i=0;i<12;i++){
-							JTextField gene = new JTextField(2);
-							inputPanel.add(new JLabel(""+(i+1)));
-							inputPanel.add(gene);
-							inputPanel.add(Box.createHorizontalStrut(15));
-						}
-					}
 				
-				outer.add(radioButtons);
-				outer.add(inputPanel);
-				}
-				result = JOptionPane.showConfirmDialog(null, outer, 
+				outer.add(radioButtons, BorderLayout.NORTH);
+				outer.add(inputPanel, BorderLayout.SOUTH);
+				
+				int result = JOptionPane.showConfirmDialog(null, outer, 
 			               "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
 				
-				}
+			}
 		});
 		return jMenuItem;
 	}
