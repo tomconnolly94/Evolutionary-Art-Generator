@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import biomorphHandling.Biomorph;
 /**
- * Class for the Hall of Fame panel.
+ * Class for the Hall of Fame panel. This contains up to 4 biomorphs selected by the user.
  * @author Jack Taylor
  * @version 30/04/2015
  */
@@ -58,9 +58,11 @@ public class HallOfFamePanel extends JPanel
 	 */
 	public Biomorph getBiomorph(int index)
 	{
-		return canvas[index].getBiomorph();
+		Biomorph biomorph;
+		if (index < canvas.length) biomorph = canvas[index].getBiomorph();
+		else biomorph = null;
+		return biomorph;
 	}
-	/**
 	/**
 	 * Changes the biomorph to be displayed on a specified canvas.
 	 * @param index The canvas to change

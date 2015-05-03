@@ -54,6 +54,16 @@ public class MutationPanel extends JPanel
 		for (int i = 0; i < canvas.length; i++) canvas[i].getCanvas().setSize(size, size);
 	}
 	/**
+	 * Returns the biomorph displayed on a specified canvas.
+	 */
+	public Biomorph getBiomorph(int index)
+	{
+		Biomorph biomorph;
+		if (index < canvas.length) biomorph = canvas[index].getBiomorph();
+		else biomorph = null;
+		return biomorph;
+	}
+	/**
 	 * Changes the biomorph to be displayed on a specified canvas.
 	 * @param index The canvas to change
 	 * @param biomorph The new biomorph to display
