@@ -154,7 +154,6 @@ public class GraphicsMain implements ActionListener
 		evolveButton.addActionListener(this);
 		resetButton.addActionListener(this);
 		loadToMainWindowButton.addActionListener(this);
-		checkBoxArr[0].addActionListener(this);
 		// *6* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);

@@ -25,6 +25,7 @@ public class CreateClicked
 	public CreateClicked()	{
 		
 	viewFrame = new JFrame();
+	viewFrame.setSize(1024, 728);
 	createClicked = new JPanel();
 		
 	modify = new JButton();
@@ -49,23 +50,22 @@ public class CreateClicked
 	modify.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
+			viewFrame.setVisible(false);
 			viewFrame.remove(createClicked);
 			BiomorphCustomisation bc = new BiomorphCustomisation();
 			viewFrame.add(bc.getContents());
+			viewFrame.setVisible(true);
+			
+			//just waiting for functionality
 		}
 		});
 	random.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
-		
+		//functionality for the random biomorph
 		}
 		});
-	random.addActionListener( new ActionListener() {
-		public void actionPerformed(ActionEvent e)
-		{
-		
-		}
-		});
+	
 	
 	}
 	
@@ -80,5 +80,3 @@ public class CreateClicked
 	
 	
 }
-	
-

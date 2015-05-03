@@ -4,8 +4,6 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
@@ -49,7 +47,7 @@ public class BiomorphCustomisation {
 	
 	public BiomorphCustomisation(){
 		viewFrame = new JFrame();	
-		
+		viewFrame.setSize(1024,  728);
 		modifyPane = new JPanel();
 		colourPane = new JPanel();
 		backPane = new JPanel();
@@ -85,10 +83,10 @@ public class BiomorphCustomisation {
 		modifyPane.setLayout(new BoxLayout(modifyPane, BoxLayout.Y_AXIS));
 		modifyPane.setBorder(BorderFactory.createLineBorder(Color.black));
 
-		modifyPane.add(chainLabel);
-		modifyPane.add(chainSlider);
 		modifyPane.add(branchLabel);
 		modifyPane.add(branchSlider);
+		modifyPane.add(chainLabel);
+		modifyPane.add(chainSlider);
 		modifyPane.add(lengthLabel);
 		modifyPane.add(lengthSlider);
 		modifyPane.add(thicknessLabel);
@@ -187,13 +185,18 @@ public class BiomorphCustomisation {
 	back.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
+		viewFrame.setVisible(false);
 		viewFrame.remove(backPane);
 		viewFrame.remove(colourPane);
 		viewFrame.remove(modifyPane);
 		CreateClicked cc = new CreateClicked();
 		viewFrame.add(cc.getContents());
+		viewFrame.pack();
+		viewFrame.setVisible(true);
 		}
 		});
+	viewFrame.pack();
+	viewFrame.setVisible(true);
 	}
 
 	public JPanel getContents()
@@ -202,8 +205,8 @@ public class BiomorphCustomisation {
 	}
 
 
+	public static void main(String[] args){
+		BiomorphCustomisation bc = new BiomorphCustomisation();
+	}
 	
 }
-
-
-
