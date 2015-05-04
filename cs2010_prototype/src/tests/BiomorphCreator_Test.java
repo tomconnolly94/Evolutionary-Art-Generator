@@ -9,7 +9,7 @@ public class BiomorphCreator_Test
 	private Biomorph biomorphRand;
 	private Biomorph biomorphNonRand;
 	//Gene values generated when seed for RNG is 10
-	private int[] geneValues = {8, 2, 105, 15, 172, 2, 0, 2, -2, -1, 3, -3};
+	private int[] geneValues = {8, 2, 2, 0, 2, -2, 105, 15, 172, -1, 3, -3};
 	@Before
 	// pre-conditions
 	public void setUp()
