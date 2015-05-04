@@ -14,7 +14,7 @@ public class BiomorphCustomisation extends JPanel
 	private JButton back;
 	private Biomorph biomorph;
 	private JSlider[] sliders;
-	private String[] geneNames = {"Branch", "Chain", "Red Level", "Green Level", "Blue Level", "Length", "Length Increment", "Thickness", "Thickness Increment", "Red Iridescence Level", "Green Iridescence Level", "Blue Iridescence Level"};;
+	private String[] geneNames = {"Branch", "Chain", "Length", "Length Increment", "Thickness", "Thickness Increment", "Red Level", "Green Level", "Blue Level", "Red Iridescence Level", "Green Iridescence Level", "Blue Iridescence Level"};;
 	public BiomorphCustomisation(final Biomorph tempBiomorph, final JPanel returnPanel, int size)
 	{
 		super(new BorderLayout());
@@ -41,12 +41,6 @@ public class BiomorphCustomisation extends JPanel
 		sliders[Biomorph.BRANCH].setMaximum(10);
 		sliders[Biomorph.CHAIN].setMinimum(1);
 		sliders[Biomorph.CHAIN].setMaximum(3);
-		sliders[Biomorph.COLOR_RED].setMinimum(0);
-		sliders[Biomorph.COLOR_RED].setMaximum(255);
-		sliders[Biomorph.COLOR_GREEN].setMinimum(0);
-		sliders[Biomorph.COLOR_GREEN].setMaximum(255);
-		sliders[Biomorph.COLOR_BLUE].setMinimum(0);
-		sliders[Biomorph.COLOR_BLUE].setMaximum(255);
 		sliders[Biomorph.LENGTH].setMinimum(1);
 		sliders[Biomorph.LENGTH].setMaximum(8);
 		sliders[Biomorph.LENGTH_INCREMENT].setMinimum(-3);
@@ -55,6 +49,12 @@ public class BiomorphCustomisation extends JPanel
 		sliders[Biomorph.THICKNESS].setMaximum(10);
 		sliders[Biomorph.THICKNESS_INCREMENT].setMinimum(-3);
 		sliders[Biomorph.THICKNESS_INCREMENT].setMaximum(3);
+		sliders[Biomorph.COLOR_RED].setMinimum(0);
+		sliders[Biomorph.COLOR_RED].setMaximum(255);
+		sliders[Biomorph.COLOR_GREEN].setMinimum(0);
+		sliders[Biomorph.COLOR_GREEN].setMaximum(255);
+		sliders[Biomorph.COLOR_BLUE].setMinimum(0);
+		sliders[Biomorph.COLOR_BLUE].setMaximum(255);
 		sliders[Biomorph.IRIDESCENCE_RED].setMinimum(-16);
 		sliders[Biomorph.IRIDESCENCE_RED].setMaximum(16);
 		sliders[Biomorph.IRIDESCENCE_GREEN].setMinimum(-16);
@@ -88,27 +88,6 @@ public class BiomorphCustomisation extends JPanel
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Chain");
 			}
 		});
-		sliders[Biomorph.COLOR_RED].addChangeListener(new ChangeListener()
-		{
-			public void stateChanged(ChangeEvent c)
-			{
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Red");
-			}
-		});
-		sliders[Biomorph.COLOR_GREEN].addChangeListener(new ChangeListener()
-		{
-			public void stateChanged(ChangeEvent c)
-			{
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Green");
-			}
-		});
-		sliders[Biomorph.COLOR_BLUE].addChangeListener(new ChangeListener()
-		{
-			public void stateChanged(ChangeEvent c)
-			{
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Blue");
-			}
-		});
 		sliders[Biomorph.LENGTH].addChangeListener(new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent c)
@@ -135,6 +114,27 @@ public class BiomorphCustomisation extends JPanel
 			public void stateChanged(ChangeEvent c)
 			{
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Thickness Increment");
+			}
+		});
+		sliders[Biomorph.COLOR_RED].addChangeListener(new ChangeListener()
+		{
+			public void stateChanged(ChangeEvent c)
+			{
+				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Red");
+			}
+		});
+		sliders[Biomorph.COLOR_GREEN].addChangeListener(new ChangeListener()
+		{
+			public void stateChanged(ChangeEvent c)
+			{
+				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Green");
+			}
+		});
+		sliders[Biomorph.COLOR_BLUE].addChangeListener(new ChangeListener()
+		{
+			public void stateChanged(ChangeEvent c)
+			{
+				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Blue");
 			}
 		});
 		sliders[Biomorph.IRIDESCENCE_RED].addChangeListener(new ChangeListener()
