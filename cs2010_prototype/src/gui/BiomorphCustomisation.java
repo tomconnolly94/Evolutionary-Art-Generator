@@ -184,7 +184,8 @@ public class BiomorphCustomisation
 	}
 	public void resize(int size)
 	{
-		for (int i = 0; i < sliders.length; i++) sliders[i].setPreferredSize(new Dimension(size, 20));
+		modifyPane.setSize(size, size);
+		for (int i = 0; i < sliders.length; i++) sliders[i].setPreferredSize(new Dimension(modifyPane.getWidth(), 20));
 	}
 	public static void main(String[] args)
 	{
