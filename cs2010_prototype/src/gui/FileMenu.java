@@ -63,9 +63,10 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	private JMenuBar createMenuBar(String name, int depth)
 	{
 		JMenuBar menubar = new JMenuBar();
-		menubar.add(createFileMenu("Biomorph", 4));
+		menubar.add(createFileMenu("File", 3));
 		menubar.add(createSettingsMenu("Settings", 4));
 		menubar.add(createHallOfFameMenu("Hall Of Fame", 3));
+		menubar.add(createBiomorphCollageMenu("Biomorph Collaging", 2));
 		menubar.add(createHelpMenu("Help", 4));
 		return menubar;
 	}
@@ -75,11 +76,10 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	}
 	private JMenu createFileMenu(String name, int depth)
 	{
-		JMenu biomorphMenu = new JMenu("File");
+		JMenu biomorphMenu = new JMenu(name);
 		biomorphMenu.add(createNewMenuItem("New"));
 		biomorphMenu.add(createOpenMenuItem("Open"));
 		biomorphMenu.add(createSaveMenuItem("Save"));
-		biomorphMenu.add(createCollageMenuItem("Generate Biomorph Collage"));
 		return biomorphMenu;
 	}
 	private JMenu createSettingsMenu(String name, int depth)
@@ -96,6 +96,13 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		biomorphMenu.add(createAddToHallOfFameItem("Add to Hall of Fame"));
 		biomorphMenu.add(createRemoveSelectedItem("Remove Selected"));
 		biomorphMenu.add(createClearHallOfFameItem("Clear Hall of Fame"));
+		return biomorphMenu;
+	}
+	private JMenu createBiomorphCollageMenu(String name, int depth)
+	{
+		JMenu biomorphMenu = new JMenu(name);
+		biomorphMenu.add(createGenerateCollageItem("Generate Collage"));
+		biomorphMenu.add(createRemoveSelectedItem("Remove Selected"));
 		return biomorphMenu;
 	}
 	private JMenu createHelpMenu(String name, int depth)
@@ -288,7 +295,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		});
 		return jMenuItem;
 	}
-	private JMenuItem createCollageMenuItem(String name)
+	private JMenuItem createGenerateCollageItem(String name)
 	{	
 		JMenuItem jMenuItem = new JMenuItem(name);
 		jMenuItem.addActionListener(new ActionListener()
@@ -296,11 +303,12 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			public void actionPerformed(ActionEvent arg0)
 			{
 				CollageGenerator cg = new CollageGenerator(bm);
-				cg.generate();
+				cg.generateDefault();
 			}
 		});
 		return jMenuItem;
 	}
+	
 	private JMenuItem createAddToHallOfFameItem(String name)
 	{
 		final JMenuItem jMenuItem = new JMenuItem(name);
