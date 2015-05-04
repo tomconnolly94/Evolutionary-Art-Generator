@@ -43,9 +43,12 @@ public class GraphicsMain implements ActionListener
 	private JButton resetButton;
 	private JButton loadToMainWindowButton;
 	private JButton motherButton;
+	private JButton fatherButton;
+	private JButton resetToOrigBioButton;
 	private JPanel buttonPanel;
 	private JCheckBox[] checkBoxArr;
 	private ArrayList<Biomorph> selected;
+	private Biomorph savedBiomorph;
 	/**
 	 * Constructor
 	 */
@@ -68,6 +71,10 @@ public class GraphicsMain implements ActionListener
 		loadToMainWindowButton.setSize(new Dimension(70, 20));
 		motherButton = new JButton("Load mother");
 		motherButton.setSize(new Dimension(70, 20));
+		fatherButton = new JButton("Load father");
+		fatherButton.setSize(new Dimension(70, 20));
+		resetToOrigBioButton = new JButton("Reset window to original Biomorph");
+		resetToOrigBioButton.setSize(new Dimension(70, 20));
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
 		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
@@ -121,6 +128,8 @@ public class GraphicsMain implements ActionListener
 		evolvePanel.add(Box.createHorizontalGlue());
 		evolvePanel.add(loadToMainWindowButton);
 		evolvePanel.add(motherButton);
+		evolvePanel.add(fatherButton);
+		evolvePanel.add(resetToOrigBioButton);
 		buttonPanel.add(rp, BorderLayout.NORTH);
 		buttonPanel.add(evolvePanel, BorderLayout.CENTER);
 		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
@@ -160,6 +169,8 @@ public class GraphicsMain implements ActionListener
 		resetButton.addActionListener(this);
 		loadToMainWindowButton.addActionListener(this);
 		motherButton.addActionListener(this);
+		fatherButton.addActionListener(this);
+		resetToOrigBioButton.addActionListener(this);
 		// *6* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -280,9 +291,16 @@ public class GraphicsMain implements ActionListener
 		{
 			for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
 		}
-		if (e.getActionCommand().equals("Load mother")){
-			System.out.println(mainPanel.getBiomorph().getMother());
+		if (e.getActionCommand().equals("Load mother") && mainPanel.getBiomorph()!=null && mainPanel.getBiomorph().getMother()!=null){
+			savedBiomorph = mainPanel.getBiomorph();
 			mainPanel.setBiomorph(mainPanel.getBiomorph().getMother());
+		}
+		if (e.getActionCommand().equals("Load father") && mainPanel.getBiomorph()!=null && mainPanel.getBiomorph().getFather()!=null){
+			savedBiomorph = mainPanel.getBiomorph();
+			mainPanel.setBiomorph(mainPanel.getBiomorph().getFather());
+		}
+		if (e.getActionCommand().equals("Reset window to original Biomorph") && savedBiomorph!=null){
+			mainPanel.setBiomorph(savedBiomorph);
 		}
 
 		//clean up after action
