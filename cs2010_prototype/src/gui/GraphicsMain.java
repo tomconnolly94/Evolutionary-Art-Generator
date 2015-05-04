@@ -69,16 +69,22 @@ public class GraphicsMain implements ActionListener
 		fileMenu = new FileMenu(bm, this,bm.getEvolStats());
 		evolveButton = new JButton("Create");
 		evolveButton.setSize(new Dimension(20, 20));
+		evolveButton.setToolTipText("This button allows evolution of the live Biomorph and\n whichever Biomorphs are selected below.");
 		resetButton = new JButton("Reset");
 		resetButton.setSize(new Dimension(20, 20));
+		resetButton.setToolTipText("This button removes all existing Biomorphs (excluding Hall of Fame) and generates 9 new ones.");
 		loadToMainWindowButton = new JButton("Load to main window");
 		loadToMainWindowButton.setSize(new Dimension(20, 20));
+		loadToMainWindowButton.setToolTipText("This button loads the Biomorph selected using the checkboxes below to the live window");
 		motherButton = new JButton("Load mother");
 		motherButton.setSize(new Dimension(20, 20));
+		motherButton.setToolTipText("This button loads the live Biomorph's data-biological mother");
 		fatherButton = new JButton("Load father");
 		fatherButton.setSize(new Dimension(20, 20));
+		fatherButton.setToolTipText("This button loads the live Biomorph's data-biological mother");
 		resetToOrigBioButton = new JButton("Reset to original Biomorph");
 		resetToOrigBioButton.setSize(new Dimension(20, 20));
+		resetToOrigBioButton.setToolTipText("This button reloads the originally evolved Biomorph when the parent controls are used.");
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
 		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
@@ -194,6 +200,13 @@ public class GraphicsMain implements ActionListener
 		motherButton.addActionListener(this);
 		fatherButton.addActionListener(this);
 		resetToOrigBioButton.addActionListener(this);
+		mainFrame.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
+		rightPanel.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
+		buttonPanel.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
+		fileMenu.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
+		contentPanel.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
+		mainFrame.setFocusable(true);
+		mainFrame.requestFocusInWindow();
 		// *6* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -322,8 +335,10 @@ public class GraphicsMain implements ActionListener
 	public void refreshMainPanel()
 	{
 		mainPanel.setBiomorph(bm.getSpecific(0));
+		System.out.println(bm.getSpecific(0));
 		fileMenu.updateBiomorph(bm.getSpecific(0));
 		refreshMutationPanel();
+		mainPanel.revalidate();
 	}
 	/**
 	 * Refreshes the contents of the mutation panel.
