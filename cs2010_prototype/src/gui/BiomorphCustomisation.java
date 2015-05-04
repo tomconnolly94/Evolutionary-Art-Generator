@@ -12,10 +12,13 @@ public class BiomorphCustomisation extends JPanel
 	private JPanel modifyPane;
 	private JPanel backPane;
 	private JButton back;
+	private Biomorph biomorph;
 	private JSlider[] sliders;
 	private String[] geneNames = {"Branch", "Chain", "Red Level", "Green Level", "Blue Level", "Length", "Length Increment", "Thickness", "Thickness Increment", "Red Iridescence Level", "Green Iridescence Level", "Blue Iridescence Level"};;
-	public BiomorphCustomisation(final Biomorph biomorph, final JPanel returnPanel)
+	public BiomorphCustomisation(final Biomorph tempBiomorph, final JPanel returnPanel)
 	{
+		super(new BorderLayout());
+		this.biomorph = tempBiomorph;
 		modifyPane = new JPanel();
 		backPane = new JPanel();
 		sliders = new JSlider[12];
@@ -32,11 +35,8 @@ public class BiomorphCustomisation extends JPanel
 		back = new JButton();
 		back.setText("Back");
 		backPane.add(back);
-		JPanel secondPanel = new JPanel(new BorderLayout());
-		secondPanel.add(modifyPane, BorderLayout.NORTH);
-		secondPanel.add(backPane, BorderLayout.SOUTH);
-		add(secondPanel);
-		System.out.println(secondPanel.getSize() + "1");
+		add(modifyPane, BorderLayout.NORTH);
+		add(backPane, BorderLayout.SOUTH);
 		sliders[Biomorph.BRANCH].setMinimum(3);
 		sliders[Biomorph.BRANCH].setMaximum(10);
 		sliders[Biomorph.BRANCH].setValue(biomorph.getGenes()[Biomorph.BRANCH].getValue());
@@ -177,10 +177,28 @@ public class BiomorphCustomisation extends JPanel
 			}
 		});
 	}
+	public void setBiomorph(Biomorph biomorph)
+	{
+		this.biomorph = biomorph;
+		sliders[Biomorph.BRANCH].setValue(biomorph.getGenes()[Biomorph.BRANCH].getValue());
+		sliders[Biomorph.CHAIN].setValue(biomorph.getGenes()[Biomorph.CHAIN].getValue());
+		sliders[Biomorph.COLOR_RED].setValue(biomorph.getGenes()[Biomorph.COLOR_RED].getValue());
+		sliders[Biomorph.COLOR_GREEN].setValue(biomorph.getGenes()[Biomorph.COLOR_GREEN].getValue());
+		sliders[Biomorph.COLOR_BLUE].setValue(biomorph.getGenes()[Biomorph.COLOR_BLUE].getValue());
+		sliders[Biomorph.LENGTH].setValue(biomorph.getGenes()[Biomorph.LENGTH].getValue());
+		sliders[Biomorph.LENGTH_INCREMENT].setValue(biomorph.getGenes()[Biomorph.LENGTH_INCREMENT].getValue());
+		sliders[Biomorph.THICKNESS].setValue(biomorph.getGenes()[Biomorph.THICKNESS].getValue());
+		sliders[Biomorph.THICKNESS_INCREMENT].setValue(biomorph.getGenes()[Biomorph.THICKNESS_INCREMENT].getValue());
+		sliders[Biomorph.IRIDESCENCE_RED].setValue(biomorph.getGenes()[Biomorph.IRIDESCENCE_RED].getValue());
+		sliders[Biomorph.IRIDESCENCE_GREEN].setValue(biomorph.getGenes()[Biomorph.IRIDESCENCE_GREEN].getValue());
+		sliders[Biomorph.IRIDESCENCE_BLUE].setValue(biomorph.getGenes()[Biomorph.IRIDESCENCE_BLUE].getValue());
+	}
 	public void resize(int size)
 	{
+		setSize(size, 600);
 		modifyPane.setSize(size, 600);
-		for (int i = 0; i < sliders.length; i++) sliders[i].setPreferredSize(new Dimension(modifyPane.getWidth(), 20));
+		for (int i = 0; i < sliders.length; i++) sliders[i].setPreferredSize(new Dimension(modifyPane.getWidth() - 10, 20));
+		revalidate();
 	}
 	public static void main(String[] args)
 	{

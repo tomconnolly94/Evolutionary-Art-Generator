@@ -13,7 +13,6 @@ public class RightPanel extends JPanel
 	private static final long serialVersionUID = -2321973355804771565L;
 	// Panels used
 	private JPanel buttonPanel;
-	private JPanel sliderPanel;
 	private JButton modifyButton;
 	private Biomorph biomorph;
 	private BiomorphCustomisation bc;
@@ -27,40 +26,44 @@ public class RightPanel extends JPanel
 	{
 		// Initialise panels and button
 		buttonPanel = new JPanel();
-		sliderPanel = new JPanel();
 		modifyButton = new JButton("Modify");
 		// Add components to panels
 		buttonPanel.add(modifyButton);
-		sliderPanel.add(buttonPanel);
-		add(sliderPanel);
+		add(buttonPanel);
 		modifyButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
 				if (biomorph != null)
 				{
-					sliderPanel.remove(buttonPanel);
+					remove(buttonPanel);
 					bc = new BiomorphCustomisation(biomorph, buttonPanel);
-					sliderPanel.add(bc);
-					sliderPanel.revalidate();
-					sliderPanel.repaint();
+					add(bc);
+					revalidate();
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(buttonPanel, "There is no biomorph to modify.");
 				}
 			}
 		});
 	}
-	public void resetRightPanel()
+	public void reset()
 	{
-		sliderPanel.remove(sliderPanel.getComponent(0));
-		sliderPanel.add(buttonPanel);
-		sliderPanel.revalidate();
-		sliderPanel.repaint();
+		remove(bc);
+		add(buttonPanel);
+		revalidate();
 	}
 	public void update(Biomorph biomorph)
 	{
 		this.biomorph = biomorph;
+		bc.setBiomorph(biomorph);
+		revalidate();
 	}
 	public void resize(int size)
 	{
+		setSize(size, 600);
+		buttonPanel.setSize(size, 100);
 		bc.resize(size);
 	}
 	public static void main(String[] args)
