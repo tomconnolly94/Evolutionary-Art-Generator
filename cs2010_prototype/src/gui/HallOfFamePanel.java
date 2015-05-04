@@ -27,7 +27,7 @@ public class HallOfFamePanel extends JPanel
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		this.add(new JLabel("Hall of Fame Panel"), gbc);
+		this.add(new JLabel("Hall of Fame"), gbc);
 		size = 150;
 		panel = new JPanel[4];
 		canvas = new OpenGLCanvas[4];
