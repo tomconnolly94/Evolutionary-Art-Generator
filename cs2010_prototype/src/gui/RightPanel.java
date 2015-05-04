@@ -108,6 +108,10 @@ public class RightPanel
 		this.biomorph = biomorph;
 		bc.updateBiomorph(biomorph);
 	}
+	public void resize(int size)
+	{
+		bc.resize(size);
+	}
 	
 	public static void main(String[] args){
 		BiomorphManager bm = new BiomorphManager();
