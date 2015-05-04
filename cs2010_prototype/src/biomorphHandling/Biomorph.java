@@ -47,6 +47,8 @@ public class Biomorph
 	 */
 	public Biomorph(Biomorph mother, Biomorph father, int branch, int chain, int length, int lengthInc, int thickness, int thicknessInc, int red, int green, int blue, int iridRed, int iridGreen, int iridBlue)
 	{
+		this.father=father;
+		this.mother=mother;
 		// Genes are created and assigned values according to the parameters given. They are then placed in an
 		// array in alphabetical (apart from colours which are RGB) order.
 		genes[BRANCH] = new Branch(branch, "Branch");

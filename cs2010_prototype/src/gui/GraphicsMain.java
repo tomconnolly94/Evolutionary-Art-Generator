@@ -281,6 +281,7 @@ public class GraphicsMain implements ActionListener
 			for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
 		}
 		if (e.getActionCommand().equals("Load mother")){
+			System.out.println(mainPanel.getBiomorph().getMother());
 			mainPanel.setBiomorph(mainPanel.getBiomorph().getMother());
 		}
 
