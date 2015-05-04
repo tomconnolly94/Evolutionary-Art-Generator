@@ -16,9 +16,12 @@ public class RightPanel extends JPanel
 	private JButton modifyButton;
 	private Biomorph biomorph;
 	private BiomorphCustomisation bc;
-	public RightPanel(Biomorph biomorph)
+	private int size;
+	public RightPanel(Biomorph biomorph, int size)
 	{
-		bc = new BiomorphCustomisation(new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), buttonPanel);
+		super();
+		this.size = size;
+		bc = new BiomorphCustomisation(new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), buttonPanel, size);
 		this.biomorph = biomorph;
 		initiate();
 	}
@@ -37,7 +40,7 @@ public class RightPanel extends JPanel
 				if (biomorph != null)
 				{
 					remove(buttonPanel);
-					bc = new BiomorphCustomisation(biomorph, buttonPanel);
+					bc = new BiomorphCustomisation(biomorph, buttonPanel, size);
 					add(bc);
 					revalidate();
 				}
@@ -60,8 +63,9 @@ public class RightPanel extends JPanel
 		bc.setBiomorph(biomorph);
 		revalidate();
 	}
-	public void resize(int size)
+	public void resize(int newSize)
 	{
+		size = newSize;
 		setSize(size, 600);
 		buttonPanel.setSize(size, 100);
 		bc.resize(size);
@@ -69,6 +73,6 @@ public class RightPanel extends JPanel
 	public static void main(String[] args)
 	{
 		Biomorph biomorph = new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		new RightPanel(biomorph);
+		new RightPanel(biomorph, 100);
 	}
 }
