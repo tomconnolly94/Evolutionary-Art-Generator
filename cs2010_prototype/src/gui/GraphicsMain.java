@@ -158,6 +158,7 @@ public class GraphicsMain implements ActionListener
 		// *6* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
+		resize();
 	}
 	/**
 	 * Evolves the biomorphs when the Evolve button is pressed.
@@ -227,7 +228,6 @@ public class GraphicsMain implements ActionListener
 			selected.clear();
 			bm.addSpecific(returnBiomorph);
 			refreshMainPanel();
-			rp.resetRightPanel();
 		}
 		// code run after 'Reset' button clicked
 		if (e.getActionCommand().equals("Reset"))
@@ -238,7 +238,7 @@ public class GraphicsMain implements ActionListener
 			fileMenu.updateES(bm.getEvolStats());
 			refreshMainPanel();
 			selected.clear();
-			rp.resetRightPanel();
+			rp.reset();
 		}
 		// code run after 'Load to main window' button clicked
 		if (e.getActionCommand().equals("Load to main window"))
@@ -252,7 +252,7 @@ public class GraphicsMain implements ActionListener
 			{
 			}
 			selected.clear();
-			rp.resetRightPanel();
+			rp.reset();
 		}
 		if (e.getActionCommand().equals("Add to Hall of Fame"))
 		{
@@ -308,6 +308,10 @@ public class GraphicsMain implements ActionListener
 		mutationPanel.resize((int)(mainFrame.getHeight() * 0.15) - 1);
 		hallOfFame.resize((int)(mainFrame.getHeight() * 0.225));
 		rp.resize((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+		mainPanel.revalidate();
+		mutationPanel.revalidate();
+		hallOfFame.revalidate();
+		rp.revalidate();
 	}
 	/**
 	 * Shows a confirmation dialog to exit the application.
