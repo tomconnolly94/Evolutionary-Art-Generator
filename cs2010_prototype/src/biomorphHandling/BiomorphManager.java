@@ -98,8 +98,8 @@ public class BiomorphManager
 		Evolver ec = new Evolver(father, mother, targetValues);
 		if(useEvolveClo){
 			biomorph = ec.evolveClo();
-			System.out.println(biomorph.getMother());
-			System.out.println(biomorph.getFather());
+			//System.out.println(biomorph.getMother());
+			//System.out.println(biomorph.getFather());
 		}
 		else{
 			biomorph = ec.evolveAv();

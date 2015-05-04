@@ -219,7 +219,8 @@ public class GraphicsMain implements ActionListener
 					// evolve two biomorphs
 					returnBiomorph = bm.evolve(returnBiomorph, selected.get(i));
 					// bug tracking
-					System.out.println("internal evolution happened");
+					System.out.println(returnBiomorph);
+					System.out.println(selected.get(i));
 					for (Gene gene : returnBiomorph.getGenes())
 					{
 						System.out.println("Biomorph" + i);
