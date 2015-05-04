@@ -79,6 +79,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		biomorphMenu.add(createNewMenuItem("New"));
 		biomorphMenu.add(createOpenMenuItem("Open"));
 		biomorphMenu.add(createSaveMenuItem("Save"));
+		biomorphMenu.add(createCollageMenuItem("Generate Biomorph Collage"));
 		return biomorphMenu;
 	}
 	private JMenu createSettingsMenu(String name, int depth)
@@ -281,8 +282,21 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 				    File file = fc.getSelectedFile();
-				    SaveBiomorphToText save = new SaveBiomorphToText(biomorph.getGenes(), file.getName());
+				    new SaveBiomorphToText(biomorph.getGenes(), file.getName());
 				} 
+			}
+		});
+		return jMenuItem;
+	}
+	private JMenuItem createCollageMenuItem(String name)
+	{	
+		JMenuItem jMenuItem = new JMenuItem(name);
+		jMenuItem.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				CollageGenerator cg = new CollageGenerator(bm);
+				cg.generate();
 			}
 		});
 		return jMenuItem;

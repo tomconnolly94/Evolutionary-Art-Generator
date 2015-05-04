@@ -186,7 +186,6 @@ public class GraphicsMain implements ActionListener
 		// check if checkboxes are selected
 		for (int i = 0; i < checkBoxArr.length; i++)
 		{
-			selected.add(bm.getSpecific(0));
 			// check if each box has been selected and create an array full of selected biomorphs
 			if (checkBoxArr[i].isSelected())
 			{
@@ -223,7 +222,7 @@ public class GraphicsMain implements ActionListener
 			}
 			else
 			{
-				returnBiomorph = bm.evolve(bm.getSpecific(1), bm.getSpecific(bm.getSize()-1));
+				returnBiomorph = bm.evolve(bm.getSpecific(0), bm.getSpecific(bm.getSize()-1));
 			}
 			selected.clear();
 			bm.addSpecific(returnBiomorph);
