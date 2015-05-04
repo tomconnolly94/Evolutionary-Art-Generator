@@ -104,6 +104,7 @@ public class GraphicsMain implements ActionListener
 		contentPanel = new JPanel(new GridBagLayout());
 		buttonPanel = new JPanel(new BorderLayout());
 		evolvePanel = new JPanel();
+		evolvePanel.setLayout(new BoxLayout(evolvePanel, BoxLayout.Y_AXIS));
 		JPanel selectMutationPanel = new JPanel(new GridBagLayout());
 		JPanel selectHallOfFamePanel = new JPanel(new GridBagLayout());
 		JPanel boxPanel = new JPanel(new BorderLayout());
@@ -112,7 +113,6 @@ public class GraphicsMain implements ActionListener
 		mainFrame.setMinimumSize(new Dimension(width, height));
 		((JPanel) mainFrame.getContentPane()).setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace));
 		contentPanel.setMinimumSize(new Dimension(width, height));
-		evolvePanel.setLayout(new BoxLayout(evolvePanel, BoxLayout.PAGE_AXIS));
 		GridBagConstraints gbc = new GridBagConstraints();
 		// *4* Add components to containers
 		gbc.gridx = 0;
@@ -128,9 +128,8 @@ public class GraphicsMain implements ActionListener
 		gbc.gridheight = 1;
 		contentPanel.add(mutationPanel, gbc);
 		evolvePanel.add(evolveButton);
-		evolvePanel.add(Box.createHorizontalGlue());
+		evolvePanel.add(Box.createRigidArea(new Dimension(0,5)));
 		evolvePanel.add(resetButton);
-		evolvePanel.add(Box.createHorizontalGlue());
 		evolvePanel.add(loadToMainWindowButton);
 		evolvePanel.add(motherButton);
 		evolvePanel.add(fatherButton);
