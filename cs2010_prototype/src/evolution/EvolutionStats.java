@@ -70,7 +70,6 @@ public class EvolutionStats
 					String val = Integer.toString(statsMaster.get(arrayIndex)[dataIndex]);
 					runningStats.set(dataIndex, runningStats.get(dataIndex) + val + spaces);
 
-					System.out.println(runningStats.get(dataIndex));
 				}
 			}
 			textArea.append("Gene values for all evolved Biomorphs\n\n");
