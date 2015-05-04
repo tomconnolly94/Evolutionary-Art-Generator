@@ -17,6 +17,11 @@ public class RightPanel extends JPanel
 	private Biomorph biomorph;
 	private BiomorphCustomisation bc;
 	private int size;
+	/**
+	 * Constructor
+	 * @param biomorph The biomorph referenced by this panel
+	 * @param size The size of the panel
+	 */
 	public RightPanel(Biomorph biomorph, int size)
 	{
 		super();
@@ -51,18 +56,29 @@ public class RightPanel extends JPanel
 			}
 		});
 	}
+	/**
+	 * Resets the panel to its original state.
+	 */
 	public void reset()
 	{
 		remove(bc);
 		add(buttonPanel);
 		revalidate();
 	}
+	/**
+	 * Changes the biomorph referenced by this panel.
+	 * @param biomorph The new biomorph
+	 */
 	public void update(Biomorph biomorph)
 	{
 		this.biomorph = biomorph;
 		bc.setBiomorph(biomorph);
 		revalidate();
 	}
+	/**
+	 * Resizes this panel.
+	 * @param newSize The new size of the panel
+	 */
 	public void resize(int newSize)
 	{
 		size = newSize;
@@ -70,6 +86,9 @@ public class RightPanel extends JPanel
 		buttonPanel.setSize(size, 100);
 		bc.resize(size);
 	}
+	/**
+	 * Main method for testing
+	 */
 	public static void main(String[] args)
 	{
 		Biomorph biomorph = new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);

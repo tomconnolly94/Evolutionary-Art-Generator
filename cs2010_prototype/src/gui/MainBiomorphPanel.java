@@ -1,4 +1,5 @@
 package gui;
+import javax.media.opengl.awt.GLCanvas;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import biomorphHandling.Biomorph;
@@ -50,7 +51,11 @@ public class MainBiomorphPanel extends JPanel
 	{
 		canvas.setBiomorph(biomorph);
 	}
-	public OpenGLCanvas getCanvas(){
-		return canvas;
+	/**
+	 * @return The GLCanvas contained in this window.
+	 */
+	public GLCanvas getCanvas()
+	{
+		return canvas.getCanvas();
 	}
 }
