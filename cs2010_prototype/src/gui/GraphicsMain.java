@@ -189,6 +189,7 @@ public class GraphicsMain implements ActionListener
 		// check if checkboxes are selected
 		for (int i = 0; i < checkBoxArr.length; i++)
 		{
+			selected.add(bm.getSpecific(0));
 			// check if each box has been selected and create an array full of selected biomorphs
 			if (checkBoxArr[i].isSelected())
 			{
@@ -221,11 +222,6 @@ public class GraphicsMain implements ActionListener
 					// bug tracking
 					System.out.println(returnBiomorph);
 					System.out.println(selected.get(i));
-					for (Gene gene : returnBiomorph.getGenes())
-					{
-						System.out.println("Biomorph" + i);
-						System.out.println(gene.getValue());
-					}
 				}
 			}
 			else
@@ -251,7 +247,6 @@ public class GraphicsMain implements ActionListener
 		// code run after 'Load to main window' button clicked
 		if (e.getActionCommand().equals("Load to main window"))
 		{
-			System.out.println("after button check");
 			if (selected.size() == 1)
 			{
 				bm.addSpecific(selected.get(0));
@@ -259,10 +254,6 @@ public class GraphicsMain implements ActionListener
 			}
 			else
 			{
-				// do nothing
-				
-				System.out.println("size is not 1");
-				System.out.println(selected.size());
 			}
 			selected.clear();
 			rp.resetRightPanel();
