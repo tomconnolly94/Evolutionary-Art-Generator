@@ -14,12 +14,14 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import biomorphHandling.*;
 /**
@@ -36,7 +38,7 @@ public class GraphicsMain implements ActionListener
 	private MutationPanel mutationPanel; // The mutation panel, containing 8 smaller biomorph windows.
 	private HallOfFamePanel hallOfFame; // The hall of fame panel.
 	private JPanel evolvePanel;
-	private RightPanel rp; // The right panel.
+	private RightPanel rightPanel; // The right panel.
 	private BiomorphManager bm; // The Biomorph Manager used to arrange and organise Biomorphs
 	private JButton evolveButton;
 	private JButton resetButton;
@@ -45,7 +47,9 @@ public class GraphicsMain implements ActionListener
 	private JButton fatherButton;
 	private JButton resetToOrigBioButton;
 	private JPanel buttonPanel;
-	private JCheckBox[] checkBoxArr;
+	private JCheckBox[] selectMutation;
+	private ButtonGroup buttonGroup;
+	private JRadioButton[] selectHallOfFame;
 	private ArrayList<Biomorph> selected;
 	private Biomorph savedBiomorph;
 	/**
@@ -79,28 +83,30 @@ public class GraphicsMain implements ActionListener
 		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
 		mutationPanel = new MutationPanel(biomorphs);
 		hallOfFame = new HallOfFamePanel(biomorphs);
-		checkBoxArr = new JCheckBox[9];
-		for (int i = 0; i < checkBoxArr.length; i++)
+		selectMutation = new JCheckBox[9];
+		for (int i = 0; i < selectMutation.length; i++)
 		{
 			String number;
-			if (i == checkBoxArr.length - 1)
-			{
-				number = "Random";
-			}
-			else
-			{
-				number = "" + (i + 1);
-			}
-			JCheckBox box = new JCheckBox(number);
-			checkBoxArr[i] = box;
+			if (i == selectMutation.length - 1) number = "Random";
+			else number = "" + (i + 1);
+			selectMutation[i] = new JCheckBox(number);
 		}
-		rp = new RightPanel(mainPanel.getBiomorph(), (int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+		buttonGroup = new ButtonGroup();
+		selectHallOfFame = new JRadioButton[4];
+		for (int i = 0; i < selectHallOfFame.length; i++)
+		{
+			selectHallOfFame[i] = new JRadioButton("" + (i + 1));
+			buttonGroup.add(selectHallOfFame[i]);
+		}
+		rightPanel = new RightPanel(mainPanel.getBiomorph(), (int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
 		selected = new ArrayList<Biomorph>(8);
 		// *2* Create containers
 		contentPanel = new JPanel(new GridBagLayout());
 		buttonPanel = new JPanel(new BorderLayout());
 		evolvePanel = new JPanel();
-		JPanel boxPanel = new JPanel(new GridBagLayout());
+		JPanel selectMutationPanel = new JPanel(new GridBagLayout());
+		JPanel selectHallOfFamePanel = new JPanel(new GridBagLayout());
+		JPanel boxPanel = new JPanel(new BorderLayout());
 		// *3* Specify layout managers
 		mainFrame.setLayout(new BorderLayout());
 		mainFrame.setMinimumSize(new Dimension(width, height));
@@ -129,20 +135,35 @@ public class GraphicsMain implements ActionListener
 		evolvePanel.add(motherButton);
 		evolvePanel.add(fatherButton);
 		evolvePanel.add(resetToOrigBioButton);
-		buttonPanel.add(rp, BorderLayout.NORTH);
+		buttonPanel.add(rightPanel, BorderLayout.NORTH);
 		buttonPanel.add(evolvePanel, BorderLayout.CENTER);
+		boxPanel.add(selectMutationPanel, BorderLayout.NORTH);
+		boxPanel.add(selectHallOfFamePanel, BorderLayout.SOUTH);
 		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		gbc.gridwidth = GridBagConstraints.REMAINDER;
-		boxPanel.add(new JLabel("Check the boxes to select the corresponding 1-8 Biomorphs"), gbc);
+		gbc.gridwidth = 9;
+		selectMutationPanel.add(new JLabel("Mutation"), gbc);
 		gbc.gridy = 1;
 		gbc.gridwidth = 1;
 		int i = 0;
-		for (JCheckBox box : checkBoxArr)
+		for (JCheckBox box : selectMutation)
 		{
 			gbc.gridx = i;
-			boxPanel.add(box, gbc);
+			selectMutationPanel.add(box, gbc);
+			i++;
+		}
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.gridwidth = 4;
+		selectHallOfFamePanel.add(new JLabel("Hall of Fame"), gbc);
+		gbc.gridy = 1;
+		gbc.gridwidth = 1;
+		i = 0;
+		for (JRadioButton button : selectHallOfFame)
+		{
+			gbc.gridx = i;
+			selectHallOfFamePanel.add(button, gbc);
 			i++;
 		}
 		mainFrame.add(fileMenu.getContents(), BorderLayout.NORTH);
@@ -200,12 +221,12 @@ public class GraphicsMain implements ActionListener
 		refreshMutationPanel();
 		bm.createAndAdd();
 		// check if checkboxes are selected
-		for (int i = 0; i < checkBoxArr.length; i++)
+		for (int i = 0; i < selectMutation.length; i++)
 		{
 			// check if each box has been selected and create an array full of selected biomorphs
-			if (checkBoxArr[i].isSelected())
+			if (selectMutation[i].isSelected())
 			{
-				if (checkBoxArr[i].getText() == "Random")
+				if (selectMutation[i].getText() == "Random")
 				{
 					selected.add(bm.createAndAdd());
 				}
@@ -243,7 +264,7 @@ public class GraphicsMain implements ActionListener
 			selected.clear();
 			bm.addSpecific(returnBiomorph);
 			refreshMainPanel();
-			rp.update(returnBiomorph);
+			rightPanel.update(returnBiomorph);
 		}
 		// code run after 'Reset' button clicked
 		if (e.getActionCommand().equals("Reset"))
@@ -254,7 +275,7 @@ public class GraphicsMain implements ActionListener
 			fileMenu.updateES(bm.getEvolStats());
 			refreshMainPanel();
 			selected.clear();
-			rp.reset();
+			rightPanel.reset();
 		}
 		// code run after 'Load to main window' button clicked
 		if (e.getActionCommand().equals("Load to main window"))
@@ -268,7 +289,7 @@ public class GraphicsMain implements ActionListener
 			{
 			}
 			selected.clear();
-			rp.reset();
+			rightPanel.reset();
 		}
 		if (e.getActionCommand().equals("Add to Hall of Fame"))
 		{
@@ -284,7 +305,10 @@ public class GraphicsMain implements ActionListener
 		}
 		if (e.getActionCommand().equals("Remove Selected"))
 		{
-			JOptionPane.showMessageDialog(mainFrame, "Removed!");
+			int selection = -1;
+			for (int i = 0; i < selectHallOfFame.length; i++) if (selectHallOfFame[i].isSelected()) selection = i;
+			if (selection != -1) hallOfFame.setBiomorph(selection, null);
+			else JOptionPane.showMessageDialog(mainFrame, "No Hall of Fame biomorph selected.");
 		}
 		if (e.getActionCommand().equals("Clear Hall of Fame"))
 		{
@@ -301,12 +325,23 @@ public class GraphicsMain implements ActionListener
 		if (e.getActionCommand().equals("Reset window to original Biomorph") && savedBiomorph!=null){
 			mainPanel.setBiomorph(savedBiomorph);
 		}
+		if (e.getActionCommand().equals("Add to Main Window"))
+		{
+			int selection = -1;
+			for (int i = 0; i < selectHallOfFame.length; i++) if (selectHallOfFame[i].isSelected()) selection = i;
+			if (selection != -1)
+			{
+				if (hallOfFame.getBiomorph(selection) != null) mainPanel.setBiomorph(hallOfFame.getBiomorph(selection));
+				else JOptionPane.showMessageDialog(mainFrame, "The selected biomorph does not exist.");
+			}
+			else JOptionPane.showMessageDialog(mainFrame, "No Hall of Fame biomorph selected.");
+		}
 
 		//clean up after action
-		for(JCheckBox box : checkBoxArr){
+		for(JCheckBox box : selectMutation){
 			box.setSelected(false);
 		}
-		rp.update(bm.getSpecific(0));
+		rightPanel.update(bm.getSpecific(0));
 	}
 	/**
 	 * Refreshes the contents of the main biomorph panel.
@@ -335,12 +370,12 @@ public class GraphicsMain implements ActionListener
 		mainPanel.resize((int)(mainFrame.getHeight() * 0.6) - 1);
 		mutationPanel.resize((int)(mainFrame.getHeight() * 0.15) - 1);
 		hallOfFame.resize((int)(mainFrame.getHeight() * 0.225));
-		rp.resize((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+		rightPanel.resize((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
 		buttonPanel.setPreferredSize(new Dimension((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)), 100));
 		mainPanel.revalidate();
 		mutationPanel.revalidate();
 		hallOfFame.revalidate();
-		rp.revalidate();
+		rightPanel.revalidate();
 	}
 	/**
 	 * Shows a confirmation dialog to exit the application.
