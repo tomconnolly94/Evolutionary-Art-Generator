@@ -158,7 +158,7 @@ public class BiomorphCustomisation extends JPanel
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Iridescence Blue");
 			}
 		});
-		BiomorphCustomisation bc = this;
+		final BiomorphCustomisation bc = this;
 		back.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
