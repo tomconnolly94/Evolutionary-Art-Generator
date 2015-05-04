@@ -67,6 +67,13 @@ public class Biomorph
 	 */
 	public void draw(GLAutoDrawable drawable)
 	{
+		if(mother!=null && father!=null){
+			System.out.println(mother.getGenes());
+			System.out.println(father.getGenes());
+		}
+		else{
+			System.out.println("Parents are null.");
+		}
 		this.drawable = drawable;
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glPushMatrix();

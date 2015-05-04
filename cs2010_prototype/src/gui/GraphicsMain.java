@@ -201,7 +201,6 @@ public class GraphicsMain implements ActionListener
 					// add corresponding biomorph to an arraylist
 					selected.add(bm.getSpecific(i+1));
 				}
-				System.out.println("boxes selected are " + (i + 1));
 			}
 		}
 		// code run after 'Evolve' button clicked
