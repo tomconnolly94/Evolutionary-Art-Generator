@@ -85,7 +85,7 @@ public class GraphicsMain implements ActionListener
 			JCheckBox box = new JCheckBox(number);
 			checkBoxArr[i] = box;
 		}
-		rp = new RightPanel(bm, mainPanel.getBiomorph());
+		rp = new RightPanel(mainPanel.getBiomorph());
 		selected = new ArrayList<Biomorph>(8);
 		// *2* Create containers
 		contentPanel = new JPanel(new GridBagLayout());
@@ -278,7 +278,7 @@ public class GraphicsMain implements ActionListener
 		for(JCheckBox box : checkBoxArr){
 			box.setSelected(false);
 		}
-		rp.update(bm,bm.getSpecific(0));
+		rp.update(bm.getSpecific(0));
 	}
 	/**
 	 * Refreshes the contents of the main biomorph panel.
