@@ -59,7 +59,7 @@ public class GraphicsMain implements ActionListener
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		fileMenu = new FileMenu(bm, this,bm.getEvolStats());
-		evolveButton = new JButton("Evolve");
+		evolveButton = new JButton("Create");
 		evolveButton.setSize(new Dimension(70, 20));
 		resetButton = new JButton("Reset");
 		resetButton.setSize(new Dimension(70, 20));
@@ -205,8 +205,9 @@ public class GraphicsMain implements ActionListener
 			}
 		}
 		// code run after 'Evolve' button clicked
-		if (e.getActionCommand().equals("Evolve"))
+		if (e.getActionCommand().equals("Evolve")||e.getActionCommand().equals("Create"))
 		{
+			evolveButton.setText("Evolve");
 			Biomorph returnBiomorph;
 			// evolve using selected biomorphs
 			if (selected.size() > 0)
@@ -239,6 +240,7 @@ public class GraphicsMain implements ActionListener
 		// code run after 'Reset' button clicked
 		if (e.getActionCommand().equals("Reset"))
 		{
+			evolveButton.setText("Create");
 			bm = new BiomorphManager();
 			fileMenu.updateBM(bm);
 			fileMenu.updateES(bm.getEvolStats());
