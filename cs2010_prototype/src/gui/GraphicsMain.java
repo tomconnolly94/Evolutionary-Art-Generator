@@ -173,13 +173,13 @@ public class GraphicsMain implements ActionListener
 			@Override
 			public void focusGained(FocusEvent arg0)
 			{
-				System.out.println("MAIN WINDOW FOCUS: YES");	
+				//System.out.println("MAIN WINDOW FOCUS: YES");	
 			}
 
 			@Override
 			public void focusLost(FocusEvent arg0)
 			{
-				System.out.println("MAIN WINDOW FOCUS: NO");
+				//System.out.println("MAIN WINDOW FOCUS: NO");
 			}
 			
 		});

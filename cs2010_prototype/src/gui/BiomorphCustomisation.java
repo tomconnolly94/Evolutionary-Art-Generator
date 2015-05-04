@@ -3,14 +3,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import biomorphHandling.Biomorph;
 public class BiomorphCustomisation
 {
 	private static JPanel modifyPane;
-	private static JPanel colourPane;
 	private static JPanel backPane;
 	private static JFrame viewFrame;
 	private static JButton back;
@@ -28,7 +26,6 @@ public class BiomorphCustomisation
 		viewFrame = new JFrame();
 		viewFrame.setSize(new Dimension(168, 470));
 		modifyPane = new JPanel();
-		colourPane = new JPanel();
 		backPane = new JPanel();
 		sliders = new JSlider[12];
 		for (int i = 0; i < geneNames.length; i++)
@@ -53,11 +50,6 @@ public class BiomorphCustomisation
 		sliders[9].setValue((biomorph.getGenes()[9].getValue()-16)*100/32);
 		sliders[10].setValue((biomorph.getGenes()[10].getValue()-16)*100/32);
 		sliders[11].setValue((biomorph.getGenes()[11].getValue()-16)*100/32);
-		
-		for(int i=0;i<12;i++){
-			System.out.println("**"+i+"**"+"GENE VALUE:"+biomorph.getGenes()[i].getValue());
-			System.out.println("SLIDERVALUE 1 "+sliders[i].getValue());
-		}
 		
 		modifyPane.setLayout(new BoxLayout(modifyPane, BoxLayout.Y_AXIS));
 		// modifyPane.setBorder(BorderFactory.createLineBorder(Color.black));
