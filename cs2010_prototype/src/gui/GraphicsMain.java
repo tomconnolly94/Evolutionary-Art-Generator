@@ -309,6 +309,7 @@ public class GraphicsMain implements ActionListener
 		mutationPanel.resize((int)(mainFrame.getHeight() * 0.15) - 1);
 		hallOfFame.resize((int)(mainFrame.getHeight() * 0.225));
 		rp.resize((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+		buttonPanel.setPreferredSize(new Dimension((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)), 100));
 		mainPanel.revalidate();
 		mutationPanel.revalidate();
 		hallOfFame.revalidate();

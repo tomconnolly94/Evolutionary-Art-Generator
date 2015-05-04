@@ -178,8 +178,8 @@ public class BiomorphCustomisation extends JPanel
 	}
 	public void resize(int size)
 	{
-		setSize(size, 600);
-		modifyPane.setSize(size, 600);
+		setSize(size, 400);
+		modifyPane.setSize(size, 400);
 		for (int i = 0; i < sliders.length; i++) sliders[i].setPreferredSize(new Dimension(modifyPane.getWidth() - 10, 20));
 		revalidate();
 	}
