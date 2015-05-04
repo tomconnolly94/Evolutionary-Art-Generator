@@ -228,6 +228,7 @@ public class GraphicsMain implements ActionListener
 			selected.clear();
 			bm.addSpecific(returnBiomorph);
 			refreshMainPanel();
+			rp.update(returnBiomorph);
 		}
 		// code run after 'Reset' button clicked
 		if (e.getActionCommand().equals("Reset"))
