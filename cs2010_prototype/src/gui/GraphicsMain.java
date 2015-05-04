@@ -320,6 +320,7 @@ public class GraphicsMain implements ActionListener
 		mainPanel.resize((int)(mainFrame.getHeight() * 0.6) - 1);
 		mutationPanel.resize((int)(mainFrame.getHeight() * 0.15) - 1);
 		hallOfFame.resize((int)(mainFrame.getHeight() * 0.225));
+		rp.resize((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 10)));
 	}
 	/**
 	 * Shows a confirmation dialog to exit the application.
