@@ -50,9 +50,6 @@ public class CollageGenerator
 		if(autoFill){
 			int limit = bm.getSize();
 			for(int i=0;i<((x*y)-limit);i++){
-				System.out.println(x*y);
-				System.out.println(limit);
-				System.out.println((x*y)-limit);
 				bm.createAndAdd();
 			}
 		}

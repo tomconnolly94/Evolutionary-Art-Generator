@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -67,17 +68,17 @@ public class GraphicsMain implements ActionListener
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		fileMenu = new FileMenu(bm, this,bm.getEvolStats());
 		evolveButton = new JButton("Create");
-		evolveButton.setSize(new Dimension(70, 20));
+		evolveButton.setSize(new Dimension(20, 20));
 		resetButton = new JButton("Reset");
-		resetButton.setSize(new Dimension(70, 20));
+		resetButton.setSize(new Dimension(20, 20));
 		loadToMainWindowButton = new JButton("Load to main window");
-		loadToMainWindowButton.setSize(new Dimension(70, 20));
+		loadToMainWindowButton.setSize(new Dimension(20, 20));
 		motherButton = new JButton("Load mother");
-		motherButton.setSize(new Dimension(70, 20));
+		motherButton.setSize(new Dimension(20, 20));
 		fatherButton = new JButton("Load father");
-		fatherButton.setSize(new Dimension(70, 20));
-		resetToOrigBioButton = new JButton("Reset window to original Biomorph");
-		resetToOrigBioButton.setSize(new Dimension(70, 20));
+		fatherButton.setSize(new Dimension(20, 20));
+		resetToOrigBioButton = new JButton("Reset to original Biomorph");
+		resetToOrigBioButton.setSize(new Dimension(20, 20));
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
 		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
@@ -104,7 +105,8 @@ public class GraphicsMain implements ActionListener
 		contentPanel = new JPanel(new GridBagLayout());
 		buttonPanel = new JPanel(new BorderLayout());
 		evolvePanel = new JPanel();
-		evolvePanel.setLayout(new BoxLayout(evolvePanel, BoxLayout.Y_AXIS));
+		evolvePanel.setLayout(new GridLayout(0,2));
+		//evolvePanel.setSize(new Dimension(10,40));
 		JPanel selectMutationPanel = new JPanel(new GridBagLayout());
 		JPanel selectHallOfFamePanel = new JPanel(new GridBagLayout());
 		JPanel boxPanel = new JPanel(new BorderLayout());
@@ -128,14 +130,16 @@ public class GraphicsMain implements ActionListener
 		gbc.gridheight = 1;
 		contentPanel.add(mutationPanel, gbc);
 		evolvePanel.add(evolveButton);
-		evolvePanel.add(Box.createRigidArea(new Dimension(0,5)));
 		evolvePanel.add(resetButton);
 		evolvePanel.add(loadToMainWindowButton);
+		evolvePanel.add(Box.createRigidArea(new Dimension(0,5)));
 		evolvePanel.add(motherButton);
 		evolvePanel.add(fatherButton);
 		evolvePanel.add(resetToOrigBioButton);
-		buttonPanel.add(rightPanel, BorderLayout.NORTH);
-		buttonPanel.add(evolvePanel, BorderLayout.CENTER);
+		JPanel buttons = new JPanel(new BorderLayout());
+		buttons.add(rightPanel, BorderLayout.NORTH);
+		buttons.add(evolvePanel, BorderLayout.SOUTH);
+		buttonPanel.add(buttons,BorderLayout.NORTH);
 		boxPanel.add(selectMutationPanel, BorderLayout.NORTH);
 		boxPanel.add(selectHallOfFamePanel, BorderLayout.SOUTH);
 		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
@@ -326,7 +330,7 @@ public class GraphicsMain implements ActionListener
 			savedBiomorph = mainPanel.getBiomorph();
 			mainPanel.setBiomorph(mainPanel.getBiomorph().getFather());
 		}
-		if (e.getActionCommand().equals("Reset window to original Biomorph") && savedBiomorph!=null){
+		if (e.getActionCommand().equals("Reset to original Biomorph") && savedBiomorph!=null){
 			mainPanel.setBiomorph(savedBiomorph);
 		}
 		if (e.getActionCommand().equals("Add to Main Window"))

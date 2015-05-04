@@ -1,6 +1,7 @@
 package gui;
 import input_output.*;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -402,6 +403,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 			public void actionPerformed(ActionEvent arg0)
 			{
 				JPanel panel = new JPanel(new GridLayout(3, 0));
+				panel.setSize(new Dimension(300,300));
 				JTextField xVal = new JTextField(2);
 				panel.add(new JLabel("Enter x dimension of Collage"));
 				panel.add(xVal);
@@ -409,7 +411,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				panel.add(new JLabel("Enter y dimension of Collage"));
 				panel.add(yVal);
 				JCheckBox box = new JCheckBox();
-				panel.add(new JLabel("Tick this box to auto-fill empty space in the collage with randomly generated Biomorphs."));
+				panel.add(new JLabel("Auto-fill empty space with randomly generated Biomorphs."));
 				panel.add(box);
 				JOptionPane.showConfirmDialog(null, panel, "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
 				if (!xVal.getText().equals("") && !yVal.getText().equals(""))

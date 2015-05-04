@@ -37,9 +37,9 @@ public class BiomorphCustomisation extends JPanel
 		modifyPane.setLayout(new BoxLayout(modifyPane, BoxLayout.Y_AXIS));
 		back = new JButton();
 		back.setText("Back");
-		backPane.add(back);
+		modifyPane.add(back);
 		add(modifyPane, BorderLayout.NORTH);
-		add(backPane, BorderLayout.SOUTH);
+		//add(backPane, BorderLayout.SOUTH);
 		sliders[Biomorph.BRANCH].setMinimum(3);
 		sliders[Biomorph.BRANCH].setMaximum(10);
 		sliders[Biomorph.CHAIN].setMinimum(1);
