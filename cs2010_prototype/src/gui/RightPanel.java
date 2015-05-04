@@ -12,10 +12,10 @@ public class RightPanel
 	// Frames used
 	private static JFrame viewFrame;
 	// Panels used
-	private static JPanel openingPane;
-	// Buttons used
-	private static JButton createButton;
-	private static JButton randomButton;
+	private JPanel buttonPanel;
+	private JPanel secondPanel;
+	private  JButton createButton;
+	private static JButton modifyButton;
 
 	public RightPanel()
 	{
@@ -26,49 +26,49 @@ public class RightPanel
 	{
 		//set frame and panel
 		viewFrame = new JFrame("Menu");
-		openingPane = new JPanel();
+		viewFrame.setSize(new Dimension(168,  608));
+		buttonPanel = new JPanel();
+		secondPanel = new JPanel();
 		//set close
-		viewFrame.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-		// setTitle
-		viewFrame.setTitle("Menu");
-		viewFrame.setSize(new Dimension(200,200));
+		viewFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE );
 		// Create Buttons
-		createButton = new JButton();
-		createButton.setText("Create");
-		randomButton = new JButton();
-		randomButton.setText("Random");
+		createButton = new JButton("Create");
+		modifyButton = new JButton("Modify");
 		// Set Layout
-		openingPane.setLayout(new BoxLayout(openingPane, BoxLayout.Y_AXIS));
-		openingPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		//openingPane.setLayout(new BoxLayout(openingPane, BoxLayout.Y_AXIS));
+		//openingPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		// add components to panel
-		openingPane.add(createButton);
-		openingPane.add(randomButton);
+		buttonPanel.add(createButton);
+		buttonPanel.add(modifyButton);
+		secondPanel.add(buttonPanel);
 		// add panel to frame
-		viewFrame.add(openingPane);
-		// make visible
-		/*viewFrame.pack();
-		viewFrame.setVisible(true);*/
+		viewFrame.add(secondPanel);
 	
 	createButton.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
-			viewFrame.remove(openingPane);
-			CreateClicked cc = new CreateClicked();
-			viewFrame.add(cc.getContents());
+			secondPanel.remove(buttonPanel);
+			BiomorphCustomisation bc = new BiomorphCustomisation();
+			
+			JPanel bc2 = bc.getContents();
+			bc2.setSize(new Dimension(168,608));
+			secondPanel = bc.getContents();
+			secondPanel.revalidate();
+			secondPanel.repaint();
 		}
 		
 	});
-	
-	randomButton.addActionListener( new ActionListener() {
+	modifyButton.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
-			viewFrame.remove(openingPane);
+			viewFrame.remove(buttonPanel);
 			CreateClicked cc = new CreateClicked();
 			viewFrame.add(cc.getContents());
 		}
 		
 	});
-	
+	//make visible
+	//viewFrame.setVisible(true);
 	
 	}
 	public JPanel getContents()

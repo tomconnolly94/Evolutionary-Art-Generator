@@ -21,7 +21,7 @@ public class BiomorphCustomisation {
 	private static JSlider red;
 	private static JSlider blue;
 	
-	final int  blankSpace = 10;
+	//final int  blankSpace = 10;
 	
 	// Sliders used
 	private static JSlider chainSlider;
@@ -47,7 +47,7 @@ public class BiomorphCustomisation {
 	
 	public BiomorphCustomisation(){
 		viewFrame = new JFrame();	
-		viewFrame.setSize(1024,  728);
+		viewFrame.setSize(new Dimension(168,  608));
 		modifyPane = new JPanel();
 		colourPane = new JPanel();
 		backPane = new JPanel();
@@ -81,7 +81,7 @@ public class BiomorphCustomisation {
 		thicknessIncLabel.setLabelFor(thicknessIncrementSlider);
 
 		modifyPane.setLayout(new BoxLayout(modifyPane, BoxLayout.Y_AXIS));
-		modifyPane.setBorder(BorderFactory.createLineBorder(Color.black));
+		//modifyPane.setBorder(BorderFactory.createLineBorder(Color.black));
 
 		modifyPane.add(branchLabel);
 		modifyPane.add(branchSlider);
@@ -112,8 +112,8 @@ public class BiomorphCustomisation {
 
 
 		colourPane.setLayout(new BoxLayout(colourPane, BoxLayout.X_AXIS));
-		colourPane.setBorder(BorderFactory.createLineBorder(Color.black));
-		colourPane.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace) );
+		//colourPane.setBorder(BorderFactory.createLineBorder(Color.black));
+		//colourPane.setBorder(new EmptyBorder(blankSpace, blankSpace, blankSpace, blankSpace) );
 		
 		colourPane.add(red);
 		colourPane.add(redLabel);
@@ -127,11 +127,16 @@ public class BiomorphCustomisation {
 		
 		backPane.add(back);
 		
-		viewFrame.add(colourPane, BorderLayout.CENTER);
-		viewFrame.add(modifyPane, BorderLayout.NORTH);
-		viewFrame.add(backPane, BorderLayout.SOUTH);
+		JPanel secondPanel = new JPanel(new BorderLayout());
+		
+		secondPanel.setSize(new Dimension(168,  608));
+		secondPanel.add(colourPane, BorderLayout.CENTER);
+		secondPanel.add(modifyPane, BorderLayout.NORTH);
+		secondPanel.add(backPane, BorderLayout.SOUTH);
 	
+		viewFrame.add(secondPanel);
 	
+		System.out.println(secondPanel.getSize()+"1");
 	chainSlider.addChangeListener( new ChangeListener() {
 		public void stateChanged(ChangeEvent c)
 		{
@@ -181,7 +186,7 @@ public class BiomorphCustomisation {
             System.out.println(((JSlider) th.getSource()).getValue());
 		}
 	});	
-	
+	System.out.println(secondPanel.getSize()+"2");
 	back.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
@@ -191,12 +196,12 @@ public class BiomorphCustomisation {
 		viewFrame.remove(modifyPane);
 		CreateClicked cc = new CreateClicked();
 		viewFrame.add(cc.getContents());
-		viewFrame.pack();
-		viewFrame.setVisible(true);
+		
 		}
 		});
-	viewFrame.pack();
-	viewFrame.setVisible(true);
+	System.out.println(secondPanel.getSize()+"3");
+	//viewFrame.pack();
+	//viewFrame.setVisible(true);
 	}
 
 	public JPanel getContents()
@@ -207,6 +212,7 @@ public class BiomorphCustomisation {
 
 	public static void main(String[] args){
 		BiomorphCustomisation bc = new BiomorphCustomisation();
+		bc.getContents();
 	}
 	
 }

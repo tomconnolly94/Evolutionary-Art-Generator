@@ -131,7 +131,9 @@ public class GraphicsMain implements ActionListener
 		evolvePanel.add(resetButton);
 		evolvePanel.add(Box.createHorizontalGlue());
 		evolvePanel.add(loadToMainWindowButton);
-		buttonPanel.add(rp.getContents(), BorderLayout.WEST);
+		JPanel rightPanel = rp.getContents();
+		rightPanel.setSize(new Dimension(168,608));
+		buttonPanel.add(rightPanel, BorderLayout.WEST);
 		buttonPanel.add(evolvePanel, BorderLayout.EAST);
 		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
 		mainFrame.add(fileMenu.getContents(), BorderLayout.NORTH);
