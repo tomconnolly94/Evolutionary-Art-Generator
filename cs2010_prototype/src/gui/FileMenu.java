@@ -130,6 +130,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	{
 		JMenu hallOfFameMenu = new JMenu("Hall Of Fame");
 		hallOfFameMenu.add(createAddToHallOfFameItem());
+		hallOfFameMenu.add(createAddToMainWindowItem());
 		hallOfFameMenu.add(createRemoveSelectedItem());
 		hallOfFameMenu.add(createClearHallOfFameItem());
 		return hallOfFameMenu;
@@ -339,6 +340,16 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	private JMenuItem createAddToHallOfFameItem()
 	{
 		final JMenuItem jMenuItem = new JMenuItem("Add to Hall of Fame");
+		jMenuItem.addActionListener(gm);
+		return jMenuItem;
+	}
+	/**
+	 * Creates the Add to Main Window item in the Hall of Fame Menu
+	 * @return The menu item
+	 */
+	private JMenuItem createAddToMainWindowItem()
+	{
+		final JMenuItem jMenuItem = new JMenuItem("Add to Main Window");
 		jMenuItem.addActionListener(gm);
 		return jMenuItem;
 	}
