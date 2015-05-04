@@ -34,7 +34,7 @@ import biomorphHandling.BiomorphManager;
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
  * @version 04/05/2015
  */
-public class FileMenu extends JComponent implements MenuListener, ActionListener
+public class FileMenu extends JComponent
 {
 	private static final long serialVersionUID = -6163251826528350603L;
 	private JFrame frame;
@@ -109,6 +109,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		fileMenu.add(createNewMenuItem());
 		fileMenu.add(createOpenMenuItem());
 		fileMenu.add(createSaveMenuItem());
+		fileMenu.add(createClearAllMenuItem());
 		return fileMenu;
 	}
 	/**
@@ -168,7 +169,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		{
 			public void actionPerformed(ActionEvent n)
 			{
-				JOptionPane.showMessageDialog(jMenuItem, "New!");
+				gm.resetAction();
 			}
 		});
 		return jMenuItem;
@@ -217,6 +218,18 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 					File file = fc.getSelectedFile();
 					new SaveBiomorphToText(biomorph.getGenes(), file.getName());
 				}
+			}
+		});
+		return jMenuItem;
+	}
+	private JMenuItem createClearAllMenuItem()
+	{
+		JMenuItem jMenuItem = new JMenuItem("Clear all");
+		jMenuItem.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				gm.clearAll();
 			}
 		});
 		return jMenuItem;
@@ -448,16 +461,5 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	{
 		this.es = es;
 	}
-	public void actionPerformed(ActionEvent e)
-	{
-	}
-	public void menuSelected(MenuEvent e)
-	{
-	}
-	public void menuDeselected(MenuEvent e)
-	{
-	}
-	public void menuCanceled(MenuEvent e)
-	{
-	}
+
 }

@@ -243,47 +243,12 @@ public class GraphicsMain implements ActionListener
 		// code run after 'Evolve' button clicked
 		if (e.getActionCommand().equals("Evolve")||e.getActionCommand().equals("Create"))
 		{			
-			// biomorph to be evolved and given to the main window
-			Biomorph returnBiomorph;
-			if(e.getActionCommand().equals("Evolve")){
-				if(mainPanel.getBiomorph()!=bm.getSpecific(0)){
-					bm.addSpecific(mainPanel.getBiomorph());
-				}
-			}
-			evolveButton.setText("Evolve");
-			// evolve using selected biomorphs
-			if (selected.size() > 0)
-			{
-				// assign Biomorph variable so that multiple evolutions can occur
-				returnBiomorph = bm.getSpecific(0);
-				// parse the Biomorphs selected for evolution
-				for (int i = 0; i < selected.size(); i++)
-				{
-					// evolve two biomorphs
-					returnBiomorph = bm.evolve(returnBiomorph, selected.get(i));
-					// bug tracking
-					System.out.println(returnBiomorph);
-					System.out.println(selected.get(i));
-				}
-			}
-			else
-			{
-				returnBiomorph = bm.evolve(bm.getSpecific(0), bm.getSpecific(bm.getSize()-1));
-			}
-			selected.clear();
-			bm.addSpecific(returnBiomorph);
-			refreshMainPanel();
-			rightPanel.update(returnBiomorph);
+			evolveAction();
 		}
 		// code run after 'Reset' button clicked
 		if (e.getActionCommand().equals("Reset"))
 		{
-			bm = new BiomorphManager();
-			fileMenu.updateBM(bm);
-			fileMenu.updateES(bm.getEvolStats());
-			refreshMainPanel();
-			selected.clear();
-			rightPanel.reset();
+			resetAction();
 		}
 		// code run after 'Load to main window' button clicked
 		if (e.getActionCommand().equals("Load to main window"))
@@ -396,6 +361,56 @@ public class GraphicsMain implements ActionListener
 		{
 			System.exit(0);
 		}
+	}
+	private void evolveAction(){
+		// biomorph to be evolved and given to the main window
+		Biomorph returnBiomorph;
+		mainPanel.setBiomorph(bm.getSpecific(0));
+		evolveButton.setText("Evolve");
+		// evolve using selected biomorphs
+		if (selected.size() > 0)
+		{
+			// assign Biomorph variable so that multiple evolutions can occur
+			returnBiomorph = bm.getSpecific(0);
+			// parse the Biomorphs selected for evolution
+			for (int i = 0; i < selected.size(); i++)
+			{
+				// evolve two biomorphs
+				returnBiomorph = bm.evolve(returnBiomorph, selected.get(i));
+				// bug tracking
+				System.out.println(returnBiomorph);
+				System.out.println(selected.get(i));
+			}
+		}
+		else
+		{
+			returnBiomorph = bm.evolve(bm.getSpecific(0), bm.getSpecific(bm.getSize()-1));
+		}
+		selected.clear();
+		bm.addSpecific(returnBiomorph);
+		refreshMainPanel();
+		rightPanel.update(returnBiomorph);
+	}
+	
+	public void resetAction(){
+		bm = new BiomorphManager();
+		fileMenu.updateBM(bm);
+		fileMenu.updateES(bm.getEvolStats());
+		refreshMainPanel();
+		selected.clear();
+		rightPanel.reset();
+	}
+	
+	public void clearAll(){
+		resetAction();
+		mainPanel.setBiomorph(null);
+		for(int i=0;i<8;i++){
+			mutationPanel.setBiomorph(i, null);
+		}
+		for(int i=0;i<4;i++){
+			hallOfFame.setBiomorph(i, null);
+		}
+		rightPanel = new RightPanel(bm.getSpecific(0), (int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
 	}
 	/**
 	 * Main method
