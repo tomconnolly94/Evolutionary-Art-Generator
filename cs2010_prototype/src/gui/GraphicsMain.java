@@ -238,9 +238,15 @@ public class GraphicsMain implements ActionListener
 		}
 		// code run after 'Evolve' button clicked
 		if (e.getActionCommand().equals("Evolve")||e.getActionCommand().equals("Create"))
-		{
-			evolveButton.setText("Evolve");
+		{			
+			// biomorph to be evolved and given to the main window
 			Biomorph returnBiomorph;
+			if(e.getActionCommand().equals("Evolve")){
+				if(mainPanel.getBiomorph()!=bm.getSpecific(0)){
+					bm.addSpecific(mainPanel.getBiomorph());
+				}
+			}
+			evolveButton.setText("Evolve");
 			// evolve using selected biomorphs
 			if (selected.size() > 0)
 			{
@@ -268,7 +274,6 @@ public class GraphicsMain implements ActionListener
 		// code run after 'Reset' button clicked
 		if (e.getActionCommand().equals("Reset"))
 		{
-			evolveButton.setText("Create");
 			bm = new BiomorphManager();
 			fileMenu.updateBM(bm);
 			fileMenu.updateES(bm.getEvolStats());

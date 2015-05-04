@@ -8,7 +8,7 @@ import biomorphHandling.BiomorphManager;
 public class CollageGenerator
 {
 	private BiomorphManager bm;
-	private int size=6;
+	private int size=10;
 	
 	public CollageGenerator(BiomorphManager bm){
 		this.bm=bm;
