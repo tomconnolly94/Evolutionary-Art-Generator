@@ -1,6 +1,7 @@
 package gui;
 import input_output.*;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -85,7 +86,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	}
 	private JMenu createSettingsMenu(String name, int depth)
 	{
-		JMenu biomorphMenu = new JMenu("Settings");
+		JMenu biomorphMenu = new JMenu(name);
 		biomorphMenu.add(createEditEvolSettingsItem("Edit evolution settings"));
 		biomorphMenu.add(createDisplayEvolStatsItem("Display evolution stats"));
 		biomorphMenu.add(createSaveEvolStatsItem("Save evolution stats"));
@@ -102,13 +103,13 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	private JMenu createBiomorphCollageMenu(String name, int depth)
 	{
 		JMenu biomorphMenu = new JMenu(name);
-		biomorphMenu.add(createGenerateDefaultCollageItem("Generate Collage"));
-		biomorphMenu.add(createGenerateCustomCollageItem("Remove Selected"));
+		biomorphMenu.add(createGenerateDefaultCollageItem("Generate default collage"));
+		biomorphMenu.add(createGenerateCustomCollageItem("Generate custom collage"));
 		return biomorphMenu;
 	}
 	private JMenu createHelpMenu(String name, int depth)
 	{
-		JMenu biomorphMenu = new JMenu("Help");
+		JMenu biomorphMenu = new JMenu(name);
 		biomorphMenu.add(createViewHelpDocItem("View Help Document"));
 		return biomorphMenu;
 	}
@@ -316,7 +317,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				JPanel panel = new JPanel();
+				JPanel panel = new JPanel(new GridLayout(3,0));
 				JTextField xVal = new JTextField(2);
 				panel.add(new JLabel("Enter x dimension of Collage"));
 				panel.add(xVal);
@@ -329,9 +330,13 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 				
 				JOptionPane.showConfirmDialog(null, panel, "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
 				
-				CollageGenerator cg = new CollageGenerator(bm);
-				cg.generateCustom(Integer.parseInt(xVal.getText()),Integer.parseInt(yVal.getText()),box.isSelected());
-			}
+				if(!xVal.getText().equals("") && !yVal.getText().equals("")){
+					
+					System.out.println(xVal.getText());
+					CollageGenerator cg = new CollageGenerator(bm);
+					cg.generateCustom(Integer.parseInt(xVal.getText()),Integer.parseInt(yVal.getText()),box.isSelected());
+				}
+				}
 		});
 		return jMenuItem;
 	}
