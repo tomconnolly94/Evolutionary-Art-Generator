@@ -8,13 +8,17 @@ import biomorphHandling.BiomorphManager;
 public class CollageGenerator
 {
 	private BiomorphManager bm;
-	private int length=10;
+	private int size=10;
 	
 	public CollageGenerator(BiomorphManager bm){
 		this.bm=bm;
 	}
 	
 	public void generateDefault(){
+		int length = (int) Math.sqrt(bm.getSize());
+		if(length>10){
+			length=10;
+		}
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
 		GridLayout layout = new GridLayout(length,length);
@@ -24,11 +28,11 @@ public class CollageGenerator
 		for (int j = 0; j<length; j++){
 		     for (int i = 0; i<length; i++){
 		    	 if(!(biomorphCount>bm.getSize()-1)){
-		    		 panel.add(new OpenGLCanvas(bm.getSpecific(biomorphCount),(length*length)).getCanvas());
+		    		 panel.add(new OpenGLCanvas(bm.getSpecific(biomorphCount),(size*size)).getCanvas());
 		    		 biomorphCount++;
 		    	 }
 		    	 else{
-		    		 panel.add(new OpenGLCanvas(null,(length*length)).getCanvas());
+		    		 panel.add(new OpenGLCanvas(null,(size*size)).getCanvas());
 		    	 }
 		     } 
 		}
