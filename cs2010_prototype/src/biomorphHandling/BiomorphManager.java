@@ -5,7 +5,7 @@ import evolution.*;
 /**
  * Class to handle storing and manipulation of Biomorphs.
  * @author Tom Connolly
- * @version 24/04/2015
+ * @version 04/05/2015
  */
 public class BiomorphManager
 {

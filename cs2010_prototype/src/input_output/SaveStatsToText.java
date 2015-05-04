@@ -3,11 +3,10 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import biomorphHandling.*;
 /**
  * Class to handle exporting of Biomorphs.
  * @author Tom Connolly
- * @version 04/03/2015
+ * @version 04/05/2015
  */
 public class SaveStatsToText
 {
@@ -23,7 +22,6 @@ public class SaveStatsToText
 	{
 		try
 		{
-			
 			File dir = new File(anchorDestination);
 			if (!(dir.exists()))
 			{
@@ -38,11 +36,11 @@ public class SaveStatsToText
 				file.createNewFile();
 			}
 			// get the content in bytes
-			for(int i=0;i<input.size();i++){
+			for (int i = 0; i < input.size(); i++)
+			{
 				byte[] contentInBytes = (input.get(i) + "\n").getBytes();
 				fop.write(contentInBytes);
 			}
-			
 			fop.flush();
 			fop.close();
 			System.out.println("Statistics have been saved.");

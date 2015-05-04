@@ -1,5 +1,4 @@
 package gui;
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
@@ -9,7 +8,7 @@ import biomorphHandling.Biomorph;
 /**
  * Class for the Hall of Fame panel. This contains up to 4 biomorphs selected by the user.
  * @author Jack Taylor
- * @version 30/04/2015
+ * @version 04/05/2015
  */
 public class HallOfFamePanel extends JPanel
 {

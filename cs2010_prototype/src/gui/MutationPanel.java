@@ -1,14 +1,13 @@
 package gui;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import biomorphHandling.Biomorph;
 /**
  * Class for the mutation panel. This contains 8 biomorphs for evolution.
  * @author Jack Taylor
- * @version 30/04/2015
+ * @version 04/05/2015
  */
 public class MutationPanel extends JPanel
 {
@@ -24,9 +23,6 @@ public class MutationPanel extends JPanel
 	{
 		super(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
-		/*gbc.gridx = 0;
-		gbc.gridy = 0;
-		this.add(new JLabel("Most recent 8 Biomorphs"), gbc);*/
 		size = 100;
 		panel = new JPanel[8];
 		canvas = new OpenGLCanvas[8];
