@@ -11,7 +11,7 @@ public class BiomorphManager
 {
 	private LinkedList<Biomorph> biomorphCollection;
 	// set of perfect values that the Biomorphs will evolve towards.
-	private int[] targetValues = {5, 2, 100, 256, 50, 5, 8, 2, 2, 100, 100, 100};
+	private int[] targetValues = {5, 2, 5, 8, 2, 2, 100, 256, 50, 100, 100, 100};
 	private EvolutionStats statisticMachine;
 	private boolean useEvolveClo;
 	// integer to change the name of Biomorphs after they are saved.

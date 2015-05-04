@@ -16,13 +16,13 @@ public class Biomorph
 	// List of array indices for genes
 	public static final int BRANCH = 0;
 	public static final int CHAIN = 1;
-	public static final int COLOR_RED = 2;
-	public static final int COLOR_GREEN = 3;
-	public static final int COLOR_BLUE = 4;
-	public static final int LENGTH = 5;
-	public static final int LENGTH_INCREMENT = 6;
-	public static final int THICKNESS = 7;
-	public static final int THICKNESS_INCREMENT = 8;
+	public static final int LENGTH = 2;
+	public static final int LENGTH_INCREMENT = 3;
+	public static final int THICKNESS = 4;
+	public static final int THICKNESS_INCREMENT = 5;
+	public static final int COLOR_RED = 6;
+	public static final int COLOR_GREEN = 7;
+	public static final int COLOR_BLUE = 8;
 	public static final int IRIDESCENCE_RED = 9;
 	public static final int IRIDESCENCE_GREEN = 10;
 	public static final int IRIDESCENCE_BLUE = 11;
@@ -45,19 +45,19 @@ public class Biomorph
 	 * @param iridGreen The value of the Iridescence Green gene
 	 * @param iridBlue The value of the Iridescence Blue gene
 	 */
-	public Biomorph(Biomorph mother, Biomorph father, int branch, int chain, int red, int green, int blue, int length, int lengthInc, int thickness, int thicknessInc, int iridRed, int iridGreen, int iridBlue)
+	public Biomorph(Biomorph mother, Biomorph father, int branch, int chain, int length, int lengthInc, int thickness, int thicknessInc, int red, int green, int blue, int iridRed, int iridGreen, int iridBlue)
 	{
 		// Genes are created and assigned values according to the parameters given. They are then placed in an
 		// array in alphabetical (apart from colours which are RGB) order.
 		genes[BRANCH] = new Branch(branch, "Branch");
 		genes[CHAIN] = new Chain(chain, "Chain");
-		genes[COLOR_RED] = new Color(red, "Color Red");
-		genes[COLOR_GREEN] = new Color(green, "Color Green");
-		genes[COLOR_BLUE] = new Color(blue, "Color Blue");
 		genes[LENGTH] = new Length(length, "Length");
 		genes[LENGTH_INCREMENT] = new LengthIncrement(lengthInc, "Length Increment");
 		genes[THICKNESS] = new Thickness(thickness, "Thickness");
 		genes[THICKNESS_INCREMENT] = new ThicknessIncrement(thicknessInc, "Thickness Increment");
+		genes[COLOR_RED] = new Color(red, "Color Red");
+		genes[COLOR_GREEN] = new Color(green, "Color Green");
+		genes[COLOR_BLUE] = new Color(blue, "Color Blue");
 		genes[IRIDESCENCE_RED] = new Iridescence(iridRed, "Iridescence Red");
 		genes[IRIDESCENCE_GREEN] = new Iridescence(iridGreen, "Iridescence Green");
 		genes[IRIDESCENCE_BLUE] = new Iridescence(iridBlue, "Iridescence Blue");
