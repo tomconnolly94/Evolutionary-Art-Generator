@@ -191,6 +191,10 @@ public class BiomorphCustomisation
 	public void updateBiomorph(Biomorph biomorph){
 		this.biomorph=biomorph;
 	}
+	public void resize(int size)
+	{
+		for (int i = 0; i < sliders.length; i++) sliders[i].setSize(size, size);
+	}
 	
 	public static void main(String[] args)
 	{
