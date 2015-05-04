@@ -146,4 +146,11 @@ public class Biomorph
 	public Biomorph getFather(){
 		return father;
 	}
+	public void updateGene(int value, String gene){
+		for(int i=0;i<genes.length;i++){
+			if(gene.equals(genes[i].getGeneType())){
+				genes[i].setValue(value);
+			}
+		}
+	}
 }

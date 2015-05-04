@@ -85,7 +85,7 @@ public class GraphicsMain implements ActionListener
 			JCheckBox box = new JCheckBox(number);
 			checkBoxArr[i] = box;
 		}
-		rp = new RightPanel();
+		rp = new RightPanel(bm, mainPanel.getBiomorph());
 		selected = new ArrayList<Biomorph>(8);
 		// *2* Create containers
 		contentPanel = new JPanel(new GridBagLayout());
@@ -234,6 +234,7 @@ public class GraphicsMain implements ActionListener
 			selected.clear();
 			bm.addSpecific(returnBiomorph);
 			refreshMainPanel();
+			rp.resetRightPanel();
 		}
 		// code run after 'Reset' button clicked
 		if (e.getActionCommand().equals("Reset"))
@@ -243,6 +244,7 @@ public class GraphicsMain implements ActionListener
 			fileMenu.updateES(bm.getEvolStats());
 			refreshMainPanel();
 			selected.clear();
+			rp.resetRightPanel();
 		}
 		// code run after 'Load to main window' button clicked
 		if (e.getActionCommand().equals("Load to main window"))
@@ -261,6 +263,7 @@ public class GraphicsMain implements ActionListener
 				System.out.println(selected.size());
 			}
 			selected.clear();
+			rp.resetRightPanel();
 		}
 		if (e.getActionCommand().equals("Add to Hall of Fame"))
 		{
@@ -282,9 +285,11 @@ public class GraphicsMain implements ActionListener
 		{
 			for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
 		}
+		//clean up after action
 		for(JCheckBox box : checkBoxArr){
 			box.setSelected(false);
 		}
+		rp.update(bm,bm.getSpecific(0));
 	}
 	/**
 	 * Refreshes the contents of the main biomorph panel.

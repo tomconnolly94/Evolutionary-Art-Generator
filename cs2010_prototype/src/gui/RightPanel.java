@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import biomorphHandling.Biomorph;
+import biomorphHandling.BiomorphManager;
 public class RightPanel
 {
 	/**
@@ -16,9 +18,17 @@ public class RightPanel
 	private JPanel secondPanel;
 	private  JButton createButton;
 	private static JButton modifyButton;
+	private Biomorph biomorph;
+	private BiomorphCustomisation bc;
+	private BiomorphManager bm;
+	private MainBiomorphPanel mainPanel;
 
-	public RightPanel()
+	public RightPanel(BiomorphManager bm, Biomorph biomorph)
 	{
+		bc = new BiomorphCustomisation(new Biomorph(null,null,0,0,0,0,0,0,0,0,0,0,0,0),buttonPanel);
+		//this.mainPanel = mainPanel;
+		this.biomorph=biomorph;
+		this.bm = bm;
 		initiate();		
 	}
 	public void initiate()
@@ -38,7 +48,7 @@ public class RightPanel
 		//openingPane.setLayout(new BoxLayout(openingPane, BoxLayout.Y_AXIS));
 		//openingPane.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		// add components to panel
-		buttonPanel.add(createButton);
+		//buttonPanel.add(createButton);
 		buttonPanel.add(modifyButton);
 		secondPanel.add(buttonPanel);
 		// add panel to frame
@@ -47,12 +57,14 @@ public class RightPanel
 	createButton.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
+			//imlementation not complete yet
 			secondPanel.remove(buttonPanel);
-			BiomorphCustomisation bc = new BiomorphCustomisation();
-			
+			Biomorph biomorph = new Biomorph(null,null,0,0,0,0,0,0,0,0,0,0,0,0);
+			bc = new BiomorphCustomisation(biomorph, buttonPanel);
+			bm.addSpecific(biomorph);
 			JPanel bc2 = bc.getContents();
 			bc2.setSize(new Dimension(168,608));
-			secondPanel = bc.getContents();
+			secondPanel.add(bc2);
 			secondPanel.revalidate();
 			secondPanel.repaint();
 		}
@@ -61,9 +73,16 @@ public class RightPanel
 	modifyButton.addActionListener( new ActionListener() {
 		public void actionPerformed(ActionEvent e)
 		{
-			viewFrame.remove(buttonPanel);
-			CreateClicked cc = new CreateClicked();
-			viewFrame.add(cc.getContents());
+			if(biomorph!=null){
+				secondPanel.remove(buttonPanel);
+				bc = new BiomorphCustomisation(biomorph, buttonPanel);
+				
+				JPanel bc2 = bc.getContents();
+				bc2.setSize(new Dimension(168,608));
+				secondPanel.add(bc2);
+				secondPanel.revalidate();
+				secondPanel.repaint();
+			}
 		}
 		
 	});
@@ -76,7 +95,24 @@ public class RightPanel
 		return (JPanel)viewFrame.getContentPane();
 	}
 	
+	public void resetRightPanel(){
+		secondPanel.remove(secondPanel.getComponent(0));
+		secondPanel.add(buttonPanel);
+		secondPanel.revalidate();
+		secondPanel.repaint();
+	}
+	
+	public void update(BiomorphManager bm, Biomorph biomorph){
+		this.bm=bm;
+		this.mainPanel = mainPanel;
+		this.biomorph = biomorph;
+		bc.updateBiomorph(biomorph);
+	}
+	
 	public static void main(String[] args){
-		RightPanel rp = new RightPanel();
+		BiomorphManager bm = new BiomorphManager();
+		Biomorph biomorph = new Biomorph(null, null,0,0,0,0,0,0,0,0,0,0,0,0);
+		MainBiomorphPanel mbp = new MainBiomorphPanel(biomorph);
+		RightPanel rp = new RightPanel(bm,biomorph);
 	}
 }
