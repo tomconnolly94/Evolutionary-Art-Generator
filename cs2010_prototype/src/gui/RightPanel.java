@@ -1,5 +1,4 @@
 package gui;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -7,13 +6,15 @@ import biomorphHandling.Biomorph;
 import biomorphHandling.BiomorphManager;
 /**
  * The right panel of the GUI
- * @author Charandeep Rai
+ * @author Charandeep Rai, Jack Taylor, Tom Connolly
+ * @version 04/05/2015
  */
 public class RightPanel extends JPanel
 {
+	private static final long serialVersionUID = -2321973355804771565L;
 	// Panels used
 	private JPanel buttonPanel;
-	private JPanel secondPanel;
+	private JPanel sliderPanel;
 	private JButton modifyButton;
 	private Biomorph biomorph;
 	private BiomorphCustomisation bc;
@@ -21,46 +22,42 @@ public class RightPanel extends JPanel
 	public RightPanel(BiomorphManager bm, Biomorph biomorph)
 	{
 		bc = new BiomorphCustomisation(new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), buttonPanel);
-		// this.mainPanel = mainPanel;
 		this.biomorph = biomorph;
 		this.bm = bm;
 		initiate();
 	}
 	public void initiate()
 	{
+		// Initialise panels and button
 		buttonPanel = new JPanel();
+		sliderPanel = new JPanel();
 		modifyButton = new JButton("Modify");
+		// Add components to panels
 		buttonPanel.add(modifyButton);
-		add(buttonPanel);
-//		buttonPanel = new JPanel();
-//		secondPanel = new JPanel();
-//		// add components to panel
-//		buttonPanel.add(modifyButton);
-//		secondPanel.add(buttonPanel);
-//		// add panel to frame
-//		add(secondPanel);
+		sliderPanel.add(buttonPanel);
+		add(sliderPanel);
 		modifyButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
 				if (biomorph != null)
 				{
-					buttonPanel.remove(modifyButton);
+					sliderPanel.remove(buttonPanel);
 					bc = new BiomorphCustomisation(biomorph, buttonPanel);
 					JPanel bc2 = bc.getContents();
-					buttonPanel.add(bc2);
-					revalidate();
-					repaint();
+					sliderPanel.add(bc2);
+					sliderPanel.revalidate();
+					sliderPanel.repaint();
 				}
 			}
 		});
 	}
 	public void resetRightPanel()
 	{
-		secondPanel.remove(secondPanel.getComponent(0));
-		secondPanel.add(buttonPanel);
-		secondPanel.revalidate();
-		secondPanel.repaint();
+		sliderPanel.remove(sliderPanel.getComponent(0));
+		sliderPanel.add(buttonPanel);
+		sliderPanel.revalidate();
+		sliderPanel.repaint();
 	}
 	public void update(BiomorphManager bm, Biomorph biomorph)
 	{
@@ -76,7 +73,6 @@ public class RightPanel extends JPanel
 	{
 		BiomorphManager bm = new BiomorphManager();
 		Biomorph biomorph = new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		MainBiomorphPanel mbp = new MainBiomorphPanel(biomorph);
-		RightPanel rp = new RightPanel(bm, biomorph);
+		new RightPanel(bm, biomorph);
 	}
 }
