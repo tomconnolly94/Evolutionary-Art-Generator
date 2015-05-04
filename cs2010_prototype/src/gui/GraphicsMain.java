@@ -1,5 +1,4 @@
 package gui;
-import genes.Gene;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -346,6 +345,7 @@ public class GraphicsMain implements ActionListener
 	/**
 	 * Shows a confirmation dialog to exit the application.
 	 */
+	@SuppressWarnings("unused")
 	private void exitApp()
 	{
 		int response = JOptionPane.showConfirmDialog(mainFrame, "Are you sure that you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
