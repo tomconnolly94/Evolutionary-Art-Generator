@@ -3,7 +3,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import biomorphHandling.Biomorph;
-import biomorphHandling.BiomorphManager;
 /**
  * The right panel of the GUI
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
@@ -18,12 +17,10 @@ public class RightPanel extends JPanel
 	private JButton modifyButton;
 	private Biomorph biomorph;
 	private BiomorphCustomisation bc;
-	private BiomorphManager bm;
-	public RightPanel(BiomorphManager bm, Biomorph biomorph)
+	public RightPanel(Biomorph biomorph)
 	{
 		bc = new BiomorphCustomisation(new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), buttonPanel);
 		this.biomorph = biomorph;
-		this.bm = bm;
 		initiate();
 	}
 	public void initiate()
@@ -44,8 +41,7 @@ public class RightPanel extends JPanel
 				{
 					sliderPanel.remove(buttonPanel);
 					bc = new BiomorphCustomisation(biomorph, buttonPanel);
-					JPanel bc2 = bc.getContents();
-					sliderPanel.add(bc2);
+					sliderPanel.add(bc);
 					sliderPanel.revalidate();
 					sliderPanel.repaint();
 				}
@@ -59,11 +55,9 @@ public class RightPanel extends JPanel
 		sliderPanel.revalidate();
 		sliderPanel.repaint();
 	}
-	public void update(BiomorphManager bm, Biomorph biomorph)
+	public void update(Biomorph biomorph)
 	{
-		this.bm = bm;
 		this.biomorph = biomorph;
-		bc.updateBiomorph(biomorph);
 	}
 	public void resize(int size)
 	{
@@ -71,8 +65,7 @@ public class RightPanel extends JPanel
 	}
 	public static void main(String[] args)
 	{
-		BiomorphManager bm = new BiomorphManager();
 		Biomorph biomorph = new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		new RightPanel(bm, biomorph);
+		new RightPanel(biomorph);
 	}
 }

@@ -6,22 +6,16 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import biomorphHandling.Biomorph;
-public class BiomorphCustomisation
+public class BiomorphCustomisation extends JPanel
 {
-	private static JPanel modifyPane;
-	private static JPanel backPane;
-	private static JFrame viewFrame;
-	private static JButton back;
-	private Biomorph biomorph;
+	private static final long serialVersionUID = -6272615682510345410L;
+	private JPanel modifyPane;
+	private JPanel backPane;
+	private JButton back;
 	private JSlider[] sliders;
-	private JPanel returnPanel;
 	private String[] geneNames = {"Branch", "Chain", "Red Level", "Green Level", "Blue Level", "Length", "Length Increment", "Thickness", "Thickness Increment", "Red Iridescence Level", "Green Iridescence Level", "Blue Iridescence Level"};;
 	public BiomorphCustomisation(final Biomorph biomorph, final JPanel returnPanel)
 	{
-		this.returnPanel = returnPanel;
-		this.biomorph = biomorph;
-		viewFrame = new JFrame();
-		viewFrame.setSize(new Dimension(168, 470));
 		modifyPane = new JPanel();
 		backPane = new JPanel();
 		sliders = new JSlider[12];
@@ -34,6 +28,15 @@ public class BiomorphCustomisation
 			modifyPane.add(label);
 			modifyPane.add(slider);
 		}
+		modifyPane.setLayout(new BoxLayout(modifyPane, BoxLayout.Y_AXIS));
+		back = new JButton();
+		back.setText("Back");
+		backPane.add(back);
+		JPanel secondPanel = new JPanel(new BorderLayout());
+		secondPanel.add(modifyPane, BorderLayout.NORTH);
+		secondPanel.add(backPane, BorderLayout.SOUTH);
+		add(secondPanel);
+		System.out.println(secondPanel.getSize() + "1");
 		sliders[Biomorph.BRANCH].setMinimum(3);
 		sliders[Biomorph.BRANCH].setMaximum(10);
 		sliders[Biomorph.BRANCH].setValue(biomorph.getGenes()[Biomorph.BRANCH].getValue());
@@ -70,17 +73,6 @@ public class BiomorphCustomisation
 		sliders[Biomorph.IRIDESCENCE_BLUE].setMinimum(-16);
 		sliders[Biomorph.IRIDESCENCE_BLUE].setMaximum(16);
 		sliders[Biomorph.IRIDESCENCE_BLUE].setValue(biomorph.getGenes()[Biomorph.IRIDESCENCE_BLUE].getValue());
-		modifyPane.setLayout(new BoxLayout(modifyPane, BoxLayout.Y_AXIS));
-		// modifyPane.setBorder(BorderFactory.createLineBorder(Color.black));
-		back = new JButton();
-		back.setText("Back");
-		backPane.add(back);
-		JPanel secondPanel = new JPanel(new BorderLayout());
-		secondPanel.setSize(new Dimension(168, 608));
-		secondPanel.add(modifyPane, BorderLayout.NORTH);
-		secondPanel.add(backPane, BorderLayout.SOUTH);
-		viewFrame.add(secondPanel);
-		System.out.println(secondPanel.getSize() + "1");
 		sliders[Biomorph.BRANCH].addChangeListener(new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent c)
@@ -173,26 +165,17 @@ public class BiomorphCustomisation
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Iridescence Blue");
 			}
 		});
+		BiomorphCustomisation bc = this;
 		back.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				JPanel secondPanel = (JPanel) viewFrame.getContentPane().getParent();
-				secondPanel.remove(viewFrame.getContentPane());
-				secondPanel.add(returnPanel);
-				secondPanel.revalidate();
+				JPanel parent = (JPanel)getParent();
+				parent.remove(bc);
+				parent.add(returnPanel);
+				parent.revalidate();
 			}
 		});
-		// viewFrame.pack();
-		// viewFrame.setVisible(true);
-	}
-	public JPanel getContents()
-	{
-		return (JPanel) viewFrame.getContentPane();
-	}
-	public void updateBiomorph(Biomorph biomorph)
-	{
-		this.biomorph = biomorph;
 	}
 	public void resize(int size)
 	{
@@ -202,8 +185,7 @@ public class BiomorphCustomisation
 	public static void main(String[] args)
 	{
 		Biomorph biomorph = new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-		MainBiomorphPanel mbp = new MainBiomorphPanel(biomorph);
 		JPanel panel = new JPanel();
-		BiomorphCustomisation bc = new BiomorphCustomisation(biomorph, panel);
+		new BiomorphCustomisation(biomorph, panel);
 	}
 }
