@@ -42,6 +42,7 @@ public class GraphicsMain implements ActionListener
 	private JButton evolveButton;
 	private JButton resetButton;
 	private JButton loadToMainWindowButton;
+	private JButton motherButton;
 	private JPanel buttonPanel;
 	private JCheckBox[] checkBoxArr;
 	private ArrayList<Biomorph> selected;
@@ -65,6 +66,8 @@ public class GraphicsMain implements ActionListener
 		resetButton.setSize(new Dimension(70, 20));
 		loadToMainWindowButton = new JButton("Load to main window");
 		loadToMainWindowButton.setSize(new Dimension(70, 20));
+		motherButton = new JButton("Load mother");
+		motherButton.setSize(new Dimension(70, 20));
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
 		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
@@ -117,6 +120,7 @@ public class GraphicsMain implements ActionListener
 		evolvePanel.add(resetButton);
 		evolvePanel.add(Box.createHorizontalGlue());
 		evolvePanel.add(loadToMainWindowButton);
+		evolvePanel.add(motherButton);
 		buttonPanel.add(rp, BorderLayout.NORTH);
 		buttonPanel.add(evolvePanel, BorderLayout.CENTER);
 		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
@@ -155,6 +159,7 @@ public class GraphicsMain implements ActionListener
 		evolveButton.addActionListener(this);
 		resetButton.addActionListener(this);
 		loadToMainWindowButton.addActionListener(this);
+		motherButton.addActionListener(this);
 		// *6* Pack and display
 		mainFrame.pack();
 		mainFrame.setVisible(true);
@@ -275,6 +280,10 @@ public class GraphicsMain implements ActionListener
 		{
 			for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
 		}
+		if (e.getActionCommand().equals("Load mother")){
+			mainPanel.setBiomorph(mainPanel.getBiomorph().getMother());
+		}
+
 		//clean up after action
 		for(JCheckBox box : checkBoxArr){
 			box.setSelected(false);
