@@ -20,7 +20,6 @@ public class Evolver
 	private int[] childGenes;
 	private Gene[] motherGenes;
 	private Gene[] fatherGenes;
-	private boolean useEvolveClo = true;
 	private Biomorph mother;
 	private Biomorph father;
 	/**
@@ -77,9 +76,5 @@ public class Evolver
 	public int[] getChildGenes()
 	{
 		return childGenes;
-	}
-	
-	public void useEvolveClo(boolean useEvolveClo){
-		this.useEvolveClo = useEvolveClo;
 	}
 }
