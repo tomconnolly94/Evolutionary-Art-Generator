@@ -14,12 +14,8 @@ public class BiomorphCustomisation extends JPanel
 	private JButton back;
 	private Biomorph biomorph;
 	private JSlider[] sliders;
-<<<<<<< HEAD
-	private String[] geneNames = {"Branch", "Chain", "Length", "Length Increment", "Thickness", "Thickness Increment", "Red Level", "Green Level", "Blue Level", "Red Iridescence Level", "Green Iridescence Level", "Blue Iridescence Level"};;
-=======
 	private JLabel[] labels;
-	private String[] geneNames = {"Branch", "Chain", "Red Level", "Green Level", "Blue Level", "Length", "Length Increment", "Thickness", "Thickness Increment", "Red Iridescence Level", "Green Iridescence Level", "Blue Iridescence Level"};;
->>>>>>> origin/master
+	private String[] geneNames = {"Branch", "Chain", "Length", "Length Increment", "Thickness", "Thickness Increment", "Red Level", "Green Level", "Blue Level", "Red Iridescence Level", "Green Iridescence Level", "Blue Iridescence Level"};
 	public BiomorphCustomisation(final Biomorph tempBiomorph, final JPanel returnPanel, int size)
 	{
 		super(new BorderLayout());
@@ -93,84 +89,56 @@ public class BiomorphCustomisation extends JPanel
 		{
 			public void stateChanged(ChangeEvent c)
 			{
-<<<<<<< HEAD
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Length");
-=======
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Red");
-				labels[Biomorph.COLOR_RED].setText(geneNames[Biomorph.COLOR_RED] +": " + biomorph.getGenes()[Biomorph.COLOR_RED].getValue());
->>>>>>> origin/master
+				labels[Biomorph.LENGTH].setText(geneNames[Biomorph.LENGTH] +": " + biomorph.getGenes()[Biomorph.LENGTH].getValue());
 			}
 		});
 		sliders[Biomorph.LENGTH_INCREMENT].addChangeListener(new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent c)
 			{
-<<<<<<< HEAD
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Length Increment");
-=======
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Green");
-				labels[Biomorph.COLOR_GREEN].setText(geneNames[Biomorph.COLOR_GREEN] +": " + biomorph.getGenes()[Biomorph.COLOR_GREEN].getValue());
->>>>>>> origin/master
+				labels[Biomorph.LENGTH_INCREMENT].setText(geneNames[Biomorph.LENGTH_INCREMENT] +": " + biomorph.getGenes()[Biomorph.LENGTH_INCREMENT].getValue());
 			}
 		});
 		sliders[Biomorph.THICKNESS].addChangeListener(new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent c)
 			{
-<<<<<<< HEAD
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Thickness");
-=======
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Blue");
-				labels[Biomorph.COLOR_BLUE].setText(geneNames[Biomorph.COLOR_BLUE] +": " + biomorph.getGenes()[Biomorph.COLOR_BLUE].getValue());
->>>>>>> origin/master
+				labels[Biomorph.THICKNESS].setText(geneNames[Biomorph.THICKNESS] +": " + biomorph.getGenes()[Biomorph.THICKNESS].getValue());
 			}
 		});
 		sliders[Biomorph.THICKNESS_INCREMENT].addChangeListener(new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent c)
 			{
-<<<<<<< HEAD
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Thickness Increment");
-=======
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Length");
-				labels[Biomorph.LENGTH].setText(geneNames[Biomorph.LENGTH] +": " + biomorph.getGenes()[Biomorph.LENGTH].getValue());
->>>>>>> origin/master
+				labels[Biomorph.THICKNESS_INCREMENT].setText(geneNames[Biomorph.THICKNESS_INCREMENT] +": " + biomorph.getGenes()[Biomorph.THICKNESS_INCREMENT].getValue());
 			}
 		});
 		sliders[Biomorph.COLOR_RED].addChangeListener(new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent c)
 			{
-<<<<<<< HEAD
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Red");
-=======
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Length Increment");
-				labels[Biomorph.LENGTH_INCREMENT].setText(geneNames[Biomorph.LENGTH_INCREMENT] +": " + biomorph.getGenes()[Biomorph.LENGTH_INCREMENT].getValue());
->>>>>>> origin/master
+				labels[Biomorph.COLOR_RED].setText(geneNames[Biomorph.COLOR_RED] +": " + biomorph.getGenes()[Biomorph.COLOR_RED].getValue());
 			}
 		});
 		sliders[Biomorph.COLOR_GREEN].addChangeListener(new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent c)
 			{
-<<<<<<< HEAD
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Green");
-=======
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Thickness");
-				labels[Biomorph.THICKNESS].setText(geneNames[Biomorph.THICKNESS] +": " + biomorph.getGenes()[Biomorph.THICKNESS].getValue());
->>>>>>> origin/master
+				labels[Biomorph.COLOR_GREEN].setText(geneNames[Biomorph.COLOR_GREEN] +": " + biomorph.getGenes()[Biomorph.COLOR_GREEN].getValue());
 			}
 		});
 		sliders[Biomorph.COLOR_BLUE].addChangeListener(new ChangeListener()
 		{
 			public void stateChanged(ChangeEvent c)
 			{
-<<<<<<< HEAD
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Color Blue");
-=======
-				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Thickness Increment");
-				labels[Biomorph.THICKNESS_INCREMENT].setText(geneNames[Biomorph.THICKNESS_INCREMENT] +": " + biomorph.getGenes()[Biomorph.THICKNESS_INCREMENT].getValue());
->>>>>>> origin/master
+				labels[Biomorph.COLOR_BLUE].setText(geneNames[Biomorph.COLOR_BLUE] +": " + biomorph.getGenes()[Biomorph.COLOR_BLUE].getValue());
 			}
 		});
 		sliders[Biomorph.IRIDESCENCE_RED].addChangeListener(new ChangeListener()
@@ -178,7 +146,7 @@ public class BiomorphCustomisation extends JPanel
 			public void stateChanged(ChangeEvent c)
 			{
 				biomorph.updateGene(((JSlider)c.getSource()).getValue(), "Iridescence Red");
-				labels[Biomorph.IRIDESCENCE_RED].setText(geneNames[Biomorph.IRIDESCENCE_RED] +": " + biomorph.getGenes()[Biomorph.BRANCH].getValue());
+				labels[Biomorph.IRIDESCENCE_RED].setText(geneNames[Biomorph.IRIDESCENCE_RED] +": " + biomorph.getGenes()[Biomorph.IRIDESCENCE_RED].getValue());
 			}
 		});
 		sliders[Biomorph.IRIDESCENCE_GREEN].addChangeListener(new ChangeListener()
