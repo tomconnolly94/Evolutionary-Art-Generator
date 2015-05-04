@@ -7,6 +7,7 @@ import java.io.File;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -92,7 +93,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	}
 	private JMenu createHallOfFameMenu(String name, int depth)
 	{
-		JMenu biomorphMenu = new JMenu("Hall of Fame");
+		JMenu biomorphMenu = new JMenu(name);
 		biomorphMenu.add(createAddToHallOfFameItem("Add to Hall of Fame"));
 		biomorphMenu.add(createRemoveSelectedItem("Remove Selected"));
 		biomorphMenu.add(createClearHallOfFameItem("Clear Hall of Fame"));
@@ -101,8 +102,8 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 	private JMenu createBiomorphCollageMenu(String name, int depth)
 	{
 		JMenu biomorphMenu = new JMenu(name);
-		biomorphMenu.add(createGenerateCollageItem("Generate Collage"));
-		biomorphMenu.add(createRemoveSelectedItem("Remove Selected"));
+		biomorphMenu.add(createGenerateDefaultCollageItem("Generate Collage"));
+		biomorphMenu.add(createGenerateCustomCollageItem("Remove Selected"));
 		return biomorphMenu;
 	}
 	private JMenu createHelpMenu(String name, int depth)
@@ -295,7 +296,7 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		});
 		return jMenuItem;
 	}
-	private JMenuItem createGenerateCollageItem(String name)
+	private JMenuItem createGenerateDefaultCollageItem(String name)
 	{	
 		JMenuItem jMenuItem = new JMenuItem(name);
 		jMenuItem.addActionListener(new ActionListener()
@@ -308,7 +309,32 @@ public class FileMenu extends JComponent implements MenuListener, ActionListener
 		});
 		return jMenuItem;
 	}
-	
+	private JMenuItem createGenerateCustomCollageItem(String name)
+	{	
+		JMenuItem jMenuItem = new JMenuItem(name);
+		jMenuItem.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
+				JPanel panel = new JPanel();
+				JTextField xVal = new JTextField(2);
+				panel.add(new JLabel("Enter x dimension of Collage"));
+				panel.add(xVal);
+				JTextField yVal = new JTextField(2);
+				panel.add(new JLabel("Enter y dimension of Collage"));
+				panel.add(yVal);
+				JCheckBox box = new JCheckBox();
+				panel.add(new JLabel("Tick this box to auto-fill empty space in the collage with randomly generated Biomorphs."));
+				panel.add(box);
+				
+				JOptionPane.showConfirmDialog(null, panel, "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
+				
+				CollageGenerator cg = new CollageGenerator(bm);
+				cg.generateCustom(Integer.parseInt(xVal.getText()),Integer.parseInt(yVal.getText()),box.isSelected());
+			}
+		});
+		return jMenuItem;
+	}
 	private JMenuItem createAddToHallOfFameItem(String name)
 	{
 		final JMenuItem jMenuItem = new JMenuItem(name);
