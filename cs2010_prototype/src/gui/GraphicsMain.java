@@ -102,30 +102,16 @@ public class GraphicsMain implements ActionListener
 		// *4* Add components to containers
 		gbc.gridx = 0;
 		gbc.gridy = 0;
-		gbc.gridheight = 2;
+		gbc.gridheight = 3;
 		contentPanel.add(hallOfFame, gbc);
 		gbc.gridx = 1;
 		gbc.gridy = 0;
-		gbc.gridheight = 1;
+		gbc.gridheight = 2;
 		contentPanel.add(mainPanel, gbc);
 		gbc.gridx = 1;
-		gbc.gridy = 1;
+		gbc.gridy = 2;
 		gbc.gridheight = 1;
 		contentPanel.add(mutationPanel, gbc);
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.gridheight = 2;
-		gbc.gridwidth = GridBagConstraints.REMAINDER;
-		boxPanel.add(new JLabel("Check the boxes to select the corresponding 1-8 Biomorphs"), gbc);
-		gbc.gridwidth = 1;
-		gbc.gridy = 2;
-		int i = 0;
-		for (JCheckBox box : checkBoxArr)
-		{
-			gbc.gridx = i;
-			boxPanel.add(box, gbc);
-			i++;
-		}
 		evolvePanel.add(evolveButton);
 		evolvePanel.add(Box.createHorizontalGlue());
 		evolvePanel.add(resetButton);
@@ -133,9 +119,22 @@ public class GraphicsMain implements ActionListener
 		evolvePanel.add(loadToMainWindowButton);
 		JPanel rightPanel = rp.getContents();
 		rightPanel.setSize(new Dimension(168,608));
-		buttonPanel.add(rightPanel, BorderLayout.WEST);
-		buttonPanel.add(evolvePanel, BorderLayout.EAST);
+		buttonPanel.add(rightPanel, BorderLayout.NORTH);
+		buttonPanel.add(evolvePanel, BorderLayout.CENTER);
 		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.gridwidth = GridBagConstraints.REMAINDER;
+		boxPanel.add(new JLabel("Check the boxes to select the corresponding 1-8 Biomorphs"), gbc);
+		gbc.gridy = 1;
+		gbc.gridwidth = 1;
+		int i = 0;
+		for (JCheckBox box : checkBoxArr)
+		{
+			gbc.gridx = i;
+			boxPanel.add(box, gbc);
+			i++;
+		}
 		mainFrame.add(fileMenu.getContents(), BorderLayout.NORTH);
 		mainFrame.add(contentPanel, BorderLayout.WEST);
 		mainFrame.add(buttonPanel, BorderLayout.EAST);
@@ -311,7 +310,7 @@ public class GraphicsMain implements ActionListener
 		mainPanel.resize((int)(mainFrame.getHeight() * 0.6) - 1);
 		mutationPanel.resize((int)(mainFrame.getHeight() * 0.15) - 1);
 		hallOfFame.resize((int)(mainFrame.getHeight() * 0.225));
-		rp.resize((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 10)));
+		rp.resize((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
 	}
 	/**
 	 * Shows a confirmation dialog to exit the application.
