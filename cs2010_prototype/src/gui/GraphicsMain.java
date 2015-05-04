@@ -182,7 +182,7 @@ public class GraphicsMain implements ActionListener
 	public void actionPerformed(ActionEvent e)
 	{
 		//code to find out whether a window has focus (not being used yet)
-		mainPanel.getCanvas().getCanvas().addFocusListener(new FocusListener(){
+		mainPanel.getCanvas().addFocusListener(new FocusListener(){
 
 			@Override
 			public void focusGained(FocusEvent arg0)
