@@ -3,11 +3,10 @@ import genes.Gene;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import biomorphHandling.*;
 /**
  * Class to handle exporting of Biomorphs.
  * @author Tom Connolly
- * @version 04/03/2015
+ * @version 04/05/2015
  */
 public class SaveBiomorphToText
 {

@@ -3,7 +3,7 @@ import java.util.Random;
 /**
  * Factory class to generate a biomorph, assigning all its gene values.
  * @author Tom Connolly
- * @version 24/04/2015
+ * @version 04/05/2015
  */
 public class BiomorphCreator
 {

@@ -6,7 +6,7 @@ import geometry.*;
 /**
  * Class to model and draw a single biomorph.
  * @author Tom Connolly, Jack Taylor
- * @version 24/04/2015
+ * @version 04/05/2015
  */
 public class Biomorph
 {
