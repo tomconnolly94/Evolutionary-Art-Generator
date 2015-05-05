@@ -305,7 +305,7 @@ public class GraphicsMain implements ActionListener
 			break;
 		}
 		for (JCheckBox box : selectMutation) box.setSelected(false);
-		rightPanel.update(bm.getSpecific(0));
+		rightPanel.update(mainPanel.getBiomorph());
 	}
 	/**
 	 * Refreshes the contents of the main biomorph panel.
