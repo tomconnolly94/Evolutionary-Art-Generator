@@ -1,8 +1,10 @@
-package input_output;
+package inputOutput;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 import biomorphHandling.Biomorph;
 import biomorphHandling.BiomorphCreator;
 /**
@@ -17,9 +19,8 @@ public class Load
 	 * Constructor
 	 * @param fileName The name of the file to load from
 	 */
-	public Load(String fileName)
+	public Load()
 	{
-		this.fileName = fileName;
 	}
 	/**
 	 * Loads a biomorph
@@ -27,7 +28,13 @@ public class Load
 	 */
 	public Biomorph load()
 	{
-		Biomorph biomorph = new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		JFileChooser fc = new JFileChooser(new File(System.getProperty("user.home")));
+		int returnVal = fc.showOpenDialog(null);
+		if (returnVal == JFileChooser.APPROVE_OPTION)
+		{
+			File file = fc.getSelectedFile();
+		}
+		Biomorph biomorph = null;
 		try
 		{
 			BufferedReader br = new BufferedReader(new FileReader("src/biomorphTextFiles/" + fileName + ".txt"));

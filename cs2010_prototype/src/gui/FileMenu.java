@@ -1,5 +1,5 @@
 package gui;
-import input_output.*;
+import inputOutput.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -183,17 +183,9 @@ public class FileMenu extends JComponent
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				final JFileChooser fc = new JFileChooser("src/biomorphTextFiles/");
-				int returnVal = fc.showOpenDialog(frame);
-				if (returnVal == JFileChooser.APPROVE_OPTION)
-				{
-					File file = fc.getSelectedFile();
-					Load load = new Load(file.getName().replace(".txt", ""));
-					System.out.println(file.getName());
-					Biomorph loadedBiomorph = load.load();
-					bm.addSpecific(loadedBiomorph);
-					gm.refreshMainPanel();
-				}
+				Load loader = new Load();
+				bm.addSpecific(loader.load());
+				gm.refreshMainPanel();
 			}
 		});
 		return jMenuItem;
@@ -209,13 +201,7 @@ public class FileMenu extends JComponent
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				final JFileChooser fc = new JFileChooser("src/biomorphTextFiles/");
-				int returnVal = fc.showSaveDialog(frame);
-				if (returnVal == JFileChooser.APPROVE_OPTION)
-				{
-					File file = fc.getSelectedFile();
-					new SaveBiomorphToText(biomorph.getGenes(), file.getName());
-				}
+				new SaveBiomorphToText(biomorph.getGenes());
 			}
 		});
 		return jMenuItem;
