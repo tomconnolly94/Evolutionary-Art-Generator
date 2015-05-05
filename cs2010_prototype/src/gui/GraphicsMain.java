@@ -13,9 +13,7 @@ import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import javax.swing.Box;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,15 +35,9 @@ public class GraphicsMain implements ActionListener
 	private MainBiomorphPanel mainPanel; // The main biomorph panel, containing the large biomorph window.
 	private MutationPanel mutationPanel; // The mutation panel, containing 8 smaller biomorph windows.
 	private HallOfFamePanel hallOfFame; // The hall of fame panel.
-	private JPanel evolvePanel;
+	private EvolvePanel evolvePanel;
 	private RightPanel rightPanel; // The right panel.
 	private BiomorphManager bm; // The Biomorph Manager used to arrange and organise Biomorphs
-	private JButton evolveButton;
-	private JButton resetButton;
-	private JButton loadToMainWindowButton;
-	private JButton motherButton;
-	private JButton fatherButton;
-	private JButton resetToOrigBioButton;
 	private JPanel buttonPanel;
 	private JCheckBox[] selectMutation;
 	private ButtonGroup buttonGroup;
@@ -66,24 +58,6 @@ public class GraphicsMain implements ActionListener
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		fileMenu = new FileMenu(bm, this, bm.getEvolStats());
-		evolveButton = new JButton("Create");
-		evolveButton.setSize(new Dimension(20, 20));
-		evolveButton.setToolTipText("This button allows evolution of the live Biomorph and\n whichever Biomorphs are selected below.");
-		resetButton = new JButton("Reset");
-		resetButton.setSize(new Dimension(20, 20));
-		resetButton.setToolTipText("This button removes all existing Biomorphs (excluding Hall of Fame) and generates 9 new ones.");
-		loadToMainWindowButton = new JButton("Load to main window");
-		loadToMainWindowButton.setSize(new Dimension(20, 20));
-		loadToMainWindowButton.setToolTipText("This button loads the Biomorph selected using the checkboxes below to the live window");
-		motherButton = new JButton("Load mother");
-		motherButton.setSize(new Dimension(20, 20));
-		motherButton.setToolTipText("This button loads the live Biomorph's data-biological mother");
-		fatherButton = new JButton("Load father");
-		fatherButton.setSize(new Dimension(20, 20));
-		fatherButton.setToolTipText("This button loads the live Biomorph's data-biological mother");
-		resetToOrigBioButton = new JButton("Reset to original Biomorph");
-		resetToOrigBioButton.setSize(new Dimension(20, 20));
-		resetToOrigBioButton.setToolTipText("This button reloads the originally evolved Biomorph when the parent controls are used.");
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];
 		for (int i = 0; i < biomorphs.length; i++) biomorphs[i] = null;
@@ -109,7 +83,7 @@ public class GraphicsMain implements ActionListener
 		// *2* Create containers
 		contentPanel = new JPanel(new GridBagLayout());
 		buttonPanel = new JPanel(new BorderLayout());
-		evolvePanel = new JPanel();
+		evolvePanel = new EvolvePanel(this);
 		evolvePanel.setLayout(new GridLayout(0, 2));
 		JPanel selectMutationPanel = new JPanel(new GridBagLayout());
 		JPanel selectHallOfFamePanel = new JPanel(new GridBagLayout());
@@ -133,13 +107,6 @@ public class GraphicsMain implements ActionListener
 		gbc.gridy = 2;
 		gbc.gridheight = 1;
 		contentPanel.add(mutationPanel, gbc);
-		evolvePanel.add(evolveButton);
-		evolvePanel.add(resetButton);
-		evolvePanel.add(loadToMainWindowButton);
-		evolvePanel.add(Box.createRigidArea(new Dimension(0, 5)));
-		evolvePanel.add(motherButton);
-		evolvePanel.add(fatherButton);
-		evolvePanel.add(resetToOrigBioButton);
 		JPanel buttons = new JPanel(new BorderLayout());
 		buttons.add(rightPanel, BorderLayout.NORTH);
 		buttons.add(evolvePanel, BorderLayout.SOUTH);
@@ -191,12 +158,6 @@ public class GraphicsMain implements ActionListener
 				resize();
 			}
 		});
-		evolveButton.addActionListener(this);
-		resetButton.addActionListener(this);
-		loadToMainWindowButton.addActionListener(this);
-		motherButton.addActionListener(this);
-		fatherButton.addActionListener(this);
-		resetToOrigBioButton.addActionListener(this);
 		mainFrame.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
 		rightPanel.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
 		buttonPanel.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
@@ -305,7 +266,7 @@ public class GraphicsMain implements ActionListener
 			break;
 		}
 		for (JCheckBox box : selectMutation) box.setSelected(false);
-		rightPanel.update(mainPanel.getBiomorph());
+		rightPanel.setBiomorph(mainPanel.getBiomorph());
 	}
 	/**
 	 * Refreshes the contents of the main biomorph panel.
@@ -348,7 +309,7 @@ public class GraphicsMain implements ActionListener
 		// biomorph to be evolved and given to the main window
 		Biomorph returnBiomorph;
 		mainPanel.setBiomorph(bm.getSpecific(0));
-		evolveButton.setText("Evolve");
+		evolvePanel.setEvolveText(true);
 		// evolve using selected biomorphs
 		if (selected.size() > 0)
 		{
@@ -368,7 +329,7 @@ public class GraphicsMain implements ActionListener
 		selected.clear();
 		bm.addSpecific(returnBiomorph);
 		refreshMainPanel();
-		rightPanel.update(returnBiomorph);
+		rightPanel.setBiomorph(returnBiomorph);
 	}
 	/**
 	 * Resets the biomorphs and windows.
@@ -391,7 +352,9 @@ public class GraphicsMain implements ActionListener
 		mainPanel.setBiomorph(null);
 		for (int i = 0; i < 8; i++) mutationPanel.setBiomorph(i, null);
 		for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
-		rightPanel = new RightPanel(bm.getSpecific(0), (int) (mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+		rightPanel.reset();
+		rightPanel.setBiomorph(null);
+		evolvePanel.setEvolveText(false);
 	}
 	/**
 	 * Shows a confirmation dialog to exit the application.

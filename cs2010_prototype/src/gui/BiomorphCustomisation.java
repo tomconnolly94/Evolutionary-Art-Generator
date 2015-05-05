@@ -205,7 +205,7 @@ public class BiomorphCustomisation extends JPanel
 	public void setBiomorph(Biomorph biomorph)
 	{
 		this.biomorph = biomorph;
-		for (int i = 0; i < sliders.length; i++) sliders[i].setValue(biomorph.getGenes()[i].getValue());
+		if (biomorph != null) for (int i = 0; i < sliders.length; i++) sliders[i].setValue(biomorph.getGenes()[i].getValue());
 	}
 	/**
 	 * Changes the size of the panel and the length of the sliders.

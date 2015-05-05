@@ -68,7 +68,7 @@ public class RightPanel extends JPanel
 	 * Changes the biomorph referenced by this panel.
 	 * @param biomorph The new biomorph
 	 */
-	public void update(Biomorph biomorph)
+	public void setBiomorph(Biomorph biomorph)
 	{
 		this.biomorph = biomorph;
 		bc.setBiomorph(biomorph);
