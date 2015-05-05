@@ -6,12 +6,11 @@ import biomorphHandling.Biomorph;
 /**
  * The right panel of the GUI
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
- * @version 04/05/2015
+ * @version 05/05/2015
  */
 public class RightPanel extends JPanel
 {
 	private static final long serialVersionUID = -2321973355804771565L;
-	// Panels used
 	private JPanel buttonPanel;
 	private JButton modifyButton;
 	private Biomorph biomorph;
@@ -28,9 +27,12 @@ public class RightPanel extends JPanel
 		this.size = size;
 		bc = new BiomorphCustomisation(new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), buttonPanel, size);
 		this.biomorph = biomorph;
-		initiate();
+		init();
 	}
-	public void initiate()
+	/**
+	 * Initialises the right panel.
+	 */
+	public void init()
 	{
 		// Initialise panels and button
 		buttonPanel = new JPanel();
@@ -49,10 +51,7 @@ public class RightPanel extends JPanel
 					add(bc);
 					revalidate();
 				}
-				else
-				{
-					JOptionPane.showMessageDialog(buttonPanel, "There is no biomorph to modify.");
-				}
+				else JOptionPane.showMessageDialog(buttonPanel, "There is no biomorph to modify.");
 			}
 		});
 	}

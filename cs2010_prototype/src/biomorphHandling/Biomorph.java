@@ -6,11 +6,11 @@ import geometry.*;
 /**
  * Class to model and draw a single biomorph.
  * @author Tom Connolly, Jack Taylor
- * @version 04/05/2015
+ * @version 05/05/2015
  */
 public class Biomorph
 {
-	//references to this biomorphs mother and father biomorphs
+	// References to this biomorph's mother and father biomorphs
 	private Biomorph mother;
 	private Biomorph father;
 	// List of array indices for genes
@@ -26,31 +26,28 @@ public class Biomorph
 	public static final int IRIDESCENCE_RED = 9;
 	public static final int IRIDESCENCE_GREEN = 10;
 	public static final int IRIDESCENCE_BLUE = 11;
-	// drawing environment
-	private GLAutoDrawable drawable;
-	// An array is instantiated to hold 12 Genes that will be defined in the constructor.
+	private GLAutoDrawable drawable; // drawing environment
 	private Gene[] genes = new Gene[12];
 	/**
 	 * Constructor
 	 * @param branch The value of the Branch gene
 	 * @param chain The value of the Chain gene
-	 * @param red The value of the Color Red gene
-	 * @param green The value of the Color Green gene
-	 * @param blue The value of the Color Blue gene
 	 * @param length The value of the Length gene
 	 * @param lengthInc The value of the Length Increment gene
 	 * @param thickness The value of the Thickness gene
 	 * @param thicknessInc The value of the Thickness Increment gene
+	 * @param red The value of the Color Red gene
+	 * @param green The value of the Color Green gene
+	 * @param blue The value of the Color Blue gene
 	 * @param iridRed The value of the Iridescence Red gene
 	 * @param iridGreen The value of the Iridescence Green gene
 	 * @param iridBlue The value of the Iridescence Blue gene
 	 */
 	public Biomorph(Biomorph mother, Biomorph father, int branch, int chain, int length, int lengthInc, int thickness, int thicknessInc, int red, int green, int blue, int iridRed, int iridGreen, int iridBlue)
 	{
-		this.father=father;
-		this.mother=mother;
-		// Genes are created and assigned values according to the parameters given. They are then placed in an
-		// array in alphabetical (apart from colours which are RGB) order.
+		this.father = father;
+		this.mother = mother;
+		// Genes are created and assigned values according to the parameters given.
 		genes[BRANCH] = new Branch(branch, "Branch");
 		genes[CHAIN] = new Chain(chain, "Chain");
 		genes[LENGTH] = new Length(length, "Length");
@@ -69,13 +66,9 @@ public class Biomorph
 	 */
 	public void draw(GLAutoDrawable drawable)
 	{
-		/*if(mother!=null && father!=null){
-			System.out.println(mother.getGenes());
-			System.out.println(father.getGenes());
-		}
-		else{
-			System.out.println("Parents are null.");
-		}*/
+		/*
+		 * if(mother!=null && father!=null){ System.out.println(mother.getGenes()); System.out.println(father.getGenes()); } else{ System.out.println("Parents are null."); }
+		 */
 		this.drawable = drawable;
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glPushMatrix();
@@ -126,8 +119,7 @@ public class Biomorph
 			}
 			gl.glPopMatrix();
 			limbCount++;
-			// This draws a new set of branches from the end of each existing
-			// branch if necessary.
+			// This draws a new set of branches from the end of each existing branch if necessary.
 			if (chains > 1)
 			{
 				gl.glPushMatrix();
@@ -147,19 +139,30 @@ public class Biomorph
 	{
 		return genes;
 	}
-	
-	public Biomorph getMother(){
+	/**
+	 * @return The biomorph's mother.
+	 */
+	public Biomorph getMother()
+	{
 		return mother;
 	}
-
-	public Biomorph getFather(){
+	/**
+	 * @return The biomorph's father.
+	 */
+	public Biomorph getFather()
+	{
 		return father;
 	}
-	public void updateGene(int value, String gene){
-		for(int i=0;i<genes.length;i++){
-			if(gene.equals(genes[i].getGeneType())){
-				genes[i].setValue(value);
-			}
+	/**
+	 * Changes a value of a specified gene.
+	 * @param value The new value of the gene
+	 * @param gene The gene to change
+	 */
+	public void updateGene(int value, String gene)
+	{
+		for (int i = 0; i < genes.length; i++)
+		{
+			if (gene.equals(genes[i].getGeneType())) genes[i].setValue(value);
 		}
 	}
 }

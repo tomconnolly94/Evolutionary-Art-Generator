@@ -14,7 +14,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -28,7 +27,7 @@ import biomorphHandling.*;
 /**
  * The main window for the Biomorph Simulation.
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
- * @version 30/04/2015
+ * @version 05/05/2015
  */
 public class GraphicsMain implements ActionListener
 {
@@ -66,7 +65,7 @@ public class GraphicsMain implements ActionListener
 		// *1* Create components
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		fileMenu = new FileMenu(bm, this,bm.getEvolStats());
+		fileMenu = new FileMenu(bm, this, bm.getEvolStats());
 		evolveButton = new JButton("Create");
 		evolveButton.setSize(new Dimension(20, 20));
 		evolveButton.setToolTipText("This button allows evolution of the live Biomorph and\n whichever Biomorphs are selected below.");
@@ -105,14 +104,13 @@ public class GraphicsMain implements ActionListener
 			selectHallOfFame[i] = new JRadioButton("" + (i + 1));
 			buttonGroup.add(selectHallOfFame[i]);
 		}
-		rightPanel = new RightPanel(mainPanel.getBiomorph(), (int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+		rightPanel = new RightPanel(mainPanel.getBiomorph(), (int) (mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
 		selected = new ArrayList<Biomorph>(8);
 		// *2* Create containers
 		contentPanel = new JPanel(new GridBagLayout());
 		buttonPanel = new JPanel(new BorderLayout());
 		evolvePanel = new JPanel();
-		evolvePanel.setLayout(new GridLayout(0,2));
-		//evolvePanel.setSize(new Dimension(10,40));
+		evolvePanel.setLayout(new GridLayout(0, 2));
 		JPanel selectMutationPanel = new JPanel(new GridBagLayout());
 		JPanel selectHallOfFamePanel = new JPanel(new GridBagLayout());
 		JPanel boxPanel = new JPanel(new BorderLayout());
@@ -138,14 +136,14 @@ public class GraphicsMain implements ActionListener
 		evolvePanel.add(evolveButton);
 		evolvePanel.add(resetButton);
 		evolvePanel.add(loadToMainWindowButton);
-		evolvePanel.add(Box.createRigidArea(new Dimension(0,5)));
+		evolvePanel.add(Box.createRigidArea(new Dimension(0, 5)));
 		evolvePanel.add(motherButton);
 		evolvePanel.add(fatherButton);
 		evolvePanel.add(resetToOrigBioButton);
 		JPanel buttons = new JPanel(new BorderLayout());
 		buttons.add(rightPanel, BorderLayout.NORTH);
 		buttons.add(evolvePanel, BorderLayout.SOUTH);
-		buttonPanel.add(buttons,BorderLayout.NORTH);
+		buttonPanel.add(buttons, BorderLayout.NORTH);
 		boxPanel.add(selectMutationPanel, BorderLayout.NORTH);
 		boxPanel.add(selectHallOfFamePanel, BorderLayout.SOUTH);
 		buttonPanel.add(boxPanel, BorderLayout.SOUTH);
@@ -183,8 +181,7 @@ public class GraphicsMain implements ActionListener
 		{
 			public void windowClosing(WindowEvent e)
 			{
-				System.exit(0);
-				//exitApp();
+				exitApp();
 			}
 		});
 		mainFrame.addComponentListener(new ComponentAdapter()
@@ -213,27 +210,24 @@ public class GraphicsMain implements ActionListener
 		resize();
 	}
 	/**
-	 * Evolves the biomorphs when the Evolve button is pressed.
+	 * Defines actions when certain buttons or menu items are pressed.
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
-		//code to find out whether a window has focus (not being used yet)
-		mainPanel.getCanvas().addFocusListener(new FocusListener(){
-
+		// code to find out whether a window has focus (not being used yet)
+		mainPanel.getCanvas().addFocusListener(new FocusListener()
+		{
 			@Override
 			public void focusGained(FocusEvent arg0)
 			{
-				//System.out.println("MAIN WINDOW FOCUS: YES");	
+				// System.out.println("MAIN WINDOW FOCUS: YES");
 			}
-
 			@Override
 			public void focusLost(FocusEvent arg0)
 			{
-				//System.out.println("MAIN WINDOW FOCUS: NO");
+				// System.out.println("MAIN WINDOW FOCUS: NO");
 			}
-			
 		});
-
 		refreshMutationPanel();
 		bm.createAndAdd();
 		// check if checkboxes are selected
@@ -242,43 +236,46 @@ public class GraphicsMain implements ActionListener
 			// check if each box has been selected and create an array full of selected biomorphs
 			if (selectMutation[i].isSelected())
 			{
-				if (selectMutation[i].getText() == "Random")
-				{
-					selected.add(bm.createAndAdd());
-				}
-				else
-				{
-					// add corresponding biomorph to an arraylist
-					selected.add(bm.getSpecific(i+1));
-				}
+				if (selectMutation[i].getText() == "Random") selected.add(bm.createAndAdd());
+				else selected.add(bm.getSpecific(i + 1));
 			}
 		}
-		// code run after 'Evolve' button clicked
-		if (e.getActionCommand().equals("Evolve")||e.getActionCommand().equals("Create"))
-		{			
+		int selection = -1;
+		switch(e.getActionCommand())
+		{
+		case "Create": case "Evolve":
 			evolveAction();
-		}
-		// code run after 'Reset' button clicked
-		if (e.getActionCommand().equals("Reset"))
-		{
+			break;
+		case "Reset":
 			resetAction();
-		}
-		// code run after 'Load to main window' button clicked
-		if (e.getActionCommand().equals("Load to main window"))
-		{
+			break;
+		case "Load to main window":
 			if (selected.size() == 1)
 			{
 				bm.addSpecific(selected.get(0));
 				refreshMainPanel();
 			}
-			else
-			{
-			}
 			selected.clear();
 			rightPanel.reset();
-		}
-		if (e.getActionCommand().equals("Add to Hall of Fame"))
-		{
+			break;
+		case "Load mother":
+			if (mainPanel.getBiomorph() != null && mainPanel.getBiomorph().getMother() != null)
+			{
+				savedBiomorph = mainPanel.getBiomorph();
+				mainPanel.setBiomorph(mainPanel.getBiomorph().getMother());
+			}
+			break;
+		case "Load father":
+			if (mainPanel.getBiomorph() != null && mainPanel.getBiomorph().getFather() != null)
+			{
+				savedBiomorph = mainPanel.getBiomorph();
+				mainPanel.setBiomorph(mainPanel.getBiomorph().getFather());
+			}
+			break;
+		case "Reset to original Biomorph":
+			mainPanel.setBiomorph(savedBiomorph);
+			break;
+		case "Add to Hall of Fame":
 			if (mainPanel.getBiomorph() == null) JOptionPane.showMessageDialog(mainFrame, "The main panel contains no biomorph to add.");
 			else
 			{
@@ -288,32 +285,8 @@ public class GraphicsMain implements ActionListener
 				else if (hallOfFame.getBiomorph(3) == null) hallOfFame.setBiomorph(3, mainPanel.getBiomorph());
 				else JOptionPane.showMessageDialog(mainFrame, "The Hall of Fame can only store 4 biomorphs.");
 			}
-		}
-		if (e.getActionCommand().equals("Remove Selected"))
-		{
-			int selection = -1;
-			for (int i = 0; i < selectHallOfFame.length; i++) if (selectHallOfFame[i].isSelected()) selection = i;
-			if (selection != -1) hallOfFame.setBiomorph(selection, null);
-			else JOptionPane.showMessageDialog(mainFrame, "No Hall of Fame biomorph selected.");
-		}
-		if (e.getActionCommand().equals("Clear Hall of Fame"))
-		{
-			for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
-		}
-		if (e.getActionCommand().equals("Load mother") && mainPanel.getBiomorph()!=null && mainPanel.getBiomorph().getMother()!=null){
-			savedBiomorph = mainPanel.getBiomorph();
-			mainPanel.setBiomorph(mainPanel.getBiomorph().getMother());
-		}
-		if (e.getActionCommand().equals("Load father") && mainPanel.getBiomorph()!=null && mainPanel.getBiomorph().getFather()!=null){
-			savedBiomorph = mainPanel.getBiomorph();
-			mainPanel.setBiomorph(mainPanel.getBiomorph().getFather());
-		}
-		if (e.getActionCommand().equals("Reset to original Biomorph") && savedBiomorph!=null){
-			mainPanel.setBiomorph(savedBiomorph);
-		}
-		if (e.getActionCommand().equals("Add to Main Window"))
-		{
-			int selection = -1;
+			break;
+		case "Add to Main Window":
 			for (int i = 0; i < selectHallOfFame.length; i++) if (selectHallOfFame[i].isSelected()) selection = i;
 			if (selection != -1)
 			{
@@ -321,12 +294,17 @@ public class GraphicsMain implements ActionListener
 				else JOptionPane.showMessageDialog(mainFrame, "The selected biomorph does not exist.");
 			}
 			else JOptionPane.showMessageDialog(mainFrame, "No Hall of Fame biomorph selected.");
+			break;
+		case "Remove Selected":
+			for (int i = 0; i < selectHallOfFame.length; i++) if (selectHallOfFame[i].isSelected()) selection = i;
+			if (selection != -1) hallOfFame.setBiomorph(selection, null);
+			else JOptionPane.showMessageDialog(mainFrame, "No Hall of Fame biomorph selected.");
+			break;
+		case "Clear Hall of Fame":
+			for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
+			break;
 		}
-
-		//clean up after action
-		for(JCheckBox box : selectMutation){
-			box.setSelected(false);
-		}
+		for (JCheckBox box : selectMutation) box.setSelected(false);
 		rightPanel.update(bm.getSpecific(0));
 	}
 	/**
@@ -345,39 +323,28 @@ public class GraphicsMain implements ActionListener
 	 */
 	public void refreshMutationPanel()
 	{
-		for (int i = 7; i >= 0; i--)
-		{
-			mutationPanel.setBiomorph(i, bm.getSpecific(i + 1));
-		}
+		for (int i = 7; i >= 0; i--) mutationPanel.setBiomorph(i, bm.getSpecific(i + 1));
 	}
 	/**
 	 * Scales the biomorph windows according to the size of the main frame.
 	 */
 	private void resize()
 	{
-		mainPanel.resize((int)(mainFrame.getHeight() * 0.6) - 1);
-		mutationPanel.resize((int)(mainFrame.getHeight() * 0.15) - 1);
-		hallOfFame.resize((int)(mainFrame.getHeight() * 0.225));
-		rightPanel.resize((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
-		buttonPanel.setPreferredSize(new Dimension((int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)), 100));
+		mainPanel.resize((int) (mainFrame.getHeight() * 0.6) - 1);
+		mutationPanel.resize((int) (mainFrame.getHeight() * 0.15) - 1);
+		hallOfFame.resize((int) (mainFrame.getHeight() * 0.225));
+		rightPanel.resize((int) (mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+		buttonPanel.setPreferredSize(new Dimension((int) (mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)), 100));
 		mainPanel.revalidate();
 		mutationPanel.revalidate();
 		hallOfFame.revalidate();
 		rightPanel.revalidate();
 	}
 	/**
-	 * Shows a confirmation dialog to exit the application.
+	 * Evolves two biomorphs
 	 */
-	@SuppressWarnings("unused")
-	private void exitApp()
+	public void evolveAction()
 	{
-		int response = JOptionPane.showConfirmDialog(mainFrame, "Are you sure that you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-		if (response == JOptionPane.YES_OPTION)
-		{
-			System.exit(0);
-		}
-	}
-	private void evolveAction(){
 		// biomorph to be evolved and given to the main window
 		Biomorph returnBiomorph;
 		mainPanel.setBiomorph(bm.getSpecific(0));
@@ -397,17 +364,17 @@ public class GraphicsMain implements ActionListener
 				System.out.println(selected.get(i));
 			}
 		}
-		else
-		{
-			returnBiomorph = bm.evolve(bm.getSpecific(0), bm.getSpecific(bm.getSize()-1));
-		}
+		else returnBiomorph = bm.evolve(bm.getSpecific(0), bm.getSpecific(bm.getSize() - 1));
 		selected.clear();
 		bm.addSpecific(returnBiomorph);
 		refreshMainPanel();
 		rightPanel.update(returnBiomorph);
 	}
-	
-	public void resetAction(){
+	/**
+	 * Resets the biomorphs and windows.
+	 */
+	public void resetAction()
+	{
 		bm = new BiomorphManager();
 		fileMenu.updateBM(bm);
 		fileMenu.updateES(bm.getEvolStats());
@@ -415,17 +382,24 @@ public class GraphicsMain implements ActionListener
 		selected.clear();
 		rightPanel.reset();
 	}
-	
-	public void clearAll(){
+	/**
+	 * Clears all canvases.
+	 */
+	public void clearAll()
+	{
 		resetAction();
 		mainPanel.setBiomorph(null);
-		for(int i=0;i<8;i++){
-			mutationPanel.setBiomorph(i, null);
-		}
-		for(int i=0;i<4;i++){
-			hallOfFame.setBiomorph(i, null);
-		}
-		rightPanel = new RightPanel(bm.getSpecific(0), (int)(mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+		for (int i = 0; i < 8; i++) mutationPanel.setBiomorph(i, null);
+		for (int i = 0; i < 4; i++) hallOfFame.setBiomorph(i, null);
+		rightPanel = new RightPanel(bm.getSpecific(0), (int) (mainFrame.getWidth() - (mainFrame.getHeight() * 0.825 + 40)));
+	}
+	/**
+	 * Shows a confirmation dialog to exit the application.
+	 */
+	private void exitApp()
+	{
+		int response = JOptionPane.showConfirmDialog(mainFrame, "Are you sure that you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		if (response == JOptionPane.YES_OPTION) System.exit(0);
 	}
 	/**
 	 * Main method

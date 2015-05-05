@@ -15,7 +15,7 @@ import com.jogamp.opengl.util.*;
 /**
  * An OpenGL window to be displayed within a JPanel in Swing.
  * @author Jack Taylor, Tom Connolly
- * @version 29/04/2015
+ * @version 05/05/2015
  */
 public class OpenGLCanvas implements GLEventListener, KeyListener
 {
@@ -77,7 +77,7 @@ public class OpenGLCanvas implements GLEventListener, KeyListener
 		{
 			// Positions the camera according to latitude and longitude, as if the biomorph is a globe-like object
 			gl.glOrtho(-32.0f * zoom, 32.0f * zoom, -32.0f * zoom, 32.0f * zoom, -64.0f * zoom, 64.0f * zoom);
-			glu.gluLookAt((float) Math.cos(Math.toRadians(lat)) * -(float)Math.cos(Math.toRadians(lon)), (float)Math.sin(Math.toRadians(lat)), (float)Math.cos(Math.toRadians(lat)) * (float)Math.sin(Math.toRadians(lon)), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+			glu.gluLookAt((float) Math.cos(Math.toRadians(lat)) * -(float) Math.cos(Math.toRadians(lon)), (float) Math.sin(Math.toRadians(lat)), (float) Math.cos(Math.toRadians(lat)) * (float) Math.sin(Math.toRadians(lon)), 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 			if (biomorph != null) biomorph.draw(drawable);
 		}
 		gl.glPopMatrix();
@@ -115,10 +115,9 @@ public class OpenGLCanvas implements GLEventListener, KeyListener
 		case KeyEvent.VK_S:
 			keys[S] = true;
 			break;
-
 		default:
 			break;
-	    }
+		}
 	}
 	/**
 	 * Specifies actions when a key has been released.
@@ -147,7 +146,7 @@ public class OpenGLCanvas implements GLEventListener, KeyListener
 			break;
 		default:
 			break;
-	    }
+		}
 	}
 	public void keyTyped(KeyEvent key)
 	{

@@ -8,7 +8,7 @@ import biomorphHandling.Biomorph;
 /**
  * Class for the Hall of Fame panel. This contains up to 4 biomorphs selected by the user.
  * @author Jack Taylor
- * @version 04/05/2015
+ * @version 05/05/2015
  */
 public class HallOfFamePanel extends JPanel
 {
@@ -22,7 +22,6 @@ public class HallOfFamePanel extends JPanel
 	 */
 	public HallOfFamePanel(Biomorph biomorphs[])
 	{
-		
 		super(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = 0;
@@ -38,11 +37,10 @@ public class HallOfFamePanel extends JPanel
 			else canvas[i] = new OpenGLCanvas(null, size);
 			panel[i].add(canvas[i].getCanvas());
 		}
-		
 		for (int i = 0; i < panel.length; i++)
 		{
 			gbc.gridx = 0;
-			gbc.gridy = i+1;
+			gbc.gridy = i + 1;
 			add(panel[i], gbc);
 			panel[i].setBorder(new EmptyBorder(-5, -5, -4, -3));
 		}

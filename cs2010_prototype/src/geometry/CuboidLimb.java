@@ -4,7 +4,7 @@ import javax.media.opengl.GLAutoDrawable;
 /**
  * Class for a cuboid limb. These are composed of 8 vertices.
  * @author Jack Taylor
- * @version 24/04/2015
+ * @version 05/05/2015
  */
 public class CuboidLimb extends Limb
 {
@@ -13,7 +13,6 @@ public class CuboidLimb extends Limb
 	 */
 	public CuboidLimb(int length, int thickness, int red, int green, int blue)
 	{
-		
 		super(length, thickness, red, green, blue);
 	}
 	/**

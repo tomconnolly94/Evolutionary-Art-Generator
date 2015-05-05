@@ -4,19 +4,16 @@ import javax.swing.JTextArea;
 /**
  * Class to take the gene values from a Biomorph and store them to be printed when called.
  * @author Tom Connolly
- * @version 24/04/2015
+ * @version 05/05/2015
  */
 public class EvolutionStats
 {
-	// Fields
 	private ArrayList<int[]> statsMaster;
 	private ArrayList<String> runningStats;
 	private int[] targetValues;
 	private int numOfGenes = 12;
 	/*
-	 * Constructor initialises all fields and loads the geneNames so that genes
-	 * can be labelled. also fills arrayList with the names of each gene to be
-	 * used later.
+	 * Constructor initialises all fields and loads the geneNames so that genes can be labelled. also fills arrayList with the names of each gene to be used later.
 	 */
 	public EvolutionStats(int[] targetValues)
 	{
@@ -31,10 +28,7 @@ public class EvolutionStats
 	public void saveGeneValues(int[] values)
 	{
 		int[] savedValues = new int[numOfGenes];
-		for (int i = 0; i < numOfGenes; i++)
-		{
-			savedValues[i] = values[i];
-		}
+		for (int i = 0; i < numOfGenes; i++) savedValues[i] = values[i];
 		statsMaster.add(savedValues);
 	}
 	/*
@@ -56,12 +50,11 @@ public class EvolutionStats
 			}
 		}
 	}
-	
 	public JTextArea returnStats()
 	{
-		
 		JTextArea textArea = new JTextArea();
-		if(statsMaster.size()>=1){
+		if (statsMaster.size() >= 1)
+		{
 			for (int arrayIndex = 0; arrayIndex < statsMaster.size(); arrayIndex++)
 			{
 				for (int dataIndex = 0; dataIndex < numOfGenes; dataIndex++)
@@ -69,17 +62,12 @@ public class EvolutionStats
 					String spaces = " ~ ";
 					String val = Integer.toString(statsMaster.get(arrayIndex)[dataIndex]);
 					runningStats.set(dataIndex, runningStats.get(dataIndex) + val + spaces);
-
 				}
 			}
 			textArea.append("Gene values for all evolved Biomorphs\n\n");
-			for(int i=0;i<12;i++){
-				textArea.append(runningStats.get(i) + "\n");
-			}
+			for (int i = 0; i < 12; i++) textArea.append(runningStats.get(i) + "\n");
 		}
-		else{
-			textArea.append("No Biomorphs have been created please press 'Evolve'");
-		}
+		else textArea.append("No Biomorphs have been created please press 'Evolve'");
 		return textArea;
 	}
 	/**
@@ -102,16 +90,17 @@ public class EvolutionStats
 		runningStats.add("Iridescence Green   " + targetValues[10] + pv);
 		runningStats.add("Iridescence Blue    " + targetValues[11] + pv);
 	}
-	
-	public void clearStats(){
+	public void clearStats()
+	{
 		statsMaster.clear();
 		runningStats.clear();
 	}
-	
-	public void updateTargetValues(int[] targetValues){
+	public void updateTargetValues(int[] targetValues)
+	{
 		this.targetValues = targetValues;
 	}
-	public ArrayList<String> getRunningStats(){
+	public ArrayList<String> getRunningStats()
+	{
 		return runningStats;
 	}
 }

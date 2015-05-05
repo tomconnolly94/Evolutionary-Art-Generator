@@ -8,7 +8,7 @@ import biomorphHandling.BiomorphCreator;
 /**
  * Class to handle importing of Biomorphs.
  * @author Tom Connolly
- * @version 03/05/2015
+ * @version 05/05/2015
  */
 public class Load
 {
@@ -27,7 +27,7 @@ public class Load
 	 */
 	public Biomorph load()
 	{
-		Biomorph biomorph = new Biomorph(null,null,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+		Biomorph biomorph = new Biomorph(null, null, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 		try
 		{
 			BufferedReader br = new BufferedReader(new FileReader("src/biomorphTextFiles/" + fileName + ".txt"));
@@ -39,7 +39,6 @@ public class Load
 			}
 			catch (IOException e)
 			{
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			int[] genes = new int[12];
@@ -51,7 +50,7 @@ public class Load
 				genes[i] = Integer.parseInt(letter);
 				i++;
 			}
-			biomorph = bc.createBiomorph(null,null,genes[0], genes[1], genes[2], genes[3], genes[4], genes[5], genes[6], genes[7], genes[8], genes[9], genes[10], genes[11]);
+			biomorph = bc.createBiomorph(null, null, genes[0], genes[1], genes[2], genes[3], genes[4], genes[5], genes[6], genes[7], genes[8], genes[9], genes[10], genes[11]);
 			br.close();
 		}
 		catch (FileNotFoundException e)

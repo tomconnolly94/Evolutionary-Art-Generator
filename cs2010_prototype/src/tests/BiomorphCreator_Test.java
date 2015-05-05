@@ -8,15 +8,15 @@ public class BiomorphCreator_Test
 	private BiomorphCreator bc;
 	private Biomorph biomorphRand;
 	private Biomorph biomorphNonRand;
-	//Gene values generated when seed for RNG is 10
-	private int[] geneValues = {8, 2, 2, 0, 2, -2, 105, 15, 172, -1, 3, -3};
+	// Gene values generated when seed for RNG is 10
+	private int[] geneValues =
+	{8, 2, 2, 0, 2, -2, 105, 15, 172, -1, 3, -3};
 	@Before
 	// pre-conditions
 	public void setUp()
 	{
 		/*
-		 * for test to pass the seed in biomorphCreator must be set to 10. this
-		 * means the random factor of the createBiomorph class can be tested.
+		 * for test to pass the seed in biomorphCreator must be set to 10. this means the random factor of the createBiomorph class can be tested.
 		 */
 		bc = new BiomorphCreator();
 		biomorphRand = bc.createRandomBiomorph();

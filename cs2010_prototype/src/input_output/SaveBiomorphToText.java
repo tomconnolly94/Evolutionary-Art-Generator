@@ -6,7 +6,7 @@ import java.io.IOException;
 /**
  * Class to handle exporting of Biomorphs.
  * @author Tom Connolly
- * @version 04/05/2015
+ * @version 05/05/2015
  */
 public class SaveBiomorphToText
 {
@@ -23,23 +23,14 @@ public class SaveBiomorphToText
 		try
 		{
 			String content = "";
-			for (Gene gene : geneValues)
-			{
-				content = content + gene.getValue() + ",";
-			}
+			for (Gene gene : geneValues) content = content + gene.getValue() + ",";
 			File dir = new File(anchorDestination);
-			if (!(dir.exists()))
-			{
-				dir.mkdir();
-			}
+			if (!(dir.exists())) dir.mkdir();
 			// save file to src
 			file = new File(anchorDestination + fileName + ".txt");
 			fop = new FileOutputStream(file);
 			// if file doesnt exists, then create it
-			if (!file.exists())
-			{
-				file.createNewFile();
-			}
+			if (!file.exists()) file.createNewFile();
 			// get the content in bytes
 			byte[] contentInBytes = content.getBytes();
 			fop.write(contentInBytes);
@@ -55,10 +46,7 @@ public class SaveBiomorphToText
 		{
 			try
 			{
-				if (fop != null)
-				{
-					fop.close();
-				}
+				if (fop != null) fop.close();
 			}
 			catch (IOException e)
 			{

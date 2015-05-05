@@ -24,15 +24,13 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ToolTipManager;
-import javax.swing.event.MenuEvent;
-import javax.swing.event.MenuListener;
 import evolution.EvolutionStats;
 import biomorphHandling.Biomorph;
 import biomorphHandling.BiomorphManager;
 /**
  * The File Menu element of the program
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
- * @version 04/05/2015
+ * @version 05/05/2015
  */
 public class FileMenu extends JComponent
 {
@@ -257,7 +255,8 @@ public class FileMenu extends JComponent
 				// add buttons to button group
 				bg.add(button1);
 				bg.add(button2);
-				String[] geneNames = {"Branch (Range: 3 - 10)", "Chain Gene (Range: 1 - 3)", "Length (Range: 1 - 8)", "Length Increment (Range: -3 - 3)", "Thickness (Range: 1 - 10)", "Thickness Increment (Range: -3 - 3)", "Colour Red (Range :0 - 255)", "Colour Green (Range: 0 - 255)", "Colour Blue (Range: 0 - 255)", "Iridescence Red (Range: -16 - 16)", "Iridescence Green (Range: -16 - 16)", "Iridescence Blue (Range: -16 - 16)"};
+				String[] geneNames =
+				{"Branch (Range: 3 - 10)", "Chain Gene (Range: 1 - 3)", "Length (Range: 1 - 8)", "Length Increment (Range: -3 - 3)", "Thickness (Range: 1 - 10)", "Thickness Increment (Range: -3 - 3)", "Colour Red (Range :0 - 255)", "Colour Green (Range: 0 - 255)", "Colour Blue (Range: 0 - 255)", "Iridescence Red (Range: -16 - 16)", "Iridescence Green (Range: -16 - 16)", "Iridescence Blue (Range: -16 - 16)"};
 				JTextField[] tfa = new JTextField[12];
 				for (int i = 0; i < 12; i++)
 				{
@@ -269,7 +268,6 @@ public class FileMenu extends JComponent
 				}
 				button1.addActionListener(new ActionListener()
 				{
-					@Override
 					public void actionPerformed(ActionEvent e)
 					{
 						inputPanel.setVisible(true);
@@ -277,7 +275,6 @@ public class FileMenu extends JComponent
 				});
 				button2.addActionListener(new ActionListener()
 				{
-					@Override
 					public void actionPerformed(ActionEvent e)
 					{
 						inputPanel.setVisible(false);
@@ -293,18 +290,12 @@ public class FileMenu extends JComponent
 					bm.setEvolveClo(true);
 					for (int i = 0; i < 12; i++)
 					{
-						if (tfa[i].getText().equals(""))
-						{
-							tfa[i].setText(Integer.toString(bm.getTargetValues()[i]));
-						}
+						if (tfa[i].getText().equals("")) tfa[i].setText(Integer.toString(bm.getTargetValues()[i]));
 					}
 					bm.updateTargetValues(Integer.parseInt(tfa[0].getText()), Integer.parseInt(tfa[1].getText()), Integer.parseInt(tfa[2].getText()), Integer.parseInt(tfa[3].getText()), Integer.parseInt(tfa[4].getText()), Integer.parseInt(tfa[5].getText()), Integer.parseInt(tfa[6].getText()), Integer.parseInt(tfa[7].getText()), Integer.parseInt(tfa[8].getText()), Integer.parseInt(tfa[9].getText()), Integer.parseInt(tfa[10].getText()), Integer.parseInt(tfa[11].getText()));
 					bm.printTargetValues();
 				}
-				else
-				{
-					bm.setEvolveClo(false);
-				}
+				else bm.setEvolveClo(false);
 			}
 		});
 		return jMenuItem;
@@ -416,7 +407,7 @@ public class FileMenu extends JComponent
 			public void actionPerformed(ActionEvent arg0)
 			{
 				JPanel panel = new JPanel(new GridLayout(3, 0));
-				panel.setSize(new Dimension(300,300));
+				panel.setSize(new Dimension(300, 300));
 				JTextField xVal = new JTextField(2);
 				panel.add(new JLabel("Enter x dimension of Collage"));
 				panel.add(xVal);
@@ -461,5 +452,4 @@ public class FileMenu extends JComponent
 	{
 		this.es = es;
 	}
-
 }

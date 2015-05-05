@@ -6,7 +6,7 @@ import biomorphHandling.Biomorph;
 /**
  * The large biomorph panel for the GUI.
  * @author Jack Taylor
- * @version 30/04/2015
+ * @version 05/05/2015
  */
 public class MainBiomorphPanel extends JPanel
 {
@@ -37,7 +37,7 @@ public class MainBiomorphPanel extends JPanel
 		canvas.getCanvas().setSize(size, size);
 	}
 	/**
-	 * 	 * Returns the biomorph displayed on the canvas.
+	 * * Returns the biomorph displayed on the canvas.
 	 */
 	public Biomorph getBiomorph()
 	{

@@ -7,7 +7,8 @@ import biomorphHandling.*;
 public class Biomorph_Test
 {
 	private Biomorph biomorph;
-	private int[] values = {2, 4, 5, 2, 3, 1, 100, 100, 100, 0, 0, 0};
+	private int[] values =
+	{2, 4, 5, 2, 3, 1, 100, 100, 100, 0, 0, 0};
 	@Before
 	// pre-conditions
 	public void setUp()

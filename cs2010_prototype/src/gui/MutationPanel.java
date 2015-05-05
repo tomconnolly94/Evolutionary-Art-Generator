@@ -7,7 +7,7 @@ import biomorphHandling.Biomorph;
 /**
  * Class for the mutation panel. This contains 8 biomorphs for evolution.
  * @author Jack Taylor
- * @version 04/05/2015
+ * @version 05/05/2015
  */
 public class MutationPanel extends JPanel
 {
@@ -34,7 +34,7 @@ public class MutationPanel extends JPanel
 			panel[i].add(canvas[i].getCanvas());
 		}
 		for (int i = 0; i < panel.length; i++)
-		{	
+		{
 			gbc.gridx = i % 4;
 			gbc.gridy = i / 4;
 			add(panel[i], gbc);

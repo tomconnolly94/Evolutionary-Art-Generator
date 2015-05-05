@@ -4,7 +4,7 @@ import javax.media.opengl.GLAutoDrawable;
 /**
  * Class for a simple limb. These are flat and are composed of a single line.
  * @author Jack Taylor
- * @version 24/04/2015
+ * @version 05/05/2015
  */
 public class SimpleLimb extends Limb
 {

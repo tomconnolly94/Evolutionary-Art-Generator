@@ -4,7 +4,7 @@ import javax.media.opengl.GLAutoDrawable;
 /**
  * Class for a 3D vertex. This will be used for each point of a biomorph limb.
  * @author Jack Taylor
- * @version 24/04/2015
+ * @version 05/05/2015
  */
 public class Vertex
 {
