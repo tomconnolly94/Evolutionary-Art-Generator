@@ -73,23 +73,7 @@ public class EvolutionStats
 		else textArea.append("No Biomorphs have been created please press 'Evolve'");
 		return textArea;
 	}
-	
-	public JTable getResultsTable(){
-		Object[][] data = new Object[statsMaster.size()][12];
-		
-		for(int i=0;i<statsMaster.size();i++){
-			for(int j=0;i<12;i++){
-				data[i][j]=statsMaster.get(i)[j];
-			}
-		}
-		ArrayList<String> geneNames = loadGeneNames();
-		String[] names = new String[12];
-		for(int i =0;i<12;i++){
-			names[i] = geneNames.get(i);
-		}
-		JTable table = new JTable(data,names);
-		return table;
-	}
+
 	/**
 	 * Method to load all the geneNames into an array ready to be used for printing.
 	 */
