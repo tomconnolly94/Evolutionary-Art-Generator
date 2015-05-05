@@ -202,6 +202,14 @@ public class GraphicsMain implements ActionListener
 				bm.addSpecific(selected.get(0));
 				refreshMainPanel();
 			}
+			else if(selected.size()==0)
+			{
+				JOptionPane.showMessageDialog(buttonPanel, "You have not selected a Biomorph using the checkboxes below.");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(buttonPanel, "You can only load one Biomorph to the main window.");
+			}
 			selected.clear();
 			rightPanel.reset();
 			break;
@@ -211,12 +219,20 @@ public class GraphicsMain implements ActionListener
 				savedBiomorph = mainPanel.getBiomorph();
 				mainPanel.setBiomorph(mainPanel.getBiomorph().getMother());
 			}
+			else
+			{
+				JOptionPane.showMessageDialog(buttonPanel, "This Biomorph is randomly generated and has no mother.");
+			}
 			break;
 		case "Load father":
 			if (mainPanel.getBiomorph() != null && mainPanel.getBiomorph().getFather() != null)
 			{
 				savedBiomorph = mainPanel.getBiomorph();
 				mainPanel.setBiomorph(mainPanel.getBiomorph().getFather());
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(buttonPanel, "This Biomorph is randomly generated and has no father.");
 			}
 			break;
 		case "Reset to original Biomorph":

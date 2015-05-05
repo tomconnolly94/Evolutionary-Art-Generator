@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ToolTipManager;
@@ -298,9 +299,9 @@ public class FileMenu extends JComponent
 			public void actionPerformed(ActionEvent n)
 			{
 				JFrame frame = new JFrame();
-				JTextArea textArea = es.returnTextAreaStats();
-				textArea.setEditable(false);
-				frame.add(textArea);
+				JTextArea component= es.returnTextAreaStats();
+				component.setEditable(false);
+				frame.add(component);
 				frame.pack();
 				frame.setVisible(true);
 			}

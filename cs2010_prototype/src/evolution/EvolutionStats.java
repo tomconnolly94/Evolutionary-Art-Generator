@@ -1,5 +1,6 @@
 package evolution;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 /**
  * Class to take the gene values from a Biomorph and store them to be printed when called.
@@ -9,7 +10,7 @@ import javax.swing.JTextArea;
 public class EvolutionStats
 {
 	private ArrayList<int[]> statsMaster;
-	private ArrayList<String> runningStats;
+	private ArrayList<String> runningStatsString;
 	private int[] targetValues;
 	private int numOfGenes = 12;
 	/*
@@ -45,8 +46,8 @@ public class EvolutionStats
 			{
 				String spaces = " ~ ";
 				String val = Integer.toString(statsMaster.get(arrayIndex)[dataIndex]);
-				runningStats.set(dataIndex, runningStats.get(dataIndex) + val + spaces);
-				System.out.println(runningStats.get(dataIndex));
+				runningStatsString.set(dataIndex, runningStatsString.get(dataIndex) + val + spaces);
+				System.out.println(runningStatsString.get(dataIndex));
 			}
 		}
 	}
@@ -61,39 +62,59 @@ public class EvolutionStats
 				{
 					String spaces = " ~ ";
 					String val = Integer.toString(statsMaster.get(arrayIndex)[dataIndex]);
-					runningStats.set(dataIndex, runningStats.get(dataIndex) + val + spaces);
+					runningStatsString.set(dataIndex, runningStatsString.get(dataIndex) + val + spaces);
 				}
 			}
 			textArea.append("Gene values for all evolved Biomorphs\n\n");
-			for (int i = 0; i < 12; i++) textArea.append(runningStats.get(i) + "\n");
+			textArea.append("This area displays all the gene values of each evolved Biomorph. Each column represents "
+					+ "a Biomorphs genes, and each row represents the evolution path of each gene.\n\n");
+			for (int i = 0; i < 12; i++) textArea.append(runningStatsString.get(i) + "\n");
 		}
 		else textArea.append("No Biomorphs have been created please press 'Evolve'");
 		return textArea;
 	}
+	
+	public JTable getResultsTable(){
+		Object[][] data = new Object[statsMaster.size()][12];
+		
+		for(int i=0;i<statsMaster.size();i++){
+			for(int j=0;i<12;i++){
+				data[i][j]=statsMaster.get(i)[j];
+			}
+		}
+		ArrayList<String> geneNames = loadGeneNames();
+		String[] names = new String[12];
+		for(int i =0;i<12;i++){
+			names[i] = geneNames.get(i);
+		}
+		JTable table = new JTable(data,names);
+		return table;
+	}
 	/**
 	 * Method to load all the geneNames into an array ready to be used for printing.
 	 */
-	private void loadGeneNames()
+	private ArrayList<String> loadGeneNames()
 	{
 		String pv = "(PV)~~ ";
-		runningStats = new ArrayList<String>(numOfGenes);
-		runningStats.add("Branch              " + targetValues[0] + pv);
-		runningStats.add("Chain               " + targetValues[1] + pv);
-		runningStats.add("Color Red           " + targetValues[2] + pv);
-		runningStats.add("Color Green         " + targetValues[3] + pv);
-		runningStats.add("Color Blue          " + targetValues[4] + pv);
-		runningStats.add("Length              " + targetValues[5] + pv);
-		runningStats.add("Length Increment    " + targetValues[6] + pv);
-		runningStats.add("Thickness           " + targetValues[7] + pv);
-		runningStats.add("Thickness Increment " + targetValues[8] + pv);
-		runningStats.add("Iridescence Red     " + targetValues[9] + pv);
-		runningStats.add("Iridescence Green   " + targetValues[10] + pv);
-		runningStats.add("Iridescence Blue    " + targetValues[11] + pv);
+		runningStatsString = new ArrayList<String>(numOfGenes);
+		runningStatsString.add("Branch\t\t" + targetValues[0] + pv);
+		runningStatsString.add("Chain\t\t" + targetValues[1] + pv);
+		runningStatsString.add("Color Red\t\t"+ targetValues[2] + pv);
+		runningStatsString.add("Color Green\t\t" + targetValues[3] + pv);
+		runningStatsString.add("Color Blue\t\t" + targetValues[4] + pv);
+		runningStatsString.add("Length\t\t" + targetValues[5] + pv);
+		runningStatsString.add("Length Increment\t" + targetValues[6] + pv);
+		runningStatsString.add("Thickness\t\t" + targetValues[7] + pv);
+		runningStatsString.add("Thickness Increment\t" + targetValues[8] + pv);
+		runningStatsString.add("Iridescence Red\t" + targetValues[9] + pv);
+		runningStatsString.add("Iridescence Green\t" + targetValues[10] + pv);
+		runningStatsString.add("Iridescence Blue\t" + targetValues[11] + pv);
+		return runningStatsString;
 	}
 	public void clearStats()
 	{
 		statsMaster.clear();
-		runningStats.clear();
+		runningStatsString.clear();
 	}
 	public void updateTargetValues(int[] targetValues)
 	{
@@ -101,6 +122,6 @@ public class EvolutionStats
 	}
 	public ArrayList<String> getRunningStats()
 	{
-		return runningStats;
+		return runningStatsString;
 	}
 }
