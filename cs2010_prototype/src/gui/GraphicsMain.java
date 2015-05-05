@@ -175,20 +175,6 @@ public class GraphicsMain implements ActionListener
 	 */
 	public void actionPerformed(ActionEvent e)
 	{
-		// code to find out whether a window has focus (not being used yet)
-		mainPanel.getCanvas().addFocusListener(new FocusListener()
-		{
-			@Override
-			public void focusGained(FocusEvent arg0)
-			{
-				// System.out.println("MAIN WINDOW FOCUS: YES");
-			}
-			@Override
-			public void focusLost(FocusEvent arg0)
-			{
-				// System.out.println("MAIN WINDOW FOCUS: NO");
-			}
-		});
 		refreshMutationPanel();
 		bm.createAndAdd();
 		// check if checkboxes are selected
@@ -274,7 +260,6 @@ public class GraphicsMain implements ActionListener
 	public void refreshMainPanel()
 	{
 		mainPanel.setBiomorph(bm.getSpecific(0));
-		System.out.println(bm.getSpecific(0));
 		fileMenu.updateBiomorph(bm.getSpecific(0));
 		refreshMutationPanel();
 		mainPanel.revalidate();
@@ -320,9 +305,6 @@ public class GraphicsMain implements ActionListener
 			{
 				// evolve two biomorphs
 				returnBiomorph = bm.evolve(returnBiomorph, selected.get(i));
-				// bug tracking
-				System.out.println(returnBiomorph);
-				System.out.println(selected.get(i));
 			}
 		}
 		else returnBiomorph = bm.evolve(bm.getSpecific(0), bm.getSpecific(bm.getSize() - 1));

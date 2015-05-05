@@ -21,6 +21,7 @@ public class SaveBiomorphToText
 	 */
 	public SaveBiomorphToText(Gene[] geneValues)
 	{
+		System.out.println(geneValues.length);
 		JFileChooser fc = new JFileChooser(new File(System.getProperty("user.home")));
 		int returnVal = fc.showSaveDialog(null);
 		if (returnVal == JFileChooser.APPROVE_OPTION)
@@ -62,7 +63,7 @@ public class SaveBiomorphToText
 		
 	}
 	public static void main(String[] args){
-		Gene[] genes = {new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b"),new Length(1,"b")};
+		Gene[] genes = {new Length(0,"b"),new Length(1,"b"),new Length(2,"b"),new Length(3,"b"),new Length(4,"b"),new Length(5,"b"),new Length(6,"b"),new Length(7,"b"),new Length(8,"b"),new Length(9,"b"),new Length(10,"b"),new Length(11,"b")};
 		SaveBiomorphToText save = new SaveBiomorphToText(genes);
 	}
 }

@@ -406,7 +406,6 @@ public class FileMenu extends JComponent
 				JOptionPane.showConfirmDialog(null, panel, "Enter Target Gene Values", JOptionPane.OK_CANCEL_OPTION);
 				if (!xVal.getText().equals("") && !yVal.getText().equals(""))
 				{
-					System.out.println(xVal.getText());
 					CollageGenerator cg = new CollageGenerator(bm);
 					cg.generateCustom(Integer.parseInt(xVal.getText()), Integer.parseInt(yVal.getText()), box.isSelected());
 				}

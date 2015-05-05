@@ -14,7 +14,7 @@ import biomorphHandling.BiomorphCreator;
  */
 public class Load
 {
-	private String fileName;
+	private File file;
 	/**
 	 * Constructor
 	 * @param fileName The name of the file to load from
@@ -28,44 +28,49 @@ public class Load
 	 */
 	public Biomorph load()
 	{
+		
 		JFileChooser fc = new JFileChooser(new File(System.getProperty("user.home")));
 		int returnVal = fc.showOpenDialog(null);
 		if (returnVal == JFileChooser.APPROVE_OPTION)
 		{
-			File file = fc.getSelectedFile();
+			file = fc.getSelectedFile();
 		}
 		Biomorph biomorph = null;
-		try
-		{
-			BufferedReader br = new BufferedReader(new FileReader("src/biomorphTextFiles/" + fileName + ".txt"));
-			BiomorphCreator bc = new BiomorphCreator();
-			String[] parts = new String[12];
+		if(file!=null){
 			try
 			{
-				parts = br.readLine().split(",");
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				BiomorphCreator bc = new BiomorphCreator();
+				String[] parts = new String[12];
+				try
+				{
+					//split the text file into array using delimiter "'"
+					parts = br.readLine().split(",");
+				}
+				catch (IOException e)
+				{
+					System.out.println("Error code: Genes could not be read.");
+				}
+				if(parts.length==12){
+					int[] genes = new int[12];
+					for (int i=0;i<parts.length;i++)
+					{
+						genes[i] = Integer.parseInt(parts[i]);
+					}
+					biomorph = bc.createBiomorph(null, null, genes[0], genes[1], genes[2], genes[3], genes[4], genes[5], genes[6], genes[7], genes[8], genes[9], genes[10], genes[11]);
+					br.close();
+				}
+				else{
+					System.out.println("File has been corrupted, it has an unexpected number of values.");
+				}
+			}
+			catch (FileNotFoundException e)
+			{
+				System.out.println("Error code: File not found.");
 			}
 			catch (IOException e)
 			{
-				e.printStackTrace();
 			}
-			int[] genes = new int[12];
-			int i = 0;
-			for (String letter : parts)
-			{
-				System.out.println(letter);
-				letter = letter.replaceAll("\\s+", "");
-				genes[i] = Integer.parseInt(letter);
-				i++;
-			}
-			biomorph = bc.createBiomorph(null, null, genes[0], genes[1], genes[2], genes[3], genes[4], genes[5], genes[6], genes[7], genes[8], genes[9], genes[10], genes[11]);
-			br.close();
-		}
-		catch (FileNotFoundException e)
-		{
-			System.out.println("BIOMORPH TEXT-FILE NOT FOUND");
-		}
-		catch (IOException e)
-		{
 		}
 		return biomorph;
 	}
@@ -74,7 +79,7 @@ public class Load
 	 */
 	public static void main(String[] args) throws IOException
 	{
-		Load load = new Load("biomorph");
+		Load load = new Load();
 		load.load();
 	}
 }

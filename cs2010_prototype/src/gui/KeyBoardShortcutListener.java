@@ -26,7 +26,7 @@ public class KeyBoardShortcutListener implements KeyListener
 		}
 		else if ((e.getKeyCode() == KeyEvent.VK_O) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0))
 		{
-			final JFileChooser fc = new JFileChooser("src/biomorphTextFiles/");
+		/*	final JFileChooser fc = new JFileChooser("src/biomorphTextFiles/");
 			int returnVal = fc.showOpenDialog(frame);
 			if (returnVal == JFileChooser.APPROVE_OPTION)
 			{
@@ -36,7 +36,7 @@ public class KeyBoardShortcutListener implements KeyListener
 				Biomorph loadedBiomorph = load.load();
 				bm.addSpecific(loadedBiomorph);
 				gm.refreshMainPanel();
-			}
+			}*/
 		}
 		else if ((e.getKeyCode() == KeyEvent.VK_S) && ((e.getModifiers() & KeyEvent.CTRL_MASK) != 0))
 		{
