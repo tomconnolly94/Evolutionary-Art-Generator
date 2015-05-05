@@ -50,7 +50,7 @@ public class EvolutionStats
 			}
 		}
 	}
-	public JTextArea returnStats()
+	public JTextArea returnTextAreaStats()
 	{
 		JTextArea textArea = new JTextArea();
 		if (statsMaster.size() >= 1)

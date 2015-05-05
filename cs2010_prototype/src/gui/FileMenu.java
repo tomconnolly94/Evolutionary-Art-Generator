@@ -298,7 +298,7 @@ public class FileMenu extends JComponent
 			public void actionPerformed(ActionEvent n)
 			{
 				JFrame frame = new JFrame();
-				JTextArea textArea = es.returnStats();
+				JTextArea textArea = es.returnTextAreaStats();
 				textArea.setEditable(false);
 				frame.add(textArea);
 				frame.pack();
@@ -424,7 +424,7 @@ public class FileMenu extends JComponent
 		{
 			public void actionPerformed(ActionEvent n)
 			{
-				JOptionPane.showMessageDialog(jMenuItem, "Cleared!");
+				new HelpDocument();
 			}
 		});
 		return jMenuItem;
