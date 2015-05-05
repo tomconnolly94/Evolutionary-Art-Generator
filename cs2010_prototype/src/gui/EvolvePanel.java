@@ -41,7 +41,7 @@ public class EvolvePanel extends JPanel
 		add(loadMother);
 		add(loadFather);
 		add(resetToOriginal);
-		add(new )
+		//add(new )
 	}
 	public void setEvolveText(boolean evolveText)
 	{
