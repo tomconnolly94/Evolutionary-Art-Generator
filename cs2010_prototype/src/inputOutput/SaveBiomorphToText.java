@@ -12,7 +12,7 @@ import javax.swing.JFileChooser;
 public class SaveBiomorphToText
 {
 	static FileOutputStream fop = null;
-	 File file;
+	File file;
 	/**
 	 * Constructor
 	 * @param geneValues The array of genes to save
@@ -32,7 +32,8 @@ public class SaveBiomorphToText
 			String content = "";
 			for (Gene gene : geneValues) content = content + gene.getValue() + ",";
 			// save file to src
-			if(file!=null){
+			if (file != null)
+			{
 				fop = new FileOutputStream(file);
 				// if file doesnt exists, then create it
 				if (!file.exists()) file.createNewFile();
@@ -56,6 +57,7 @@ public class SaveBiomorphToText
 			}
 			catch (IOException e)
 			{
+				
 			}
 		}
 	}

@@ -21,6 +21,7 @@ public class Load
 	 */
 	public Load()
 	{
+		
 	}
 	/**
 	 * Loads a biomorph
@@ -28,7 +29,6 @@ public class Load
 	 */
 	public Biomorph load()
 	{
-		
 		JFileChooser fc = new JFileChooser(new File(System.getProperty("user.home")));
 		int returnVal = fc.showOpenDialog(null);
 		if (returnVal == JFileChooser.APPROVE_OPTION)
@@ -36,7 +36,8 @@ public class Load
 			file = fc.getSelectedFile();
 		}
 		Biomorph biomorph = null;
-		if(file!=null){
+		if (file != null)
+		{
 			try
 			{
 				BufferedReader br = new BufferedReader(new FileReader(file));
@@ -44,23 +45,25 @@ public class Load
 				String[] parts = new String[12];
 				try
 				{
-					//split the text file into array using delimiter "'"
+					// split the text file into array using delimiter "'"
 					parts = br.readLine().split(",");
 				}
 				catch (IOException e)
 				{
 					System.out.println("Error code: Genes could not be read.");
 				}
-				if(parts.length==12){
+				if (parts.length == 12)
+				{
 					int[] genes = new int[12];
-					for (int i=0;i<parts.length;i++)
+					for (int i = 0; i < parts.length; i++)
 					{
 						genes[i] = Integer.parseInt(parts[i]);
 					}
 					biomorph = bc.createBiomorph(null, null, genes[0], genes[1], genes[2], genes[3], genes[4], genes[5], genes[6], genes[7], genes[8], genes[9], genes[10], genes[11]);
 					br.close();
 				}
-				else{
+				else
+				{
 					System.out.println("File has been corrupted, it has an unexpected number of values.");
 				}
 			}
@@ -70,6 +73,7 @@ public class Load
 			}
 			catch (IOException e)
 			{
+				
 			}
 		}
 		return biomorph;
