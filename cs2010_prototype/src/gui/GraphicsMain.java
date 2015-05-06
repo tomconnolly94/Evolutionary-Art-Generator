@@ -8,8 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -158,11 +156,6 @@ public class GraphicsMain implements ActionListener
 				resize();
 			}
 		});
-		mainFrame.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
-		rightPanel.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
-		buttonPanel.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
-		fileMenu.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
-		contentPanel.addKeyListener(new KeyBoardShortcutListener(this, bm, mainFrame));
 		mainFrame.setFocusable(true);
 		mainFrame.requestFocusInWindow();
 		// *6* Pack and display

@@ -1,6 +1,5 @@
 package evolution;
 import java.util.ArrayList;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 /**
  * Class to take the gene values from a Biomorph and store them to be printed when called.
