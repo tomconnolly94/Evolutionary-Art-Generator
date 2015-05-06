@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="biomorphHandling.BiomorphCreator" project="cs2010_prototype" 
     file="/cs2010_prototype/src/biomorphHandling/BiomorphCreator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="309" x="1361" y="37"/>    
+    <position height="-1" width="-1" x="1299" y="-164"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="biomorphHandling.BiomorphManager" project="cs2010_prototype" 
     file="/cs2010_prototype/src/biomorphHandling/BiomorphManager.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="222" x="1710" y="37"/>    
+    <position height="-1" width="-1" x="1904" y="-181"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="biomorphHandling.Biomorph" project="cs2010_prototype" 
     file="/cs2010_prototype/src/biomorphHandling/Biomorph.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="230" x="1440" y="284"/>    
+    <position height="-1" width="-1" x="1464" y="236"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="evolution.Evolver" project="cs2010_prototype" 
     file="/cs2010_prototype/src/evolution/Evolver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="183" x="1217" y="284"/>    
+    <position height="-1" width="-1" x="1096" y="400"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="evolution.EvolutionStats" project="cs2010_prototype" 
     file="/cs2010_prototype/src/evolution/EvolutionStats.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="177" x="1710" y="284"/>    
+    <position height="-1" width="-1" x="2235" y="66"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="genes.Chain" project="cs2010_prototype" 
     file="/cs2010_prototype/src/genes/Chain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="103" x="563" y="724"/>    
+    <position height="-1" width="-1" x="1008" y="756"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="genes.Branch" project="cs2010_prototype" 
     file="/cs2010_prototype/src/genes/Branch.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="111" x="1066" y="724"/>    
+    <position height="-1" width="-1" x="1318" y="761"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="genes.LengthIncrement" project="cs2010_prototype" 
     file="/cs2010_prototype/src/genes/LengthIncrement.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="156" x="870" y="724"/>    
+    <position height="-1" width="-1" x="1158" y="759"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="genes.Gene" project="cs2010_prototype" 
     file="/cs2010_prototype/src/genes/Gene.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="129" x="1217" y="513"/>    
+    <position height="-1" width="-1" x="1446" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="geometry.CuboidLimb" project="cs2010_prototype" 
     file="/cs2010_prototype/src/geometry/CuboidLimb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="156" x="2121" y="284"/>    
+    <position height="-1" width="-1" x="2335" y="572"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="geometry.Vertex" project="cs2010_prototype" 
     file="/cs2010_prototype/src/geometry/Vertex.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="207" width="135" x="900" y="37"/>    
+    <position height="-1" width="-1" x="2274" y="756"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="geometry.SimpleLimb" project="cs2010_prototype" 
     file="/cs2010_prototype/src/geometry/SimpleLimb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="154" x="1927" y="284"/>    
+    <position height="-1" width="-1" x="2132" y="577"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
   </class>  
   <class id="17" language="java" name="geometry.Limb" project="cs2010_prototype" 
     file="/cs2010_prototype/src/geometry/Limb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="123" x="2024" y="37"/>    
+    <position height="-1" width="-1" x="2190" y="388"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -156,145 +156,136 @@
   </class>  
   <class id="18" language="java" name="gui.BiomorphCustomisation" project="cs2010_prototype" 
     file="/cs2010_prototype/src/gui/BiomorphCustomisation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="161" x="321" y="37"/>    
+    <position height="-1" width="-1" x="1170" y="46"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="gui.BiomorphSelector" project="cs2010_prototype" 
-    file="/cs2010_prototype/src/gui/BiomorphSelector.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="127" x="733" y="37"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="20" language="java" name="gui.GraphicsMain" project="cs2010_prototype" 
+  <class id="19" language="java" name="gui.GraphicsMain" project="cs2010_prototype" 
     file="/cs2010_prototype/src/gui/GraphicsMain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="119" x="1075" y="37"/>    
+    <position height="-1" width="-1" x="1289" y="-832"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="gui.FileMenu" project="cs2010_prototype" 
+  <class id="20" language="java" name="gui.FileMenu" project="cs2010_prototype" 
     file="/cs2010_prototype/src/gui/FileMenu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="41" y="37"/>    
+    <position height="-1" width="-1" x="1568" y="-624"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="gui.RightPanel" project="cs2010_prototype" 
+  <class id="21" language="java" name="gui.RightPanel" project="cs2010_prototype" 
     file="/cs2010_prototype/src/gui/RightPanel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="81" width="87" x="1234" y="37"/>    
+    <position height="-1" width="-1" x="1107" y="-491"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="23">    
+  <generalization id="22">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="13"/>  
   </generalization>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <association id="28">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="29" name="biomorphCollection">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="30" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="32" name="motherGenes">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="33" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="34">    
+  <generalization id="23">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="13"/>  
   </generalization>  
-  <generalization id="35">    
-    <end type="SOURCE" refId="11"/>    
+  <generalization id="24">    
+    <end type="SOURCE" refId="9"/>    
     <end type="TARGET" refId="13"/>  
   </generalization>  
-  <association id="36">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="37" name="fatherGenes">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="38" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="39">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="40" name="genes">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="41" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="42">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <generalization id="43">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <association id="44">    
+  <association id="25">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="45" name="statisticMachine">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <attribute id="26" name="statisticMachine">        
+        <position height="0" width="0" x="437" y="-312"/>      
       </attribute>      
-      <multiplicity id="46" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="27" minimum="0" maximum="1">        
+        <position height="0" width="0" x="437" y="-312"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="29" name="biomorphCollection">        
+        <position height="0" width="0" x="-91" y="-115"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-91" y="-115"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <association id="32">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="33" name="genes">        
+        <position height="0" width="0" x="165" y="-26"/>      
+      </attribute>      
+      <multiplicity id="34" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="165" y="-26"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="36" name="motherGenes">        
+        <position height="0" width="0" x="165" y="-26"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="165" y="-26"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <generalization id="39">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="40">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <association id="41">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="42" name="fatherGenes">        
+        <position height="0" width="0" x="165" y="-26"/>      
+      </attribute>      
+      <multiplicity id="43" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="165" y="-26"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
