@@ -117,7 +117,7 @@ public class FileMenu extends JComponent
 	 */
 	private JMenu createSettingsMenu()
 	{
-		JMenu settingsMenu = new JMenu("Settings");
+		JMenu settingsMenu = new JMenu("Evolution");
 		settingsMenu.add(createEditEvolSettingsItem());
 		settingsMenu.add(createDisplayEvolStatsItem());
 		settingsMenu.add(createSaveEvolStatsItem());
