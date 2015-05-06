@@ -8,13 +8,5 @@
 	<classpathentry kind="lib" path="lib/gluegen-rt.jar"/>
 	<classpathentry kind="lib" path="lib/jogl-all-natives-windows-amd64.jar"/>
 	<classpathentry kind="lib" path="lib/jogl-all.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tom/Documents/GitHub/CS2010/cs2010_prototype/lib/gluegen-rt-natives-linux-amd64.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tom/Documents/GitHub/CS2010/cs2010_prototype/lib/gluegen-rt-natives-linux-i586.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tom/Documents/GitHub/CS2010/cs2010_prototype/lib/gluegen-rt-natives-macosx-universal.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tom/Documents/GitHub/CS2010/cs2010_prototype/lib/gluegen-rt-natives-windows-i586.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tom/Documents/GitHub/CS2010/cs2010_prototype/lib/jogl-all-natives-linux-amd64.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tom/Documents/GitHub/CS2010/cs2010_prototype/lib/jogl-all-natives-linux-i586.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tom/Documents/GitHub/CS2010/cs2010_prototype/lib/jogl-all-natives-macosx-universal.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tom/Documents/GitHub/CS2010/cs2010_prototype/lib/jogl-all-natives-windows-i586.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
