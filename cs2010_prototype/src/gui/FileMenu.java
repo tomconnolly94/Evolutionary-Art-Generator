@@ -243,8 +243,7 @@ public class FileMenu extends JComponent
 				// add buttons to button group
 				bg.add(button1);
 				bg.add(button2);
-				String[] geneNames =
-				{"Branch (Range: 3 - 10)", "Chain Gene (Range: 1 - 3)", "Length (Range: 1 - 8)", "Length Increment (Range: -3 - 3)", "Thickness (Range: 1 - 10)", "Thickness Increment (Range: -3 - 3)", "Colour Red (Range :0 - 255)", "Colour Green (Range: 0 - 255)", "Colour Blue (Range: 0 - 255)", "Iridescence Red (Range: -16 - 16)", "Iridescence Green (Range: -16 - 16)", "Iridescence Blue (Range: -16 - 16)"};
+				String[] geneNames = {"Branch (Range: 3 - 10)", "Chain Gene (Range: 1 - 3)", "Length (Range: 1 - 8)", "Length Increment (Range: -3 - 3)", "Thickness (Range: 1 - 10)", "Thickness Increment (Range: -3 - 3)", "Colour Red (Range :0 - 255)", "Colour Green (Range: 0 - 255)", "Colour Blue (Range: 0 - 255)", "Iridescence Red (Range: -16 - 16)", "Iridescence Green (Range: -16 - 16)", "Iridescence Blue (Range: -16 - 16)"};
 				JTextField[] tfa = new JTextField[12];
 				for (int i = 0; i < 12; i++)
 				{
@@ -306,8 +305,11 @@ public class FileMenu extends JComponent
 					image = ImageIO.read(new File("src/biomorphdownload.jpg"));
 					frame.setIconImage(image);
 				}
-				catch (IOException e1){}
-				JTextArea component= es.returnTextAreaStats();
+				catch (IOException e1)
+				{
+					
+				}
+				JTextArea component = es.returnTextAreaStats();
 				component.setEditable(false);
 				frame.add(component);
 				frame.pack();
