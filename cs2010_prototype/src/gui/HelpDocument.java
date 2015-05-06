@@ -1,6 +1,10 @@
 package gui;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -22,7 +26,7 @@ public class HelpDocument
 		scroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scroller.setSize(new Dimension(250, 250));
-		scroller.getVerticalScrollBar().setValue(0);
+		scroller.getVerticalScrollBar().setValue(1);
 		
 		textArea.append("Evolutionary Art Generator Help Document \n\n");
 		textArea.append("This document has been designed to aid you in your use of this system. The program is designed to "
@@ -66,7 +70,14 @@ public class HelpDocument
 		textArea.append("Generate Collage: A collage is a window that is filled with windows displaying biomorphs that have been generated."
 				+ "the default option calculates the largest panel that can be built based on how many Biomorphs are available. The custom "
 				+ "option allows the dimensions to be selected and any empty space be filled with randomly generated Biomorphs.");
-			
+		
+		Image image;
+		try
+		{
+			image = ImageIO.read(new File("src/biomorphdownload.jpg"));
+			frame.setIconImage(image);
+		}
+		catch (IOException e1){}
 		frame.add(scroller);
 		//frame.pack();
 		frame.setVisible(true);

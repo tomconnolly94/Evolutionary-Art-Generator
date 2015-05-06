@@ -48,10 +48,9 @@ public class GraphicsMain implements ActionListener
 	private ArrayList<Biomorph> selected;
 	private Biomorph savedBiomorph;
 	/**
-	 * Constructor
-	 * @throws IOException 
+	 * Constructor 
 	 */
-	public GraphicsMain() throws IOException
+	public GraphicsMain()
 	{
 		// *0* Initialise variables
 		final int blankSpace = 5;
@@ -61,8 +60,13 @@ public class GraphicsMain implements ActionListener
 		// *1* Create components
 		mainFrame = new JFrame("Group 5 Biomorph Simulation");
 		mainFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		Image image = ImageIO.read(new File("src/biomorphdownload.jpg"));
-		mainFrame.setIconImage(image);
+		Image image;
+		try
+		{
+			image = ImageIO.read(new File("src/biomorphdownload.jpg"));
+			mainFrame.setIconImage(image);
+		}
+		catch (IOException e1){}		
 		fileMenu = new FileMenu(bm, this, bm.getEvolStats());
 		mainPanel = new MainBiomorphPanel(null);
 		Biomorph biomorphs[] = new Biomorph[8];

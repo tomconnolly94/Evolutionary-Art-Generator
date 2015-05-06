@@ -1,5 +1,9 @@
 package gui;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import biomorphHandling.BiomorphManager;
@@ -16,6 +20,13 @@ public class CollageGenerator
 		int length = (int) Math.sqrt(bm.getSize());
 		if (length > 10) length = 10;
 		JFrame frame = new JFrame();
+		Image image;
+		try
+		{
+			image = ImageIO.read(new File("src/biomorphdownload.jpg"));
+			frame.setIconImage(image);
+		}
+		catch (IOException e1){}
 		JPanel panel = new JPanel();
 		GridLayout layout = new GridLayout(length, length);
 		panel.setLayout(layout);

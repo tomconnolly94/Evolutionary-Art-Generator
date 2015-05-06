@@ -3,8 +3,12 @@ import inputOutput.*;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -296,6 +300,13 @@ public class FileMenu extends JComponent
 			public void actionPerformed(ActionEvent n)
 			{
 				JFrame frame = new JFrame();
+				Image image;
+				try
+				{
+					image = ImageIO.read(new File("src/biomorphdownload.jpg"));
+					frame.setIconImage(image);
+				}
+				catch (IOException e1){}
 				JTextArea component= es.returnTextAreaStats();
 				component.setEditable(false);
 				frame.add(component);
