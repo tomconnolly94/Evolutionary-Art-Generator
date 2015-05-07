@@ -17,7 +17,7 @@ public class BiomorphCreator
 	 */
 	public Biomorph createRandomBiomorph()
 	{
-		rand = new Random(10); // Seed used for testing
+		rand = new Random(/*10*/); // Seed used for testing
 		int branch = rand.nextInt(8) + 3; // Value: 3 to 10 (The branch gene has been limited to a minimum of 3 to prevent a simple line from being generated)
 		int chain = rand.nextInt(3) + 1; // Value: 1 to 3 (Too many chains will freeze the program)
 		int length = rand.nextInt(8) + 1; // Value: 1 to 8
