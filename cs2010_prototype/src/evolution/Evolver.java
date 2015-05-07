@@ -11,8 +11,8 @@ import genes.*;
  */
 public class Evolver
 {
-	/*
-	 * Globally accessible arrays of the father's and mother's genes and a third array to hold the numbers which will become the child's gene values.
+	/**
+	 * Globally accessible parent Biomorphs and arrays of the father's and mother's genes and a third array to hold the numbers which will become the child's gene values.
 	 */
 	private int[] targetValues;
 	private int[] childGenes;
@@ -59,12 +59,5 @@ public class Evolver
 		BiomorphCreator bc = new BiomorphCreator();
 		Biomorph biomorph = bc.createBiomorph(father, mother, childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11]);
 		return biomorph;
-	}
-	/**
-	 * @return childGenes array
-	 */
-	public int[] getChildGenes()
-	{
-		return childGenes;
 	}
 }

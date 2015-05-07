@@ -93,8 +93,6 @@ public class BiomorphManager
 		if (useEvolveClo)
 		{
 			biomorph = ec.evolveClo();
-			// System.out.println(biomorph.getMother());
-			// System.out.println(biomorph.getFather());
 		}
 		else
 		{

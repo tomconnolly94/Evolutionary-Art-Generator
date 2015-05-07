@@ -31,8 +31,8 @@ public class EvolutionStats
 		for (int i = 0; i < numOfGenes; i++) savedValues[i] = values[i];
 		statsMaster.add(savedValues);
 	}
-	/*
-	 * Method to concatenate new gene values to a Sting of old values and print them all out.
+	/**
+	 * Method to concatenate new gene values to a String of old values and print them all out.
 	 */
 	public void printRunningStats()
 	{
@@ -50,6 +50,10 @@ public class EvolutionStats
 			}
 		}
 	}
+	/**
+	 * Method to append all data on Biomorph genes to a text area and return that.
+	 * @return JTextArea containing all biomorph gene data
+	 */
 	public JTextArea returnTextAreaStats()
 	{
 		JTextArea textArea = new JTextArea();
