@@ -4,6 +4,12 @@ import java.awt.GridLayout;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+/**
+ * Class to take care of all buttons involving evolution. This is used by 
+ * GraphicsMain to delegate the responsibility and maintain a cohesive design.
+ * @author Tom Connolly, Jack Taylor
+ * @version 05/05/2015
+ */
 public class EvolvePanel extends JPanel
 {
 	private static final long serialVersionUID = 2448675112978172097L;

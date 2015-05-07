@@ -21,6 +21,10 @@ public class CollageGenerator
 	{
 		this.bm = bm;
 	}
+	/**
+	 * Method to generate a default collage
+	 * Displays a JFrame including all possible rendered Biomorphs.
+	 */
 	public void generateDefault()
 	{
 		int length = (int) Math.sqrt(bm.getSize());
@@ -53,6 +57,11 @@ public class CollageGenerator
 		frame.pack();
 		frame.setVisible(true);
 	}
+	/**
+	 * Method to generate a collage based on user inputting the length and width of said collage.
+	 * Displays a JFrame with rendered Biomorphs.
+	 * displayed.
+	 */
 	public void generateCustom(int x, int y, boolean autoFill)
 	{
 		JFrame frame = new JFrame();
