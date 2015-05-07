@@ -60,4 +60,11 @@ public class Evolver
 		Biomorph biomorph = bc.createBiomorph(father, mother, childGenes[0], childGenes[1], childGenes[2], childGenes[3], childGenes[4], childGenes[5], childGenes[6], childGenes[7], childGenes[8], childGenes[9], childGenes[10], childGenes[11]);
 		return biomorph;
 	}
+	/**
+	 * Method to get the genes of the evolved Biomorph
+	 * @return Integer array of gene values from the evolved Biomorph
+	 */
+	public int[] getChildGenes(){
+		return childGenes;
+	}
 }

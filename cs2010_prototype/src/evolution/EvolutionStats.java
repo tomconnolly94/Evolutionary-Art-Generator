@@ -12,7 +12,7 @@ public class EvolutionStats
 	private ArrayList<String> runningStatsString;
 	private int[] targetValues;
 	private int numOfGenes = 12;
-	/*
+	/**
 	 * Constructor initialises all fields and loads the geneNames so that genes can be labelled. also fills arrayList with the names of each gene to be used later.
 	 */
 	public EvolutionStats(int[] targetValues)
@@ -98,11 +98,18 @@ public class EvolutionStats
 		runningStatsString.add("Iridescence Blue\t" + targetValues[11] + pv);
 		return runningStatsString;
 	}
+	/**
+	 * Method to clear all statistics from this object
+	 */
 	public void clearStats()
 	{
 		statsMaster.clear();
 		runningStatsString.clear();
 	}
+	/**
+	 * Method used to update the target calues 
+	 * @param targetValues
+	 */
 	public void updateTargetValues(int[] targetValues)
 	{
 		this.targetValues = targetValues;
