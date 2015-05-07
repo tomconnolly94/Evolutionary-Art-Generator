@@ -27,6 +27,8 @@ import biomorphHandling.*;
 /**
  * The main window for the Biomorph Simulation.
  * @author Charandeep Rai, Jack Taylor, Tom Connolly
+ * 
+ * URL Reference for icon image:'http://static1.squarespace.com/static/53ffad1fe4b0bf4098a0d211/t/5400142ee4b0c3314cbc8ea9/1409291310561/'
  * @version 05/05/2015
  */
 public class GraphicsMain implements ActionListener
