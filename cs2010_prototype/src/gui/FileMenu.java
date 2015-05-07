@@ -186,7 +186,7 @@ public class FileMenu extends JComponent
 			public void actionPerformed(ActionEvent e)
 			{
 				Load loader = new Load();
-				bm.addSpecific(loader.load());
+				if (loader.load() != null) bm.addSpecific(loader.load());
 				gm.refreshMainPanel();
 			}
 		});

@@ -218,29 +218,25 @@ public class GraphicsMain implements ActionListener
 			rightPanel.reset();
 			break;
 		case "Load mother":
-			if (mainPanel.getBiomorph() != null && mainPanel.getBiomorph().getMother() != null)
+			if (mainPanel.getBiomorph() == null) JOptionPane.showMessageDialog(buttonPanel, "The main panel does not contain a biomorph.");
+			else if (mainPanel.getBiomorph().getMother() == null) JOptionPane.showMessageDialog(buttonPanel, "This Biomorph is randomly generated and has no mother.");
+			else
 			{
 				savedBiomorph = mainPanel.getBiomorph();
 				mainPanel.setBiomorph(mainPanel.getBiomorph().getMother());
 			}
-			else
-			{
-				JOptionPane.showMessageDialog(buttonPanel, "This Biomorph is randomly generated and has no mother.");
-			}
 			break;
 		case "Load father":
-			if (mainPanel.getBiomorph() != null && mainPanel.getBiomorph().getFather() != null)
+			if (mainPanel.getBiomorph() == null) JOptionPane.showMessageDialog(buttonPanel, "The main panel does not contain a biomorph.");
+			else if (mainPanel.getBiomorph().getFather() == null) JOptionPane.showMessageDialog(buttonPanel, "This Biomorph is randomly generated and has no father.");
+			else
 			{
 				savedBiomorph = mainPanel.getBiomorph();
 				mainPanel.setBiomorph(mainPanel.getBiomorph().getFather());
 			}
-			else
-			{
-				JOptionPane.showMessageDialog(buttonPanel, "This Biomorph is randomly generated and has no father.");
-			}
 			break;
 		case "Reset to original Biomorph":
-			mainPanel.setBiomorph(savedBiomorph);
+			if (savedBiomorph != null) mainPanel.setBiomorph(savedBiomorph);
 			break;
 		case "Add to Hall of Fame":
 			if (mainPanel.getBiomorph() == null) JOptionPane.showMessageDialog(mainFrame, "The main panel contains no biomorph to add.");
