@@ -14,13 +14,13 @@ public class BiomorphManager_Test
 	@Test
 	public void testSize()
 	{
-		assertEquals(3, bm.cloneCollection().size());
+		assertEquals(9, bm.cloneCollection().size());
 	}
 	@Test
 	public void testCreateAndAdd()
 	{
 		bm.createAndAdd();
-		assertEquals(4, bm.cloneCollection().size());
+		assertEquals(10, bm.cloneCollection().size());
 	}
 	@Test
 	public void testRemove()
