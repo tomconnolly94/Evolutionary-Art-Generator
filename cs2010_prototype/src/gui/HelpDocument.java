@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 /**
- * The help document for the program, to 
+ * The help document for the program.
  * @author Tom Connolly
  * @version 07/05/2015
  */
