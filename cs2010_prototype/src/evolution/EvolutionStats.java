@@ -57,6 +57,7 @@ public class EvolutionStats
 	public JTextArea returnTextAreaStats()
 	{
 		JTextArea textArea = new JTextArea();
+		loadGeneNames();
 		if (statsMaster.size() >= 1)
 		{
 			for (int arrayIndex = 0; arrayIndex < statsMaster.size(); arrayIndex++)
@@ -86,13 +87,14 @@ public class EvolutionStats
 		runningStatsString = new ArrayList<String>(numOfGenes);
 		runningStatsString.add("Branch\t\t" + targetValues[0] + pv);
 		runningStatsString.add("Chain\t\t" + targetValues[1] + pv);
-		runningStatsString.add("Color Red\t\t"+ targetValues[2] + pv);
-		runningStatsString.add("Color Green\t\t" + targetValues[3] + pv);
-		runningStatsString.add("Color Blue\t\t" + targetValues[4] + pv);
-		runningStatsString.add("Length\t\t" + targetValues[5] + pv);
-		runningStatsString.add("Length Increment\t" + targetValues[6] + pv);
-		runningStatsString.add("Thickness\t\t" + targetValues[7] + pv);
-		runningStatsString.add("Thickness Increment\t" + targetValues[8] + pv);
+		runningStatsString.add("Length\t\t"+ targetValues[2] + pv);
+		runningStatsString.add("Length Increment\t" + targetValues[3] + pv);
+		runningStatsString.add("Thickness\t\t" + targetValues[4] + pv);
+		runningStatsString.add("Thickness Increment\t" + targetValues[5] + pv);
+		runningStatsString.add("Red\t\t" + targetValues[6] + pv);
+		System.out.println(targetValues[6]);
+		runningStatsString.add("Green\t\t" + targetValues[7] + pv);
+		runningStatsString.add("Blue\t\t" + targetValues[8] + pv);
 		runningStatsString.add("Iridescence Red\t" + targetValues[9] + pv);
 		runningStatsString.add("Iridescence Green\t" + targetValues[10] + pv);
 		runningStatsString.add("Iridescence Blue\t" + targetValues[11] + pv);

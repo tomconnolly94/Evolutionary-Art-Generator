@@ -110,6 +110,7 @@ public class BiomorphManager
 		int[] newTargetValues =
 		{gene1, gene2, gene3, gene4, gene5, gene6, gene7, gene8, gene9, gene10, gene11, gene12};
 		targetValues = newTargetValues;
+		statisticMachine.updateTargetValues(newTargetValues);
 	}
 	public void printTargetValues()
 	{
