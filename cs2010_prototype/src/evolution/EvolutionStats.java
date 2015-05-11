@@ -83,7 +83,7 @@ public class EvolutionStats
 	 */
 	private ArrayList<String> loadGeneNames()
 	{
-		String pv = "(PV)~~ ";
+		String pv = "(TV)~~ ";
 		runningStatsString = new ArrayList<String>(numOfGenes);
 		runningStatsString.add("Branch\t\t" + targetValues[0] + pv);
 		runningStatsString.add("Chain\t\t" + targetValues[1] + pv);
