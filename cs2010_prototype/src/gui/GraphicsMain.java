@@ -336,7 +336,9 @@ public class GraphicsMain implements ActionListener
 	 */
 	public void resetAction()
 	{
+		int[] genes = bm.getTargetValues();
 		bm = new BiomorphManager();
+		bm.updateTargetValues(genes[0],genes[1],genes[2],genes[3],genes[4],genes[5],genes[6],genes[7],genes[8],genes[9],genes[10],genes[11]);
 		fileMenu.updateBM(bm);
 		fileMenu.updateES(bm.getEvolStats());
 		refreshMainPanel();
