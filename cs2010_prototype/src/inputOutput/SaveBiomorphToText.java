@@ -20,12 +20,11 @@ public class SaveBiomorphToText
 	 */
 	public SaveBiomorphToText(Gene[] geneValues)
 	{
-		System.out.println(geneValues.length);
 		JFileChooser fc = new JFileChooser(new File(System.getProperty("user.home")));
 		int returnVal = fc.showSaveDialog(null);
 		if (returnVal == JFileChooser.APPROVE_OPTION)
 		{
-			file = fc.getSelectedFile();
+			file =  new File(fc.getSelectedFile()+".txt");
 		}
 		try
 		{

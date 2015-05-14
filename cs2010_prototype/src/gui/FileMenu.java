@@ -329,8 +329,7 @@ public class FileMenu extends JComponent
 		{
 			public void actionPerformed(ActionEvent n)
 			{
-				String response = JOptionPane.showInputDialog(frame, "Please enter a file name:", null);
-				new SaveStatsToText(es.getRunningStats(), response);
+				new SaveStatsToText(es.getRunningStats());
 			}
 		});
 		return jMenuItem;

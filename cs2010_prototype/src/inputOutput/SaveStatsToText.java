@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JFileChooser;
 /**
  * Class to handle exporting of Biomorphs.
  * @author Tom Connolly
@@ -12,32 +13,34 @@ public class SaveStatsToText
 {
 	static FileOutputStream fop = null;
 	static File file;
-	static String anchorDestination = "src/statisticsTextFiles/";
 	/**
 	 * Constructor
 	 * @param geneValues The array of genes to save
 	 * @param fileName The name of the file to save to
 	 */
-	public SaveStatsToText(ArrayList<String> input, String fileName)
+	public SaveStatsToText(ArrayList<String> input)
 	{
+		JFileChooser fc = new JFileChooser(new File(System.getProperty("user.home")));
+		int returnVal = fc.showSaveDialog(null);
+		if (returnVal == JFileChooser.APPROVE_OPTION)
+		{
+			file =  new File(fc.getSelectedFile()+".txt");
+		}
 		try
 		{
-			File dir = new File(anchorDestination);
-			if (!(dir.exists())) dir.mkdir();
-			// save file to src
-			file = new File(anchorDestination + fileName + ".txt");
-			fop = new FileOutputStream(file);
-			// if file doesnt exists, then create it
-			if (!file.exists()) file.createNewFile();
-			// get the content in bytes
-			for (int i = 0; i < input.size(); i++)
+			if(file!=null)
 			{
-				byte[] contentInBytes = (input.get(i) + "\n").getBytes();
-				fop.write(contentInBytes);
+				fop = new FileOutputStream(file);
+				file.createNewFile();
+				// get the content in bytes
+				for (int i = 0; i < input.size(); i++)
+				{
+					byte[] contentInBytes = (input.get(i) + "\n").getBytes();
+					fop.write(contentInBytes);
+				}
+				fop.flush();
+				fop.close();
 			}
-			fop.flush();
-			fop.close();
-			System.out.println("Statistics have been saved.");
 		}
 		catch (IOException e)
 		{
